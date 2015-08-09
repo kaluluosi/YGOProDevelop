@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Gemini.Modules.CodeEditor</id>
+    <version>0.5.0</version>
+    <title>Gemini.Modules.CodeEditor</title>
+    <authors>Tim Jones</authors>
+    <owners>Tim Jones</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/tgjones/gemini</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CodeEditor module for Gemini, providing a syntax-highlighted code editor using AvalonEdit.</description>
+    <tags>.net40 WPF MVVM AvalonDock Caliburn Micro Visual Studio IDE Shell C# syntax highlighting AvalonEdit</tags>
+    <dependencies>
+      <dependency id="GeminiWpf" version="0.5.0.0" />
+      <dependency id="AvalonEdit" version="4.3.1.9430" />
+      <dependency id="Caliburn.Micro" version="1.5.2" />
+    </dependencies>
+  </metadata>
+</package>

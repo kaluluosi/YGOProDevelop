@@ -1,0 +1,70 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:panel="clr-namespace:YGOProDevelop.PanelTempalte"
+        xmlns:avalon="http://schemas.xceed.com/wpf/xaml/avalondock"
+        xmlns:ignore="http://www.ignore.com"
+        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" x:Class="YGOProDevelop.MainWindow"
+        mc:Ignorable="d ignore"
+        Height="757"
+        Width="1173.5"
+        Title="YGOProDevelop" WindowStartupLocation="CenterScreen"
+        DataContext="{Binding Source={StaticResource Locator},Path=Main}"
+    >
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate x:Key="DocumenTitleTemplate">
+                <TextBlock Text="{Binding Path=Content.Title}" TextTrimming="CharacterEllipsis"/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Menu Grid.Row="0" >
+            <MenuItem Header="文件"></MenuItem>
+            <MenuItem Header="视图">
+                <MenuItem Header="显示行号" IsCheckable="True" Command="{Binding ShowLineNumbersCmd}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" ></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1" >
+            <ToolBarTray>
+                <ToolBar>
+                    <Button >
+                        <Image Source="Resources/Icon/File_New32.png" Height="34" Width="32"></Image>
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
+
+        </Grid>
+
+        <avalon:DockingManager Grid.Row="2" 
+                               DocumentsSource="{Binding DocumentViewModels}" 
+                               AnchorablesSource="{Binding AnchorableViewModels}"  
+                               ActiveContent="{Binding ActiveViewModel}" DocumentHeaderTemplate="{DynamicResource DocumenTitleTemplate}"  >
+            <avalon:DockingManager.LayoutItemTemplateSelector>
+                <panel:PanelTemplateSelector></panel:PanelTemplateSelector>
+            </avalon:DockingManager.LayoutItemTemplateSelector>
+
+            <avalon:LayoutRoot>
+
+            </avalon:LayoutRoot>
+        </avalon:DockingManager>
+
+    </Grid>
+</Window>
