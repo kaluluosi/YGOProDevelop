@@ -7,8 +7,10 @@
              xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" x:Class="YGOProDevelop.View.DocumentView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
+            
     >
+    
     <Grid>
-        <avalonedit:TextEditor Document="{Binding Document}" ShowLineNumbers="{Binding IsShowLineNumbers}"/>
+        <avalonedit:TextEditor Document="{Binding Document}" ShowLineNumbers="{Binding IsShowLineNumbers}" SyntaxHighlighting="{Binding Language}" FontSize="16" />
     </Grid>
 </UserControl>

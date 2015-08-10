@@ -1,6 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using ICSharpCode.AvalonEdit.Document;
+using System.IO;
+using System.Xml;
 using Xceed.Wpf.AvalonDock;
+using YGOProDevelop.Properties;
+using ICSharpCode.AvalonEdit.Highlighting;
+using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 
 namespace YGOProDevelop.ViewModel
 {
@@ -17,6 +22,11 @@ namespace YGOProDevelop.ViewModel
         private string _title;
         private string _fileName;
         private bool _isShowLineNumbers;
+        private IHighlightingDefinition _language;
+        public ICSharpCode.AvalonEdit.Highlighting.IHighlightingDefinition Language {
+            get { return _language; }
+            set { _language = value; RaisePropertyChanged(()=>Language); }
+        }
         public TextDocument Document {
             get { return _document; }
             set { _document = value; RaisePropertyChanged(()=>Document); }
@@ -45,7 +55,9 @@ namespace YGOProDevelop.ViewModel
         /// Initializes a new instance of the DocumentViewModel class.
         /// </summary>
         public DocumentViewModel() {
-
+            
         }
+
+
     }
 }

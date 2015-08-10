@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/icon/file_new32.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/highlight/lua-mode.xshd")]
 
 

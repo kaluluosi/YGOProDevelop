@@ -3,6 +3,8 @@ using GalaSoft.MvvmLight.CommandWpf;
 using ICSharpCode.AvalonEdit.Document;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using YGOProDevelop.Service;
+using ICSharpCode.AvalonEdit.Highlighting;
 
 namespace YGOProDevelop.ViewModel
 {
@@ -14,10 +16,13 @@ namespace YGOProDevelop.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+
         private static MainViewModel _this;
 
         public static MainViewModel This {
-            get { return MainViewModel._this ?? (_this = new MainViewModel()); }
+            get {
+                return _this ?? (_this = new MainViewModel());
+            }
         }
 
         /// <summary>
@@ -34,40 +39,46 @@ namespace YGOProDevelop.ViewModel
         private ObservableCollection<ViewModelBase> _anchorableViewModels = new ObservableCollection<ViewModelBase>();
 
 
-        private bool _IsShowLineNUmbers;
+        private bool _IsShowLineNumbers;
         public ObservableCollection<ViewModelBase> AnchorableViewModels {
             get { return _anchorableViewModels; }
-            set { _anchorableViewModels = value; RaisePropertyChanged(()=>AnchorableViewModels); }
+            set { _anchorableViewModels = value; RaisePropertyChanged(() => AnchorableViewModels); }
         }
 
         public ObservableCollection<ViewModelBase> DocumentViewModels {
             get { return _documentViewModels; }
-            set { _documentViewModels = value; RaisePropertyChanged(()=>DocumentViewModels); }
+            set { _documentViewModels = value; RaisePropertyChanged(() => DocumentViewModels); }
         }
 
         public ViewModelBase ActiveViewModel {
             get { return _activeViewModel; }
-            set { _activeViewModel = value; RaisePropertyChanged(()=>ActiveViewModel); }
+            set { _activeViewModel = value ?? _activeViewModel; RaisePropertyChanged(() => ActiveViewModel); }
         }
 
-        public bool IsShowLineNUmbers {
-            get { return _IsShowLineNUmbers; }
-            set { _IsShowLineNUmbers = value; RaisePropertyChanged(() => IsShowLineNUmbers); }
-        }
-
-
-        #region command
-        private ICommand _showLineNumbersCmd;
-        public System.Windows.Input.ICommand ShowLineNumbersCmd {
-            get {
-                return new RelayCommand<bool>(isChecked => {
-                    foreach(DocumentViewModel docVM in DocumentViewModels) {
-                        docVM.IsShowLineNumbers = isChecked;
-                    }
-                });
+        public bool IsShowLineNumbers {
+            get { return _IsShowLineNumbers; }
+            set { 
+                _IsShowLineNumbers = value; 
+                RaisePropertyChanged(() => IsShowLineNumbers);
+                foreach(DocumentViewModel docVM in DocumentViewModels) {
+                    docVM.IsShowLineNumbers = _IsShowLineNumbers;
+                }
             }
         }
-        
+
+        #region command
+        public RelayCommand<IHighlightingDefinition> SetLanguageCmd {
+            get {
+                return new RelayCommand<IHighlightingDefinition>(
+                        language => {
+                            (ActiveViewModel as DocumentViewModel).Language = language;
+                        },
+                        language => {
+                            return ActiveViewModel is DocumentViewModel;
+                        }
+                    );
+            }
+        }
 
         #endregion
         /// <summary>
@@ -77,9 +88,9 @@ namespace YGOProDevelop.ViewModel
 
             TextDocument textdoc = new TextDocument();
             textdoc.Text = "测试";
-            _documentViewModels.Add(new DocumentViewModel() { Document = textdoc });
-            _documentViewModels.Add(new DocumentViewModel() { Document = textdoc });
-            _documentViewModels.Add(new DocumentViewModel() { Document = textdoc });
+            _documentViewModels.Add(new DocumentViewModel() { Document = textdoc, Title = "测试文档1" });
+            _documentViewModels.Add(new DocumentViewModel() { Document = textdoc, Title = "测试文档2" });
+            _documentViewModels.Add(new DocumentViewModel() { Document = textdoc, Title = "测试文档3" });
 
         }
     }

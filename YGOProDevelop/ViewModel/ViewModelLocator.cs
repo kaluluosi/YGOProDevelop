@@ -38,19 +38,24 @@ namespace YGOProDevelop.ViewModel
 
             //注册服务
             SimpleIoc.Default.Register<IDialogService, DefaultDialogService>();
-
-
+            SimpleIoc.Default.Register<IHighlightSettingService, DefaultHighlightSettingService>();
             //注册ViewModel
             SimpleIoc.Default.Register<MainViewModel>(()=>MainViewModel.This);
 //             SimpleIoc.Default.Register<DocumentViewModel>();
             
-
+            
         }
 
 
         public MainViewModel Main {
             get {
                return ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+
+        public IHighlightSettingService HighlightSetting {
+            get {
+                return ServiceLocator.Current.GetService(typeof(IHighlightSettingService)) as IHighlightSettingService;
             }
         }
 
