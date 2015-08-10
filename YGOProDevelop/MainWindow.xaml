@@ -19,7 +19,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Skins/MainSkin.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate x:Key="DocumenTitleTemplate">
+            <DataTemplate x:Key="DocumentHeaderTemplate">
+                <TextBlock Text="{Binding Content.Title}" TextTrimming="CharacterEllipsis"/>
+            </DataTemplate>
+            <DataTemplate x:Key="DocumentTitleTemplate">
                 <TextBlock Text="{Binding Content.Title}" TextTrimming="CharacterEllipsis"/>
             </DataTemplate>
         </ResourceDictionary>
@@ -35,6 +38,7 @@
 
         <Menu Grid.Row="0" >
             <MenuItem Header="文件">
+                <MenuItem Header="新建" Command="{Binding NewCmd}"></MenuItem>
                 <MenuItem Header="打开" Command="{Binding OpenCmd}"></MenuItem>
                 <MenuItem Header="保存" Command="{Binding SaveCmd}"></MenuItem>
             </MenuItem>
@@ -42,11 +46,12 @@
                 <MenuItem Header="显示行号" IsCheckable="True"  IsChecked="{Binding IsShowLineNumbers}" />
             </MenuItem>
             <MenuItem Header="语言" DataContext="{Binding HighlightSetting, Source={StaticResource Locator}}" ItemsSource="{Binding HighlightingDefs}">
-                <MenuItem.ItemTemplate>
-                    <DataTemplate>
-                        <MenuItem Header="{Binding Name}" Command="{Binding DataContext.SetLanguageCmd, ElementName=window}" CommandParameter="{Binding .}"></MenuItem>
-                    </DataTemplate>
-                </MenuItem.ItemTemplate>
+                <MenuItem.ItemContainerStyle>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Command" Value="{Binding DataContext.SetLanguageCmd,ElementName=window}"></Setter>
+                        <Setter Property="CommandParameter" Value="{Binding .}"></Setter>
+                    </Style>
+                </MenuItem.ItemContainerStyle>
             </MenuItem>
         </Menu>
 
@@ -63,7 +68,7 @@
         <avalon:DockingManager Grid.Row="2" 
 			DocumentsSource="{Binding DocumentViewModels}" 
 			AnchorablesSource="{Binding AnchorableViewModels}"  
-			ActiveContent="{Binding ActiveViewModel,Mode=TwoWay}" DocumentHeaderTemplate="{DynamicResource DocumenTitleTemplate}"  >
+			ActiveContent="{Binding ActiveViewModel,Mode=TwoWay}" DocumentHeaderTemplate="{DynamicResource DocumentHeaderTemplate}" DocumentTitleTemplate="{DynamicResource DocumentTitleTemplate}"  >
             <avalon:DockingManager.LayoutItemTemplateSelector>
                 <panel:PanelTemplateSelector/>
             </avalon:DockingManager.LayoutItemTemplateSelector>

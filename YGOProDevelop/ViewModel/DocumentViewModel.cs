@@ -71,6 +71,7 @@ namespace YGOProDevelop.ViewModel
             StreamWriter writer = new StreamWriter(fileName);
             writer.Write(_document.Text);
             writer.Close();
+            FileName = fileName;
         }
     }
 }

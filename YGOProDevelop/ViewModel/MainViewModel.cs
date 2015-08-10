@@ -46,7 +46,6 @@ namespace YGOProDevelop.ViewModel
         private ObservableCollection<ViewModelBase> _anchorableViewModels = new ObservableCollection<ViewModelBase>();
 
 
-        private bool _IsShowLineNumbers;
         public ObservableCollection<ViewModelBase> AnchorableViewModels {
             get { return _anchorableViewModels; }
             set { _anchorableViewModels = value; RaisePropertyChanged(() => AnchorableViewModels); }
@@ -59,8 +58,8 @@ namespace YGOProDevelop.ViewModel
 
         public ViewModelBase ActiveViewModel {
             get { return _activeViewModel; }
-            set { 
-                _activeViewModel = value; 
+            set {
+                _activeViewModel = value;
                 RaisePropertyChanged(() => ActiveViewModel);
                 if(_activeViewModel is DocumentViewModel) {
                     _activeDocumentViewModel = _activeViewModel as DocumentViewModel;
@@ -69,13 +68,14 @@ namespace YGOProDevelop.ViewModel
         }
 
         public bool IsShowLineNumbers {
-            get { return _IsShowLineNumbers; }
+            get { return Properties.Settings.Default.IsShowLineNumbers; }
             set {
-                _IsShowLineNumbers = value;
+                Properties.Settings.Default.IsShowLineNumbers = value;
                 RaisePropertyChanged(() => IsShowLineNumbers);
                 foreach(DocumentViewModel docVM in DocumentViewModels) {
-                    docVM.IsShowLineNumbers = _IsShowLineNumbers;
+                    docVM.IsShowLineNumbers = value;
                 }
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -87,7 +87,7 @@ namespace YGOProDevelop.ViewModel
                             _activeDocumentViewModel.Language = language;
                         },
                         language => {
-                            return _activeDocumentViewModel!=null;
+                            return _activeDocumentViewModel != null;
                         }
                     );
             }
@@ -100,7 +100,7 @@ namespace YGOProDevelop.ViewModel
                         SaveDocument();
                     },
                     () => {
-                        return _activeDocumentViewModel!=null;
+                        return _activeDocumentViewModel != null;
                     }
                 );
             }
@@ -113,6 +113,16 @@ namespace YGOProDevelop.ViewModel
                         OpenDocument();
                     }
                 );
+            }
+        }
+
+        public RelayCommand NewCmd {
+            get {
+                return new RelayCommand(
+                        () => {
+                            NewDocument();
+                        }
+                    );
             }
         }
 
@@ -130,8 +140,7 @@ namespace YGOProDevelop.ViewModel
         private void OpenDocument() {
             OpenFileDialog openDlg = new OpenFileDialog();
             if(openDlg.ShowDialog() == true) {
-                DocumentViewModel docVM = new DocumentViewModel();
-                docVM.IsShowLineNumbers = IsShowLineNumbers;
+                DocumentViewModel docVM = CreateDocumentVM();
                 docVM.OpenFile(openDlg.FileName);
                 DocumentViewModels.Add(docVM);
                 ActiveViewModel = docVM;
@@ -141,8 +150,20 @@ namespace YGOProDevelop.ViewModel
         private void SaveDocument() {
             SaveFileDialog saveDlg = new SaveFileDialog();
             if(saveDlg.ShowDialog() == true) {
-                _activeDocumentViewModel.SaveFile(saveDlg.FileName); 
+                _activeDocumentViewModel.SaveFile(saveDlg.FileName);
             }
+        }
+
+        private void NewDocument() {
+            DocumentViewModel docVM = CreateDocumentVM();
+            DocumentViewModels.Add(docVM);
+            ActiveViewModel = docVM;
+        }
+
+        private DocumentViewModel CreateDocumentVM() {
+            DocumentViewModel docVM = new DocumentViewModel();
+            docVM.IsShowLineNumbers = IsShowLineNumbers;
+            return docVM;
         }
 
         #endregion

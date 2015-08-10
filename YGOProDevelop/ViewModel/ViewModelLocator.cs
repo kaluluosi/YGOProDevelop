@@ -69,7 +69,7 @@ namespace YGOProDevelop.ViewModel
         /// Cleans up all the resources.
         /// </summary>
         public static void Cleanup() {
-
+            
         }
     }
 }
