@@ -25,6 +25,9 @@
             <DataTemplate x:Key="DocumentTitleTemplate">
                 <TextBlock Text="{Binding Content.Title}" TextTrimming="CharacterEllipsis"/>
             </DataTemplate>
+            <DataTemplate x:Key="DocumentContentMenuTemplate">
+                <TextBlock Text="{Binding Content.Title}" TextTrimming="CharacterEllipsis"/>
+            </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -68,11 +71,10 @@
         <avalon:DockingManager Grid.Row="2" 
 			DocumentsSource="{Binding DocumentViewModels}" 
 			AnchorablesSource="{Binding AnchorableViewModels}"  
-			ActiveContent="{Binding ActiveViewModel,Mode=TwoWay}" DocumentHeaderTemplate="{DynamicResource DocumentHeaderTemplate}" DocumentTitleTemplate="{DynamicResource DocumentTitleTemplate}"  >
+			ActiveContent="{Binding ActiveViewModel,Mode=TwoWay}" DocumentHeaderTemplate="{DynamicResource DocumentHeaderTemplate}" DocumentTitleTemplate="{DynamicResource DocumentTitleTemplate}" DocumentPaneMenuItemHeaderTemplate="{DynamicResource DocumentContentMenuTemplate}"  >
             <avalon:DockingManager.LayoutItemTemplateSelector>
                 <panel:PanelTemplateSelector/>
             </avalon:DockingManager.LayoutItemTemplateSelector>
-
             <avalon:LayoutRoot/>
         </avalon:DockingManager>
 

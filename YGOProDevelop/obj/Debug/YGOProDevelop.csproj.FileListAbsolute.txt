@@ -125,5 +125,3 @@ C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProD
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.Properties.Resources.resources
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.csproj.GenerateResource.Cache
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.exe
-D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Resources\HighLight\Lua-Mode.xshd
-D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop_Content.g.cs

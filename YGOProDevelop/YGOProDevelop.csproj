@@ -168,9 +168,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <Content Include="Resources\HighLight\Lua-Mode.xshd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Resources\HighLight\Lua-Mode.xshd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
