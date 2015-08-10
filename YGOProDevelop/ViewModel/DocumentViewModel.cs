@@ -6,6 +6,8 @@ using Xceed.Wpf.AvalonDock;
 using YGOProDevelop.Properties;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
+using ICSharpCode.AvalonEdit.Utils;
+using System.Threading.Tasks;
 
 namespace YGOProDevelop.ViewModel
 {
@@ -18,8 +20,7 @@ namespace YGOProDevelop.ViewModel
     public class DocumentViewModel : ViewModelBase
     {
 
-        private TextDocument _document;
-        private string _title;
+        private TextDocument _document=new TextDocument();
         private string _fileName;
         private bool _isShowLineNumbers;
         private IHighlightingDefinition _language;
@@ -34,16 +35,12 @@ namespace YGOProDevelop.ViewModel
 
         public string Title {
             get {
-                return _title;
-            }
-            set {
-                _title = value;
-                RaisePropertyChanged(()=>Title);
+                return _fileName==null?"未命名":Path.GetFileName(_fileName);
             }
         }
         public string FileName {
             get { return _fileName; }
-            set { _fileName = value; }
+            set { _fileName = value; RaisePropertyChanged(() => Title); RaisePropertyChanged(() => FileName); }
         }
         public bool IsShowLineNumbers {
             get { return _isShowLineNumbers; }
@@ -58,6 +55,22 @@ namespace YGOProDevelop.ViewModel
             
         }
 
+        public void OpenFile(string fileName) {
+            if(File.Exists(fileName) == false)
+                throw new FileNotFoundException("文档不存在", fileName);
+            FileName = fileName;
+            StreamReader  reader= FileReader.OpenFile(fileName, System.Text.Encoding.UTF8);
+            _document.Text = reader.ReadToEnd();
+            reader.Close();
 
+            string extension = Path.GetExtension(fileName);
+            Language = HighlightingManager.Instance.GetDefinitionByExtension(extension);
+        }
+
+        public void SaveFile(string fileName) {
+            StreamWriter writer = new StreamWriter(fileName);
+            writer.Write(_document.Text);
+            writer.Close();
+        }
     }
 }

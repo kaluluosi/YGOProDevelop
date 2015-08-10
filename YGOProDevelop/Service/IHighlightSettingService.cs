@@ -1,9 +1,11 @@
 ﻿using System;
+using ICSharpCode.AvalonEdit.Highlighting;
 namespace YGOProDevelop.Service
 {
     public interface IHighlightSettingService
     {
         System.Collections.Generic.IReadOnlyCollection<ICSharpCode.AvalonEdit.Highlighting.IHighlightingDefinition> HighlightingDefs { get; }
-        ICSharpCode.AvalonEdit.Highlighting.IHighlightingDefinition GetHighlightingDefinition(string languageName);
+        IHighlightingDefinition GetDefinition(string languageName);
+        IHighlightingDefinition GetDefinitionByExtension(string extension);
     }
 }

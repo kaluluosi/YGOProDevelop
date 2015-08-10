@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using YGOProDevelop.Service;
 using ICSharpCode.AvalonEdit.Highlighting;
+using Microsoft.Win32;
+using System.IO;
 
 namespace YGOProDevelop.ViewModel
 {
@@ -34,6 +36,11 @@ namespace YGOProDevelop.ViewModel
         /// </summary>
         private ViewModelBase _activeViewModel;
         /// <summary>
+        /// 当前激活的DocVM
+        /// </summary>
+        private DocumentViewModel _activeDocumentViewModel;
+
+        /// <summary>
         /// 可停靠边缘的viewmodel
         /// </summary>
         private ObservableCollection<ViewModelBase> _anchorableViewModels = new ObservableCollection<ViewModelBase>();
@@ -52,13 +59,19 @@ namespace YGOProDevelop.ViewModel
 
         public ViewModelBase ActiveViewModel {
             get { return _activeViewModel; }
-            set { _activeViewModel = value ?? _activeViewModel; RaisePropertyChanged(() => ActiveViewModel); }
+            set { 
+                _activeViewModel = value; 
+                RaisePropertyChanged(() => ActiveViewModel);
+                if(_activeViewModel is DocumentViewModel) {
+                    _activeDocumentViewModel = _activeViewModel as DocumentViewModel;
+                }
+            }
         }
 
         public bool IsShowLineNumbers {
             get { return _IsShowLineNumbers; }
-            set { 
-                _IsShowLineNumbers = value; 
+            set {
+                _IsShowLineNumbers = value;
                 RaisePropertyChanged(() => IsShowLineNumbers);
                 foreach(DocumentViewModel docVM in DocumentViewModels) {
                     docVM.IsShowLineNumbers = _IsShowLineNumbers;
@@ -71,12 +84,35 @@ namespace YGOProDevelop.ViewModel
             get {
                 return new RelayCommand<IHighlightingDefinition>(
                         language => {
-                            (ActiveViewModel as DocumentViewModel).Language = language;
+                            _activeDocumentViewModel.Language = language;
                         },
                         language => {
-                            return ActiveViewModel is DocumentViewModel;
+                            return _activeDocumentViewModel!=null;
                         }
                     );
+            }
+        }
+
+        public RelayCommand SaveCmd {
+            get {
+                return new RelayCommand(
+                    () => {
+                        SaveDocument();
+                    },
+                    () => {
+                        return _activeDocumentViewModel!=null;
+                    }
+                );
+            }
+        }
+
+        public RelayCommand OpenCmd {
+            get {
+                return new RelayCommand(
+                    () => {
+                        OpenDocument();
+                    }
+                );
             }
         }
 
@@ -86,12 +122,29 @@ namespace YGOProDevelop.ViewModel
         /// </summary>
         public MainViewModel() {
 
-            TextDocument textdoc = new TextDocument();
-            textdoc.Text = "测试";
-            _documentViewModels.Add(new DocumentViewModel() { Document = textdoc, Title = "测试文档1" });
-            _documentViewModels.Add(new DocumentViewModel() { Document = textdoc, Title = "测试文档2" });
-            _documentViewModels.Add(new DocumentViewModel() { Document = textdoc, Title = "测试文档3" });
-
         }
+
+
+        #region method
+
+        private void OpenDocument() {
+            OpenFileDialog openDlg = new OpenFileDialog();
+            if(openDlg.ShowDialog() == true) {
+                DocumentViewModel docVM = new DocumentViewModel();
+                docVM.IsShowLineNumbers = IsShowLineNumbers;
+                docVM.OpenFile(openDlg.FileName);
+                DocumentViewModels.Add(docVM);
+                ActiveViewModel = docVM;
+            }
+        }
+
+        private void SaveDocument() {
+            SaveFileDialog saveDlg = new SaveFileDialog();
+            if(saveDlg.ShowDialog() == true) {
+                _activeDocumentViewModel.SaveFile(saveDlg.FileName); 
+            }
+        }
+
+        #endregion
     }
 }

@@ -34,7 +34,10 @@
 
 
         <Menu Grid.Row="0" >
-            <MenuItem Header="文件"/>
+            <MenuItem Header="文件">
+                <MenuItem Header="打开" Command="{Binding OpenCmd}"></MenuItem>
+                <MenuItem Header="保存" Command="{Binding SaveCmd}"></MenuItem>
+            </MenuItem>
             <MenuItem Header="视图" >
                 <MenuItem Header="显示行号" IsCheckable="True"  IsChecked="{Binding IsShowLineNumbers}" />
             </MenuItem>

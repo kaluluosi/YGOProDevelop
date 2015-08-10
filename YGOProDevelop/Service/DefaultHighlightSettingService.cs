@@ -37,9 +37,12 @@ namespace YGOProDevelop.Service
         }
 
 
-        public IHighlightingDefinition GetHighlightingDefinition(string languageName) {
-            IHighlightingDefinition highlighting = _highlightingMgr.HighlightingDefinitions.FirstOrDefault(h => h.Name = languageName);
-            return highlighting;
+        public IHighlightingDefinition GetDefinition(string languageName) {
+            return _highlightingMgr.GetDefinition(languageName);
+        }
+
+        public IHighlightingDefinition GetDefinitionByExtension(string extension) {
+            return _highlightingMgr.GetDefinitionByExtension(extension);
         }
     }
 }
