@@ -168,7 +168,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <Resource Include="Resources\HighLight\Lua-Mode.xshd" />
+    <Content Include="Resources\Highlight\Lua-Mode.xshd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -176,6 +178,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Extension\" />
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>

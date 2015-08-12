@@ -47,6 +47,11 @@ namespace YGOProDevelop.ViewModel
             set { _isShowLineNumbers = value; RaisePropertyChanged(()=>IsShowLineNumbers); }
         }
 
+        public string Extension {
+            get {
+                return Path.GetExtension(FileName);
+            }
+        }
         
         /// <summary>
         /// Initializes a new instance of the DocumentViewModel class.

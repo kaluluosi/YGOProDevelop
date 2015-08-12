@@ -139,6 +139,9 @@ namespace YGOProDevelop.ViewModel
 
         private void OpenDocument() {
             OpenFileDialog openDlg = new OpenFileDialog();
+            openDlg.AddExtension = true;
+            openDlg.Filter = "所有文件|*.*|文本文件|*.txt|Lua脚本文件|*.lua|C#文件|*.cs";
+            
             if(openDlg.ShowDialog() == true) {
                 DocumentViewModel docVM = CreateDocumentVM();
                 docVM.OpenFile(openDlg.FileName);

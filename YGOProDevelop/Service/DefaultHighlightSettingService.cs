@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
+using System.Xml;
+using System.IO;
 
 namespace YGOProDevelop.Service
 {
@@ -14,7 +16,7 @@ namespace YGOProDevelop.Service
     public class DefaultHighlightSettingService : YGOProDevelop.Service.IHighlightSettingService
     {
         private HighlightingManager _highlightingMgr = HighlightingManager.Instance;
-        private string _highlighDefFolderPath = @"Resources\HighLight\";
+        private string _highlighDefFolderPath = @"Resources\HighLight";
 
         public DefaultHighlightSettingService() {
             CustomSettingInit();
@@ -24,7 +26,14 @@ namespace YGOProDevelop.Service
         /// 加载并初始化用户自定义的高亮语法配置文件
         /// </summary>
         private void CustomSettingInit() {
-            
+            string[] files = Directory.GetFiles(_highlighDefFolderPath);
+
+            foreach(string fileName in files) {
+                XmlTextReader xmlReader = new XmlTextReader(fileName);
+                IHighlightingDefinition hlDef = HighlightingLoader.Load(xmlReader,HighlightingManager.Instance);
+                string extension = "."+Path.GetFileName(fileName).Split('-')[0].ToLower();
+                HighlightingManager.Instance.RegisterHighlighting(hlDef.Name, new[] { extension }, hlDef);
+            }
         }
 
         /// <summary>
