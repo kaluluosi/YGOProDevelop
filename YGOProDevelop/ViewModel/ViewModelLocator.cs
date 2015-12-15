@@ -31,7 +31,7 @@ namespace YGOProDevelop.ViewModel
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             //对话框注册器
-            SimpleIoc.Default.Register<DialogRigister>(true);
+            SimpleIoc.Default.Register<CustomDialogRigister>(true);
             //面板模板注册器
             SimpleIoc.Default.Register<PanelTemplateRegister>(true);
 

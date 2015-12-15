@@ -34,5 +34,15 @@ namespace YGOProDevelop.Properties {
                 this["IsShowLineNumbers"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("data source=\"D:\\Visual Studio 2013\\Projects\\WPFLesson\\WpfApplication1\\cards.cdb\"")]
+        public string cardsConnectionString {
+            get {
+                return ((string)(this["cardsConnectionString"]));
+            }
+        }
     }
 }

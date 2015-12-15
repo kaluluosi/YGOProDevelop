@@ -1,0 +1,112 @@
+function c当前卡号.initial_effect(c)
+	local e1=Effect.CreateEffect(c) 
+	e1:SetDescription(integer desc)
+	e1:SetCode(integer code) 
+	e1:SetRange(integer range) 
+	e1:SetCountLimit(integer count) 
+	e1:SetReset(integer reset_flag, [integer reset_count=1]) 
+	e1:SetProperty(integer prop) 
+	e1:SetCategory(integer cate) 
+	e1:SetCondition(function con_func) 
+	e1:SetCost(function cost_func) 
+	e1:SetTarget(function targ_func) 
+	e1:SetOperation(function op_func) 
+	e1:SetValue(integer|function val) 
+	e1:SetOwnerPlayer(integer player) 
+	c:RegisterEffect(e1)
+end 
+
+
+--事件驱动效果
+
+触发效果 ACTIVATE
+	用于魔法陷阱卡的效果触发，使用卡片的时候触发的效果。入连锁。
+	配置项
+		Type = EFFECT_TYPE_ACTIVATE
+		Category
+		CODE = Event
+		Property=FLAG
+		target
+		condition
+		operation
+
+反转效果 FLIP
+	不存在Code的配置
+	配置项
+		Type=EFFECT_TYPE_FLIP
+		Category
+		Property
+		target
+		condition
+		operation
+		
+启动效果 IGNITION
+	启动效果，像融合之门这样的在自己会和主动发动的效果
+	配置项
+		Type=EFFECT_TYPE_IGNITION
+		Category
+		Range -- 此效果是常驻的因此需要配置生效区域
+		Property
+		target
+		condition
+		operation
+		
+诱发效果 TRIGGER
+	被动诱发发动的效果，进入连锁，总共有6个
+	配置项
+		Type=
+			EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O 诱发选发-这张卡
+			EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O 诱发即时选发-所有卡
+			EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F 诱发必发-这张卡
+			EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F 诱发即时必发-所有卡
+			EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS 后续处理-这张卡
+			EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS 后续处理-所有卡
+		
+		Code= Event 事件
+		Range -- 此效果是常驻的因此需要配置生效区域
+		Property
+		target
+		condition
+		operation
+		
+光环效果 
+	固有结界类效果，小到影响单体大到影响规则
+	配置项
+		Type=
+			EFFECT_TYPE_SINGLE
+			EFFECT_TYPE_FIELD
+			EFFECT_TYPE_EQUIP
+			
+		Range=
+			EFFECT_TYPE_EQUIP-无
+			EFFECT_TYPE_SINGLE-无
+			EFFECT_TYPE_FIELD-有
+		
+		TargetRange=
+			EFFECT_TYPE_FIELD-有
+		
+		Target=
+			EFFECT_TYPE_FIELD-有
+
+任何类型都通用的属性			
+Category
+Reset
+Property
+CoutLimit
+Description
+
+某些类型才有的属性
+触发型效果
+	target
+	condition
+	operation
+
+永续型效果
+	Value
+	
+EFFECT_TYPE_FIELD类型永续效果
+Range
+TargetRange
+Target	
+
+
