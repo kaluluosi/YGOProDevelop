@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ArrayOfVarItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<VarItem Description="无" Value="0" MultiSelect="false" Tips=""/>
+	<VarItem Description="OCG" Value="1" MultiSelect="false" Tips="无"/>
+	<VarItem Description="TCG" Value="2" MultiSelect="false" Tips="无"/>
+	<VarItem Description="TCG/OCG" Value="3" MultiSelect="false" Tips="无"/>
+	<VarItem Description="Animation" Value="4" MultiSelect="false" Tips="无"/>
+</ArrayOfVarItem>

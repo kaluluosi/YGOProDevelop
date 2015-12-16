@@ -1,5 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using YGOProDevelop.CDBEditor.CDB;
+﻿using Builder;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Input;
 namespace YGOProDevelop.ViewModel
 {
     /// <summary>
@@ -14,16 +18,33 @@ namespace YGOProDevelop.ViewModel
         /// Initializes a new instance of the CDBEditorViewModel class.
         /// </summary>
         public CDBEditorViewModel() {
+            cards = new ObservableCollection<datas>(cdbMgr.QueryResult);
+
         }
 
 
-        private CDBManager cdbMgr = CDBManager.Instance;
+        private CDB.CDBManager cdbMgr = CDB.CDBManager.Instance;
+        private ObservableCollection<datas> cards;
+        private datas selectedCard;
 
-        public CDBEditor.CDB.CDBManager CdbMgr {
-            get { return cdbMgr; }
-            set { cdbMgr = value; RaisePropertyChanged(()=>CdbMgr); }
+        public datas SelectedCard {
+            get { return selectedCard; }
+            set { selectedCard = value; 
+                RaisePropertyChanged(() => SelectedCard);
+                CardBuilder = new CardBuilder(selectedCard);
+            }
         }
-        
+        private CardBuilder cardBuilder;
+
+        public CardBuilder CardBuilder {
+            get { return cardBuilder; }
+            set { cardBuilder = value; RaisePropertyChanged(() => CardBuilder); }
+        }
+
+        public ObservableCollection<datas> Cards {
+            get { return cards; }
+            set { cards = value; RaisePropertyChanged(() => Cards); }
+        }
 
     }
 }

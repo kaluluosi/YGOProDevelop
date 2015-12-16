@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using YGOProDevelop.CDBEditor.Cfg;
+using Cfg;
 
-namespace YGOProDevelop.Builder {
+namespace Builder
+{
 	/// <summary>
 	/// 种族字段,单选
 	/// </summary>

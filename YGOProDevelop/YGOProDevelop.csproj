@@ -159,6 +159,10 @@
     <Compile Include="Builder\RaceField.cs" />
     <Compile Include="Builder\SetCodeField.cs" />
     <Compile Include="Builder\TypeField.cs" />
+    <Compile Include="CDB\CDBManager.cs" />
+    <Compile Include="Cfg\ConfigManager.cs" />
+    <Compile Include="Cfg\SettingConfig.cs" />
+    <Compile Include="Cfg\VarItem.cs" />
     <Compile Include="Converters\AtkDefConverter.cs" />
     <Compile Include="Converters\Attr2SourceConverter.cs" />
     <Compile Include="Converters\CardBuilderConverter.cs" />
@@ -187,10 +191,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\CDBEditor\CDB\CDBManager.cs" />
-    <Compile Include="Model\CDBEditor\Cfg\ConfigManager.cs" />
-    <Compile Include="Model\CDBEditor\Cfg\SettingConfig.cs" />
-    <Compile Include="Model\CDBEditor\Cfg\VarItem.cs" />
     <Compile Include="PanelTemplate\PanelTemplateManager.cs" />
     <Compile Include="PanelTemplate\PanelTemplateSelector.cs" />
     <Compile Include="Service\CustomDialogRigister.cs" />
@@ -247,6 +247,27 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Data\Attribute.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Category.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Ot.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Race.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\SetCode.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\StarLevel.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Type.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\种族\不死.png" />
     <Resource Include="Resources\种族\兽.png" />
     <Resource Include="Resources\种族\兽战士.png" />
@@ -314,23 +335,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="cards.cdb" />
+    <None Include="cards.cdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
-    </None>
-    <None Include="Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -340,13 +353,16 @@
     <AppDesigner Include="Properties\" />
     <Resource Include="Resources\0000.png" />
     <Resource Include="Resources\boss_BlueEyedWhiteDragon.png" />
-    <Resource Include="Data\Attribute.xml" />
-    <Resource Include="Data\Category.xml" />
-    <Resource Include="Data\Ot.xml" />
-    <Resource Include="Data\Race.xml" />
-    <Resource Include="Data\SetCode.xml" />
-    <Resource Include="Data\StarLevel.xml" />
-    <Resource Include="Data\Type.xml" />
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <Content Include="Resources\Highlight\Lua-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -356,7 +372,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icon\File_New32.png" />
   </ItemGroup>

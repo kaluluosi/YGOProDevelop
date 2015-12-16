@@ -1,5 +1,5 @@
-﻿using YGOProDevelop.Builder;
-using YGOProDevelop.CDBEditor.Cfg;
+﻿using Builder;
+using Cfg;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using YGOProDevelop.CDBEditor.Cfg;
+using Cfg;
 
-namespace YGOProDevelop.Builder {
+namespace Builder
+{
 	/// <summary>
 	/// 系列前缀字段,4个值每个值都单选
 	/// </summary>

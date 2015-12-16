@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<ArrayOfVarItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <VarItem Description="怪兽卡" Value="1" MultiSelect="true" Tips="系统会默认将怪兽卡放置在怪兽区">
+    <SubItems>
+      <VarItem Description="通常" Value="16" MultiSelect="false" Tips="凡骨"/>
+	  <VarItem Description="效果" Value="32" MultiSelect="false" Tips=""/>
+	  <VarItem Description="融合" Value="64" MultiSelect="false" Tips=""/>
+	  <VarItem Description="仪式" Value="128" MultiSelect="false" Tips=""/>
+	  <VarItem Description="灵魂" Value="512" MultiSelect="false" Tips=""/>
+	  <VarItem Description="同盟" Value="1024" MultiSelect="false" Tips=""/>
+	  <VarItem Description="二重" Value="2048" MultiSelect="false" Tips=""/>
+	  <VarItem Description="调整" Value="4096" MultiSelect="false" Tips=""/>
+	  <VarItem Description="同调" Value="8192" MultiSelect="false" Tips=""/>
+	  <VarItem Description="衍生" Value="16384" MultiSelect="false" Tips=""/>
+	  <VarItem Description="反转" Value="2097152" MultiSelect="false" Tips=""/>
+	  <VarItem Description="卡通" Value="4194304" MultiSelect="false" Tips=""/>
+	  <VarItem Description="超量" Value="8388608" MultiSelect="false" Tips=""/>
+    </SubItems>
+  </VarItem>
+  <VarItem Description="魔法卡" Value="2" MultiSelect="false" >
+	<SubItems>
+	  <VarItem Description="普通" Value="0" MultiSelect="false" Tips=""/>
+      <VarItem Description="速攻" Value="65536" MultiSelect="false" Tips=""/>
+	  <VarItem Description="永续" Value="131072" MultiSelect="false" Tips=""/>
+	  <VarItem Description="装备" Value="262144" MultiSelect="false" Tips=""/>
+	  <VarItem Description="场地" Value="524288" MultiSelect="false" Tips=""/>
+    </SubItems>
+  </VarItem>
+  <VarItem Description="陷阱卡" Value="4" MultiSelect="false" >
+	<SubItems>
+	  <VarItem Description="普通" Value="0" MultiSelect="false" Tips=""/>
+	  <VarItem Description="永续" Value="131072" MultiSelect="false" Tips=""/>
+	  <VarItem Description="反击" Value="1048576" MultiSelect="false" Tips=""/>
+    </SubItems>
+  </VarItem>
+</ArrayOfVarItem>
+

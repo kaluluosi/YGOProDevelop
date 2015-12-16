@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using YGOProDevelop;
 
-namespace YGOProDevelop.Builder {
+namespace Builder {
 
 
     public class CardBuilder:INotifyPropertyChanged {
@@ -165,7 +165,7 @@ namespace YGOProDevelop.Builder {
         public AttributeField Attribute { get; set; }
 
         /// <summary>
-        /// 转换成datas
+        /// 转换成
         /// </summary>
         public datas ToDatas() {
             datas data = new datas();

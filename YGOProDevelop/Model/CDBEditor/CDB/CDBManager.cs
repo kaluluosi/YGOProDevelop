@@ -7,13 +7,14 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using YGOProDevelop.Builder;
 using System.Threading;
+using System.IO;
 
 namespace YGOProDevelop.CDBEditor.CDB {
     public class CDBManager : INotifyPropertyChanged {
         /// <summary>
         /// 相当于cards.cdb本身
         /// </summary>
-        private static cardsEntities ce = new cardsEntities();
+        public static cardsEntities ce = new cardsEntities();
 
         /// <summary>
         /// 采用单例模式
@@ -22,11 +23,21 @@ namespace YGOProDevelop.CDBEditor.CDB {
         public static CDBManager Instance {
             get {
                 if (cdbMgr == null) {
+                    CDBManager.ce.Database.Connection.ConnectionString = @"data source=.\cards.cdb";
                     cdbMgr = new CDBManager();
                     cdbMgr.ResetSearch();
                 }
                 return cdbMgr;
             }
+        }
+
+        public CDBManager Load(string filePath) {
+            string connectionStr = ce.Database.Connection.ConnectionString;
+            string connectionStrTemplate = @"data source={0}";
+            
+            ce.Database.Connection.ConnectionString=string.Format(connectionStrTemplate,Path.GetFullPath(filePath));
+            ResetSearch();
+            return this;
         }
 
         private ObservableCollection<datas> queryResult;
@@ -84,6 +95,9 @@ namespace YGOProDevelop.CDBEditor.CDB {
         public void ResetSearch() {
             var result = from c in ce.datas
                          select c;
+            foreach(var c in result) {
+                Console.WriteLine(c.texts.name);
+            }
             QueryResult = new ObservableCollection<datas>(result);
         }
 

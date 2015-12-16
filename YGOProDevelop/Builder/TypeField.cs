@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using YGOProDevelop.CDBEditor.Cfg;
+using Cfg;
 
-namespace YGOProDevelop.Builder {
+namespace Builder
+{
 	/// <summary>
 	/// 类型字段,父类型为单选,子类型可能为单选可能为多选
 	/// </summary>

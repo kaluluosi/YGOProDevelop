@@ -24,11 +24,47 @@ namespace YGOProDevelop.View
     /// </summary>
     public partial class DocumentView : UserControl
     {
+        private static CompletionWindow completionWin;
+        private static List<ICompletionData> datas;
 
         public DocumentView() {
             InitializeComponent();
 
+            //Init Constant
+            
+
         }
-       
+
+        private class MyCompletionData : ICompletionData
+        {
+            public void Complete(TextArea textArea, ICSharpCode.AvalonEdit.Document.ISegment completionSegment, EventArgs insertionRequestEventArgs) {
+                textArea.Document.Replace(completionSegment, Text);
+            }
+
+            public object Content {
+                get;
+                private set;
+            }
+
+            public object Description {
+                get;
+                private set;
+            }
+
+            public ImageSource Image {
+                get;
+                private set;
+            }
+
+            public double Priority {
+                get;
+                private set;
+            }
+
+            public string Text {
+                get;
+                private set;
+            }
+        }
     }
 }

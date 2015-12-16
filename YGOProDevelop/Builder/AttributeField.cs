@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using YGOProDevelop.CDBEditor.Cfg;
+using Cfg;
 
-namespace YGOProDevelop.Builder
+namespace Builder
 {
 	/// <summary>
 	/// 属性字段,单选

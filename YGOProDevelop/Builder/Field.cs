@@ -1,7 +1,8 @@
 ﻿using System;
-using YGOProDevelop.CDBEditor.Cfg;
+using Cfg;
 
-namespace YGOProDevelop.Builder {
+namespace Builder
+{
 	public abstract class Field 
 	{
 		/// <summary>

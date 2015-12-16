@@ -1,4 +1,5 @@
-﻿using YGOProDevelop.CDBEditor.Cfg;
+﻿using Builder;
+using Cfg;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -6,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using YGOProDevelop.Builder;
 
 namespace YGOProDevelop.Converters {
     class Attr2SourceConverter : IValueConverter {

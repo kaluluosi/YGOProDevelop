@@ -8,6 +8,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/attribute.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/category.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/ot.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/race.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/setcode.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/starlevel.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/type.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/highlight/lua-mode.xshd")]
 
 

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="cardsModelStoreContainer" CdmEntityContainer="cardsEntities">
+    <EntitySetMapping Name="datas">
+      <EntityTypeMapping TypeName="cardsModel.datas">
+        <MappingFragment StoreEntitySet="datas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ot" ColumnName="ot" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="setcode" ColumnName="setcode" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="atk" ColumnName="atk" />
+          <ScalarProperty Name="def" ColumnName="def" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="race" ColumnName="race" />
+          <ScalarProperty Name="attribute" ColumnName="attribute" />
+          <ScalarProperty Name="category" ColumnName="category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="texts">
+      <EntityTypeMapping TypeName="cardsModel.texts">
+        <MappingFragment StoreEntitySet="texts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="str1" ColumnName="str1" />
+          <ScalarProperty Name="str2" ColumnName="str2" />
+          <ScalarProperty Name="str3" ColumnName="str3" />
+          <ScalarProperty Name="str4" ColumnName="str4" />
+          <ScalarProperty Name="str5" ColumnName="str5" />
+          <ScalarProperty Name="str6" ColumnName="str6" />
+          <ScalarProperty Name="str7" ColumnName="str7" />
+          <ScalarProperty Name="str8" ColumnName="str8" />
+          <ScalarProperty Name="str9" ColumnName="str9" />
+          <ScalarProperty Name="str10" ColumnName="str10" />
+          <ScalarProperty Name="str11" ColumnName="str11" />
+          <ScalarProperty Name="str12" ColumnName="str12" />
+          <ScalarProperty Name="str13" ColumnName="str13" />
+          <ScalarProperty Name="str14" ColumnName="str14" />
+          <ScalarProperty Name="str15" ColumnName="str15" />
+          <ScalarProperty Name="str16" ColumnName="str16" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
