@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\
 YGOProDevelop
 none
 false
 CODE_ANALYSIS;DEBUG;TRACE
-D:\GitHub\YGOProDevelop\YGOProDevelop\App.xaml
-3-1317203852
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\App.xaml
+3978337946
 11797340390
-201727028853
-86-964812864
-MainWindow.xaml;Skins\MainSkin.xaml;View\DocumentView.xaml;
+47-1161480645
+88-1212170455
+View\MainWindow.xaml;View\CDBEditorView.xaml;View\DocumentView.xaml;
 
 False
 

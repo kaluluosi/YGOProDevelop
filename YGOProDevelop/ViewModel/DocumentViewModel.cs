@@ -8,6 +8,7 @@ using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using ICSharpCode.AvalonEdit.Utils;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace YGOProDevelop.ViewModel
 {
@@ -57,7 +58,11 @@ namespace YGOProDevelop.ViewModel
         /// Initializes a new instance of the DocumentViewModel class.
         /// </summary>
         public DocumentViewModel() {
-            
+            Document.Changed += Document_Changed;
+        }
+
+        void Document_Changed(object sender, DocumentChangeEventArgs e) {
+            MessengerInstance.Send<string>(e.InsertedText, "ShowAutoComplete");
         }
 
         public void OpenFile(string fileName) {

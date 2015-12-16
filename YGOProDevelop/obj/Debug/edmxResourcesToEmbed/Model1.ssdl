@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cardsModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\cards.cdb" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="datas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="integer" Nullable="false" />
+    <Property Name="ot" Type="integer" />
+    <Property Name="alias" Type="integer" />
+    <Property Name="setcode" Type="integer" />
+    <Property Name="type" Type="integer" />
+    <Property Name="atk" Type="integer" />
+    <Property Name="def" Type="integer" />
+    <Property Name="level" Type="integer" />
+    <Property Name="race" Type="integer" />
+    <Property Name="attribute" Type="integer" />
+    <Property Name="category" Type="integer" />
+  </EntityType>
+  <EntityType Name="texts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="integer" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="128" />
+    <Property Name="desc" Type="varchar" MaxLength="1024" />
+    <Property Name="str1" Type="varchar" MaxLength="256" />
+    <Property Name="str2" Type="varchar" MaxLength="256" />
+    <Property Name="str3" Type="varchar" MaxLength="256" />
+    <Property Name="str4" Type="varchar" MaxLength="256" />
+    <Property Name="str5" Type="varchar" MaxLength="256" />
+    <Property Name="str6" Type="varchar" MaxLength="256" />
+    <Property Name="str7" Type="varchar" MaxLength="256" />
+    <Property Name="str8" Type="varchar" MaxLength="256" />
+    <Property Name="str9" Type="varchar" MaxLength="256" />
+    <Property Name="str10" Type="varchar" MaxLength="256" />
+    <Property Name="str11" Type="varchar" MaxLength="256" />
+    <Property Name="str12" Type="varchar" MaxLength="256" />
+    <Property Name="str13" Type="varchar" MaxLength="256" />
+    <Property Name="str14" Type="varchar" MaxLength="256" />
+    <Property Name="str15" Type="varchar" MaxLength="256" />
+    <Property Name="str16" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <Association Name="FK_texts_0_0">
+    <End Role="datas" Type="Self.datas" Multiplicity="1" />
+    <End Role="texts" Type="Self.texts" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="datas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="texts">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="cardsModelStoreContainer">
+    <EntitySet Name="datas" EntityType="Self.datas" store:Type="Tables" />
+    <EntitySet Name="texts" EntityType="Self.texts" store:Type="Tables" />
+    <AssociationSet Name="FK_texts_0_0" Association="Self.FK_texts_0_0">
+      <End Role="datas" EntitySet="datas" />
+      <End Role="texts" EntitySet="texts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

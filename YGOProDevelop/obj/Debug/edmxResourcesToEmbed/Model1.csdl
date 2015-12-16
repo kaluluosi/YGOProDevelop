@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cardsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="datas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="ot" Type="Int64" />
+    <Property Name="alias" Type="Int64" />
+    <Property Name="setcode" Type="Int64" />
+    <Property Name="type" Type="Int64" />
+    <Property Name="atk" Type="Int64" />
+    <Property Name="def" Type="Int64" />
+    <Property Name="level" Type="Int64" />
+    <Property Name="race" Type="Int64" />
+    <Property Name="attribute" Type="Int64" />
+    <Property Name="category" Type="Int64" />
+    <NavigationProperty Name="texts" Relationship="Self.FK_texts_0_0" FromRole="datas" ToRole="texts" />
+  </EntityType>
+  <EntityType Name="texts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="desc" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="str1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str4" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str5" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str6" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str7" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str8" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str9" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str10" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str11" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str12" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str13" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str14" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str15" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="str16" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="datas" Relationship="Self.FK_texts_0_0" FromRole="texts" ToRole="datas" />
+  </EntityType>
+  <Association Name="FK_texts_0_0">
+    <End Role="datas" Type="Self.datas" Multiplicity="1" />
+    <End Role="texts" Type="Self.texts" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="datas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="texts">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="cardsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="datas" EntityType="Self.datas" />
+    <EntitySet Name="texts" EntityType="Self.texts" />
+    <AssociationSet Name="FK_texts_0_0" Association="Self.FK_texts_0_0">
+      <End Role="datas" EntitySet="datas" />
+      <End Role="texts" EntitySet="texts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

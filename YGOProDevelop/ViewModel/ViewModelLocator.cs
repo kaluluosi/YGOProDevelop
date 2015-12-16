@@ -40,8 +40,8 @@ namespace YGOProDevelop.ViewModel
             SimpleIoc.Default.Register<IDialogService, DefaultDialogService>();
             SimpleIoc.Default.Register<IHighlightSettingService, DefaultHighlightSettingService>();
             //注册ViewModel
-            SimpleIoc.Default.Register<MainViewModel>(()=>MainViewModel.This);
-//             SimpleIoc.Default.Register<DocumentViewModel>();
+            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<CDBEditorViewModel>();
             
             
         }
@@ -49,7 +49,13 @@ namespace YGOProDevelop.ViewModel
 
         public MainViewModel Main {
             get {
-               return ServiceLocator.Current.GetInstance<MainViewModel>();
+               return MainViewModel.This = ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+
+        public CDBEditorViewModel CDBEditor {
+            get {
+                return ServiceLocator.Current.GetInstance<CDBEditorViewModel>();
             }
         }
 

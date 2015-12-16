@@ -104,6 +104,8 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.99.0\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.1.5.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -149,6 +151,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Builder\AttributeField.cs" />
+    <Compile Include="Builder\CardBuilder.cs" />
+    <Compile Include="Builder\CategoryField.cs" />
+    <Compile Include="Builder\Field.cs" />
+    <Compile Include="Builder\OtField.cs" />
+    <Compile Include="Builder\RaceField.cs" />
+    <Compile Include="Builder\SetCodeField.cs" />
+    <Compile Include="Builder\TypeField.cs" />
+    <Compile Include="Converters\AtkDefConverter.cs" />
+    <Compile Include="Converters\Attr2SourceConverter.cs" />
+    <Compile Include="Converters\CardBuilderConverter.cs" />
+    <Compile Include="Converters\Field2StringConverter.cs" />
+    <Compile Include="Converters\ID2SourceConverter.cs" />
+    <Compile Include="Converters\Race2SourceConverter.cs" />
+    <Compile Include="Converters\SelectModeConverter.cs" />
+    <Compile Include="Converters\SubType2SourceConverter.cs" />
+    <Compile Include="Converters\Type2SourceConverter.cs" />
+    <Compile Include="Converters\Type2VisibilityConverter.cs" />
+    <Compile Include="datas.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CDBEditor\CDB\CDBManager.cs" />
     <Compile Include="Model\CDBEditor\Cfg\ConfigManager.cs" />
     <Compile Include="Model\CDBEditor\Cfg\SettingConfig.cs" />
     <Compile Include="Model\CDBEditor\Cfg\VarItem.cs" />
@@ -159,14 +198,21 @@
     <Compile Include="Service\IHighlightSettingService.cs" />
     <Compile Include="Service\PanelTemplateRegister.cs" />
     <Compile Include="Service\ViewManager.cs" />
+    <Compile Include="texts.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\CDBEditorViewModel.cs" />
     <Compile Include="ViewModel\DialogViewModelBase.cs" />
     <Compile Include="ViewModel\DocumentViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\CDBEditorView.xaml.cs">
+      <DependentUpon>CDBEditorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -174,13 +220,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Skins\MainSkin.xaml">
+    <Page Include="View\CDBEditorView.xaml">
+      <SubType>Form</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\DocumentView.xaml">
       <SubType>Designer</SubType>
@@ -269,6 +315,23 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="cards.cdb" />
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -293,11 +356,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Builder\" />
-    <Folder Include="Converters\" />
-    <Folder Include="Model\CDBEditor\CDB\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Icon\File_New32.png" />
   </ItemGroup>
@@ -312,6 +371,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets')" />

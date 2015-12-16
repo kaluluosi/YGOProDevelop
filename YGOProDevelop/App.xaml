@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             StartupUri="MainWindow.xaml"
+             StartupUri="View\MainWindow.xaml"
              mc:Ignorable="d">
     
     <Application.Resources>

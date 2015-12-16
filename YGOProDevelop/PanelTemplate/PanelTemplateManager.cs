@@ -18,7 +18,7 @@ namespace YGOProDevelop.PanelTempalte{
             }
         }
 
-        private static Dictionary<Type, Type> _controlFacotry = new Dictionary<Type, Type>();
+        private static Dictionary<Type, Type> _controls = new Dictionary<Type, Type>();
 
         public static void Register<VMType, CtrlType>()  {
             Type vmType = typeof(VMType);
@@ -28,13 +28,13 @@ namespace YGOProDevelop.PanelTempalte{
         }
 
         public static void Register(Type vmType, Type ctrlType) {
-            _controlFacotry.Add(vmType, ctrlType);
+            _controls.Add(vmType, ctrlType);
         }
 
         public static FrameworkElementFactory GetUserControlFactory(ViewModelBase vm) {
-            if(_controlFacotry == null || _controlFacotry.Count == 0)
+            if(_controls == null || _controls.Count == 0)
                 return null;
-            Type ctrlType = _controlFacotry[vm.GetType()];
+            Type ctrlType = _controls[vm.GetType()];
             FrameworkElementFactory factory = new FrameworkElementFactory(ctrlType);
             return factory;
         }

@@ -1,4 +1,4 @@
-﻿using Builder;
+﻿using YGOProDevelop.Builder;
 using YGOProDevelop.CDBEditor.Cfg;
 using System;
 using System.Collections.Generic;

@@ -19,13 +19,7 @@ namespace YGOProDevelop.ViewModel
     public class MainViewModel : ViewModelBase
     {
 
-        private static MainViewModel _this;
-
-        public static MainViewModel This {
-            get {
-                return _this ?? (_this = new MainViewModel());
-            }
-        }
+        public static MainViewModel This { get; set; }
 
         /// <summary>
         /// 文档viewmodel集合

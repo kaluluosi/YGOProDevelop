@@ -165,7 +165,7 @@ namespace YGOProDevelop.Builder {
         public AttributeField Attribute { get; set; }
 
         /// <summary>
-        /// 转换成
+        /// 转换成datas
         /// </summary>
         public datas ToDatas() {
             datas data = new datas();

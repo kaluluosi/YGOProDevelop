@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ICSharpCode.AvalonEdit.CodeCompletion;
+using YGOProDevelop.Service;
+using GalaSoft.MvvmLight.Messaging;
+using ICSharpCode.AvalonEdit.Editing;
 
 namespace YGOProDevelop.View
 {
@@ -20,8 +24,11 @@ namespace YGOProDevelop.View
     /// </summary>
     public partial class DocumentView : UserControl
     {
+
         public DocumentView() {
             InitializeComponent();
+
         }
+       
     }
 }
