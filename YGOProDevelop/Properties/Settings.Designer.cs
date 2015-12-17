@@ -44,5 +44,29 @@ namespace YGOProDevelop.Properties {
                 return ((string)(this["cardsConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ExpressDark")]
+        public string Theme {
+            get {
+                return ((string)(this["Theme"]));
+            }
+            set {
+                this["Theme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cards.cdb")]
+        public string lastCDB {
+            get {
+                return ((string)(this["lastCDB"]));
+            }
+            set {
+                this["lastCDB"] = value;
+            }
+        }
     }
 }

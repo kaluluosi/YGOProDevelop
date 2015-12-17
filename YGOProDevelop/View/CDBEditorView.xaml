@@ -15,7 +15,7 @@
             <ColumnDefinition Width="505*"/>
             <ColumnDefinition Width="259*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Height="661" Margin="10,10,10,0" VerticalAlignment="Top" ItemsSource="{Binding Cards}" DisplayMemberPath="texts.name" SelectedItem="{Binding SelectedCard}" SelectedIndex="0"></ListBox>
+        <ListBox Height="661" Margin="10,10,10,0" VerticalAlignment="Top" ItemsSource="{Binding Cards}" DisplayMemberPath="texts.name"  SelectedIndex="0"></ListBox>
         <Label Content="{Binding CardBuilder.Name}" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="24" Width="37"/>
     </Grid>
     

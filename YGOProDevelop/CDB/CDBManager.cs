@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Builder;
 using System.Threading;
+using System.IO;
 
 namespace YGOProDevelop.CDB {
     public class CDBManager : INotifyPropertyChanged {
@@ -15,18 +16,11 @@ namespace YGOProDevelop.CDB {
         /// </summary>
         private static cardsEntities ce = new cardsEntities();
 
-        /// <summary>
-        /// 采用单例模式
-        /// </summary>
-        private static CDBManager cdbMgr;
-        public static CDBManager Instance {
-            get {
-                if (cdbMgr == null) {
-                    cdbMgr = new CDBManager();
-                    cdbMgr.ResetSearch();
-                }
-                return cdbMgr;
-            }
+        public void Open(string filePath) {
+            if(File.Exists(filePath) == false)
+                throw new FileNotFoundException(filePath);
+            ce.Database.Connection.ConnectionString = "data source=" + filePath;
+            CDBManager cdbMgr = new CDBManager();
         }
 
         private ObservableCollection<datas> queryResult;
@@ -107,15 +101,12 @@ namespace YGOProDevelop.CDB {
         /// </summary>
         public int Search(string keyword) {
             //不通知界面刷新的resetsearch
-            queryResult = new ObservableCollection<datas>(ce.datas);
-            var result = from c in queryResult
-                         where c.texts.desc.Contains(keyword) || c.texts.name.Contains(keyword) 
+            var result = from c in ce.datas
+                         join t in ce.texts on c.id equals t.id
+                         where t.name.Contains(keyword) || t.desc.Contains(keyword)
                          select c;
-            QueryResult = new ObservableCollection<datas>();
-            foreach(var c in result) {
-                queryResult.Add(c);
-            }
-            return queryResult.Count;
+            QueryResult = new ObservableCollection<datas>(result);
+            return QueryResult.Count;
         }
 
 

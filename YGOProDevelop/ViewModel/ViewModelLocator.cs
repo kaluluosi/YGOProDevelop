@@ -10,8 +10,8 @@
 */
 
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Dialog;
 using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using YGOProDevelop.Service;
 
@@ -37,12 +37,12 @@ namespace YGOProDevelop.ViewModel
 
 
             //注册服务
-            SimpleIoc.Default.Register<IDialogService, DefaultDialogService>();
+            SimpleIoc.Default.Register<IDialogService,DefaultDialogService>();
             SimpleIoc.Default.Register<IHighlightSettingService, DefaultHighlightSettingService>();
+            SimpleIoc.Default.Register<CDB.CDBManager>();
             //注册ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<CDBEditorViewModel>();
-            
             
         }
 

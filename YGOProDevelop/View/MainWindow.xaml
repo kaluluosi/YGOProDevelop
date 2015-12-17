@@ -53,19 +53,30 @@
                     </Style>
                 </MenuItem.ItemContainerStyle>
             </MenuItem>
+            <MenuItem x:Name="themesMenu" Header="主题" Click="themesMenu_Click" >
+                <MenuItem Header="VS2010"></MenuItem>
+                <MenuItem Header="ExpressDark"></MenuItem>
+                <MenuItem Header="ExpressLight"></MenuItem>
+                <MenuItem Header="Aero"></MenuItem>
+                <MenuItem Header="Metro"></MenuItem>
+                <MenuItem Header="Generic"></MenuItem>
+            </MenuItem>
         </Menu>
 
         <Grid Grid.Row="1" >
             <ToolBarTray>
                 <ToolBar>
-                    <Button >
+                    <Button Command="{Binding NewCmd}">
                         <Image Source="/YGOProDevelop;component/Resources/Icon/File_New32.png" Height="34" Width="32"/>
+                    </Button>
+                    <Button Command="{Binding OpenCDBEditor, Mode=OneWay}" ToolTip="CDBEditor">
+                        <Image Source="/YGOProDevelop;component/Resources/类型/cardFrame_0.png"  Height="34" Width="32" ></Image>
                     </Button>
                 </ToolBar>
             </ToolBarTray>
         </Grid>
 
-        <avalon:DockingManager Grid.Row="2" 
+        <avalon:DockingManager x:Name="dock" Grid.Row="2" 
 			DocumentsSource="{Binding DocumentViewModels}" 
 			AnchorablesSource="{Binding AnchorableViewModels}"  
 			ActiveContent="{Binding ActiveViewModel,Mode=TwoWay}" DocumentHeaderTemplate="{DynamicResource DocumentHeaderTemplate}" DocumentTitleTemplate="{DynamicResource DocumentTitleTemplate}" DocumentPaneMenuItemHeaderTemplate="{DynamicResource DocumentContentMenuTemplate}"  >

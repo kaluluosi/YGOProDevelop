@@ -1,9 +1,13 @@
 ﻿using Builder;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
+using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Windows.Input;
+using YGOProDevelop.CDB;
 namespace YGOProDevelop.ViewModel
 {
     /// <summary>
@@ -12,28 +16,27 @@ namespace YGOProDevelop.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class CDBEditorViewModel : ViewModelBase
+    public class CDBEditorViewModel : DialogViewModelBase
     {
         /// <summary>
         /// Initializes a new instance of the CDBEditorViewModel class.
         /// </summary>
-        public CDBEditorViewModel() {
-            cards = new ObservableCollection<datas>(cdbMgr.QueryResult);
+        public CDBEditorViewModel(CDBManager cdbMgr,IDialogService dialogService) {
 
-        }
-
-
-        private CDB.CDBManager cdbMgr = CDB.CDBManager.Instance;
-        private ObservableCollection<datas> cards;
-        private datas selectedCard;
-
-        public datas SelectedCard {
-            get { return selectedCard; }
-            set { selectedCard = value; 
-                RaisePropertyChanged(() => SelectedCard);
-                CardBuilder = new CardBuilder(selectedCard);
+            try {
+                this.cdbMgr = cdbMgr;
+                this.cdbMgr.Open(Properties.Settings.Default.lastCDB);
+                this.cdbMgr.ResetSearch();
+                cards = this.cdbMgr.QueryResult;
+            }
+            catch(Exception ex) {
+                dialogService.ShowError(ex, "错误", "", null);
             }
         }
+
+        private IDialogService dialogService;
+        private CDBManager cdbMgr;
+        private ObservableCollection<datas> cards;
         private CardBuilder cardBuilder;
 
         public CardBuilder CardBuilder {
@@ -46,5 +49,7 @@ namespace YGOProDevelop.ViewModel
             set { cards = value; RaisePropertyChanged(() => Cards); }
         }
 
+
+        public ICommand Open { get;private set; }
     }
 }

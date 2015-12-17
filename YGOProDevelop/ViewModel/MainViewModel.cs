@@ -7,6 +7,7 @@ using YGOProDevelop.Service;
 using ICSharpCode.AvalonEdit.Highlighting;
 using Microsoft.Win32;
 using System.IO;
+using GalaSoft.MvvmLight.Views;
 
 namespace YGOProDevelop.ViewModel
 {
@@ -21,6 +22,15 @@ namespace YGOProDevelop.ViewModel
 
         public static MainViewModel This { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the MainViewModel class.
+        /// </summary>
+        public MainViewModel(IDialogService dialogService) {
+            this._dialogService = dialogService;
+        }
+
+
+        private IDialogService _dialogService;
         /// <summary>
         /// 文档viewmodel集合
         /// </summary>
@@ -38,7 +48,6 @@ namespace YGOProDevelop.ViewModel
         /// 可停靠边缘的viewmodel
         /// </summary>
         private ObservableCollection<ViewModelBase> _anchorableViewModels = new ObservableCollection<ViewModelBase>();
-
 
         public ObservableCollection<ViewModelBase> AnchorableViewModels {
             get { return _anchorableViewModels; }
@@ -120,15 +129,17 @@ namespace YGOProDevelop.ViewModel
             }
         }
 
-        #endregion
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
-        public MainViewModel() {
-
+        public RelayCommand OpenCDBEditor {
+            get {
+                return new RelayCommand(
+                    () => {
+                        ViewManager.Show<CDBEditorViewModel>();
+                    }
+                    );
+            }
         }
 
-
+        #endregion
         #region method
 
         private void OpenDocument() {

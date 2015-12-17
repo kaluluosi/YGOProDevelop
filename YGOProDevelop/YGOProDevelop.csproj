@@ -67,10 +67,6 @@
     <Reference Include="GalaSoft.MvvmLight">
       <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
     </Reference>
-    <Reference Include="GalaSoft.MvvmLight.Dialog, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\MVVMDialogService\MVVMDialog\GalaSoft.MvvmLight.Dialog\bin\Debug\GalaSoft.MvvmLight.Dialog.dll</HintPath>
-    </Reference>
     <Reference Include="GalaSoft.MvvmLight.Extras">
       <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
     </Reference>
@@ -194,6 +190,7 @@
     <Compile Include="PanelTemplate\PanelTemplateManager.cs" />
     <Compile Include="PanelTemplate\PanelTemplateSelector.cs" />
     <Compile Include="Service\CustomDialogRigister.cs" />
+    <Compile Include="Service\DefaultDialogService.cs" />
     <Compile Include="Service\DefaultHighlightSettingService.cs" />
     <Compile Include="Service\IHighlightSettingService.cs" />
     <Compile Include="Service\PanelTemplateRegister.cs" />

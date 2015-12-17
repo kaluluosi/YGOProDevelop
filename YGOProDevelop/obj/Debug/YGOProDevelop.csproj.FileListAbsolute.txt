@@ -14,7 +14,6 @@ C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProD
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe.CodeAnalysisLog.xml
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe.lastcodeanalysissucceeded
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Caliburn.Micro.dll
-C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.Dialog.dll
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.dll
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.Extras.dll
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.Platform.dll
@@ -34,7 +33,6 @@ C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Calibur
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Caliburn.Micro.xml
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.pdb
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.xml
-C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.Dialog.pdb
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.Extras.xml
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
@@ -152,3 +150,11 @@ D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Race.xml
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\SetCode.xml
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\StarLevel.xml
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Type.xml
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Attribute.xml
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Category.xml
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Ot.xml
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Race.xml
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\SetCode.xml
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\StarLevel.xml
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Type.xml
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\cards.cdb

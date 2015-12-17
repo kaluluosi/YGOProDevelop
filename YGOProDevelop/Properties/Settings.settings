@@ -13,5 +13,11 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">data source="D:\Visual Studio 2013\Projects\WPFLesson\WpfApplication1\cards.cdb"</Value>
     </Setting>
+    <Setting Name="Theme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ExpressDark</Value>
+    </Setting>
+    <Setting Name="lastCDB" Type="System.String" Scope="User">
+      <Value Profile="(Default)">cards.cdb</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
