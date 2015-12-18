@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using YGOProDevelop;
+using YGOProDevelop.Model;
 
 namespace Builder {
 

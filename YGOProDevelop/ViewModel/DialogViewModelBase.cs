@@ -21,5 +21,7 @@ namespace YGOProDevelop.ViewModel {
                 DialogResultChanged(this, result);
             }
         }
+
+        public Action CloseWindow = () => { };
     }
 }

@@ -8,6 +8,10 @@ using ICSharpCode.AvalonEdit.Highlighting;
 using Microsoft.Win32;
 using System.IO;
 using GalaSoft.MvvmLight.Views;
+using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Ioc;
+using System;
+using System.Collections.Generic;
 
 namespace YGOProDevelop.ViewModel
 {
@@ -20,17 +24,18 @@ namespace YGOProDevelop.ViewModel
     public class MainViewModel : ViewModelBase
     {
 
-        public static MainViewModel This { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IDialogService dialogService) {
-            this._dialogService = dialogService;
+        public MainViewModel(IHighlightSettingService hlSettingService) {
+            _hlSettingService = hlSettingService;
         }
 
-
-        private IDialogService _dialogService;
+        public IDialogService DialogService {
+            get {
+                return SimpleIoc.Default.GetInstance<IDialogService>();
+            }
+        }
         /// <summary>
         /// 文档viewmodel集合
         /// </summary>
@@ -48,6 +53,7 @@ namespace YGOProDevelop.ViewModel
         /// 可停靠边缘的viewmodel
         /// </summary>
         private ObservableCollection<ViewModelBase> _anchorableViewModels = new ObservableCollection<ViewModelBase>();
+        private IHighlightSettingService _hlSettingService;
 
         public ObservableCollection<ViewModelBase> AnchorableViewModels {
             get { return _anchorableViewModels; }
@@ -67,6 +73,12 @@ namespace YGOProDevelop.ViewModel
                 if(_activeViewModel is DocumentViewModel) {
                     _activeDocumentViewModel = _activeViewModel as DocumentViewModel;
                 }
+            }
+        }
+
+        public IReadOnlyCollection<IHighlightingDefinition> HightLightingDefs {
+            get {
+                return _hlSettingService.HighlightingDefs;
             }
         }
 
@@ -133,7 +145,7 @@ namespace YGOProDevelop.ViewModel
             get {
                 return new RelayCommand(
                     () => {
-                        ViewManager.Show<CDBEditorViewModel>();
+                        MessengerInstance.Send(new NotificationMessage("OpenCDBEditor"), "MainWindow");
                     }
                     );
             }
@@ -143,23 +155,18 @@ namespace YGOProDevelop.ViewModel
         #region method
 
         private void OpenDocument() {
-            OpenFileDialog openDlg = new OpenFileDialog();
-            openDlg.AddExtension = true;
-            openDlg.Filter = "所有文件|*.*|文本文件|*.txt|Lua脚本文件|*.lua|C#文件|*.cs";
-            
-            if(openDlg.ShowDialog() == true) {
-                DocumentViewModel docVM = CreateDocumentVM();
-                docVM.OpenFile(openDlg.FileName);
+            MessengerInstance.Send(new NotificationMessageAction<string>("OpenFile", (fileName) => {
+                var docVM = CreateDocumentVM();
+                docVM.OpenFile(fileName);
                 DocumentViewModels.Add(docVM);
                 ActiveViewModel = docVM;
-            }
+            }), "MainWindow");
         }
 
         private void SaveDocument() {
-            SaveFileDialog saveDlg = new SaveFileDialog();
-            if(saveDlg.ShowDialog() == true) {
-                _activeDocumentViewModel.SaveFile(saveDlg.FileName);
-            }
+            MessengerInstance.Send(new NotificationMessageAction<string>("SaveFile",(fileName)=>{
+                _activeDocumentViewModel.SaveFile(fileName);
+            }),"MainWindow");
         }
 
         private void NewDocument() {

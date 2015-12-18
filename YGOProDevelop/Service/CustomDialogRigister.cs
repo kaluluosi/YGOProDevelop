@@ -12,8 +12,6 @@ namespace YGOProDevelop.Service
     {
         public CustomDialogRigister() {
 
-            ViewManager.Register<CDBEditorViewModel, CDBEditorView>();
-
         }
     }
 }

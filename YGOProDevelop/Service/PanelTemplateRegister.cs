@@ -13,7 +13,6 @@ namespace YGOProDevelop.Service
     public class PanelTemplateRegister
     {
         public PanelTemplateRegister() {
-
             PanelTemplateManager.Register<DocumentViewModel, DocumentView>();
 
         }

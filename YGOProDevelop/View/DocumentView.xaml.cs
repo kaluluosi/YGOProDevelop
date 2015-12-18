@@ -31,9 +31,8 @@ namespace YGOProDevelop.View
             InitializeComponent();
 
             //Init Constant
-            
-
         }
+
 
         private class MyCompletionData : ICompletionData
         {

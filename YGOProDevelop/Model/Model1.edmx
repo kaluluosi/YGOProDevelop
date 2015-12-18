@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="cardsModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\GitHub\YGOProDevelop\YGOProDevelop\cards.cdb" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="datas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" Nullable="false" />
+          <Property Name="ot" Type="integer" />
+          <Property Name="alias" Type="integer" />
+          <Property Name="setcode" Type="integer" />
+          <Property Name="type" Type="integer" />
+          <Property Name="atk" Type="integer" />
+          <Property Name="def" Type="integer" />
+          <Property Name="level" Type="integer" />
+          <Property Name="race" Type="integer" />
+          <Property Name="attribute" Type="integer" />
+          <Property Name="category" Type="integer" />
+        </EntityType>
+        <EntityType Name="texts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="128" />
+          <Property Name="desc" Type="varchar" MaxLength="1024" />
+          <Property Name="str1" Type="varchar" MaxLength="256" />
+          <Property Name="str2" Type="varchar" MaxLength="256" />
+          <Property Name="str3" Type="varchar" MaxLength="256" />
+          <Property Name="str4" Type="varchar" MaxLength="256" />
+          <Property Name="str5" Type="varchar" MaxLength="256" />
+          <Property Name="str6" Type="varchar" MaxLength="256" />
+          <Property Name="str7" Type="varchar" MaxLength="256" />
+          <Property Name="str8" Type="varchar" MaxLength="256" />
+          <Property Name="str9" Type="varchar" MaxLength="256" />
+          <Property Name="str10" Type="varchar" MaxLength="256" />
+          <Property Name="str11" Type="varchar" MaxLength="256" />
+          <Property Name="str12" Type="varchar" MaxLength="256" />
+          <Property Name="str13" Type="varchar" MaxLength="256" />
+          <Property Name="str14" Type="varchar" MaxLength="256" />
+          <Property Name="str15" Type="varchar" MaxLength="256" />
+          <Property Name="str16" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <Association Name="FK_texts_0_0">
+          <End Role="datas" Type="Self.datas" Multiplicity="1" />
+          <End Role="texts" Type="Self.texts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="datas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="texts">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="cardsModelStoreContainer">
+          <EntitySet Name="datas" EntityType="Self.datas" store:Type="Tables" />
+          <EntitySet Name="texts" EntityType="Self.texts" store:Type="Tables" />
+          <AssociationSet Name="FK_texts_0_0" Association="Self.FK_texts_0_0">
+            <End Role="datas" EntitySet="datas" />
+            <End Role="texts" EntitySet="texts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cardsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="datas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="ot" Type="Int64" />
+          <Property Name="alias" Type="Int64" />
+          <Property Name="setcode" Type="Int64" />
+          <Property Name="type" Type="Int64" />
+          <Property Name="atk" Type="Int64" />
+          <Property Name="def" Type="Int64" />
+          <Property Name="level" Type="Int64" />
+          <Property Name="race" Type="Int64" />
+          <Property Name="attribute" Type="Int64" />
+          <Property Name="category" Type="Int64" />
+          <NavigationProperty Name="texts" Relationship="Self.FK_texts_0_0" FromRole="datas" ToRole="texts" />
+        </EntityType>
+        <EntityType Name="texts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="desc" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="str1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str4" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str5" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str6" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str7" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str8" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str9" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str10" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str11" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str12" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str13" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str14" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str15" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="str16" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="datas" Relationship="Self.FK_texts_0_0" FromRole="texts" ToRole="datas" />
+        </EntityType>
+        <Association Name="FK_texts_0_0">
+          <End Role="datas" Type="Self.datas" Multiplicity="1" />
+          <End Role="texts" Type="Self.texts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="datas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="texts">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="cardsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="datas" EntityType="Self.datas" />
+          <EntitySet Name="texts" EntityType="Self.texts" />
+          <AssociationSet Name="FK_texts_0_0" Association="Self.FK_texts_0_0">
+            <End Role="datas" EntitySet="datas" />
+            <End Role="texts" EntitySet="texts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cardsModelStoreContainer" CdmEntityContainer="cardsEntities">
+          <EntitySetMapping Name="datas">
+            <EntityTypeMapping TypeName="cardsModel.datas">
+              <MappingFragment StoreEntitySet="datas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ot" ColumnName="ot" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+                <ScalarProperty Name="setcode" ColumnName="setcode" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="atk" ColumnName="atk" />
+                <ScalarProperty Name="def" ColumnName="def" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="race" ColumnName="race" />
+                <ScalarProperty Name="attribute" ColumnName="attribute" />
+                <ScalarProperty Name="category" ColumnName="category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="texts">
+            <EntityTypeMapping TypeName="cardsModel.texts">
+              <MappingFragment StoreEntitySet="texts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="str1" ColumnName="str1" />
+                <ScalarProperty Name="str2" ColumnName="str2" />
+                <ScalarProperty Name="str3" ColumnName="str3" />
+                <ScalarProperty Name="str4" ColumnName="str4" />
+                <ScalarProperty Name="str5" ColumnName="str5" />
+                <ScalarProperty Name="str6" ColumnName="str6" />
+                <ScalarProperty Name="str7" ColumnName="str7" />
+                <ScalarProperty Name="str8" ColumnName="str8" />
+                <ScalarProperty Name="str9" ColumnName="str9" />
+                <ScalarProperty Name="str10" ColumnName="str10" />
+                <ScalarProperty Name="str11" ColumnName="str11" />
+                <ScalarProperty Name="str12" ColumnName="str12" />
+                <ScalarProperty Name="str13" ColumnName="str13" />
+                <ScalarProperty Name="str14" ColumnName="str14" />
+                <ScalarProperty Name="str15" ColumnName="str15" />
+                <ScalarProperty Name="str16" ColumnName="str16" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

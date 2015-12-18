@@ -4,10 +4,12 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Input;
-using YGOProDevelop.CDB;
+using YGOProDevelop.Model;
+using YGOProDevelop.Service;
 namespace YGOProDevelop.ViewModel
 {
     /// <summary>
@@ -16,28 +18,34 @@ namespace YGOProDevelop.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class CDBEditorViewModel : DialogViewModelBase
+    public class CDBEditorViewModel : ViewModelBase
     {
+
         /// <summary>
         /// Initializes a new instance of the CDBEditorViewModel class.
         /// </summary>
-        public CDBEditorViewModel(CDBManager cdbMgr,IDialogService dialogService) {
+        public CDBEditorViewModel(ICDBService cdbService, IMessageBoxService msgBoxService) {
+            this.msgBoxService = msgBoxService;
 
             try {
-                this.cdbMgr = cdbMgr;
-                this.cdbMgr.Open(Properties.Settings.Default.lastCDB);
-                this.cdbMgr.ResetSearch();
-                cards = this.cdbMgr.QueryResult;
+                this.cdbService = cdbService;
+                if(string.IsNullOrEmpty(Properties.Settings.Default.lastCDB) == false) {
+                    this.cdbService.Open(Properties.Settings.Default.lastCDB);
+                    this.cdbService.ResetSearch();
+                }
+                cards = this.cdbService.QueryResult;
             }
             catch(Exception ex) {
-                dialogService.ShowError(ex, "错误", "", null);
+                Debug.WriteLine("Debug",ex.StackTrace);
+                msgBoxService.ShowError(ex, "警告");
+                Properties.Settings.Default.lastCDB = "";
             }
         }
 
-        private IDialogService dialogService;
-        private CDBManager cdbMgr;
+        private ICDBService cdbService;
         private ObservableCollection<datas> cards;
         private CardBuilder cardBuilder;
+        private IMessageBoxService msgBoxService;
 
         public CardBuilder CardBuilder {
             get { return cardBuilder; }

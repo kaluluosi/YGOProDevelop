@@ -6,6 +6,9 @@ using System.Windows.Controls;
 using GalaSoft.MvvmLight.Views;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Messaging;
+using YGOProDevelop.View;
+using Microsoft.Win32;
 
 namespace YGOProDevelop
 {
@@ -22,6 +25,37 @@ namespace YGOProDevelop
             Closing += (s, e) => { ViewModelLocator.Cleanup(); Properties.Settings.Default.Save(); };
 
             ChangeTheme(Properties.Settings.Default.Theme);
+
+            //打开CDBEditor
+            Messenger.Default.Register<NotificationMessage>(this,"MainWindow", (msg) => {
+                if(msg.Notification == "OpenCDBEditor") {
+                    CDBEditorView cdbView = new CDBEditorView();
+                    cdbView.Show();
+                }
+            });
+
+            Messenger.Default.Register<NotificationMessageAction<string>>(this, "MainWindow", (msg) => {
+                if(msg.Notification == "OpenFile") {
+                    OpenFileDialog openDlg = new OpenFileDialog();
+                    openDlg.AddExtension = true;
+                    openDlg.Filter = "所有文件|*.*|文本文件|*.txt|Lua脚本文件|*.lua|C#文件|*.cs";
+                    if(openDlg.ShowDialog()==true) {
+                        msg.Execute(openDlg.FileName);
+                    }
+                }
+            });
+
+            Messenger.Default.Register<NotificationMessageAction<string>>(this, "MainWindow", (msg) => {
+                if(msg.Notification == "SaveFile") {
+                    SaveFileDialog saveDlg = new SaveFileDialog();
+                    saveDlg.AddExtension = true;
+                    saveDlg.Filter = "所有文件|*.*|文本文件|*.txt|Lua脚本文件|*.lua|C#文件|*.cs";
+                    if(saveDlg.ShowDialog() == true) {
+                        msg.Execute(saveDlg.FileName);
+                    }
+                }
+            });
+
         }
 
 
@@ -54,6 +88,7 @@ namespace YGOProDevelop
             }
             Properties.Settings.Default.Theme = themeName;
         }
+
 
     }
 }

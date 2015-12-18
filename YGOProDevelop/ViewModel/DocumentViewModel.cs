@@ -25,6 +25,13 @@ namespace YGOProDevelop.ViewModel
         private string _fileName;
         private bool _isShowLineNumbers;
         private IHighlightingDefinition _language;
+        private bool _isDirty=false;
+
+        public bool IsDirty {
+            get { return _isDirty; }
+            set { _isDirty = value; RaisePropertyChanged(); RaisePropertyChanged(() => Title); }
+        }
+
         public ICSharpCode.AvalonEdit.Highlighting.IHighlightingDefinition Language {
             get { return _language; }
             set { _language = value; RaisePropertyChanged(()=>Language); }
@@ -36,7 +43,17 @@ namespace YGOProDevelop.ViewModel
 
         public string Title {
             get {
-                return _fileName==null?"未命名":Path.GetFileName(_fileName);
+//                 _fileName = _fileName == null ? "未命名" : Path.GetFileName(_fileName);
+                string title="";
+                if(_fileName == null)
+                    return title = "未命名";
+                else {
+                    title = Path.GetFileName(_fileName);
+                    if(IsDirty)
+                        title = string.Format("{0}{1}", Path.GetFileName(_fileName), "*");
+
+                    return title;
+                }
             }
         }
         public string FileName {
@@ -58,12 +75,16 @@ namespace YGOProDevelop.ViewModel
         /// Initializes a new instance of the DocumentViewModel class.
         /// </summary>
         public DocumentViewModel() {
-            Document.Changed += Document_Changed;
+
         }
 
-        void Document_Changed(object sender, DocumentChangeEventArgs e) {
-            MessengerInstance.Send<string>(e.InsertedText, "ShowAutoComplete");
+        private int initTextLength = 0;
+        void Document_TextChanged(object sender, System.EventArgs e) {
+            //文档改动flag
+            if(initTextLength!=Document.TextLength)
+                IsDirty = true;
         }
+
 
         public void OpenFile(string fileName) {
             if(File.Exists(fileName) == false)
@@ -71,10 +92,13 @@ namespace YGOProDevelop.ViewModel
             FileName = fileName;
             StreamReader  reader= FileReader.OpenFile(fileName, System.Text.Encoding.UTF8);
             _document.Text = reader.ReadToEnd();
+            initTextLength = _document.TextLength;
             reader.Close();
 
             string extension = Path.GetExtension(fileName);
             Language = HighlightingManager.Instance.GetDefinitionByExtension(extension);
+
+            Document.TextChanged += Document_TextChanged;
         }
 
         public void SaveFile(string fileName) {
@@ -82,6 +106,7 @@ namespace YGOProDevelop.ViewModel
             writer.Write(_document.Text);
             writer.Close();
             FileName = fileName;
+            IsDirty = false;
         }
     }
 }

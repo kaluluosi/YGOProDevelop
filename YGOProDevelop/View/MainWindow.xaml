@@ -11,7 +11,7 @@
         Height="757"
         Width="1173.5"
         Title="YGOProDevelop" WindowStartupLocation="CenterScreen"
-        DataContext="{Binding Source={StaticResource Locator},Path=Main}"
+        DataContext="{Binding Source={StaticResource Locator},Path=Main}" 
     >
 
     <Window.Resources>
@@ -45,10 +45,10 @@
             <MenuItem Header="视图" >
                 <MenuItem Header="显示行号" IsCheckable="True"  IsChecked="{Binding IsShowLineNumbers}" />
             </MenuItem>
-            <MenuItem Header="语言" DataContext="{Binding HighlightSetting, Source={StaticResource Locator}}" ItemsSource="{Binding HighlightingDefs}">
+            <MenuItem Header="语言" ItemsSource="{Binding HightLightingDefs}" >
                 <MenuItem.ItemContainerStyle>
                     <Style TargetType="MenuItem">
-                        <Setter Property="Command" Value="{Binding DataContext.SetLanguageCmd,ElementName=window}"></Setter>
+                        <Setter Property="Command" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type MenuItem}}, Path=DataContext.SetLanguageCmd }"></Setter>
                         <Setter Property="CommandParameter" Value="{Binding .}"></Setter>
                     </Style>
                 </MenuItem.ItemContainerStyle>
