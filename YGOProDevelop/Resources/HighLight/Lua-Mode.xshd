@@ -34,6 +34,12 @@
 			<Word>while</Word>
 			<Word>for</Word>
 		</Keywords>
+    <!--<Keywords clolor="YGOProFunctions">
+      ...
+    </Keywords>
+    <Keywords clolor="YGOProConstants">
+      ...
+    </Keywords>-->
     <Keywords color="LuaParams">
       <Word>...</Word>
     </Keywords>
@@ -61,5 +67,7 @@
 			</RuleSet>
 		</Span>
 		<Rule color="Digits">\b0[xX][0-9a-fA-F]+|(\b\d+(\.[0-9]+)?|\.[0-9]+)([eE][+-]?[0-9]+)?</Rule>
+    
+    
 	</RuleSet>
 </SyntaxDefinition>

@@ -16,6 +16,7 @@ using ICSharpCode.AvalonEdit.CodeCompletion;
 using YGOProDevelop.Service;
 using GalaSoft.MvvmLight.Messaging;
 using ICSharpCode.AvalonEdit.Editing;
+using ICSharpCode.AvalonEdit;
 
 namespace YGOProDevelop.View
 {
@@ -31,8 +32,8 @@ namespace YGOProDevelop.View
             InitializeComponent();
 
             //Init Constant
-        }
 
+        }
 
         private class MyCompletionData : ICompletionData
         {

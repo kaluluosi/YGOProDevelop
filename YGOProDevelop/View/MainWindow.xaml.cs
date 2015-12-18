@@ -38,7 +38,8 @@ namespace YGOProDevelop
                 if(msg.Notification == "OpenFile") {
                     OpenFileDialog openDlg = new OpenFileDialog();
                     openDlg.AddExtension = true;
-                    openDlg.Filter = "所有文件|*.*|文本文件|*.txt|Lua脚本文件|*.lua|C#文件|*.cs";
+                    openDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
+                    openDlg.FilterIndex = 1;
                     if(openDlg.ShowDialog()==true) {
                         msg.Execute(openDlg.FileName);
                     }
@@ -49,8 +50,9 @@ namespace YGOProDevelop
                 if(msg.Notification == "SaveFile") {
                     SaveFileDialog saveDlg = new SaveFileDialog();
                     saveDlg.AddExtension = true;
-                    saveDlg.Filter = "所有文件|*.*|文本文件|*.txt|Lua脚本文件|*.lua|C#文件|*.cs";
-                    if(saveDlg.ShowDialog() == true) {
+                    saveDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
+                    saveDlg.FilterIndex = 1;
+                    if (saveDlg.ShowDialog() == true) {
                         msg.Execute(saveDlg.FileName);
                     }
                 }

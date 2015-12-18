@@ -11,9 +11,11 @@
         Height="757"
         Width="1173.5"
         Title="YGOProDevelop" WindowStartupLocation="CenterScreen"
-        DataContext="{Binding Source={StaticResource Locator},Path=Main}" 
+        DataContext="{Binding Source={StaticResource Locator},Path=Main}" Icon="/YGOProDevelop;component/Resources/属性/暗.png" 
     >
-
+    <Window.InputBindings>
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding SaveCmd}"></KeyBinding>
+    </Window.InputBindings>
     <Window.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="DocumentHeaderTemplate">
@@ -45,6 +47,7 @@
             <MenuItem Header="视图" >
                 <MenuItem Header="显示行号" IsCheckable="True"  IsChecked="{Binding IsShowLineNumbers}" />
             </MenuItem>
+            
             <MenuItem Header="语言" ItemsSource="{Binding HightLightingDefs}" >
                 <MenuItem.ItemContainerStyle>
                     <Style TargetType="MenuItem">
@@ -53,6 +56,7 @@
                     </Style>
                 </MenuItem.ItemContainerStyle>
             </MenuItem>
+            
             <MenuItem x:Name="themesMenu" Header="主题" Click="themesMenu_Click" >
                 <MenuItem Header="VS2010"></MenuItem>
                 <MenuItem Header="ExpressDark"></MenuItem>

@@ -181,6 +181,7 @@
     <Compile Include="PanelTemplate\PanelTemplateSelector.cs" />
     <Compile Include="Service\CustomDialogRigister.cs" />
     <Compile Include="Service\ICDBService.cs" />
+    <Compile Include="Service\IIntelisenceService.cs" />
     <Compile Include="Service\MessageBoxService.cs" />
     <Compile Include="Service\DefaultHighlightSettingService.cs" />
     <Compile Include="Service\ICustomDialogService.cs" />
@@ -332,6 +333,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Data\lua.ecp" />
     <None Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -343,6 +345,8 @@
     <AppDesigner Include="Properties\" />
     <Resource Include="Resources\0000.png" />
     <Resource Include="Resources\boss_BlueEyedWhiteDragon.png" />
+    <Resource Include="Data\_functions.txt_sort.txt" />
+    <Resource Include="Data\_functions.txt" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

@@ -75,7 +75,7 @@ namespace YGOProDevelop.ViewModel
         /// Initializes a new instance of the DocumentViewModel class.
         /// </summary>
         public DocumentViewModel() {
-
+            
         }
 
         private int initTextLength = 0;
