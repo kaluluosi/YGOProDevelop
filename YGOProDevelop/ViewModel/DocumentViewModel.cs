@@ -9,6 +9,11 @@ using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using ICSharpCode.AvalonEdit.Utils;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
+using ICSharpCode.AvalonEdit.CodeCompletion;
+using System.Collections.Generic;
+using YGOProDevelop.Model;
 
 namespace YGOProDevelop.ViewModel
 {
@@ -20,6 +25,14 @@ namespace YGOProDevelop.ViewModel
     /// </summary>
     public class DocumentViewModel : ViewModelBase
     {
+
+        /// <summary>
+        /// Initializes a new instance of the DocumentViewModel class.
+        /// </summary>
+        public DocumentViewModel() {
+            
+        }
+
 
         private TextDocument _document=new TextDocument();
         private string _fileName;
@@ -72,11 +85,16 @@ namespace YGOProDevelop.ViewModel
         }
         
         /// <summary>
-        /// Initializes a new instance of the DocumentViewModel class.
+        /// 自动完成数据，以后将自动完成做成服务来获取数据
         /// </summary>
-        public DocumentViewModel() {
-            
+        public IList<ICompletionData> CompletionDatas {
+            get {
+                IList<ICompletionData> datas = new List<ICompletionData>();
+                datas.Add(new MyCompletionData("shit"));
+                return datas;
+            }
         }
+
 
         private int initTextLength = 0;
         void Document_TextChanged(object sender, System.EventArgs e) {
@@ -107,6 +125,22 @@ namespace YGOProDevelop.ViewModel
             writer.Close();
             FileName = fileName;
             IsDirty = false;
+        }
+
+        private RelayCommand<string> _hintTooltipCmd;
+
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public RelayCommand<string> HintTooltipCmd {
+            get {
+                return _hintTooltipCmd
+                    ?? (_hintTooltipCmd = new RelayCommand<string>(
+                    (text) => {
+                        /*if(string.IsNullOrEmpty(text)==false)*/
+                            MessengerInstance.Send(new NotificationMessage<string>(this,"Test tooltip", "ShowTooltip"), "DocumentView");
+                    }));
+            }
         }
     }
 }

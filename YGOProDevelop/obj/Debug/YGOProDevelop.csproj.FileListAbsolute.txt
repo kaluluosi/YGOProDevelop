@@ -158,3 +158,5 @@ C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Se
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\StarLevel.xml
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Type.xml
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\cards.cdb
+D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\MyTooltip.g.cs
+D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\MyTooltip.baml

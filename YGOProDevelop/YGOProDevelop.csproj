@@ -155,6 +155,7 @@
     <Compile Include="Builder\RaceField.cs" />
     <Compile Include="Builder\SetCodeField.cs" />
     <Compile Include="Builder\TypeField.cs" />
+    <Compile Include="Model\MyCompletionData.cs" />
     <Compile Include="Service\CDBService.cs" />
     <Compile Include="Cfg\ConfigManager.cs" />
     <Compile Include="Cfg\SettingConfig.cs" />
@@ -203,6 +204,9 @@
     <Compile Include="View\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MyTooltip.xaml.cs">
+      <DependentUpon>MyTooltip.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -220,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DocumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MyTooltip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

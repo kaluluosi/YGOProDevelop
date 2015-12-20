@@ -4,12 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:avalon="http://schemas.xceed.com/wpf/xaml/avalondock"
-             xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" xmlns:CodeCompletion="clr-namespace:ICSharpCode.AvalonEdit.CodeCompletion;assembly=ICSharpCode.AvalonEdit" xmlns:cal="http://www.caliburnproject.org" xmlns:local="clr-namespace:YGOProDevelop.View" x:Class="YGOProDevelop.View.DocumentView" 
+    xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" xmlns:CodeCompletion="clr-namespace:ICSharpCode.AvalonEdit.CodeCompletion;assembly=ICSharpCode.AvalonEdit" xmlns:cal="http://www.caliburnproject.org" xmlns:local="clr-namespace:YGOProDevelop.View" xmlns:Folding="clr-namespace:ICSharpCode.AvalonEdit.Folding;assembly=ICSharpCode.AvalonEdit" x:Class="YGOProDevelop.View.DocumentView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" 
     >
 
-    <Grid>
-        <avalonedit:TextEditor x:Name="editor" Document="{Binding Document, UpdateSourceTrigger=PropertyChanged}" ShowLineNumbers="{Binding IsShowLineNumbers}" SyntaxHighlighting="{Binding Language}" FontSize="16" IsModified="{Binding IsDirty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="shit" ></avalonedit:TextEditor>
+    <Grid >
+        <avalonedit:TextEditor x:Name="editor" Document="{Binding Document, UpdateSourceTrigger=PropertyChanged}" ShowLineNumbers="{Binding IsShowLineNumbers}" SyntaxHighlighting="{Binding Language}" FontSize="16" IsModified="{Binding IsDirty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseMove">
+                    <cmd:EventToCommand Command="{Binding HintTooltipCmd}" CommandParameter="{Binding SelectedText, ElementName=editor}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </avalonedit:TextEditor>
     </Grid>
 </UserControl>

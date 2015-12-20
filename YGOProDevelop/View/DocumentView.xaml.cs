@@ -17,6 +17,8 @@ using YGOProDevelop.Service;
 using GalaSoft.MvvmLight.Messaging;
 using ICSharpCode.AvalonEdit.Editing;
 using ICSharpCode.AvalonEdit;
+using System.Timers;
+using System.ComponentModel;
 
 namespace YGOProDevelop.View
 {
@@ -25,46 +27,54 @@ namespace YGOProDevelop.View
     /// </summary>
     public partial class DocumentView : UserControl
     {
-        private static CompletionWindow completionWin;
+        private CompletionWindow completionWin;
         private static List<ICompletionData> datas;
 
         public DocumentView() {
             InitializeComponent();
 
             //Init Constant
+            editor.TextArea.TextEntering += TextArea_TextEntering;
 
+            Binding binding = new Binding("CompletionDatas");
+            SetBinding(CompeltionDatasProperty, binding);
         }
 
-        private class MyCompletionData : ICompletionData
-        {
-            public void Complete(TextArea textArea, ICSharpCode.AvalonEdit.Document.ISegment completionSegment, EventArgs insertionRequestEventArgs) {
-                textArea.Document.Replace(completionSegment, Text);
+        public CompletionWindow CompletionWin {
+            get {
+                return completionWin;
             }
 
-            public object Content {
-                get;
-                private set;
-            }
-
-            public object Description {
-                get;
-                private set;
-            }
-
-            public ImageSource Image {
-                get;
-                private set;
-            }
-
-            public double Priority {
-                get;
-                private set;
-            }
-
-            public string Text {
-                get;
-                private set;
+            set {
+                completionWin = value;
             }
         }
+
+        /// <summary>
+        /// 自动完成数据依赖属性，可以将这个属性绑定到ViewModel里自动获取自动完成需要的数据
+        /// </summary>
+        public IList<ICompletionData> CompletionDatas {
+            get { return (IList<ICompletionData>)GetValue(CompeltionDatasProperty); }
+            set { SetValue(CompeltionDatasProperty, value); }
+        }
+
+
+        // Using a DependencyProperty as the backing store for CompeltionDatas.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CompeltionDatasProperty =
+            DependencyProperty.Register("CompeltionDatas", typeof(IList<ICompletionData>), typeof(DocumentView), new PropertyMetadata(null));
+
+
+        private void TextArea_TextEntering(object sender, TextCompositionEventArgs e) {
+            // provide AvalonEdit with the data:
+            CompletionWin = new CompletionWindow(editor.TextArea);
+            foreach(ICompletionData data in CompletionDatas) {
+                CompletionWin.CompletionList.CompletionData.Add(data);
+            }
+            CompletionWin.Show();
+            CompletionWin.Closed += delegate {
+                CompletionWin = null;
+            };
+        }
+
     }
 }
