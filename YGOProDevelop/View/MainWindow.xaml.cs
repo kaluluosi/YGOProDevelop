@@ -26,6 +26,9 @@ namespace YGOProDevelop
 
             ChangeTheme(Properties.Settings.Default.Theme);
 
+            //
+            
+
             //打开CDBEditor
             Messenger.Default.Register<NotificationMessage>(this,"MainWindow", (msg) => {
                 if(msg.Notification == "OpenCDBEditor") {

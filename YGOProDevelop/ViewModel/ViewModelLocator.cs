@@ -45,6 +45,7 @@ namespace YGOProDevelop.ViewModel
             SimpleIoc.Default.Register<ICustomDialogService, CustomDialogService>();
             SimpleIoc.Default.Register<IHighlightSettingService, DefaultHighlightSettingService>();
             SimpleIoc.Default.Register<ICDBService, CDBService>();
+            SimpleIoc.Default.Register<IIntelisenceService, DefaultIntelisenceService>();
 
             //注册ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
@@ -66,11 +67,11 @@ namespace YGOProDevelop.ViewModel
             }
         }
 
-//         public DocumentViewModel Document {
-//             get {
-//                 return ServiceLocator.Current.GetInstance<DocumentViewModel>(Guid.NewGuid().ToString());
-//             }
-//         }
+        public DocumentViewModel Document {
+            get {
+                return ServiceLocator.Current.GetInstance<DocumentViewModel>(Guid.NewGuid().ToString());
+            }
+        }
 
         /// <summary>
         /// Cleans up all the resources.

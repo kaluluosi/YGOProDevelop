@@ -8,6 +8,7 @@
 	<Color name="Character" foreground="Sienna" />
 	<Color name="Regex" foreground="Sienna" />
 	<Color name="LuaKeyWords" foreground="Blue" />
+  <Color name="MethodCall" foreground="DarkOrange" exampleText="o.ToString();"/>
 	<Color name="LuaIntrinsics" foreground="Blue" />
 	<Color name="LuaLiterals" foreground="Blue" />
 	<Color name="LuaParams" foreground="Red" />
@@ -40,6 +41,12 @@
     <Keywords clolor="YGOProConstants">
       ...
     </Keywords>-->
+
+    <Rule color="MethodCall">
+      \b
+      [\d\w_]+  # an identifier
+      (?=\s*\() # followed by (
+    </Rule>
     <Keywords color="LuaParams">
       <Word>...</Word>
     </Keywords>

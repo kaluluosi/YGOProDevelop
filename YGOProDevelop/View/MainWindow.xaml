@@ -47,7 +47,9 @@
             <MenuItem Header="视图" >
                 <MenuItem Header="显示行号" IsCheckable="True"  IsChecked="{Binding IsShowLineNumbers}" />
             </MenuItem>
-            
+            <MenuItem Header="编辑">
+                <MenuItem Header="查找" Command="{x:Static ApplicationCommands.Find}"></MenuItem>
+            </MenuItem>
             <MenuItem Header="语言" ItemsSource="{Binding HightLightingDefs}" >
                 <MenuItem.ItemContainerStyle>
                     <Style TargetType="MenuItem">

@@ -9,10 +9,10 @@ using System.Windows.Media;
 
 namespace YGOProDevelop.Model {
         public class MyCompletionData : ICompletionData {
-            public MyCompletionData(string Description) {
-                this.Description = Description;
-                Text = Description;
-                Content = Description;
+            public MyCompletionData(string description,string text) {
+                Description = description;
+                Text = text;
+                Content = text;
             }
 
             public void Complete(TextArea textArea, ICSharpCode.AvalonEdit.Document.ISegment completionSegment, EventArgs insertionRequestEventArgs) {
@@ -26,7 +26,7 @@ namespace YGOProDevelop.Model {
 
             public object Description {
                 get;
-                set;
+                private set;
             }
 
             public ImageSource Image {

@@ -176,7 +176,7 @@ namespace YGOProDevelop.ViewModel
         }
 
         private DocumentViewModel CreateDocumentVM() {
-            DocumentViewModel docVM = new DocumentViewModel();
+            DocumentViewModel docVM = SimpleIoc.Default.GetInstance<DocumentViewModel>();
             docVM.IsShowLineNumbers = IsShowLineNumbers;
             return docVM;
         }

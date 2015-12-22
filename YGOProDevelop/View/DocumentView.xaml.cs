@@ -19,14 +19,14 @@ using ICSharpCode.AvalonEdit.Editing;
 using ICSharpCode.AvalonEdit;
 using System.Timers;
 using System.ComponentModel;
+using ICSharpCode.AvalonEdit.Search;
+using ICSharpCode.AvalonEdit.Snippets;
 
-namespace YGOProDevelop.View
-{
+namespace YGOProDevelop.View {
     /// <summary>
     /// DocumentView.xaml 的交互逻辑
     /// </summary>
-    public partial class DocumentView : UserControl
-    {
+    public partial class DocumentView : UserControl {
         private CompletionWindow completionWin;
         private static List<ICompletionData> datas;
 
@@ -36,8 +36,46 @@ namespace YGOProDevelop.View
             //Init Constant
             editor.TextArea.TextEntering += TextArea_TextEntering;
 
+            editor.TextArea.DefaultInputHandler.NestedInputHandlers.Add(new SearchInputHandler(editor.TextArea));
+
+
             Binding binding = new Binding("CompletionDatas");
             SetBinding(CompeltionDatasProperty, binding);
+
+            editor.MouseHover += Editor_MouseHover;
+            editor.MouseHoverStopped += Editor_MouseHoverStopped;
+
+        }
+
+        private void Editor_MouseHoverStopped(object sender, MouseEventArgs e) {
+            toolTip.IsOpen = false;
+        }
+
+        ToolTip toolTip = new ToolTip();
+        private void Editor_MouseHover(object sender, MouseEventArgs e) {
+            var pos = editor.GetPositionFromPoint(e.GetPosition(editor));
+
+            if (pos != null && CompletionDatas != null) {
+                string text = GetWordOverMouse(e);
+                var data = CompletionDatas.FirstOrDefault(d => d.Text.Contains(text));
+                if (data != null) {
+                    toolTip.Content = new TextBlock {
+                        Text = data.Text + "\n" + data.Description,
+                        TextWrapping = TextWrapping.Wrap
+                    };
+                    toolTip.PlacementTarget = this; // required for property inheritance
+                    toolTip.IsOpen = true;
+                    e.Handled = true;
+                }
+            }
+        }
+
+        public string GetWordOverMouse(MouseEventArgs e) {
+            var pos = editor.GetPositionFromPoint(e.GetPosition(editor));
+            int offset = editor.Document.GetOffset(pos.Value.Location);
+            int start = ICSharpCode.AvalonEdit.Document.TextUtilities.GetNextCaretPosition(editor.Document, offset, LogicalDirection.Backward, ICSharpCode.AvalonEdit.Document.CaretPositioningMode.WordBorder);
+            int end = ICSharpCode.AvalonEdit.Document.TextUtilities.GetNextCaretPosition(editor.Document, offset, LogicalDirection.Forward, ICSharpCode.AvalonEdit.Document.CaretPositioningMode.WordBorder);
+            return editor.Document.GetText(start, end - start);
         }
 
         public CompletionWindow CompletionWin {
@@ -58,7 +96,6 @@ namespace YGOProDevelop.View
             set { SetValue(CompeltionDatasProperty, value); }
         }
 
-
         // Using a DependencyProperty as the backing store for CompeltionDatas.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CompeltionDatasProperty =
             DependencyProperty.Register("CompeltionDatas", typeof(IList<ICompletionData>), typeof(DocumentView), new PropertyMetadata(null));
@@ -66,15 +103,26 @@ namespace YGOProDevelop.View
 
         private void TextArea_TextEntering(object sender, TextCompositionEventArgs e) {
             // provide AvalonEdit with the data:
-            CompletionWin = new CompletionWindow(editor.TextArea);
-            foreach(ICompletionData data in CompletionDatas) {
-                CompletionWin.CompletionList.CompletionData.Add(data);
+            if ((char.IsLetter(e.Text[0]) || e.Text == ".") && completionWin == null) {
+                CompletionWin = new CompletionWindow(editor.TextArea);
+                foreach (ICompletionData data in CompletionDatas) {
+                    CompletionWin.CompletionList.CompletionData.Add(data);
+                }
+                CompletionWin.CompletionList.SelectItem(e.Text);
+                CompletionWin.Show();
+                completionWin.CompletionList.ScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
+                completionWin.SizeToContent = SizeToContent.Width;
+                CompletionWin.Closed += delegate {
+                    CompletionWin = null;
+                };
             }
-            CompletionWin.Show();
-            CompletionWin.Closed += delegate {
-                CompletionWin = null;
-            };
+            if (e.Text.Length > 0 && completionWin != null) {
+                if (!char.IsLetterOrDigit(e.Text[0]) && e.Text != ".") {
+                    // Whenever a non-letter is typed while the completion window is open,
+                    // insert the currently selected element.
+                    completionWin.CompletionList.RequestInsertion(e);
+                }
+            }
         }
-
     }
 }

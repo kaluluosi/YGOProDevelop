@@ -14,6 +14,7 @@ using GalaSoft.MvvmLight.Messaging;
 using ICSharpCode.AvalonEdit.CodeCompletion;
 using System.Collections.Generic;
 using YGOProDevelop.Model;
+using YGOProDevelop.Service;
 
 namespace YGOProDevelop.ViewModel
 {
@@ -29,10 +30,12 @@ namespace YGOProDevelop.ViewModel
         /// <summary>
         /// Initializes a new instance of the DocumentViewModel class.
         /// </summary>
-        public DocumentViewModel() {
-            
+        public DocumentViewModel(IIntelisenceService intelisenceService) {
+            _intelisenceService = intelisenceService;
         }
 
+
+        private IIntelisenceService _intelisenceService;
 
         private TextDocument _document=new TextDocument();
         private string _fileName;
@@ -89,9 +92,7 @@ namespace YGOProDevelop.ViewModel
         /// </summary>
         public IList<ICompletionData> CompletionDatas {
             get {
-                IList<ICompletionData> datas = new List<ICompletionData>();
-                datas.Add(new MyCompletionData("shit"));
-                return datas;
+                return _intelisenceService.GetCompletionDatas("lua.ecp");
             }
         }
 
@@ -115,7 +116,7 @@ namespace YGOProDevelop.ViewModel
 
             string extension = Path.GetExtension(fileName);
             Language = HighlightingManager.Instance.GetDefinitionByExtension(extension);
-
+            initTextLength = _document.TextLength;
             Document.TextChanged += Document_TextChanged;
         }
 
@@ -127,20 +128,5 @@ namespace YGOProDevelop.ViewModel
             IsDirty = false;
         }
 
-        private RelayCommand<string> _hintTooltipCmd;
-
-        /// <summary>
-        /// Gets the MyCommand.
-        /// </summary>
-        public RelayCommand<string> HintTooltipCmd {
-            get {
-                return _hintTooltipCmd
-                    ?? (_hintTooltipCmd = new RelayCommand<string>(
-                    (text) => {
-                        /*if(string.IsNullOrEmpty(text)==false)*/
-                            MessengerInstance.Send(new NotificationMessage<string>(this,"Test tooltip", "ShowTooltip"), "DocumentView");
-                    }));
-            }
-        }
     }
 }

@@ -181,6 +181,7 @@
     <Compile Include="PanelTemplate\PanelTemplateManager.cs" />
     <Compile Include="PanelTemplate\PanelTemplateSelector.cs" />
     <Compile Include="Service\CustomDialogRigister.cs" />
+    <Compile Include="Service\DefaultIntelisenceService.cs" />
     <Compile Include="Service\ICDBService.cs" />
     <Compile Include="Service\IIntelisenceService.cs" />
     <Compile Include="Service\MessageBoxService.cs" />
@@ -204,9 +205,6 @@
     <Compile Include="View\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MyTooltip.xaml.cs">
-      <DependentUpon>MyTooltip.xaml</DependentUpon>
-    </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -224,10 +222,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DocumentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MyTooltip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -341,7 +335,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Data\lua.ecp" />
+    <Content Include="Data\Intelisence\lua.ecp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
