@@ -158,4 +158,5 @@ C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Se
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\StarLevel.xml
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Type.xml
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\cards.cdb
-D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Intelisence\lua.ecp
+D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Intelisence\Lua\Lua.ecp
+D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Intelisence\Lua\YGOApi.xml

@@ -24,8 +24,7 @@ namespace YGOProDevelop.ViewModel
         /// <summary>
         /// Initializes a new instance of the CDBEditorViewModel class.
         /// </summary>
-        public CDBEditorViewModel(ICDBService cdbService, IMessageBoxService msgBoxService) {
-            this.msgBoxService = msgBoxService;
+        public CDBEditorViewModel(ICDBService cdbService) {
 
             try {
                 this.cdbService = cdbService;
@@ -37,7 +36,6 @@ namespace YGOProDevelop.ViewModel
             }
             catch(Exception ex) {
                 Debug.WriteLine("Debug",ex.StackTrace);
-                msgBoxService.ShowError(ex, "警告");
                 Properties.Settings.Default.lastCDB = "";
             }
         }
@@ -45,7 +43,6 @@ namespace YGOProDevelop.ViewModel
         private ICDBService cdbService;
         private ObservableCollection<datas> cards;
         private CardBuilder cardBuilder;
-        private IMessageBoxService msgBoxService;
 
         public CardBuilder CardBuilder {
             get { return cardBuilder; }

@@ -13,8 +13,7 @@ namespace YGOProDevelop.Service
     /// View管理类
     /// 通过在XAML里面定义附加属性将View注册保存到_views里
     /// </summary>
-    public class CustomDialogService : YGOProDevelop.Service.ICustomDialogService
-    {
+    public class CustomDialogService : ICustomDialogService {
 
         /// <summary>
         /// 所有被注册过的view实例

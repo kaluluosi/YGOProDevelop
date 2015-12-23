@@ -50,7 +50,7 @@ namespace YGOProDevelop.ViewModel
 
         public ICSharpCode.AvalonEdit.Highlighting.IHighlightingDefinition Language {
             get { return _language; }
-            set { _language = value; RaisePropertyChanged(()=>Language); }
+            set { _language = value; RaisePropertyChanged(()=>Language);RaisePropertyChanged(() => CompletionDatas); }
         }
         public TextDocument Document {
             get { return _document; }
@@ -92,10 +92,9 @@ namespace YGOProDevelop.ViewModel
         /// </summary>
         public IList<ICompletionData> CompletionDatas {
             get {
-                return _intelisenceService.GetCompletionDatas("lua.ecp");
+                return _intelisenceService.GetCompletionDatas(Language);
             }
         }
-
 
         private int initTextLength = 0;
         void Document_TextChanged(object sender, System.EventArgs e) {
@@ -113,7 +112,6 @@ namespace YGOProDevelop.ViewModel
             _document.Text = reader.ReadToEnd();
             initTextLength = _document.TextLength;
             reader.Close();
-
             string extension = Path.GetExtension(fileName);
             Language = HighlightingManager.Instance.GetDefinitionByExtension(extension);
             initTextLength = _document.TextLength;

@@ -1,0 +1,5 @@
+D:\GitHub\YGOProDevelop\CompletionDataGenerator\bin\Debug\CompletionDataGenerator.exe.config
+D:\GitHub\YGOProDevelop\CompletionDataGenerator\bin\Debug\CompletionDataGenerator.exe
+D:\GitHub\YGOProDevelop\CompletionDataGenerator\bin\Debug\CompletionDataGenerator.pdb
+D:\GitHub\YGOProDevelop\CompletionDataGenerator\obj\Debug\CompletionDataGenerator.exe
+D:\GitHub\YGOProDevelop\CompletionDataGenerator\obj\Debug\CompletionDataGenerator.pdb

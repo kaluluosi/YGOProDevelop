@@ -41,11 +41,10 @@ namespace YGOProDevelop.ViewModel
             SimpleIoc.Default.Register<CDBEditorViewModel>();
 
             //注册服务
-            SimpleIoc.Default.Register<IMessageBoxService, MessageBoxService>();
             SimpleIoc.Default.Register<ICustomDialogService, CustomDialogService>();
             SimpleIoc.Default.Register<IHighlightSettingService, DefaultHighlightSettingService>();
             SimpleIoc.Default.Register<ICDBService, CDBService>();
-            SimpleIoc.Default.Register<IIntelisenceService, DefaultIntelisenceService>();
+            SimpleIoc.Default.Register<IIntelisenceService, SmartIntelisenceService>();
 
             //注册ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
@@ -64,12 +63,6 @@ namespace YGOProDevelop.ViewModel
         public CDBEditorViewModel CDBEditor {
             get {
                 return ServiceLocator.Current.GetInstance<CDBEditorViewModel>();
-            }
-        }
-
-        public DocumentViewModel Document {
-            get {
-                return ServiceLocator.Current.GetInstance<DocumentViewModel>(Guid.NewGuid().ToString());
             }
         }
 

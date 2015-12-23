@@ -60,7 +60,7 @@ namespace YGOProDevelop.View {
                 var data = CompletionDatas.FirstOrDefault(d => d.Text.Contains(text));
                 if (data != null) {
                     toolTip.Content = new TextBlock {
-                        Text = data.Text + "\n" + data.Description,
+                        Text =data.Description.ToString(),
                         TextWrapping = TextWrapping.Wrap
                     };
                     toolTip.PlacementTarget = this; // required for property inheritance
@@ -103,7 +103,7 @@ namespace YGOProDevelop.View {
 
         private void TextArea_TextEntering(object sender, TextCompositionEventArgs e) {
             // provide AvalonEdit with the data:
-            if ((char.IsLetter(e.Text[0]) || e.Text == ".") && completionWin == null) {
+            if ((char.IsLetter(e.Text[0]) || e.Text == ".") && completionWin == null&&CompletionDatas!=null) {
                 CompletionWin = new CompletionWindow(editor.TextArea);
                 foreach (ICompletionData data in CompletionDatas) {
                     CompletionWin.CompletionList.CompletionData.Add(data);
