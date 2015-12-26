@@ -169,13 +169,13 @@ namespace YGOProDevelop.ViewModel
         public ICommand ClosingCmd {
             get {
                 return _closingCmd
-                    ?? (_closingCmd = new RelayCommand<CancelEventArgs>(
-                    (e) => {
-                        System.Collections.Specialized.StringCollection files = Properties.Settings.Default.lastFiles;
-                        files.Clear();
+                    ?? (_closingCmd = new RelayCommand(
+                    () => {
+                        System.Collections.Specialized.StringCollection files = new System.Collections.Specialized.StringCollection();
                         foreach(DocumentViewModel doc in DocumentViewModels) {
                              files.Add(doc.FileName);
                         }
+                        Properties.Settings.Default.lastFiles = files;
                         Properties.Settings.Default.Save();
                     }));
             }

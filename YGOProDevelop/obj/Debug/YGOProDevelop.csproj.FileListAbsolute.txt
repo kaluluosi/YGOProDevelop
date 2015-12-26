@@ -75,14 +75,11 @@ D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe.config
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.pdb
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe.CodeAnalysisLog.xml
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe.lastcodeanalysissucceeded
-D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Caliburn.Micro.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\EntityFramework.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\EntityFramework.SqlServer.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.Extras.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.Platform.dll
-D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Gemini.dll
-D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Gemini.Modules.CodeEditor.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ICSharpCode.AvalonEdit.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\System.Data.SQLite.dll
@@ -96,8 +93,6 @@ D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metr
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.DataGrid.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.Toolkit.dll
-D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Caliburn.Micro.pdb
-D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Caliburn.Micro.xml
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\EntityFramework.xml
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\EntityFramework.SqlServer.xml
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\GalaSoft.MvvmLight.pdb

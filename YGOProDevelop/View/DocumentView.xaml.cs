@@ -38,7 +38,6 @@ namespace YGOProDevelop.View {
 
             editor.TextArea.DefaultInputHandler.NestedInputHandlers.Add(new SearchInputHandler(editor.TextArea));
 
-
             Binding binding = new Binding("CompletionDatas");
             SetBinding(CompeltionDatasProperty, binding);
 

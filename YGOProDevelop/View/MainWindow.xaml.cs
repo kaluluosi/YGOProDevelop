@@ -28,7 +28,6 @@ namespace YGOProDevelop {
 
             ChangeTheme(Properties.Settings.Default.Theme);
 
-
             Messenger.Default.Register<NotificationMessageAction<string>>(this, "MainWindow", (msg) => {
                 if (msg.Notification == "OpenFile") {
                     OpenFileDialog openDlg = new OpenFileDialog();
