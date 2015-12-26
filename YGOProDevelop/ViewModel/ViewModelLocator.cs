@@ -32,13 +32,8 @@ namespace YGOProDevelop.ViewModel
             //不能删除
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            //对话框注册器
-            //             SimpleIoc.Default.Register<CustomDialogRigister>(true);
-            //面板模板注册器
-            SimpleIoc.Default.Register<PanelTemplateRegister>(true);
             //注册ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<CDBEditorViewModel>();
 
             //注册服务
             SimpleIoc.Default.Register<ICustomDialogService, CustomDialogService>();
@@ -48,29 +43,30 @@ namespace YGOProDevelop.ViewModel
 
             //注册ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<CDBEditorViewModel>();
             SimpleIoc.Default.Register<DocumentViewModel>();
-
+            SimpleIoc.Default.Register<CardListViewModel>();
 
         }
 
-        public MainViewModel Main {
+        public static MainViewModel Main {
             get {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
 
-        public CDBEditorViewModel CDBEditor {
+
+        public CardListViewModel CardList {
             get {
-                return ServiceLocator.Current.GetInstance<CDBEditorViewModel>();
+                return ServiceLocator.Current.GetInstance<CardListViewModel>();
             }
         }
+
 
         /// <summary>
         /// Cleans up all the resources.
         /// </summary>
         public static void Cleanup() {
-
+            
         }
     }
 }

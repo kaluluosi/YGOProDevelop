@@ -9,48 +9,40 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
 using YGOProDevelop.View;
 using Microsoft.Win32;
+using Xceed.Wpf.AvalonDock.Layout.Serialization;
 
-namespace YGOProDevelop
-{
+namespace YGOProDevelop {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    public partial class MainWindow : Window {
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
         /// </summary>
         public MainWindow() {
             InitializeComponent();
+
+            layoutSerilizer = new XmlLayoutSerializer(dock);
+
             Closing += (s, e) => { ViewModelLocator.Cleanup(); Properties.Settings.Default.Save(); };
 
             ChangeTheme(Properties.Settings.Default.Theme);
 
-            //
-            
-
-            //打开CDBEditor
-            Messenger.Default.Register<NotificationMessage>(this,"MainWindow", (msg) => {
-                if(msg.Notification == "OpenCDBEditor") {
-                    CDBEditorView cdbView = new CDBEditorView();
-                    cdbView.Show();
-                }
-            });
 
             Messenger.Default.Register<NotificationMessageAction<string>>(this, "MainWindow", (msg) => {
-                if(msg.Notification == "OpenFile") {
+                if (msg.Notification == "OpenFile") {
                     OpenFileDialog openDlg = new OpenFileDialog();
                     openDlg.AddExtension = true;
                     openDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
                     openDlg.FilterIndex = 1;
-                    if(openDlg.ShowDialog()==true) {
+                    if (openDlg.ShowDialog() == true) {
                         msg.Execute(openDlg.FileName);
                     }
                 }
             });
 
             Messenger.Default.Register<NotificationMessageAction<string>>(this, "MainWindow", (msg) => {
-                if(msg.Notification == "SaveFile") {
+                if (msg.Notification == "SaveFile") {
                     SaveFileDialog saveDlg = new SaveFileDialog();
                     saveDlg.AddExtension = true;
                     saveDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
@@ -63,6 +55,7 @@ namespace YGOProDevelop
 
         }
 
+        private XmlLayoutSerializer layoutSerilizer;
 
         private void themesMenu_Click(object sender, RoutedEventArgs e) {
             string header = (e.Source as MenuItem).Header.ToString();
@@ -70,7 +63,7 @@ namespace YGOProDevelop
         }
 
         public void ChangeTheme(string themeName) {
-            switch(themeName) {
+            switch (themeName) {
                 case "VS2010":
                     dock.Theme = new VS2010Theme();
                     break;
@@ -94,6 +87,18 @@ namespace YGOProDevelop
             Properties.Settings.Default.Theme = themeName;
         }
 
+        private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+            layoutSerilizer.Serialize(@".\layout.cfg");
+        }
+
+        private void window_Loaded(object sender, RoutedEventArgs e) {
+            try {
+                layoutSerilizer.Deserialize(@".\layout.cfg");
+            }
+            catch (System.Exception ex) {
+
+            }
+        }
 
     }
 }

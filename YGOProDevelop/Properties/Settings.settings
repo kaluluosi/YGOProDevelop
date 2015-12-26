@@ -19,5 +19,8 @@
     <Setting Name="lastCDB" Type="System.String" Scope="User">
       <Value Profile="(Default)">cards.cdb</Value>
     </Setting>
+    <Setting Name="lastFiles" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

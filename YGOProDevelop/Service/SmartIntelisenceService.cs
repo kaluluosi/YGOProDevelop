@@ -41,8 +41,9 @@ namespace YGOProDevelop.Service {
 	                        datas.Add(cd);
 	                    }
                     }
-                    catch (System.Exception ex)
+                    catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
                         continue;
                     }
                 }

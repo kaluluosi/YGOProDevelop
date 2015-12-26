@@ -3,32 +3,43 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:panel="clr-namespace:YGOProDevelop.PanelTempalte"
         xmlns:avalon="http://schemas.xceed.com/wpf/xaml/avalondock"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
         xmlns:ignore="http://www.ignore.com"
-        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:local="clr-namespace:YGOProDevelop" x:Name="window" x:Class="YGOProDevelop.MainWindow"
+        xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
+        xmlns:v ="clr-namespace:YGOProDevelop.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:local="clr-namespace:YGOProDevelop" xmlns:cal="http://www.caliburnproject.org" x:Name="window" x:Class="YGOProDevelop.MainWindow"
         mc:Ignorable="d ignore"
         Height="757"
         Width="1173.5"
         Title="YGOProDevelop" WindowStartupLocation="CenterScreen"
-        DataContext="{Binding Source={StaticResource Locator},Path=Main}" Icon="/YGOProDevelop;component/Resources/属性/暗.png" 
+        Icon="/YGOProDevelop;component/Resources/属性/暗.png" 
+        Closing="window_Closing"
+        Loaded="window_Loaded"
     >
-    <Window.InputBindings>
-        <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding SaveCmd}"></KeyBinding>
-    </Window.InputBindings>
     <Window.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="DocumentHeaderTemplate">
-                <TextBlock Text="{Binding Content.Title}" TextTrimming="CharacterEllipsis"/>
+            <DataTemplate DataType="{x:Type vm:CardListViewModel}">
+                <v:CardListView/>
             </DataTemplate>
-            <DataTemplate x:Key="DocumentTitleTemplate">
-                <TextBlock Text="{Binding Content.Title}" TextTrimming="CharacterEllipsis"/>
+            <DataTemplate DataType="{x:Type vm:DocumentViewModel}">
+                <v:DocumentView/>
             </DataTemplate>
-            <DataTemplate x:Key="DocumentContentMenuTemplate">
-                <TextBlock Text="{Binding Content.Title}" TextTrimming="CharacterEllipsis"/>
-            </DataTemplate>
+            <avalon:BoolToVisibilityConverter x:Key="bool2Visibility"/>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.DataContext>
+        <Binding Path="Main" Source="{StaticResource Locator}"/>
+    </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding SaveCmd}"/>
+    </Window.InputBindings>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <cmd:EventToCommand Command="{Binding ClosingCmd}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
@@ -40,32 +51,33 @@
 
         <Menu Grid.Row="0" >
             <MenuItem Header="文件" Background="{x:Null}">
-                <MenuItem Header="新建" Command="{Binding NewCmd}"></MenuItem>
-                <MenuItem Header="打开" Command="{Binding OpenCmd}"></MenuItem>
-                <MenuItem Header="保存" Command="{Binding SaveCmd}"></MenuItem>
+                <MenuItem Header="新建" Command="{Binding NewCmd}"/>
+                <MenuItem Header="打开" Command="{Binding OpenCmd}"/>
+                <MenuItem Header="保存" Command="{Binding SaveCmd}"/>
+            </MenuItem>
+            <MenuItem Header="编辑">
+                <MenuItem Header="查找" Command="{x:Static ApplicationCommands.Find}"/>
             </MenuItem>
             <MenuItem Header="视图" >
                 <MenuItem Header="显示行号" IsCheckable="True"  IsChecked="{Binding IsShowLineNumbers}" />
-            </MenuItem>
-            <MenuItem Header="编辑">
-                <MenuItem Header="查找" Command="{x:Static ApplicationCommands.Find}"></MenuItem>
+                <MenuItem Header="卡片列表" IsCheckable="True" IsChecked="{Binding CardListViewModel.IsVisible}"></MenuItem>
             </MenuItem>
             <MenuItem Header="语言" ItemsSource="{Binding HightLightingDefs}" >
                 <MenuItem.ItemContainerStyle>
-                    <Style TargetType="MenuItem">
-                        <Setter Property="Command" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type MenuItem}}, Path=DataContext.SetLanguageCmd }"></Setter>
-                        <Setter Property="CommandParameter" Value="{Binding .}"></Setter>
+                    <Style TargetType="{x:Type MenuItem}">
+                        <Setter Property="Command" Value="{Binding DataContext.SetLanguageCmd, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type MenuItem}}}"/>
+                        <Setter Property="CommandParameter" Value="{Binding .}"/>
                     </Style>
                 </MenuItem.ItemContainerStyle>
             </MenuItem>
-            
+
             <MenuItem x:Name="themesMenu" Header="主题" Click="themesMenu_Click" >
-                <MenuItem Header="VS2010"></MenuItem>
-                <MenuItem Header="ExpressDark"></MenuItem>
-                <MenuItem Header="ExpressLight"></MenuItem>
-                <MenuItem Header="Aero"></MenuItem>
-                <MenuItem Header="Metro"></MenuItem>
-                <MenuItem Header="Generic"></MenuItem>
+                <MenuItem Header="VS2010"/>
+                <MenuItem Header="ExpressDark"/>
+                <MenuItem Header="ExpressLight"/>
+                <MenuItem Header="Aero"/>
+                <MenuItem Header="Metro"/>
+                <MenuItem Header="Generic"/>
             </MenuItem>
         </Menu>
 
@@ -75,8 +87,8 @@
                     <Button Command="{Binding NewCmd}">
                         <Image Source="/YGOProDevelop;component/Resources/Icon/File_New32.png" Height="34" Width="32"/>
                     </Button>
-                    <Button Command="{Binding OpenCDBEditor, Mode=OneWay}" ToolTip="CDBEditor">
-                        <Image Source="/YGOProDevelop;component/Resources/类型/cardFrame_0.png"  Height="34" Width="32" ></Image>
+                    <Button Command="{Binding ShowCardListCmd}" ToolTip="CDBEditor">
+                        <Image Source="/YGOProDevelop;component/Resources/类型/cardFrame_0.png"  Height="34" Width="32" />
                     </Button>
                 </ToolBar>
             </ToolBarTray>
@@ -84,12 +96,19 @@
 
         <avalon:DockingManager x:Name="dock" Grid.Row="2" 
 			DocumentsSource="{Binding DocumentViewModels}" 
-			AnchorablesSource="{Binding AnchorableViewModels}"  
-			ActiveContent="{Binding ActiveViewModel,Mode=TwoWay}" DocumentHeaderTemplate="{DynamicResource DocumentHeaderTemplate}" DocumentTitleTemplate="{DynamicResource DocumentTitleTemplate}" DocumentPaneMenuItemHeaderTemplate="{DynamicResource DocumentContentMenuTemplate}"  >
-            <avalon:DockingManager.LayoutItemTemplateSelector>
-                <panel:PanelTemplateSelector/>
-            </avalon:DockingManager.LayoutItemTemplateSelector>
-            <avalon:LayoutRoot/>
+			AnchorablesSource="{Binding AnchorableViewModels}"
+			ActiveContent="{Binding ActiveViewModel, Mode=TwoWay}" >
+            <avalon:DockingManager.LayoutItemContainerStyle>
+                <Style TargetType="{x:Type avalon:LayoutItem}">
+                    <Setter Property="Title" Value="{Binding Model.Title}" />
+                    <Setter Property="ContentId" Value="{Binding Model.ContentId}"/>
+                    <Setter Property="CloseCommand" Value="{Binding Model.CloseCmd}"></Setter>
+                    <Setter Property="Visibility" Value="{Binding Model.IsVisible,Converter={StaticResource bool2Visibility},ConverterParameter={x:Static Visibility.Hidden},Mode=TwoWay}" ></Setter>
+                </Style>
+            </avalon:DockingManager.LayoutItemContainerStyle>
+            <avalon:LayoutRoot >
+                
+            </avalon:LayoutRoot>
         </avalon:DockingManager>
 
     </Grid>

@@ -15,6 +15,8 @@ using ICSharpCode.AvalonEdit.CodeCompletion;
 using System.Collections.Generic;
 using YGOProDevelop.Model;
 using YGOProDevelop.Service;
+using System.Windows.Input;
+using System.Windows;
 
 namespace YGOProDevelop.ViewModel
 {
@@ -24,7 +26,7 @@ namespace YGOProDevelop.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class DocumentViewModel : ViewModelBase
+    public class DocumentViewModel : DockableViewModelBase
     {
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace YGOProDevelop.ViewModel
             set { _document = value; RaisePropertyChanged(()=>Document); }
         }
 
-        public string Title {
+        public override string Title {
             get {
 //                 _fileName = _fileName == null ? "未命名" : Path.GetFileName(_fileName);
                 string title="";
@@ -116,6 +118,8 @@ namespace YGOProDevelop.ViewModel
             Language = HighlightingManager.Instance.GetDefinitionByExtension(extension);
             initTextLength = _document.TextLength;
             Document.TextChanged += Document_TextChanged;
+
+            ContentId = FileName;
         }
 
         public void SaveFile(string fileName) {
@@ -124,6 +128,13 @@ namespace YGOProDevelop.ViewModel
             writer.Close();
             FileName = fileName;
             IsDirty = false;
+        }
+
+        protected override void OnClose() {
+            base.OnClose();
+            //To do
+            if (ViewModelLocator.Main.DocumentViewModels.Contains(this))
+                ViewModelLocator.Main.DocumentViewModels.Remove(this);
         }
 
     }

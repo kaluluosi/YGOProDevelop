@@ -71,7 +71,6 @@ C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\CD
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.csprojResolveAssemblyReference.cache
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\MainWindow.g.cs
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\MainWindow.baml
-D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Resources\Highlight\Lua-Mode.xshd
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe.config
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.pdb
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe.CodeAnalysisLog.xml
@@ -125,10 +124,8 @@ D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ru\Xceed.Wpf.AvalonDock.resource
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.csprojResolveAssemblyReference.cache
-D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\CDBEditorView.baml
 D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\DocumentView.baml
 D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\MainWindow.g.cs
-D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\CDBEditorView.g.cs
 D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\DocumentView.g.cs
 D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\App.g.cs
 D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop_Content.g.cs
@@ -159,4 +156,10 @@ C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\St
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Type.xml
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\cards.cdb
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Intelisence\Lua\Lua.ecp
-D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Intelisence\Lua\YGOApi.xml
+D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Highlight\Lua-Mode.xshd
+D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Intelisence\Lua\YGOProApi.xml
+D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\CardListView.g.cs
+D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\CardListView.baml
+D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.pdb
+D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.xml

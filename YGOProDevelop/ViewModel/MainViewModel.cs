@@ -12,6 +12,8 @@ using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
+using Xceed.Wpf.AvalonDock;
+using System.ComponentModel;
 
 namespace YGOProDevelop.ViewModel
 {
@@ -29,6 +31,10 @@ namespace YGOProDevelop.ViewModel
         /// </summary>
         public MainViewModel(IHighlightSettingService hlSettingService) {
             _hlSettingService = hlSettingService;
+
+             ReOpenDocument();
+
+            this.AnchorableViewModels.Add(CardListViewModel);
         }
 
         public IDialogService DialogService {
@@ -36,6 +42,15 @@ namespace YGOProDevelop.ViewModel
                 return SimpleIoc.Default.GetInstance<IDialogService>();
             }
         }
+
+        public CardListViewModel CardListViewModel {
+            get {
+                if(_cardListViewModel== null)
+                    _cardListViewModel = SimpleIoc.Default.GetInstance<CardListViewModel>();
+                return _cardListViewModel;
+            }
+        }
+        private CardListViewModel _cardListViewModel;
         /// <summary>
         /// 文档viewmodel集合
         /// </summary>
@@ -95,82 +110,114 @@ namespace YGOProDevelop.ViewModel
         }
 
         #region command
-        public RelayCommand<IHighlightingDefinition> SetLanguageCmd {
+
+        private ICommand _setLanguageCmd;
+        public ICommand SetLanguageCmd {
             get {
-                return new RelayCommand<IHighlightingDefinition>(
+                return _setLanguageCmd??(_setLanguageCmd=new RelayCommand<IHighlightingDefinition>(
                         language => {
                             _activeDocumentViewModel.Language = language;
                         },
                         language => {
                             return _activeDocumentViewModel != null;
                         }
-                    );
+                    ));
             }
         }
 
-        public RelayCommand SaveCmd {
+        private ICommand _saveCmd;
+        public ICommand SaveCmd {
             get {
-                return new RelayCommand(
+                return _saveCmd??( _saveCmd = new RelayCommand(
                     () => {
-                        SaveDocument();
+                        MessengerInstance.Send(new NotificationMessageAction<string>("SaveFile", (fileName) => {
+                            _activeDocumentViewModel.SaveFile(fileName);
+                        }), "MainWindow");
                     },
                     () => {
                         return _activeDocumentViewModel != null;
                     }
-                );
+                ));
             }
         }
 
-        public RelayCommand OpenCmd {
+        private ICommand _openCmd;
+        public ICommand OpenCmd {
             get {
-                return new RelayCommand(
+                return _openCmd??(_openCmd =new RelayCommand(
                     () => {
-                        OpenDocument();
+                        MessengerInstance.Send(new NotificationMessageAction<string>("OpenFile", (fileName) => {
+                            NewDocument(fileName);
+                        }), "MainWindow");
                     }
-                );
+                ));
             }
         }
 
-        public RelayCommand NewCmd {
+        private ICommand _newCmd;
+        public ICommand NewCmd {
             get {
-                return new RelayCommand(
+                return _newCmd??(_newCmd = new RelayCommand(
                         () => {
                             NewDocument();
                         }
-                    );
+                    ));
             }
         }
 
-        public RelayCommand OpenCDBEditor {
+        private ICommand _closingCmd;
+        public ICommand ClosingCmd {
             get {
-                return new RelayCommand(
+                return _closingCmd
+                    ?? (_closingCmd = new RelayCommand<CancelEventArgs>(
+                    (e) => {
+                        System.Collections.Specialized.StringCollection files = Properties.Settings.Default.lastFiles;
+                        files.Clear();
+                        foreach(DocumentViewModel doc in DocumentViewModels) {
+                             files.Add(doc.FileName);
+                        }
+                        Properties.Settings.Default.Save();
+                    }));
+            }
+        }
+
+        private ICommand _showCardListCmd;
+
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public ICommand ShowCardListCmd {
+            get {
+                return _showCardListCmd
+                    ?? (_showCardListCmd = new RelayCommand(
                     () => {
-                        MessengerInstance.Send(new NotificationMessage("OpenCDBEditor"), "MainWindow");
-                    }
-                    );
+                        CardListViewModel.IsVisible = true;
+                    }));
             }
         }
 
         #endregion
         #region method
 
-        private void OpenDocument() {
-            MessengerInstance.Send(new NotificationMessageAction<string>("OpenFile", (fileName) => {
-                var docVM = CreateDocumentVM();
-                docVM.OpenFile(fileName);
-                DocumentViewModels.Add(docVM);
-                ActiveViewModel = docVM;
-            }), "MainWindow");
-        }
-
-        private void SaveDocument() {
-            MessengerInstance.Send(new NotificationMessageAction<string>("SaveFile",(fileName)=>{
-                _activeDocumentViewModel.SaveFile(fileName);
-            }),"MainWindow");
+        private void ReOpenDocument() {
+            var files = Properties.Settings.Default.lastFiles;
+            if (files != null && files.Count != 0) {
+                foreach(var fileName in files) {
+                    if(File.Exists(fileName))
+                        NewDocument(fileName);
+                }
+            }
         }
 
         private void NewDocument() {
             DocumentViewModel docVM = CreateDocumentVM();
+            DocumentViewModels.Add(docVM);
+            ActiveViewModel = docVM;
+        }
+
+        private void NewDocument(string fileName) {
+            var docVM = CreateDocumentVM();
+            docVM.OpenFile(fileName);
             DocumentViewModels.Add(docVM);
             ActiveViewModel = docVM;
         }
@@ -180,6 +227,8 @@ namespace YGOProDevelop.ViewModel
             docVM.IsShowLineNumbers = IsShowLineNumbers;
             return docVM;
         }
+
+
 
         #endregion
     }

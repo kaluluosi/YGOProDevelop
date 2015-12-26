@@ -3,3 +3,5 @@ D:\GitHub\YGOProDevelop\CompletionDataGenerator\bin\Debug\CompletionDataGenerato
 D:\GitHub\YGOProDevelop\CompletionDataGenerator\bin\Debug\CompletionDataGenerator.pdb
 D:\GitHub\YGOProDevelop\CompletionDataGenerator\obj\Debug\CompletionDataGenerator.exe
 D:\GitHub\YGOProDevelop\CompletionDataGenerator\obj\Debug\CompletionDataGenerator.pdb
+D:\GitHub\YGOProDevelop\CompletionDataGenerator\obj\Debug\CompletionDataGenerator.csprojResolveAssemblyReference.cache
+D:\GitHub\YGOProDevelop\CompletionDataGenerator\bin\Debug\_functions.txt_sort.txt

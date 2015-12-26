@@ -44,7 +44,7 @@ namespace Cfg {
                     items = xmlSerializer.Deserialize(fs) as List<VarItem>;
                 }
                 catch (InvalidOperationException ex) {
-                    throw ;
+                    throw ex;
                 }
             }
 
@@ -68,7 +68,7 @@ namespace Cfg {
                     xmlSerializer.Serialize(fs, items);
                 }
                 catch (InvalidOperationException ex) {
-                    throw ;
+                    throw ex;
                 }
             }
         }

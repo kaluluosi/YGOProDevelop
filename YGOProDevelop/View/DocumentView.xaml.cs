@@ -57,7 +57,8 @@ namespace YGOProDevelop.View {
 
             if (pos != null && CompletionDatas != null) {
                 string text = GetWordOverMouse(e);
-                var data = CompletionDatas.FirstOrDefault(d => d.Text.Contains(text));
+
+                var data = CompletionDatas.FirstOrDefault(d => d.Content.ToString().Contains(text));
                 if (data != null) {
                     toolTip.Content = new TextBlock {
                         Text =data.Description.ToString(),
@@ -75,6 +76,7 @@ namespace YGOProDevelop.View {
             int offset = editor.Document.GetOffset(pos.Value.Location);
             int start = ICSharpCode.AvalonEdit.Document.TextUtilities.GetNextCaretPosition(editor.Document, offset, LogicalDirection.Backward, ICSharpCode.AvalonEdit.Document.CaretPositioningMode.WordBorder);
             int end = ICSharpCode.AvalonEdit.Document.TextUtilities.GetNextCaretPosition(editor.Document, offset, LogicalDirection.Forward, ICSharpCode.AvalonEdit.Document.CaretPositioningMode.WordBorder);
+            if (end - start < 0) return null;
             return editor.Document.GetText(start, end - start);
         }
 
@@ -108,7 +110,6 @@ namespace YGOProDevelop.View {
                 foreach (ICompletionData data in CompletionDatas) {
                     CompletionWin.CompletionList.CompletionData.Add(data);
                 }
-                CompletionWin.CompletionList.SelectItem(e.Text);
                 CompletionWin.Show();
                 completionWin.CompletionList.ScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
                 completionWin.SizeToContent = SizeToContent.Width;
