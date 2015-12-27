@@ -21,25 +21,15 @@ namespace YGOProDevelop.Service {
             var datas = dataDict[language];
             //以后ecp格式改用自己定义的xml格式
             string path = @"data\Intelisence\"+language.Name;
+
+            if (Directory.Exists(path) == false) return datas;
+
             foreach(string file in Directory.GetFiles(path)) {
                 using (StreamReader sr = new StreamReader(file)) {
                     //这里改用xmlSerialize
                     //To Do
-                    try
-                    {
-	                    XmlSerializer loader = new XmlSerializer(typeof(List<CompletionItem>));
-	                    var items = loader.Deserialize(sr) as List<CompletionItem>;
-	                    var completionDatas = from item in items
-	                                          select new DefaultCompletionData() {
-	                                              Text = item.Text,
-	                                              Content = item.Content,
-	                                              Description = item.Description,
-	//                                               Image = new BitmapImage(new Uri(item.Image, UriKind.RelativeOrAbsolute)),
-	                                              Priority = item.Priority
-	                                          };
-	                    foreach(ICompletionData cd in completionDatas) {
-	                        datas.Add(cd);
-	                    }
+                    try {
+                        LoadData(datas, sr);
                     }
                     catch (Exception ex)
                     {
@@ -49,6 +39,22 @@ namespace YGOProDevelop.Service {
                 }
             }
             return datas;
+        }
+
+        private void LoadData(IList<ICompletionData> datas, StreamReader sr) {
+            XmlSerializer loader = new XmlSerializer(typeof(List<CompletionItem>));
+            var items = loader.Deserialize(sr) as List<CompletionItem>;
+            var completionDatas = from item in items
+                                  select new DefaultCompletionData() {
+                                      Text = item.Text,
+                                      Content = item.Content,
+                                      Description = item.Description,
+                                      //                                               Image = new BitmapImage(new Uri(item.Image, UriKind.RelativeOrAbsolute)),
+                                      Priority = item.Priority
+                                  };
+            foreach (ICompletionData cd in completionDatas) {
+                datas.Add(cd);
+            }
         }
     }
 }

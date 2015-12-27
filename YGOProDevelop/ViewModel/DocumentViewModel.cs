@@ -130,6 +130,10 @@ namespace YGOProDevelop.ViewModel
             IsDirty = false;
         }
 
+        public void SaveFile() {
+            SaveFile(FileName);
+        }
+
         protected override void OnClose() {
             base.OnClose();
             //To do

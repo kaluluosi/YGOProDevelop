@@ -191,7 +191,6 @@
     <Compile Include="View\CardListView.xaml.cs">
       <DependentUpon>CardListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="View\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
@@ -365,6 +364,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\Interfaces\" />
+    <Folder Include="View\Converter\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icon\File_New32.png" />

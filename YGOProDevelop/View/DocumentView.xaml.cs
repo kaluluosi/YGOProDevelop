@@ -57,7 +57,7 @@ namespace YGOProDevelop.View {
             if (pos != null && CompletionDatas != null) {
                 string text = GetWordOverMouse(e);
 
-                var data = CompletionDatas.FirstOrDefault(d => d.Content.ToString().Contains(text));
+                var data = CompletionDatas.FirstOrDefault(d => d.Text.ToString().Contains(text));
                 if (data != null) {
                     toolTip.Content = new TextBlock {
                         Text =data.Description.ToString(),
@@ -116,8 +116,8 @@ namespace YGOProDevelop.View {
                     CompletionWin = null;
                 };
             }
-            if (e.Text.Length > 0 && completionWin != null) {
-                if (!char.IsLetterOrDigit(e.Text[0]) && e.Text != ".") {
+            else if (e.Text.Length > 0 && completionWin != null) {
+                if (!char.IsLetterOrDigit(e.Text[0]) && e.Text != "."&& e.Text != ":") {
                     // Whenever a non-letter is typed while the completion window is open,
                     // insert the currently selected element.
                     completionWin.CompletionList.RequestInsertion(e);

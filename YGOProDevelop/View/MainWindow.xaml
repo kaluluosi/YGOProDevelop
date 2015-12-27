@@ -9,7 +9,7 @@
         xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
         xmlns:v ="clr-namespace:YGOProDevelop.View"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:local="clr-namespace:YGOProDevelop" xmlns:cal="http://www.caliburnproject.org" x:Name="window" x:Class="YGOProDevelop.MainWindow"
+        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:local="clr-namespace:YGOProDevelop" x:Name="window" x:Class="YGOProDevelop.MainWindow"
         mc:Ignorable="d ignore"
         Height="757"
         Width="1173.5"
@@ -50,13 +50,14 @@
 
 
         <Menu Grid.Row="0" >
-            <MenuItem Header="文件" Background="{x:Null}">
+            <MenuItem Header="文件">
                 <MenuItem Header="新建" Command="{Binding NewCmd}"/>
                 <MenuItem Header="打开" Command="{Binding OpenCmd}"/>
                 <MenuItem Header="保存" Command="{Binding SaveCmd}"/>
+                <MenuItem Header="另存为" Command="{Binding SaveAsCmd}"/>
             </MenuItem>
             <MenuItem Header="编辑">
-                <MenuItem Header="查找" Command="{x:Static ApplicationCommands.Open}"/>
+                <MenuItem Header="查找" Command="{x:Static ApplicationCommands.Find}"/>
             </MenuItem>
             <MenuItem Header="视图" >
                 <MenuItem Header="显示行号" IsCheckable="True"  IsChecked="{Binding IsShowLineNumbers}" />
