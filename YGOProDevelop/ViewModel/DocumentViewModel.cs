@@ -135,8 +135,24 @@ namespace YGOProDevelop.ViewModel
         }
 
         protected override void OnClose() {
-            base.OnClose();
             //To do
+            if (IsDirty) {
+                MessageBoxResult result = MessageBox.Show("是否保存" + Title+"?", "保存", MessageBoxButton.YesNoCancel);
+                if (result == MessageBoxResult.Yes) {
+                    if (File.Exists(FileName)) {
+                        SaveFile();
+                    }
+                    else {
+                        MessengerInstance.Send(new NotificationMessageAction<string>("SaveFile", (fileName) => {
+                            SaveFile(fileName);
+                        }), "MainWindow");
+                    }
+                }
+                else if (result == MessageBoxResult.Cancel) {
+                    return;
+                }
+            }
+
             if (ViewModelLocator.Main.DocumentViewModels.Contains(this))
                 ViewModelLocator.Main.DocumentViewModels.Remove(this);
         }

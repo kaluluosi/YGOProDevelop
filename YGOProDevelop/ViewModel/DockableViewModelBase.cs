@@ -58,13 +58,12 @@ namespace YGOProDevelop.ViewModel {
                     ?? (_closeCmd = new RelayCommand(
                     () => {
                         OnClose();
-                        IsVisible = false;
                     }));
             }
         }
 
         protected virtual void OnClose() {
-            
+             IsVisible = false;
         }
     }
 }
