@@ -28,13 +28,13 @@ namespace YGOProDevelop.View {
     /// </summary>
     public partial class DocumentView : UserControl {
         private CompletionWindow completionWin;
-        private static List<ICompletionData> datas;
 
         public DocumentView() {
             InitializeComponent();
 
             //Init Constant
             editor.TextArea.TextEntering += TextArea_TextEntering;
+            editor.TextArea.TextEntered += TextArea_TextEntered;
 
             editor.TextArea.DefaultInputHandler.NestedInputHandlers.Add(new SearchInputHandler(editor.TextArea));
 
@@ -45,6 +45,7 @@ namespace YGOProDevelop.View {
             editor.MouseHoverStopped += Editor_MouseHoverStopped;
 
         }
+
 
         private void Editor_MouseHoverStopped(object sender, MouseEventArgs e) {
             toolTip.IsOpen = false;
@@ -60,7 +61,7 @@ namespace YGOProDevelop.View {
                 var data = CompletionDatas.FirstOrDefault(d => d.Text.ToString().Contains(text));
                 if (data != null) {
                     toolTip.Content = new TextBlock {
-                        Text =data.Description.ToString(),
+                        Text = data.Description.ToString(),
                         TextWrapping = TextWrapping.Wrap
                     };
                     toolTip.PlacementTarget = this; // required for property inheritance
@@ -101,10 +102,28 @@ namespace YGOProDevelop.View {
         public static readonly DependencyProperty CompeltionDatasProperty =
             DependencyProperty.Register("CompeltionDatas", typeof(IList<ICompletionData>), typeof(DocumentView), new PropertyMetadata(null));
 
+        private void TextArea_TextEntered(object sender, TextCompositionEventArgs e) {
+            if (".:".Contains(e.Text)) {
+                ShowCompletionWindow();
+            }
+        }
 
         private void TextArea_TextEntering(object sender, TextCompositionEventArgs e) {
             // provide AvalonEdit with the data:
-            if ((char.IsLetter(e.Text[0]) || e.Text == ".") && completionWin == null&&CompletionDatas!=null) {
+            if (char.IsLetter(e.Text[0])) {
+                ShowCompletionWindow();
+            }
+            else if (e.Text.Length > 0 && completionWin != null) {
+                if (!char.IsLetterOrDigit(e.Text[0]) && e.Text != "." && e.Text != ":") {
+                    // Whenever a non-letter is typed while the completion window is open,
+                    // insert the currently selected element.
+                    completionWin.CompletionList.RequestInsertion(e);
+                }
+            }
+        }
+
+        private void ShowCompletionWindow() {
+            if (completionWin == null && CompletionDatas != null) {
                 CompletionWin = new CompletionWindow(editor.TextArea);
                 foreach (ICompletionData data in CompletionDatas) {
                     CompletionWin.CompletionList.CompletionData.Add(data);
@@ -115,13 +134,6 @@ namespace YGOProDevelop.View {
                 CompletionWin.Closed += delegate {
                     CompletionWin = null;
                 };
-            }
-            else if (e.Text.Length > 0 && completionWin != null) {
-                if (!char.IsLetterOrDigit(e.Text[0]) && e.Text != "."&& e.Text != ":") {
-                    // Whenever a non-letter is typed while the completion window is open,
-                    // insert the currently selected element.
-                    completionWin.CompletionList.RequestInsertion(e);
-                }
             }
         }
     }

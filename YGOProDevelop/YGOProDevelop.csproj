@@ -364,6 +364,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\Interfaces\" />
+    <Folder Include="View\Behaviour\" />
     <Folder Include="View\Converter\" />
   </ItemGroup>
   <ItemGroup>
