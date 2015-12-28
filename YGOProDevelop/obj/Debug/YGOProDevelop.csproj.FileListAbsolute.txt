@@ -158,3 +158,7 @@ D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\CardListView.baml
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.pdb
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.xml
+D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\CardEditView.g.cs
+D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\CardEditView.baml
+D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\PreferencesView.g.cs
+D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\PreferencesView.baml

@@ -102,10 +102,12 @@ namespace YGOProDevelop.Service {
         /// </summary>
         public int Search(string keyword) {
             //不通知界面刷新的resetsearch
-            var result = from c in ce.datas
+            queryResult = new ObservableCollection<datas>(ce.datas);
+            var result = from c in queryResult
                          join t in ce.texts on c.id equals t.id
-                         where t.name.Contains(keyword) || t.desc.Contains(keyword)
+                         where t.desc.Contains(keyword) || t.name.Contains(keyword) ||t.id.ToString()==keyword
                          select c;
+
             QueryResult = new ObservableCollection<datas>(result);
             return QueryResult.Count;
         }

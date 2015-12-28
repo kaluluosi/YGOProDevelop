@@ -7,25 +7,20 @@ using System.Threading.Tasks;
 using System.Windows;
 using YGOProDevelop.ViewModel;
 
-namespace YGOProDevelop.Service
-{
+namespace YGOProDevelop.Service {
     /// <summary>
     /// View管理类
     /// 通过在XAML里面定义附加属性将View注册保存到_views里
     /// </summary>
     public class CustomDialogService : ICustomDialogService {
 
-        /// <summary>
-        /// 所有被注册过的view实例
-        /// </summary>
-        private static HashSet<Window> _views = new HashSet<Window>();
-
+        public static Window MainWindow;
 
         /// <summary>
         /// 自定义对话框工厂,viewmodel view 的映射关系
         /// key=ViewModel，value=View
         /// </summary>
-        private static Dictionary<Type, Type> _customWindow = new Dictionary<Type, Type>();
+        private static Dictionary<Type, Type> _customWindowFactory = new Dictionary<Type, Type>();
 
         /// <summary>
         /// 注册映射关系
@@ -33,31 +28,34 @@ namespace YGOProDevelop.Service
         /// </summary>
         /// <typeparam name="TViewModel"></typeparam>
         /// <typeparam name="TView"></typeparam>
-        public static void Register<TViewModel, TView>() where TViewModel : DialogViewModelBase where TView:Window {
-            _customWindow.Add(typeof(TViewModel), typeof(TView));
+        public static void Register<TViewModel, TView>() where TViewModel : DialogViewModelBase where TView : Window {
+            _customWindowFactory.Add(typeof(TViewModel), typeof(TView));
         }
 
-//         public  bool GetRegister(DependencyObject obj) {
-//             return (bool)obj.GetValue(RegisterProperty);
-//         } 
-// 
-//         public  void SetRegister(DependencyObject obj, bool value) {
-//             obj.SetValue(RegisterProperty, value);
-//         }
-// 
-//         // Using a DependencyProperty as the backing store for Register.  This enables animation, styling, binding, etc...
-//         public  readonly DependencyProperty RegisterProperty =
-//             DependencyProperty.RegisterAttached("Register", typeof(bool), typeof(CustomDialogService), new PropertyMetadata(false,OnPropertyChanged));
-// 
-//         private  void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
-//             if((bool)e.NewValue == true) {
-//                 Window win = d as Window;
-//                 _views.Add(d as Window);
-//             }
-//         }
+        public static void Register(DialogViewModelBase vm, Window win) {
+            _customWindowFactory.Add(vm.GetType(), win.GetType());
+        }
 
-        public static Window FindOwnerView(ViewModelBase vm) {
-            return _views.FirstOrDefault(win => ReferenceEquals(win.DataContext, vm));
+        public bool GetRegister(DependencyObject obj) {
+            return (bool)obj.GetValue(RegisterProperty);
+        }
+
+
+        public static void SetRegister(DependencyObject obj, bool value) {
+            obj.SetValue(RegisterProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for Register.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RegisterProperty =
+            DependencyProperty.RegisterAttached("Register", typeof(bool), typeof(CustomDialogService), new PropertyMetadata(false, OnPropertyChanged));
+
+        private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
+            if ((bool)e.NewValue == true) {
+                if (d is Window) {
+                    Window win = d as Window;
+                    MainWindow = win;
+                }
+            }
         }
 
         /// <summary>
@@ -68,8 +66,8 @@ namespace YGOProDevelop.Service
         /// <param name="vm"></param>
         /// <param name="win"></param>
         /// <param name="isDialog"></param>
-        private void BindDialogVM(DialogViewModelBase vm, Window win,bool isDialog=true) {
-            if(isDialog) {
+        private void BindDialogVM(DialogViewModelBase vm, Window win, bool isDialog = true) {
+            if (isDialog) {
                 vm.DialogResultChanged += (sender, result) => {
                     win.DialogResult = result;
                 };
@@ -80,49 +78,42 @@ namespace YGOProDevelop.Service
                 };
             }
             vm.CloseWindow = () => {
-                if(win != null && win.IsEnabled)
+                if (win != null && win.IsEnabled)
                     win.Close();
             };
         }
 
-//         private  void vm_DialogResult_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {
-//             if (e.PropertyName == "DialogResult") {
-//                 DialogViewModelBase dvm = sender as DialogViewModelBase;
-//                 Window win = CustomDialogService.FindOwnerView(dvm);
-//                 if (dvm.DialogResult != null) {
-//                     win.DialogResult = dvm.DialogResult;
-//                     win.Close();
-//                 }
-//             }
-//         }
-
-
-        private  Window CreatWindowByViewModel(DialogViewModelBase vm, ViewModelBase owner = null, bool setDataContext = false) {
+        private Window CreatWindowByViewModel(DialogViewModelBase vm, ViewModelBase owner = null, bool setDataContext = false) {
             Type vmType = vm.GetType();
-            Type winType = _customWindow[vmType];
+            if (_customWindowFactory.ContainsKey(vmType) == false || _customWindowFactory[vmType] == null) throw new Exception(vmType + "没有注册！");
+            Type winType = _customWindowFactory[vmType];
             Window win = Activator.CreateInstance(winType) as Window;
             //设置datacontext
             if (setDataContext == true)
                 win.DataContext = vm;
 
             //设置owner
-            if (owner != null) {
-                win.Owner = CustomDialogService.FindOwnerView(owner);
+            if (MainWindow != null) {
+                win.Owner = CustomDialogService.MainWindow;
+                CustomDialogService.MainWindow.Closed += (s, e) => win.Close();
             }
 
             //监听dialogresult
-//             vm.PropertyChanged += vm_Normal_PropertyChanged;
+            //             vm.PropertyChanged += vm_Normal_PropertyChanged;
 
             return win;
         }
 
-        private  Window CreateWindowByViewModelType<TViewModel>(ViewModelBase owner = null) where TViewModel : DialogViewModelBase {
+        private Window CreateWindowByViewModelType<TViewModel>(ViewModelBase owner = null) where TViewModel : DialogViewModelBase {
             Type vmType = typeof(TViewModel);
-            Type winType = _customWindow[vmType];
+            if (_customWindowFactory.ContainsKey(vmType) == false || _customWindowFactory[vmType] == null) throw new Exception(vmType + "没有注册！");
+            Type winType = _customWindowFactory[vmType];
             Window win = Activator.CreateInstance(winType) as Window;
 
-            if (owner != null)
-                win.Owner = CustomDialogService.FindOwnerView(owner);
+            if (MainWindow != null) {
+                win.Owner = CustomDialogService.MainWindow;
+                CustomDialogService.MainWindow.Closed += (s, e) => win.Close();
+            }
 
             return win;
         }
@@ -131,31 +122,26 @@ namespace YGOProDevelop.Service
         /// 打开模态对话框，等待关闭返回
         /// </summary>
         /// <param name="vm">通过vm实例来创建窗口</param>
-        public  bool? ShowDialog(DialogViewModelBase vm) {
+        public bool? ShowDialog(DialogViewModelBase vm) {
             Window win = CreatWindowByViewModel(vm, setDataContext: true);
             BindDialogVM(vm, win);
             return win.ShowDialog();
         }
 
-        public  bool? ShowDialog(ViewModelBase owner, DialogViewModelBase vm) {
-            Window win = CreatWindowByViewModel(vm, owner, true);
+        public TViewModel ShowDialog<TViewModel>() where TViewModel : DialogViewModelBase {
+            Window win = CreateWindowByViewModelType<TViewModel>();
+            TViewModel vm = win.DataContext as TViewModel;
             BindDialogVM(vm, win);
-            return win.ShowDialog();
+            win.ShowDialog();
+            return vm;
         }
-
 
         /// <summary>
         /// 打开非模态对话框，不等待关闭
         /// </summary>
         /// <param name="vm"></param>
-        public  void Show(DialogViewModelBase vm) {
+        public void Show(DialogViewModelBase vm) {
             Window win = CreatWindowByViewModel(vm, setDataContext: true);
-            BindDialogVM(vm, win, false);
-            win.Show();
-        }
-
-        public  void Show(ViewModelBase owner, DialogViewModelBase vm) {
-            Window win = CreatWindowByViewModel(vm, owner, setDataContext: true);
             BindDialogVM(vm, win, false);
             win.Show();
         }
@@ -167,28 +153,12 @@ namespace YGOProDevelop.Service
         /// </summary>
         /// <typeparam name="TViewModel"></typeparam>
         /// <returns>返回View中绑定的DataContext的ViewModel</returns>
-        public  TViewModel Show<TViewModel>() where TViewModel : DialogViewModelBase {
+        public TViewModel Show<TViewModel>() where TViewModel : DialogViewModelBase {
             Window win = CreateWindowByViewModelType<TViewModel>();
             TViewModel vm = win.DataContext as TViewModel;
             BindDialogVM(vm, win, false);
             win.Show();
             return win.DataContext as TViewModel;
-        }
-
-        public  TViewModel ShowDialog<TViewModel>() where TViewModel : DialogViewModelBase {
-            Window win = CreateWindowByViewModelType<TViewModel>();
-            TViewModel vm = win.DataContext as TViewModel;
-            BindDialogVM(vm, win);
-            win.ShowDialog();
-            return vm;
-        }
-
-        public  TViewModel ShowDialog<TViewModel>(ViewModelBase owner) where TViewModel : DialogViewModelBase {
-            Window win = CreateWindowByViewModelType<TViewModel>(owner);
-            TViewModel vm = win.DataContext as TViewModel;
-            BindDialogVM(vm, win, false);
-            win.ShowDialog();
-            return vm;
         }
 
     }

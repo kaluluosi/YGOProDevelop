@@ -182,18 +182,30 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Service\SmartIntelisenceService.cs" />
+    <Compile Include="ViewModel\CardEditorViewModel.cs" />
     <Compile Include="ViewModel\CardListViewModel.cs" />
     <Compile Include="ViewModel\DialogViewModelBase.cs" />
     <Compile Include="ViewModel\DockableViewModelBase.cs" />
     <Compile Include="ViewModel\DocumentViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\PreferencesViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\CardEditView.xaml.cs">
+      <DependentUpon>CardEditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CardListView.xaml.cs">
       <DependentUpon>CardListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PreferencesView.xaml.cs">
+      <DependentUpon>PreferencesView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\CardEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CardListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,6 +223,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\DocumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PreferencesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

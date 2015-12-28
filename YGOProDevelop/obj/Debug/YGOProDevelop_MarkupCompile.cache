@@ -10,11 +10,11 @@ none
 false
 CODE_ANALYSIS;DEBUG;TRACE
 D:\GitHub\YGOProDevelop\YGOProDevelop\App.xaml
-3-1332363491
+5-1525153951
 12235961215
-41611814636
+452056299379
 84-2103267798
-View\CardListView.xaml;View\MainWindow.xaml;View\DocumentView.xaml;
+View\CardEditView.xaml;View\CardListView.xaml;View\MainWindow.xaml;View\DocumentView.xaml;View\PreferencesView.xaml;
 
 False
 

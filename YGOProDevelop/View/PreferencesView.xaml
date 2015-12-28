@@ -1,0 +1,16 @@
+﻿<Window x:Class="YGOProDevelop.View.PreferencesView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YGOProDevelop.View"
+        mc:Ignorable="d"
+        Title="PreferencesView" Height="300" Width="300" Topmost="True" WindowStartupLocation="CenterOwner">
+    <Window.DataContext>
+        <vm:PreferencesViewModel></vm:PreferencesViewModel>
+    </Window.DataContext>
+    <Grid>
+        
+    </Grid>
+</Window>

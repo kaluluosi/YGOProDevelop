@@ -9,14 +9,16 @@
         xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
         xmlns:v ="clr-namespace:YGOProDevelop.View"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:s="clr-namespace:YGOProDevelop.Service"
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:local="clr-namespace:YGOProDevelop" x:Name="window" x:Class="YGOProDevelop.MainWindow"
         mc:Ignorable="d ignore"
+        s:CustomDialogService.Register="True"
         Height="757"
         Width="1173.5"
         Title="YGOProDevelop" WindowStartupLocation="CenterScreen"
         Icon="/YGOProDevelop;component/Resources/属性/暗.png" 
         Closing="window_Closing"
-        Loaded="window_Loaded"
+        Loaded="window_Loaded" ResizeMode="CanResizeWithGrip"
     >
     <Window.Resources>
         <ResourceDictionary>
@@ -42,10 +44,14 @@
     </i:Interaction.Triggers>
 
     <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="643*"/>
+            <RowDefinition Height="21*"/>
         </Grid.RowDefinitions>
 
 
@@ -71,7 +77,7 @@
                     </Style>
                 </MenuItem.ItemContainerStyle>
             </MenuItem>
-
+            <MenuItem Header="设置" Command="{Binding OpenPreferencesCmd}"></MenuItem>
             <MenuItem x:Name="themesMenu" Header="主题" Click="themesMenu_Click" >
                 <MenuItem Header="VS2010"/>
                 <MenuItem Header="ExpressDark"/>
@@ -108,9 +114,10 @@
                 </Style>
             </avalon:DockingManager.LayoutItemContainerStyle>
             <avalon:LayoutRoot >
-                
+
             </avalon:LayoutRoot>
         </avalon:DockingManager>
+        <StatusBar Grid.Row="3" Background="#FF007ACC"/>
 
     </Grid>
 </Window>

@@ -3,15 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:cmd="http://www.galasoft.ch/mvvmlight"
              xmlns:local="clr-namespace:YGOProDevelop.View"
+             xmlns:model="clr-namespace:YGOProDevelop.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="312.232" d:DesignWidth="122.962" >
-    <Grid >
+             d:DesignHeight="312.232" d:DesignWidth="122.962" d:DataContext="{Binding Source={StaticResource Locator},Path=CardList}" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type model:datas}">
+                <TextBlock Text="{Binding texts.name}"></TextBlock>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="145*"/>
-            <RowDefinition Height="11*"/>
+            <RowDefinition/>
+            <RowDefinition Height="31"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="listBox" ItemsSource="{Binding CdbService.QueryResult}" DisplayMemberPath="texts.name"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Grid.Row="1" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="123"/>
+        <ListBox x:Name="listBox" ItemsSource="{Binding CdbService.QueryResult}" SelectedItem="{Binding SelectedCard}" Margin="0,0,0,1">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="测试" Command="{Binding EditCmd}"></MenuItem>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+        <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding KeyWord,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1">
+            <i:Interaction.Triggers >
+                <i:EventTrigger EventName="KeyDown">
+                    <cmd:EventToCommand Command="{Binding SearchCmd}" PassEventArgsToCommand="True"></cmd:EventToCommand>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
     </Grid>
 </UserControl>

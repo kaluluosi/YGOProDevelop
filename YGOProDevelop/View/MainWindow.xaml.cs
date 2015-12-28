@@ -29,26 +29,25 @@ namespace YGOProDevelop {
             ChangeTheme(Properties.Settings.Default.Theme);
 
             Messenger.Default.Register<NotificationMessageAction<string>>(this, "MainWindow", (msg) => {
-                if (msg.Notification == "OpenFile") {
-                    OpenFileDialog openDlg = new OpenFileDialog();
-                    openDlg.AddExtension = true;
-                    openDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
-                    openDlg.FilterIndex = 1;
-                    if (openDlg.ShowDialog() == true) {
-                        msg.Execute(openDlg.FileName);
-                    }
-                }
-            });
-
-            Messenger.Default.Register<NotificationMessageAction<string>>(this, "MainWindow", (msg) => {
-                if (msg.Notification == "SaveFile") {
-                    SaveFileDialog saveDlg = new SaveFileDialog();
-                    saveDlg.AddExtension = true;
-                    saveDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
-                    saveDlg.FilterIndex = 1;
-                    if (saveDlg.ShowDialog() == true) {
-                        msg.Execute(saveDlg.FileName);
-                    }
+                switch (msg.Notification) {
+                    case "OpenFile":
+                        OpenFileDialog openDlg = new OpenFileDialog();
+                        openDlg.AddExtension = true;
+                        openDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
+                        openDlg.FilterIndex = 1;
+                        if (openDlg.ShowDialog() == true) {
+                            msg.Execute(openDlg.FileName);
+                        }
+                        break;
+                    case "SaveFile":
+                        SaveFileDialog saveDlg = new SaveFileDialog();
+                        saveDlg.AddExtension = true;
+                        saveDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
+                        saveDlg.FilterIndex = 1;
+                        if (saveDlg.ShowDialog() == true) {
+                            msg.Execute(saveDlg.FileName);
+                        }
+                        break;
                 }
             });
 
@@ -95,7 +94,7 @@ namespace YGOProDevelop {
                 layoutSerilizer.Deserialize(@".\layout.cfg");
             }
             catch (System.Exception ex) {
-
+                throw;
             }
         }
 

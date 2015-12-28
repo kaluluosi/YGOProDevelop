@@ -27,27 +27,17 @@ namespace YGOProDevelop.ViewModel {
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IHighlightSettingService hlSettingService) {
+        public MainViewModel(IHighlightSettingService hlSettingService,ICustomDialogService dialogService) {
             _hlSettingService = hlSettingService;
+            _dialogService = dialogService;
 
             ReOpenDocument();
 
             this.AnchorableViewModels.Add(CardListViewModel);
         }
 
-        public IDialogService DialogService {
-            get {
-                return SimpleIoc.Default.GetInstance<IDialogService>();
-            }
-        }
+        private ICustomDialogService _dialogService;
 
-        public CardListViewModel CardListViewModel {
-            get {
-                if (_cardListViewModel == null)
-                    _cardListViewModel = SimpleIoc.Default.GetInstance<CardListViewModel>();
-                return _cardListViewModel;
-            }
-        }
         private CardListViewModel _cardListViewModel;
         /// <summary>
         /// 文档viewmodel集合
@@ -82,6 +72,13 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
+        public CardListViewModel CardListViewModel {
+            get {
+                if (_cardListViewModel == null)
+                    _cardListViewModel = SimpleIoc.Default.GetInstance<CardListViewModel>();
+                return _cardListViewModel;
+            }
+        }
         public IReadOnlyCollection<IHighlightingDefinition> HightLightingDefs {
             get {
                 return _hlSettingService.HighlightingDefs;
@@ -200,7 +197,6 @@ namespace YGOProDevelop.ViewModel {
         }
 
         private ICommand _showCardListCmd;
-
         /// <summary>
         /// Gets the MyCommand.
         /// </summary>
@@ -210,6 +206,20 @@ namespace YGOProDevelop.ViewModel {
                     ?? (_showCardListCmd = new RelayCommand(
                     () => {
                         CardListViewModel.IsVisible = true;
+                    }));
+            }
+        }
+
+        private ICommand _openPreferencesCmd;
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public ICommand OpenPreferencesCmd {
+            get {
+                return _openPreferencesCmd
+                    ?? (_openPreferencesCmd = new RelayCommand(
+                    () => {
+                        _dialogService.ShowDialog<PreferencesViewModel>();
                     }));
             }
         }
