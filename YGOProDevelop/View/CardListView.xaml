@@ -16,12 +16,18 @@
             </DataTemplate>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="31"/>
-        </Grid.RowDefinitions>
-        <ListBox x:Name="listBox" ItemsSource="{Binding CdbService.QueryResult}" SelectedItem="{Binding SelectedCard}" Margin="0,0,0,1">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top" >
+            <ToolBar Height="24" ToolBarTray.IsLocked="True"/>            
+        </ToolBarTray>
+        <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding KeyWord,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" DockPanel.Dock="Bottom" Height="24">
+            <i:Interaction.Triggers >
+                <i:EventTrigger EventName="KeyDown">
+                    <cmd:EventToCommand Command="{Binding SearchCmd}" PassEventArgsToCommand="True"></cmd:EventToCommand>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+        <ListBox x:Name="listBox" ItemsSource="{Binding CdbService.QueryResult}" SelectedItem="{Binding SelectedCard}" DockPanel.Dock="Top">
             <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="编辑" Command="{Binding EditCmd}"></MenuItem>
@@ -29,12 +35,5 @@
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>
-        <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding KeyWord,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1">
-            <i:Interaction.Triggers >
-                <i:EventTrigger EventName="KeyDown">
-                    <cmd:EventToCommand Command="{Binding SearchCmd}" PassEventArgsToCommand="True"></cmd:EventToCommand>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </TextBox>
-    </Grid>
+    </DockPanel>
 </UserControl>

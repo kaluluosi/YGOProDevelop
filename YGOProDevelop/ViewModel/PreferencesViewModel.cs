@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using setting = YGOProDevelop.Properties.Settings;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -14,5 +15,6 @@ namespace YGOProDevelop.ViewModel {
         public PreferencesViewModel() {
             
         }
+
     }
 }

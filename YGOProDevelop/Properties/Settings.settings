@@ -22,5 +22,8 @@
     <Setting Name="lastFiles" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="scriptFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">script</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -6,11 +6,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YGOProDevelop.View"
         mc:Ignorable="d"
-        Title="PreferencesView" Height="300" Width="300" Topmost="True" WindowStartupLocation="CenterOwner">
+        Title="PreferencesView" Height="316" Width="448" Topmost="True" WindowStartupLocation="CenterOwner">
     <Window.DataContext>
         <vm:PreferencesViewModel></vm:PreferencesViewModel>
     </Window.DataContext>
     <Grid>
-        
+        <TextBox x:Name="cdbPath" HorizontalAlignment="Left" Height="23" Margin="82,11,0,0" TextWrapping="Wrap" Text="{Binding LastCDB}" VerticalAlignment="Top" Width="260"/>
+        <Label Content="script路径：" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Button Content="···" Margin="355,13,10,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

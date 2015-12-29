@@ -8,26 +8,36 @@ using System.Windows.Input;
 using YGOProDevelop.Model;
 using YGOProDevelop.Service;
 
-namespace YGOProDevelop.ViewModel {
+namespace YGOProDevelop.ViewModel
+{
     /// <summary>
     /// This class contains properties that a View can data bind to.
     /// <para>
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class CardListViewModel :DockableViewModelBase {
+    public class CardListViewModel : DockableViewModelBase
+    {
         private ICDBService _cdbService;
 
         /// <summary>
         /// Initializes a new instance of the CardListViewModel class.
         /// </summary>
-        public CardListViewModel(ICDBService cdbService,ICustomDialogService dialogService) {
+        public CardListViewModel(ICDBService cdbService, ICustomDialogService dialogService) {
             CdbService = cdbService;
-            cdbService.ResetSearch();
+            try {
+                cdbService.Open(Properties.Settings.Default.lastCDB);
+                cdbService.ResetSearch();
+            }
+            catch(System.Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
             ContentId = "CardList";
 
             _dialogService = dialogService;
+
         }
+
 
         private datas _selectedCard;
         private string _keyword;
@@ -60,16 +70,15 @@ namespace YGOProDevelop.ViewModel {
                 return _openScriptCmd
                     ?? (_openScriptCmd = new RelayCommand(
                     () => {
-                        try
-                        {
-                            string script = @".\script\c" + _selectedCard.id + ".lua";
+                        try {
+                            string script =string.Format( @"{0}\c{1}.lua",Properties.Settings.Default.scriptFolder, _selectedCard.id );
                             if(File.Exists(script)) {
                                 Main.OpenDocument(script);
                             }
                             else {
-                                MessageBoxResult result =  MessageBox.Show("脚本不存在是否新建？", "提示", MessageBoxButton.YesNo);
+                                MessageBoxResult result = MessageBox.Show("脚本不存在是否新建？", "提示", MessageBoxButton.YesNo);
                                 if(result == MessageBoxResult.Yes) {
-                                    string path =  Path.GetDirectoryName(script);
+                                    string path = Path.GetDirectoryName(script);
                                     if(Directory.Exists(path) == false)
                                         Directory.CreateDirectory(path);
                                     File.CreateText(script).Close();
@@ -77,8 +86,7 @@ namespace YGOProDevelop.ViewModel {
                                 }
                             }
                         }
-                        catch (System.Exception ex)
-                        {
+                        catch(System.Exception ex) {
                             MessageBox.Show(ex.Message);
                         }
                     }));
@@ -94,8 +102,8 @@ namespace YGOProDevelop.ViewModel {
                 return _searchCmd
                     ?? (_searchCmd = new RelayCommand<KeyEventArgs>(
                     (arg) => {
-                        if (arg.Key == Key.Enter) {
-                            if (string.IsNullOrEmpty(KeyWord) == false)
+                        if(arg.Key == Key.Enter) {
+                            if(string.IsNullOrEmpty(KeyWord) == false)
                                 CdbService.Search(KeyWord);
                             else
                                 CdbService.ResetSearch();
@@ -128,7 +136,8 @@ namespace YGOProDevelop.ViewModel {
             }
 
             set {
-                _selectedCard = value;RaisePropertyChanged();
+                _selectedCard = value;
+                RaisePropertyChanged();
             }
         }
 
@@ -138,7 +147,8 @@ namespace YGOProDevelop.ViewModel {
             }
 
             set {
-                _keyword = value;RaisePropertyChanged();
+                _keyword = value;
+                RaisePropertyChanged();
             }
         }
     }
