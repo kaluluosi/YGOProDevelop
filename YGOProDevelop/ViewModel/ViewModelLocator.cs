@@ -32,8 +32,6 @@ namespace YGOProDevelop.ViewModel
             //不能删除
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            SimpleIoc.Default.Register<CustomDialogRigister>(true);
-
             //注册服务
             SimpleIoc.Default.Register<ICustomDialogService, CustomDialogService>();
             SimpleIoc.Default.Register<ICustomDialogService, CustomDialogService>();
@@ -46,7 +44,6 @@ namespace YGOProDevelop.ViewModel
             SimpleIoc.Default.Register<DocumentViewModel>();
             SimpleIoc.Default.Register<CardListViewModel>();
             SimpleIoc.Default.Register<CardEditorViewModel>();
-
         }
 
         public static MainViewModel Main {
@@ -62,7 +59,7 @@ namespace YGOProDevelop.ViewModel
             }
         }
 
-        public CardEditorViewModel CardEdit {
+        public CardEditorViewModel CardEditor {
             get {
                 return ServiceLocator.Current.GetInstance<CardEditorViewModel>();
             }
@@ -74,5 +71,6 @@ namespace YGOProDevelop.ViewModel
         public static void Cleanup() {
             
         }
+
     }
 }

@@ -24,7 +24,8 @@
         <ListBox x:Name="listBox" ItemsSource="{Binding CdbService.QueryResult}" SelectedItem="{Binding SelectedCard}" Margin="0,0,0,1">
             <ListBox.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="测试" Command="{Binding EditCmd}"></MenuItem>
+                    <MenuItem Header="编辑" Command="{Binding EditCmd}"></MenuItem>
+                    <MenuItem Header="打开脚本" Command="{Binding OpenScriptCmd}"></MenuItem>
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>

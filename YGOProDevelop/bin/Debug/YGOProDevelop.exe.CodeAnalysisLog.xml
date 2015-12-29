@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
-<FxCopReport Version="14.0">
+<?xml-stylesheet type="text/xsl" href="d:\program files (x86)\microsoft visual studio 12.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="12.0">
  <Targets>
-  <Target Name="D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe">
+  <Target Name="C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe">
    <Modules>
     <Module Name="ygoprodevelop.exe">
      <Namespaces>
@@ -12,15 +12,15 @@
          <Members>
           <Member Name="#Load(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2015-12-28 16:16:25Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="Error" Path="D:\GitHub\YGOProDevelop\YGOProDevelop\Cfg" File="ConfigManager.cs" Line="46">'ConfigManager.Load(string)' 再次引发捕获的异常并将其显式地指定为一个参数。请改用不带参数的“throw”以保留该异常最初引发时所在的堆栈位置。</Issue>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2015-12-29 07:47:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\Cfg" File="ConfigManager.cs" Line="46">'ConfigManager.Load(string)' 再次引发捕获的异常并将其显式地指定为一个参数。请改用不带参数的“throw”以保留该异常最初引发时所在的堆栈位置。</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Save(System.String,System.Collections.Generic.IEnumerable`1&lt;Cfg.VarItem&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2015-12-28 16:16:25Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="Error" Path="D:\GitHub\YGOProDevelop\YGOProDevelop\Cfg" File="ConfigManager.cs" Line="70">'ConfigManager.Save(string, IEnumerable&lt;VarItem&gt;)' 再次引发捕获的异常并将其显式地指定为一个参数。请改用不带参数的“throw”以保留该异常最初引发时所在的堆栈位置。</Issue>
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2015-12-29 07:47:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\Cfg" File="ConfigManager.cs" Line="70">'ConfigManager.Save(string, IEnumerable&lt;VarItem&gt;)' 再次引发捕获的异常并将其显式地指定为一个参数。请改用不带参数的“throw”以保留该异常最初引发时所在的堆栈位置。</Issue>
             </Message>
            </Messages>
           </Member>
@@ -34,7 +34,7 @@
          <Members>
           <Member Name="#DialogResultChanged" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2015-12-28 16:16:25Z" FixCategory="Breaking">
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2015-12-29 07:47:17Z" FixCategory="Breaking">
              <Issue Name="Second" Certainty="95" Level="Error">将 'EventHandler&lt;bool?&gt;' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
             </Message>
            </Messages>
@@ -45,8 +45,8 @@
          <Members>
           <Member Name="#.ctor(YGOProDevelop.Service.IHighlightSettingService,YGOProDevelop.Service.ICustomDialogService)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2015-12-28 16:16:25Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalWarning" Path="D:\GitHub\YGOProDevelop\YGOProDevelop\ViewModel" File="MainViewModel.cs" Line="45">'MainViewModel.MainViewModel(IHighlightSettingService, ICustomDialogService)' 包含调用链，该调用链导致调用此类所定义的虚方法。请检查以下调用堆栈，看是否有意外结果: &#xD;&#xA;&#xD;&#xA;MainViewModel..ctor(IHighlightSettingService, ICustomDialogService)&#xD;&#xA;MainViewModel.ReOpenDocument():Void&#xD;&#xA;MainViewModel.NewDocument(String):Void&#xD;&#xA;MainViewModel.set_ActiveViewModel(ViewModelBase):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged&lt;T&gt;(Expression&lt;Func&lt;T&gt;&gt;):Void。</Issue>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2015-12-29 07:47:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\ViewModel" File="MainViewModel.cs" Line="44">'MainViewModel.MainViewModel(IHighlightSettingService, ICustomDialogService)' 包含调用链，该调用链导致调用此类所定义的虚方法。请检查以下调用堆栈，看是否有意外结果: &#xD;&#xA;&#xD;&#xA;MainViewModel..ctor(IHighlightSettingService, ICustomDialogService)&#xD;&#xA;MainViewModel.ReOpenDocument():Void&#xD;&#xA;MainViewModel.OpenDocument(String):Void&#xD;&#xA;MainViewModel.set_ActiveViewModel(ViewModelBase):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged&lt;T&gt;(Expression&lt;Func&lt;T&gt;&gt;):Void。</Issue>
             </Message>
            </Messages>
           </Member>
@@ -62,13 +62,13 @@
  <Rules>
   <Rule TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009">
    <Name>正确声明事件处理程序</Name>
-   <Description>按照约定，.NET 事件有两个参数，分别用于指定事件发送方和事件数据。事件处理程序签名应遵循以下形式: void MyEventHandler(object sender, EventArgs e)。“sender”参数的类型始终是 System.Object，即使该参数可能使用更具体的类型。“e”参数的类型始终是 System.EventArgs。不提供事件数据的事件应使用 System.EventHandler 委托类型。事件处理程序返回 void 以便将每个事件发送给多个目标方法。目标返回的任何值在第一次调用之后将会丢失。</Description>
+   <Description>按照约定，.NET 事件有两个参数，分别用于指定事件发送方和事件数据。事件处理程序签名应遵循以下形式:  void MyEventHandler(object sender, EventArgs e)。“sender”参数的类型始终是 System.Object，即使该参数可能使用更具体的类型。“e”参数的类型始终是 System.EventArgs。不提供事件数据的事件应使用 System.EventHandler 委托类型。事件处理程序返回 void 以便将每个事件发送给多个目标方法。目标返回的任何值在第一次调用之后将会丢失。</Description>
    <Resolution Name="Second">将 {0} 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Resolution>
    <Owner />
    <Url>http://msdn.microsoft.com/library/ms182133.aspx</Url>
    <Email>[none]</Email>
    <MessageLevel Certainty="95">Error</MessageLevel>
-   <File Name="designrules.dll" Version="14.0.0.0" />
+   <File Name="designrules.dll" Version="12.0.0.0" />
   </Rule>
   <Rule TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214">
    <Name>不要在构造函数中调用可重写的方法</Name>
@@ -78,7 +78,7 @@
    <Url>http://msdn.microsoft.com/library/ms182331.aspx</Url>
    <Email>[none]</Email>
    <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
-   <File Name="usagerules.dll" Version="14.0.0.0" />
+   <File Name="usagerules.dll" Version="12.0.0.0" />
   </Rule>
   <Rule TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200">
    <Name>再次引发以保留堆栈详细信息</Name>
@@ -88,7 +88,7 @@
    <Url>http://msdn.microsoft.com/library/ms182363.aspx</Url>
    <Email>[none]</Email>
    <MessageLevel Certainty="95">Error</MessageLevel>
-   <File Name="usagerules.dll" Version="14.0.0.0" />
+   <File Name="usagerules.dll" Version="12.0.0.0" />
   </Rule>
  </Rules>
  <Localized>

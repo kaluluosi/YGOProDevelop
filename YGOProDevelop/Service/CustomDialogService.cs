@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,15 +29,19 @@ namespace YGOProDevelop.Service {
         /// </summary>
         /// <typeparam name="TViewModel"></typeparam>
         /// <typeparam name="TView"></typeparam>
-        public static void Register<TViewModel, TView>() where TViewModel : DialogViewModelBase where TView : Window {
+        public static void Regist<TViewModel, TView>() where TViewModel : DialogViewModelBase where TView : Window {
             _customWindowFactory.Add(typeof(TViewModel), typeof(TView));
         }
 
-        public static void Register(DialogViewModelBase vm, Window win) {
+        public static void Regist(DialogViewModelBase vm, Window win) {
             _customWindowFactory.Add(vm.GetType(), win.GetType());
         }
 
-        public bool GetRegister(DependencyObject obj) {
+        public static void Regist(Type vm, Type win) {
+            _customWindowFactory.Add(vm, win);
+        }
+
+        public static bool GetRegister(DependencyObject obj) {
             return (bool)obj.GetValue(RegisterProperty);
         }
 
@@ -55,6 +60,12 @@ namespace YGOProDevelop.Service {
                     Window win = d as Window;
                     MainWindow = win;
                 }
+            }
+        }
+
+        public CustomDialogService() {
+            foreach(var typeInfo in Assembly.GetExecutingAssembly().DefinedTypes) {
+                typeInfo.GetCustomAttribute<CustomDialogAttribute>();
             }
         }
 
@@ -147,7 +158,6 @@ namespace YGOProDevelop.Service {
         }
 
         // 通过viewmodel类型打开但不为其设置datacontext
-
         /// <summary>
         /// 打开非模态对话框
         /// </summary>

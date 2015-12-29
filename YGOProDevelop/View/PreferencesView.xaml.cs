@@ -11,11 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using YGOProDevelop.Service;
+using YGOProDevelop.ViewModel;
 
 namespace YGOProDevelop.View {
     /// <summary>
     /// PreferencesView.xaml 的交互逻辑
     /// </summary>
+    [CustomDialog(typeof(PreferencesViewModel),typeof(PreferencesView))]
     public partial class PreferencesView : Window {
         public PreferencesView() {
             InitializeComponent();

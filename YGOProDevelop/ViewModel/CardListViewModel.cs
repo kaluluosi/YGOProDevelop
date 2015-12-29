@@ -1,6 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using YGOProDevelop.Model;
@@ -47,22 +49,33 @@ namespace YGOProDevelop.ViewModel {
         }
 
 
-        private ICommand _editCmd;
         private ICustomDialogService _dialogService;
 
+        private ICommand _openScriptCmd;
         /// <summary>
         /// Gets the MyCommand.
         /// </summary>
-        public ICommand EditCmd {
+        public ICommand OpenScriptCmd {
             get {
-                return _editCmd
-                    ?? (_editCmd = new RelayCommand(
+                return _openScriptCmd
+                    ?? (_openScriptCmd = new RelayCommand(
                     () => {
                         try
                         {
-                            var cardEditor = new CardEditorViewModel();
-                            cardEditor.Card = SelectedCard;
-                            _dialogService.ShowDialog(cardEditor);
+                            string script = @".\script\c" + _selectedCard.id + ".lua";
+                            if(File.Exists(script)) {
+                                Main.OpenDocument(script);
+                            }
+                            else {
+                                MessageBoxResult result =  MessageBox.Show("脚本不存在是否新建？", "提示", MessageBoxButton.YesNo);
+                                if(result == MessageBoxResult.Yes) {
+                                    string path =  Path.GetDirectoryName(script);
+                                    if(Directory.Exists(path) == false)
+                                        Directory.CreateDirectory(path);
+                                    File.CreateText(script).Close();
+                                    Main.OpenDocument(script);
+                                }
+                            }
                         }
                         catch (System.Exception ex)
                         {
@@ -73,7 +86,6 @@ namespace YGOProDevelop.ViewModel {
         }
 
         private ICommand _searchCmd;
-
         /// <summary>
         /// Gets the MyCommand.
         /// </summary>
@@ -91,6 +103,24 @@ namespace YGOProDevelop.ViewModel {
                     }));
             }
         }
+
+        private ICommand _editCmd;
+
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public ICommand EditCmd {
+            get {
+                return _editCmd
+                    ?? (_editCmd = new RelayCommand(
+                    () => {
+                        CardEditorViewModel ce = new CardEditorViewModel();
+                        ce.Card = SelectedCard;
+                        _dialogService.ShowDialog(ce);
+                    }));
+            }
+        }
+
 
         public datas SelectedCard {
             get {

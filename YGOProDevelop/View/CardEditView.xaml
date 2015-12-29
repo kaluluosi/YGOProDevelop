@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YGOProDevelop.View"
+        xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
         mc:Ignorable="d"
-        Title="CardEditView" Height="300" Width="305.15" d:DataContext="{Binding Source={StaticResource Locator},Path=CardEdit}" WindowStartupLocation="CenterOwner" Topmost="True">
+        Title="CardEditView" Height="300" Width="305.15"  WindowStartupLocation="CenterOwner" Topmost="True" DataContext="{Binding Source={StaticResource Locator},Path=CardEditor}">
     <Grid>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Text="{Binding Card.texts.name}" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
     </Grid>

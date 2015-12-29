@@ -153,8 +153,8 @@ namespace YGOProDevelop.ViewModel
                 }
             }
 
-            if (ViewModelLocator.Main.DocumentViewModels.Contains(this))
-                ViewModelLocator.Main.DocumentViewModels.Remove(this);
+            if (Main.DocumentViewModels.Contains(this))
+                Main.DocumentViewModels.Remove(this);
         }
 
     }

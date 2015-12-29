@@ -24,16 +24,15 @@ namespace YGOProDevelop.ViewModel {
     /// </summary>
     public class MainViewModel : ViewModelBase {
 
+        public static MainViewModel Main;
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel(IHighlightSettingService hlSettingService,ICustomDialogService dialogService) {
             _hlSettingService = hlSettingService;
             _dialogService = dialogService;
-
+            Main = this;
             ReOpenDocument();
-
-            this.AnchorableViewModels.Add(CardListViewModel);
         }
 
         private ICustomDialogService _dialogService;
@@ -74,8 +73,10 @@ namespace YGOProDevelop.ViewModel {
 
         public CardListViewModel CardListViewModel {
             get {
-                if (_cardListViewModel == null)
+                if(_cardListViewModel == null) {
                     _cardListViewModel = SimpleIoc.Default.GetInstance<CardListViewModel>();
+                    _anchorableViewModels.Add(_cardListViewModel);
+                }
                 return _cardListViewModel;
             }
         }
@@ -145,15 +146,19 @@ namespace YGOProDevelop.ViewModel {
                 return _saveCmd
                     ?? (_saveCmd = new RelayCommand(
                     () => {
-                        if (File.Exists(ActiveDocumentViewModel.FileName))
-                            ActiveDocumentViewModel.SaveFile();
-                        else
-                            SaveAsCmd.Execute(null);
+                        SaveActiveDocument();
                     },
                     () => {
                         return ActiveViewModel is DocumentViewModel;
                     }));
             }
+        }
+
+        private void SaveActiveDocument() {
+            if(File.Exists(ActiveDocumentViewModel.FileName))
+                ActiveDocumentViewModel.SaveFile();
+            else
+                SaveAsCmd.Execute(null);
         }
 
         private ICommand _openCmd;
@@ -162,7 +167,7 @@ namespace YGOProDevelop.ViewModel {
                 return _openCmd ?? (_openCmd = new RelayCommand(
                     () => {
                         MessengerInstance.Send(new NotificationMessageAction<string>("OpenFile", (fileName) => {
-                            NewDocument(fileName);
+                            OpenDocument(fileName);
                         }), "MainWindow");
                     }
                 ));
@@ -227,23 +232,24 @@ namespace YGOProDevelop.ViewModel {
         #endregion
         #region method
 
-        private void ReOpenDocument() {
+        public void ReOpenDocument() {
             var files = Properties.Settings.Default.lastFiles;
             if (files != null && files.Count != 0) {
                 foreach (var fileName in files) {
                     if (File.Exists(fileName))
-                        NewDocument(fileName);
+                        OpenDocument(fileName);
                 }
             }
         }
 
-        private void NewDocument() {
+        public void NewDocument() {
             DocumentViewModel docVM = CreateDocumentVM();
             DocumentViewModels.Add(docVM);
             ActiveViewModel = docVM;
         }
 
-        private void NewDocument(string fileName) {
+
+        public void OpenDocument(string fileName) {
             foreach(var doc in DocumentViewModels) {
                 if (doc is DocumentViewModel && (doc as DocumentViewModel).FileName == fileName) {
                     ActiveViewModel = doc;
@@ -256,7 +262,7 @@ namespace YGOProDevelop.ViewModel {
             ActiveViewModel = docVM;
         }
 
-        private DocumentViewModel CreateDocumentVM() {
+        public DocumentViewModel CreateDocumentVM() {
             DocumentViewModel docVM = SimpleIoc.Default.GetInstance<DocumentViewModel>(Guid.NewGuid().ToString());
             docVM.IsShowLineNumbers = IsShowLineNumbers;
             return docVM;

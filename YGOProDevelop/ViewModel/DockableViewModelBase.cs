@@ -14,7 +14,6 @@ namespace YGOProDevelop.ViewModel {
         private string _title;
         private bool _isVisible = true;
 
-
         private string _contentId;
 
         public virtual string Title {
@@ -44,6 +43,12 @@ namespace YGOProDevelop.ViewModel {
 
             set {
                 _contentId = value;RaisePropertyChanged();
+            }
+        }
+
+        public MainViewModel Main {
+            get {
+                return MainViewModel.Main;
             }
         }
 
