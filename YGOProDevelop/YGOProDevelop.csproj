@@ -270,6 +270,7 @@
     <Content Include="Data\Type.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <SplashScreen Include="Resources\splash.jpg" />
     <Resource Include="Resources\种族\不死.png" />
     <Resource Include="Resources\种族\兽.png" />
     <Resource Include="Resources\种族\兽战士.png" />
@@ -357,7 +358,6 @@
     </None>
     <AppDesigner Include="Properties\" />
     <Resource Include="Resources\0000.png" />
-    <Resource Include="Resources\boss_BlueEyedWhiteDragon.png" />
     <Resource Include="Data\_functions.txt_sort.txt" />
     <Resource Include="Data\_functions.txt" />
     <Content Include="Model\Model1.Context.tt">

@@ -10,7 +10,8 @@
         xmlns:v ="clr-namespace:YGOProDevelop.View"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:s="clr-namespace:YGOProDevelop.Service"
-        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:local="clr-namespace:YGOProDevelop" x:Name="window" x:Class="YGOProDevelop.MainWindow"
+        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" 
+        xmlns:local="clr-namespace:YGOProDevelop" x:Name="window" x:Class="YGOProDevelop.MainWindow"
         mc:Ignorable="d ignore"
         s:CustomDialogService.Register="True"
         Height="757"
@@ -18,8 +19,7 @@
         Title="YGOProDevelop" WindowStartupLocation="CenterScreen"
         Icon="/YGOProDevelop;component/Resources/属性/暗.png" 
         Closing="window_Closing"
-        Loaded="window_Loaded" ResizeMode="CanResizeWithGrip"
-    >
+        Loaded="window_Loaded" ResizeMode="CanResizeWithGrip">
     <Window.Resources>
         <ResourceDictionary>
             <DataTemplate DataType="{x:Type vm:CardListViewModel}">
