@@ -18,7 +18,9 @@
     </UserControl.Resources>
     <DockPanel>
         <ToolBarTray DockPanel.Dock="Top" >
-            <ToolBar Height="24" ToolBarTray.IsLocked="True"/>            
+            <ToolBar Height="24" ToolBarTray.IsLocked="True">
+                <Button Command="{Binding OpenCDBCmd, Mode=OneWay}">打开</Button>
+            </ToolBar>           
         </ToolBarTray>
         <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding KeyWord,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" DockPanel.Dock="Bottom" Height="24">
             <i:Interaction.Triggers >

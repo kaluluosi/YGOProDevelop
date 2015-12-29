@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
+using Microsoft.Win32;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
@@ -35,7 +36,6 @@ namespace YGOProDevelop.ViewModel
             ContentId = "CardList";
 
             _dialogService = dialogService;
-
         }
 
 
@@ -107,6 +107,27 @@ namespace YGOProDevelop.ViewModel
                                 CdbService.Search(KeyWord);
                             else
                                 CdbService.ResetSearch();
+                        }
+                    }));
+            }
+        }
+
+        private ICommand _openCDBCmd;
+
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public ICommand OpenCDBCmd {
+            get {
+                return _openCDBCmd
+                    ?? (_openCDBCmd = new RelayCommand(
+                    () => {
+                        OpenFileDialog openFile = new OpenFileDialog();
+                        openFile.Filter = "CDB文件|*.cdb";
+                        bool? result = openFile.ShowDialog();
+                        if(result == true) {
+                            CdbService.Open(openFile.FileName);
+                            CdbService.ResetSearch();
                         }
                     }));
             }

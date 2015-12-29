@@ -24,6 +24,5 @@ namespace YGOProDevelop.View {
             InitializeComponent();
         }
 
-
     }
 }

@@ -12,14 +12,14 @@
          <Members>
           <Member Name="#Load(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2015-12-29 09:28:08Z" FixCategory="NonBreaking">
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2015-12-29 11:46:35Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="Error" Path="c:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\Cfg" File="ConfigManager.cs" Line="46">'ConfigManager.Load(string)' 再次引发捕获的异常并将其显式地指定为一个参数。请改用不带参数的“throw”以保留该异常最初引发时所在的堆栈位置。</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Save(System.String,System.Collections.Generic.IEnumerable`1&lt;Cfg.VarItem&gt;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2015-12-29 09:28:08Z" FixCategory="NonBreaking">
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2015-12-29 11:46:35Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="Error" Path="c:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\Cfg" File="ConfigManager.cs" Line="70">'ConfigManager.Save(string, IEnumerable&lt;VarItem&gt;)' 再次引发捕获的异常并将其显式地指定为一个参数。请改用不带参数的“throw”以保留该异常最初引发时所在的堆栈位置。</Issue>
             </Message>
            </Messages>
@@ -34,7 +34,7 @@
          <Members>
           <Member Name="#DialogResultChanged" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2015-12-29 09:28:08Z" FixCategory="Breaking">
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2015-12-29 11:46:35Z" FixCategory="Breaking">
              <Issue Name="Second" Certainty="95" Level="Error">将 'EventHandler&lt;bool?&gt;' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
             </Message>
            </Messages>
@@ -45,7 +45,7 @@
          <Members>
           <Member Name="#.ctor(YGOProDevelop.Service.IHighlightSettingService,YGOProDevelop.Service.ICustomDialogService)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2015-12-29 09:28:08Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2015-12-29 11:46:35Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\ViewModel" File="MainViewModel.cs" Line="44">'MainViewModel.MainViewModel(IHighlightSettingService, ICustomDialogService)' 包含调用链，该调用链导致调用此类所定义的虚方法。请检查以下调用堆栈，看是否有意外结果: &#xD;&#xA;&#xD;&#xA;MainViewModel..ctor(IHighlightSettingService, ICustomDialogService)&#xD;&#xA;MainViewModel.ReOpenDocument():Void&#xD;&#xA;MainViewModel.OpenDocument(String):Void&#xD;&#xA;MainViewModel.set_ActiveViewModel(ViewModelBase):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged&lt;T&gt;(Expression&lt;Func&lt;T&gt;&gt;):Void。</Issue>
             </Message>
            </Messages>

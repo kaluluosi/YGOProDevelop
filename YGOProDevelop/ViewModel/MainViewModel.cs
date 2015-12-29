@@ -125,9 +125,16 @@ namespace YGOProDevelop.ViewModel {
             get {
                 return _saveAsCmd ?? (_saveAsCmd = new RelayCommand(
                     () => {
-                        MessengerInstance.Send(new NotificationMessageAction<string>("SaveFile", (fileName) => {
-                            ActiveDocumentViewModel.SaveFile(fileName);
-                        }), "MainWindow");
+//                         MessengerInstance.Send(new NotificationMessageAction<string>("SaveFile", (fileName) => {
+//                             ActiveDocumentViewModel.SaveFile(fileName);
+//                         }), "MainWindow");
+                        SaveFileDialog saveDlg = new SaveFileDialog();
+                        saveDlg.AddExtension = true;
+                        saveDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
+                        saveDlg.FilterIndex = 1;
+                        if(saveDlg.ShowDialog()==true) {
+                            ActiveDocumentViewModel.SaveFile(saveDlg.FileName);
+                        }
                     },
                     () => {
                         return ActiveViewModel is DocumentViewModel;
@@ -166,9 +173,16 @@ namespace YGOProDevelop.ViewModel {
             get {
                 return _openCmd ?? (_openCmd = new RelayCommand(
                     () => {
-                        MessengerInstance.Send(new NotificationMessageAction<string>("OpenFile", (fileName) => {
-                            OpenDocument(fileName);
-                        }), "MainWindow");
+//                         MessengerInstance.Send(new NotificationMessageAction<string>("OpenFile", (fileName) => {
+//                             OpenDocument(fileName);
+//                         }), "MainWindow");
+                        OpenFileDialog openDlg = new OpenFileDialog();
+                        openDlg.AddExtension = true;
+                        openDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
+                        openDlg.FilterIndex = 1;
+                        if(openDlg.ShowDialog()==true) {
+                            OpenDocument(openDlg.FileName);
+                        }
                     }
                 ));
             }
