@@ -1,26 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ICSharpCode.AvalonEdit.CodeCompletion;
-using YGOProDevelop.Service;
-using GalaSoft.MvvmLight.Messaging;
-using ICSharpCode.AvalonEdit.Editing;
-using ICSharpCode.AvalonEdit;
-using System.Timers;
-using System.ComponentModel;
 using ICSharpCode.AvalonEdit.Search;
-using ICSharpCode.AvalonEdit.Snippets;
 
 namespace YGOProDevelop.View {
     /// <summary>
@@ -39,7 +25,7 @@ namespace YGOProDevelop.View {
             editor.TextArea.DefaultInputHandler.NestedInputHandlers.Add(new SearchInputHandler(editor.TextArea));
 
             Binding binding = new Binding("CompletionDatas");
-            SetBinding(CompeltionDatasProperty, binding);
+            SetBinding(CompletionDataSourceProperty, binding);
 
             editor.MouseHover += Editor_MouseHover;
             editor.MouseHoverStopped += Editor_MouseHoverStopped;
@@ -55,10 +41,10 @@ namespace YGOProDevelop.View {
         private void Editor_MouseHover(object sender, MouseEventArgs e) {
             var pos = editor.GetPositionFromPoint(e.GetPosition(editor));
 
-            if (pos != null && CompletionDatas != null) {
+            if (pos != null && CompletionDataSource != null) {
                 string text = GetWordOverMouse(e);
 
-                var data = CompletionDatas.FirstOrDefault(d => d.Text.ToString().Contains(text));
+                var data = CompletionDataSource.FirstOrDefault(d => d.Text.ToString().Contains(text));
                 if (data != null) {
                     toolTip.Content = new TextBlock {
                         Text = data.Description.ToString(),
@@ -93,14 +79,15 @@ namespace YGOProDevelop.View {
         /// <summary>
         /// 自动完成数据依赖属性，可以将这个属性绑定到ViewModel里自动获取自动完成需要的数据
         /// </summary>
-        public IList<ICompletionData> CompletionDatas {
-            get { return (IList<ICompletionData>)GetValue(CompeltionDatasProperty); }
-            set { SetValue(CompeltionDatasProperty, value); }
+        public IList<ICompletionData> CompletionDataSource {
+            get { return (IList<ICompletionData>)GetValue(CompletionDataSourceProperty); }
+            set { SetValue(CompletionDataSourceProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for CompeltionDatas.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CompeltionDatasProperty =
-            DependencyProperty.Register("CompeltionDatas", typeof(IList<ICompletionData>), typeof(DocumentView), new PropertyMetadata(null));
+        public static readonly DependencyProperty CompletionDataSourceProperty =
+            DependencyProperty.Register("CompletionDataSourceProperty", typeof(IList<ICompletionData>), typeof(DocumentView), new PropertyMetadata(null));
+
 
         private void TextArea_TextEntered(object sender, TextCompositionEventArgs e) {
             if (".:".Contains(e.Text)) {
@@ -123,9 +110,9 @@ namespace YGOProDevelop.View {
         }
 
         private void ShowCompletionWindow() {
-            if (completionWin == null && CompletionDatas != null) {
+            if (completionWin == null && CompletionDataSource != null) {
                 CompletionWin = new CompletionWindow(editor.TextArea);
-                foreach (ICompletionData data in CompletionDatas) {
+                foreach (ICompletionData data in CompletionDataSource) {
                     CompletionWin.CompletionList.CompletionData.Add(data);
                 }
                 CompletionWin.Show();

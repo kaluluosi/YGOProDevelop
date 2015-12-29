@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight;
+﻿using YGOProDevelop.CardEditor.Builder;
 using YGOProDevelop.Model;
 
 namespace YGOProDevelop.ViewModel {
@@ -16,9 +16,9 @@ namespace YGOProDevelop.ViewModel {
 
         }
 
-        private datas _card;
+        private CardBuilder _card;
 
-        public datas Card {
+        public CardBuilder Card {
             get {
                 return _card;
             }

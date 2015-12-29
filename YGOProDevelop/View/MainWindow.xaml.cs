@@ -1,14 +1,7 @@
 ﻿using System.Windows;
 using YGOProDevelop.ViewModel;
-using System.Collections.Generic;
 using Xceed.Wpf.AvalonDock.Themes;
 using System.Windows.Controls;
-using GalaSoft.MvvmLight.Views;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Ioc;
-using GalaSoft.MvvmLight.Messaging;
-using YGOProDevelop.View;
-using Microsoft.Win32;
 using Xceed.Wpf.AvalonDock.Layout.Serialization;
 
 namespace YGOProDevelop {

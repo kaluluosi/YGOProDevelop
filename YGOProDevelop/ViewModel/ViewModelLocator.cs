@@ -11,13 +11,10 @@
 
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
-using System;
 using YGOProDevelop.Service;
 
-namespace YGOProDevelop.ViewModel
-{
+namespace YGOProDevelop.ViewModel {
     /// <summary>
     /// This class contains static references to all the view models in the
     /// application and provides an entry point for the bindings.
@@ -33,7 +30,6 @@ namespace YGOProDevelop.ViewModel
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             //注册服务
-            SimpleIoc.Default.Register<ICustomDialogService, CustomDialogService>();
             SimpleIoc.Default.Register<ICustomDialogService, CustomDialogService>();
             SimpleIoc.Default.Register<IHighlightSettingService, DefaultHighlightSettingService>();
             SimpleIoc.Default.Register<IIntelisenceService, SmartIntelisenceService>();

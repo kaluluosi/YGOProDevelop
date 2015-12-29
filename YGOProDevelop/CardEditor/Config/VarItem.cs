@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 
-namespace Cfg {
+namespace YGOProDevelop.CardEditor.Config {
     public class VarItem {
 
 		public static readonly VarItem Default= new VarItem(){Description="无",Value=0,MultiSelect=false};

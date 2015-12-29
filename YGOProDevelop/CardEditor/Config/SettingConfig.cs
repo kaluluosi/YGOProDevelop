@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cfg;
+﻿using System.Collections.Generic;
 
-namespace Cfg {
+namespace YGOProDevelop.CardEditor.Config {
     /// <summary>
     /// 设置配置类，相当于CardEditor各选项配置信息的配置文件对象。
     /// 配置类，用来作为资源给xaml绑定用

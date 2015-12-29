@@ -139,20 +139,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Builder\AttributeField.cs" />
-    <Compile Include="Builder\CardBuilder.cs" />
-    <Compile Include="Builder\CategoryField.cs" />
-    <Compile Include="Builder\Field.cs" />
-    <Compile Include="Builder\OtField.cs" />
-    <Compile Include="Builder\RaceField.cs" />
-    <Compile Include="Builder\SetCodeField.cs" />
-    <Compile Include="Builder\TypeField.cs" />
+    <Compile Include="CardEditor\Builder\AttributeField.cs" />
+    <Compile Include="CardEditor\Builder\CardBuilder.cs" />
+    <Compile Include="CardEditor\Builder\CardType.cs" />
+    <Compile Include="CardEditor\Builder\CategoryField.cs" />
+    <Compile Include="CardEditor\Builder\Field.cs" />
+    <Compile Include="CardEditor\Builder\OtField.cs" />
+    <Compile Include="CardEditor\Builder\RaceField.cs" />
+    <Compile Include="CardEditor\Builder\SetCodeField.cs" />
+    <Compile Include="CardEditor\Builder\TypeField.cs" />
     <Compile Include="Model\CompletionItem.cs" />
     <Compile Include="Model\DefaultCompletionData.cs" />
     <Compile Include="Service\CDBService.cs" />
-    <Compile Include="Cfg\ConfigManager.cs" />
-    <Compile Include="Cfg\SettingConfig.cs" />
-    <Compile Include="Cfg\VarItem.cs" />
+    <Compile Include="CardEditor\Config\ConfigManager.cs" />
+    <Compile Include="CardEditor\Config\SettingConfig.cs" />
+    <Compile Include="CardEditor\Config\VarItem.cs" />
     <Compile Include="Model\datas.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -380,6 +381,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Cfg\" />
     <Folder Include="Model\Interfaces\" />
     <Folder Include="View\Behaviour\" />
     <Folder Include="View\Converter\" />

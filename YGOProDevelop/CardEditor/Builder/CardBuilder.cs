@@ -1,14 +1,12 @@
 
+using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using YGOProDevelop;
 using YGOProDevelop.Model;
 
-namespace Builder {
+namespace YGOProDevelop.CardEditor.Builder {
 
-
-    public class CardBuilder:INotifyPropertyChanged {
+    public class CardBuilder : ObservableObject {
 
         public static datas CreateDefaultData(CardType type) {
             datas d = new datas();
@@ -44,12 +42,6 @@ namespace Builder {
             }
         }
 
-        public enum CardType {
-            Monster,
-            Spell,
-            Trap
-        }
-
         public CardBuilder(datas data) {
             Load(data);
         }
@@ -62,8 +54,6 @@ namespace Builder {
             Race = new RaceField(0);
             Attribute = new AttributeField(0);
         }
-
-      
 
         public void Load(datas data) {
             this.ID = data.id;
@@ -165,6 +155,7 @@ namespace Builder {
 
         public AttributeField Attribute { get; set; }
 
+
         /// <summary>
         /// 转换成
         /// </summary>
@@ -205,11 +196,5 @@ namespace Builder {
             return data;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string propertyName) {
-            if (PropertyChanged != null) {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
 }

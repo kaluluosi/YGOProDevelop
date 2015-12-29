@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:YGOProDevelop.View"
         xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
         mc:Ignorable="d"
-        Title="CardEditView" Height="300" Width="305.15"  WindowStartupLocation="CenterOwner" Topmost="True" DataContext="{Binding Source={StaticResource Locator},Path=CardEditor}">
+        Title="CardEditView" Height="585" Width="803.15"  WindowStartupLocation="CenterOwner" Topmost="True" DataContext="{Binding Source={StaticResource Locator},Path=CardEditor}">
     <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Text="{Binding Card.texts.name}" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" Text="{Binding Card.Name}" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="22" Margin="10,54,0,0" Text="{Binding Card.Type.TypeItem.Description}" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"/>
+        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="22" Margin="10,96,0,0" Text="{Binding Card.Attribute.AttributeItem.Description}" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"/>
     </Grid>
 </Window>

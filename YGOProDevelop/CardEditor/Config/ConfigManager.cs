@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Cfg {
+namespace YGOProDevelop.CardEditor.Config {
     /// <summary>
     /// 专门用来读取和管理配置缓存的类
     /// </summary>
@@ -44,7 +44,7 @@ namespace Cfg {
                     items = xmlSerializer.Deserialize(fs) as List<VarItem>;
                 }
                 catch (InvalidOperationException ex) {
-                    throw ex;
+                    throw ;
                 }
             }
 
@@ -68,7 +68,7 @@ namespace Cfg {
                     xmlSerializer.Serialize(fs, items);
                 }
                 catch (InvalidOperationException ex) {
-                    throw ex;
+                    throw;
                 }
             }
         }
@@ -78,8 +78,9 @@ namespace Cfg {
         /// </summary>
         /// <returns></returns>
         public static string GetDefaultConfigFolderPath() {
-            string currentDirectory = Directory.GetCurrentDirectory();
-            string defCfgPath = currentDirectory + @"\Data\";
+//             string currentDirectory = Directory.GetCurrentDirectory();
+//             string defCfgPath = currentDirectory + @"\Data\";
+            string defCfgPath = Path.GetFullPath(@".\Data");
             return defCfgPath;
         }
 
@@ -89,7 +90,7 @@ namespace Cfg {
         /// <param name="fileName">不带后缀的文件名</param>
         /// <returns></returns>
         public static string GetDefaultConfigPath(string fileName) {
-            return GetDefaultConfigFolderPath() + fileName+".xml";
+            return GetDefaultConfigFolderPath()+@"\" + fileName+".xml";
         }
 
     }

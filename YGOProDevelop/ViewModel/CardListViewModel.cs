@@ -145,7 +145,7 @@ namespace YGOProDevelop.ViewModel
                     ?? (_editCmd = new RelayCommand(
                     () => {
                         CardEditorViewModel ce = new CardEditorViewModel();
-                        ce.Card = SelectedCard;
+                        ce.Card = new CardEditor.Builder.CardBuilder(SelectedCard);
                         _dialogService.ShowDialog(ce);
                     }));
             }
