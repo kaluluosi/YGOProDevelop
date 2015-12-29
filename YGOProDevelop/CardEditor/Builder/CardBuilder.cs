@@ -156,6 +156,18 @@ namespace YGOProDevelop.CardEditor.Builder {
         public AttributeField Attribute { get; set; }
 
 
+        public CardType CardType {
+            get {
+                if (Type != null) {
+                    if (((int)Type.Value&1)==1)
+                        return CardType.Monster;
+                    else
+                        return CardType.Spell;
+                }
+                return CardType.Monster;
+            }
+        }
+
         /// <summary>
         /// 转换成
         /// </summary>

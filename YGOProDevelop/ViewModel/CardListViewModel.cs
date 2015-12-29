@@ -31,7 +31,7 @@ namespace YGOProDevelop.ViewModel
                 cdbService.ResetSearch();
             }
             catch(System.Exception ex) {
-                MessageBox.Show(ex.Message);
+//                 MessageBox.Show(ex.Message);
             }
             ContentId = "CardList";
 

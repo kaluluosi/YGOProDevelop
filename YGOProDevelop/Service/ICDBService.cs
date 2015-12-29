@@ -1,4 +1,6 @@
 ﻿using System;
+using YGOProDevelop.Model;
+
 namespace YGOProDevelop.Service
 {
     public interface ICDBService
@@ -15,5 +17,6 @@ namespace YGOProDevelop.Service
         int Save();
         int Search(int id);
         int Search(string keyword);
+        cardsEntities CE { get; set; }
     }
 }

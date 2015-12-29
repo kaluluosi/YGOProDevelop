@@ -6,18 +6,18 @@ using System.IO;
 using YGOProDevelop.Model;
 
 namespace YGOProDevelop.Service {
-    public class CDBService : INotifyPropertyChanged, YGOProDevelop.Service.ICDBService {
+    public class CDBService : INotifyPropertyChanged, ICDBService {
         /// <summary>
         /// 相当于cards.cdb本身
         /// </summary>
-        private static cardsEntities ce = new cardsEntities();
+        public static cardsEntities ce = new cardsEntities();
 
         public void Open(string filePath) {
             if(File.Exists(filePath) == false)
                 throw new FileNotFoundException(filePath +"找不到了！");
             ce.Database.Connection.ConnectionString = "data source=" + filePath;
-            CDBService cdbMgr = new CDBService();
         }
+
 
         private ObservableCollection<datas> queryResult;
 
@@ -31,6 +31,15 @@ namespace YGOProDevelop.Service {
             set {
                 queryResult = value;
                 OnPropertyChanged("QueryResult");
+            }
+        }
+
+        public cardsEntities CE {
+            get {
+                return ce;
+            }
+            set {
+                
             }
         }
 

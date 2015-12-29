@@ -166,3 +166,4 @@ C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProD
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.exe
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.pdb
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.csprojResolveAssemblyReference.cache
+D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\pics\27551.jpg

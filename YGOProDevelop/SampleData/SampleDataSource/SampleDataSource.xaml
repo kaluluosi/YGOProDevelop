@@ -1,0 +1,19 @@
+﻿<!--
+   *********  请勿修改此文件   *********
+   此文件由设计工具再生成。更改
+   此文件可能会导致错误。
+-->
+<SampleData:SampleDataSource xmlns:SampleData="clr-namespace:Expression.Blend.SampleData.SampleDataSource">
+	<SampleData:SampleDataSource.Collection>
+		<SampleData:Item Name="Class maecenas cras praesent" Attribute="Class aliquam maecenas curae" Level="98" Atk="67" Def="98"/>
+		<SampleData:Item Name="Nam duis aliquam" Attribute="Aenean donec" Level="38" Atk="96" Def="79"/>
+		<SampleData:Item Name="Curae nunc sed dis" Attribute="Integer cras mauris praesent" Level="61" Atk="67" Def="54"/>
+		<SampleData:Item Name="Est hac donec amet" Attribute="Nam quisque duis" Level="64" Atk="37" Def="10"/>
+		<SampleData:Item Name="Etiam accumsan aenean bibendum" Attribute="Accumsan bibendum etiam nunc" Level="96" Atk="90" Def="19"/>
+		<SampleData:Item Name="Dictumst eleifend mauris ante" Attribute="Dictumst vivamus sed" Level="51" Atk="24" Def="82"/>
+		<SampleData:Item Name="Leo facilisi mus" Attribute="Dis est" Level="67" Atk="23" Def="86"/>
+		<SampleData:Item Name="Fusce faucibus integer habitant" Attribute="Aliquam eleifend nullam" Level="48" Atk="69" Def="91"/>
+		<SampleData:Item Name="Arcu quisque vivamus" Attribute="Fusce aliquet lorem morbi" Level="97" Atk="15" Def="43"/>
+		<SampleData:Item Name="Nullam aptent" Attribute="Aptent blandit amet facilisi" Level="22" Atk="29" Def="18"/>
+	</SampleData:SampleDataSource.Collection>
+</SampleData:SampleDataSource>

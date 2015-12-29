@@ -25,5 +25,8 @@
     <Setting Name="scriptFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">script</Value>
     </Setting>
+    <Setting Name="picsFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">pics</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

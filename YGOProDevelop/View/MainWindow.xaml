@@ -17,7 +17,7 @@
         Height="757"
         Width="1173.5"
         Title="YGOProDevelop" WindowStartupLocation="CenterScreen"
-        Icon="/YGOProDevelop;component/Resources/属性/暗.png" 
+        Icon="/YGOProDevelop;component/Resources/icon.ico" 
         Closing="window_Closing"
         Loaded="window_Loaded" ResizeMode="CanResizeWithGrip">
     <Window.Resources>

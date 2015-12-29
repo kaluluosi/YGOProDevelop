@@ -52,6 +52,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
@@ -198,12 +201,15 @@
     <Compile Include="View\CardListView.xaml.cs">
       <DependentUpon>CardListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Converter\Datas2SourceConverter.cs" />
+    <Compile Include="View\Converter\Datas2StringConverter.cs" />
     <Compile Include="View\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PreferencesView.xaml.cs">
       <DependentUpon>PreferencesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\TemplateSelector\CardItemTemplateSelector.cs" />
     <Page Include="View\CardEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -271,6 +277,10 @@
     <Content Include="Data\Type.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="pics\27551.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\icon.ico" />
     <SplashScreen Include="Resources\splash.jpg" />
     <Resource Include="Resources\种族\不死.png" />
     <Resource Include="Resources\种族\兽.png" />
@@ -384,7 +394,6 @@
     <Folder Include="Cfg\" />
     <Folder Include="Model\Interfaces\" />
     <Folder Include="View\Behaviour\" />
-    <Folder Include="View\Converter\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icon\File_New32.png" />

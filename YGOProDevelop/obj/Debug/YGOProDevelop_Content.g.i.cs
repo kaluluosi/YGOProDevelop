@@ -16,6 +16,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/setcode.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/starlevel.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/type.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pics/27551.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/intelisence/lua/lua.ecp")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.tt")]

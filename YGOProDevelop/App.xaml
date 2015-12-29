@@ -1,4 +1,4 @@
-﻿<Application x:Class="YGOProDevelop.App"
+﻿<Application
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
@@ -6,11 +6,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              StartupUri="View\MainWindow.xaml"
              mc:Ignorable="d">
-    
+
     <Application.Resources>
         <!--Global View Model Locator-->
         <vm:ViewModelLocator x:Key="Locator"
                              d:IsDataSource="True" />
     </Application.Resources>
-    
+
 </Application>
