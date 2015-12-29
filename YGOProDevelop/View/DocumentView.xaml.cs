@@ -104,6 +104,8 @@ namespace YGOProDevelop.View {
 
         private void TextArea_TextEntered(object sender, TextCompositionEventArgs e) {
             if (".:".Contains(e.Text)) {
+                if(completionWin != null)
+                    completionWin.Close();
                 ShowCompletionWindow();
             }
         }
@@ -114,9 +116,7 @@ namespace YGOProDevelop.View {
                 ShowCompletionWindow();
             }
             else if (e.Text.Length > 0 && completionWin != null) {
-                if (!char.IsLetterOrDigit(e.Text[0]) && e.Text != "." && e.Text != ":") {
-                    // Whenever a non-letter is typed while the completion window is open,
-                    // insert the currently selected element.
+                if(!char.IsLetterOrDigit(e.Text[0]) && !".:".Contains(e.Text)) {
                     completionWin.CompletionList.RequestInsertion(e);
                 }
             }

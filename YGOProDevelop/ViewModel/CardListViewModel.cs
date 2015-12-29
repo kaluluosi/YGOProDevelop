@@ -128,6 +128,7 @@ namespace YGOProDevelop.ViewModel
                         if(result == true) {
                             CdbService.Open(openFile.FileName);
                             CdbService.ResetSearch();
+                            Properties.Settings.Default.lastCDB = openFile.FileName;
                         }
                     }));
             }
