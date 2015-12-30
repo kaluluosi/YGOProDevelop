@@ -58,6 +58,12 @@ namespace YGOProDevelop.ViewModel
             }
         }
 
+        public ObservableCollection<datas> QueryResult {
+            get {
+                return _cdbService.QueryResult;
+            }
+        }
+
 
         private ICustomDialogService _dialogService;
 

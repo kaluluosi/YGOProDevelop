@@ -4,32 +4,101 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YGOProDevelop.View"
+        xmlns:cfg="clr-namespace:YGOProDevelop.CardEditor.Config"
+        xmlns:cvt="clr-namespace:YGOProDevelop.View.Converter"
         xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
         mc:Ignorable="d"
-        Title="CardEditView" Height="677.179" Width="771.143"  WindowStartupLocation="CenterOwner" Topmost="True" DataContext="{Binding Source={StaticResource Locator},Path=CardEditor}" ResizeMode="NoResize">
+        Title="CardEditView" Height="704.846" Width="678.143"  WindowStartupLocation="CenterOwner" Topmost="True" DataContext="{Binding Source={StaticResource Locator},Path=CardEditor}" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <cvt:ID2SourceConverter x:Key="id2source"></cvt:ID2SourceConverter>
+            <cfg:SettingConfig x:Key="cfg"></cfg:SettingConfig>
+            <ItemsPanelTemplate x:Key="WrapItemsPanelTemplate">
+                <WrapPanel IsItemsHost="True" Orientation="Vertical"/>
+            </ItemsPanelTemplate>
+            <Style x:Key="FocusVisual">
+                <Setter Property="Control.Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#1F26A0DA"/>
+            <SolidColorBrush x:Key="Item.MouseOver.Border" Color="#a826A0Da"/>
+            <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#3DDADADA"/>
+            <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="#FFDADADA"/>
+            <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="#3D26A0DA"/>
+            <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="#FF26A0DA"/>
+            <Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                <Setter Property="Padding" Value="4,1"/>
+                <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                <CheckBox Height="Auto" IsChecked="{Binding IsSelected}">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </CheckBox>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsMouseOver" Value="True"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.MouseOver.Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.MouseOver.Border}"/>
+                                </MultiTrigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
-    	<Grid.RowDefinitions>
-    		<RowDefinition Height="258"/>
-    		<RowDefinition/>
-    	</Grid.RowDefinitions>
-    	<Grid.ColumnDefinitions>
-    		<ColumnDefinition/>
-    		<ColumnDefinition Width="182.143"/>
-    	</Grid.ColumnDefinitions>
-    	<Image Grid.Column="1" Source="/YGOProDevelop;component/Resources/cover.jpg"/>
-    	<TabControl Grid.Column="1" Grid.Row="1">
-    		<TabItem Header="效果描述">
-    			<Grid Background="#FFE5E5E5"/>
-    		</TabItem>
-    		<TabItem Header="脚本文本">
-    			<Grid Background="#FFE5E5E5"/>
-    		</TabItem>
-    	</TabControl>
-    	<TextBox HorizontalAlignment="Left" Height="44" Margin="10,8.5,0,0" TextWrapping="Wrap" Text="限制苏生" VerticalAlignment="Top" Width="306" FontSize="29.333"/>
-    	<TextBox HorizontalAlignment="Left" Height="23" Margin="408,29.666,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-    	<Label Content="卡密：" HorizontalAlignment="Left" Margin="362.543,28.76,0,0" VerticalAlignment="Top"/>
-    	<UniformGrid HorizontalAlignment="Left" Margin="10,62,0,10" Width="563" Columns="2" Rows="4"/>
-    	<GroupBox Header="类型" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="179.74" Width="563"/>
-    	<GroupBox Header="效果分类" HorizontalAlignment="Left" Margin="10,200.439,0,0" Grid.Row="1" VerticalAlignment="Top" Height="179.74" Width="563"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52"/>
+            <RowDefinition Height="213"/>
+            <RowDefinition Height="382*"/>
+            <RowDefinition Height="29"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="182.143"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="1" Source="{Binding Card.ID,Converter={StaticResource id2source}}" Grid.RowSpan="2"/>
+        <TabControl Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
+            <TabItem Header="效果描述">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding Card.Description}"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="脚本文本">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+        <TextBox HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" Text="限制苏生" Width="266" FontSize="29.333"/>
+        <TextBox Margin="0,29,16,0" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Right" Width="120"/>
+        <Label Content="卡密：" Margin="0,29,136,0" VerticalAlignment="Top" Height="25" Grid.RowSpan="2" HorizontalAlignment="Right" Width="46"/>
+        <UniformGrid Margin="10,10,16,10" Columns="2" Rows="4" Grid.Row="1"/>
+        <GroupBox Header="类型" Margin="10,10,16,0" Grid.Row="2" VerticalAlignment="Top" Height="180">
+            <ListBox ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionMode="Multiple"/>
+        </GroupBox>
+        <GroupBox Header="效果分类" Margin="10,196,16,6" Grid.Row="2">
+            <ListBox ItemsSource="{Binding Categories}" ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" SelectionMode="Multiple" DisplayMemberPath="Content"/>
+        </GroupBox>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="287,3.333,0,5" Grid.Row="3" Width="75"/>
+        <Button Content="Button" Margin="0,3,24,5" Grid.Row="3" HorizontalAlignment="Right" Width="75"/>
     </Grid>
 </Window>

@@ -51,5 +51,9 @@ namespace YGOProDevelop.CardEditor.Config {
 		public bool BeContainedIn(Int64 value){
             return (this.Value & value)!=0;
         }
+
+        public override string ToString() {
+            return Description;
+        }
     }
 }

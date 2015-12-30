@@ -201,6 +201,7 @@
     <Compile Include="View\CardListView.xaml.cs">
       <DependentUpon>CardListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Converter\ID2SourceConverter.cs" />
     <Compile Include="View\Converter\Datas2SourceConverter.cs" />
     <Compile Include="View\Converter\Datas2StringConverter.cs" />
     <Compile Include="View\DocumentView.xaml.cs">
