@@ -280,7 +280,6 @@
     <Content Include="pics\27551.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\cover.jpg" />
     <Resource Include="Resources\icon.ico" />
     <SplashScreen Include="Resources\splash.jpg" />
     <Resource Include="Resources\种族\不死.png" />
@@ -369,6 +368,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\0000.png" />
     <Resource Include="Data\_functions.txt_sort.txt" />
     <Resource Include="Data\_functions.txt" />
     <Content Include="Model\Model1.Context.tt">
@@ -391,6 +391,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Cfg\" />
     <Folder Include="Model\Interfaces\" />
     <Folder Include="View\Behaviour\" />
   </ItemGroup>

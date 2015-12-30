@@ -9,9 +9,5 @@ namespace YGOProDevelop.View {
             InitializeComponent();
         }
 
-        private void btnMore_Click(object sender, System.Windows.RoutedEventArgs e) {
-            popMore.IsOpen = !popMore.IsOpen;
-        }
-
     }
 }

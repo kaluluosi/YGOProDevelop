@@ -21,7 +21,7 @@ namespace YGOProDevelop.View.Converter {
                         return fullPath;
                     }
                     else {
-                        return @"/YGOProDevelop;component/Resources/cover.jpg";
+                        return @"/YGOProDevelop;component/Resources/0000.png";
                     }
                 case "Attribute":
                     return @"/YGOProDevelop;component/Resources/属性/" + card.Attribute.AttributeItem.Description + ".png";
