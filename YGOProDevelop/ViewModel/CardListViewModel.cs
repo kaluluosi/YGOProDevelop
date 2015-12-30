@@ -31,7 +31,7 @@ namespace YGOProDevelop.ViewModel
                 cdbService.ResetSearch();
             }
             catch(System.Exception ex) {
-//                 MessageBox.Show(ex.Message);
+                //                 MessageBox.Show(ex.Message);
             }
             ContentId = "CardList";
 
@@ -71,7 +71,7 @@ namespace YGOProDevelop.ViewModel
                     ?? (_openScriptCmd = new RelayCommand(
                     () => {
                         try {
-                            string script =string.Format( @"{0}\c{1}.lua",Properties.Settings.Default.scriptFolder, _selectedCard.id );
+                            string script = string.Format(@"{0}\c{1}.lua", Properties.Settings.Default.scriptFolder, _selectedCard.id);
                             if(File.Exists(script)) {
                                 Main.OpenDocument(script);
                             }
@@ -100,14 +100,13 @@ namespace YGOProDevelop.ViewModel
         public ICommand SearchCmd {
             get {
                 return _searchCmd
-                    ?? (_searchCmd = new RelayCommand<KeyEventArgs>(
-                    (arg) => {
-                        if(arg.Key == Key.Enter) {
-                            if(string.IsNullOrEmpty(KeyWord) == false)
-                                CdbService.Search(KeyWord);
-                            else
-                                CdbService.ResetSearch();
-                        }
+                    ?? (_searchCmd = new RelayCommand(
+                    () => {
+                        if(string.IsNullOrEmpty(_keyword) == false)
+                            CdbService.Search(_keyword);
+                        else
+                            CdbService.ResetSearch();
+
                     }));
             }
         }

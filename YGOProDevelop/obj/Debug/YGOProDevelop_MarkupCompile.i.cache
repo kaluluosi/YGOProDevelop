@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\
 YGOProDevelop
 none
 false
 CODE_ANALYSIS;DEBUG;TRACE
-D:\GitHub\YGOProDevelop\YGOProDevelop\App.xaml
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\App.xaml
 5-1525153951
 131727044911
-53-49840575
-85380344398
+53-1733085480
+34-830682545
 View\CardEditView.xaml;View\CardListView.xaml;View\MainWindow.xaml;View\DocumentView.xaml;View\PreferencesView.xaml;
 resources\splash.jpg
-True
+False
 

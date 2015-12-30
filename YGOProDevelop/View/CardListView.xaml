@@ -13,11 +13,65 @@
              d:DesignHeight="1151.232" d:DesignWidth="263.962" d:DataContext="{Binding Source={StaticResource Locator},Path=CardList}" Height="Auto" Width="Auto" >
     <UserControl.Resources>
         <ResourceDictionary>
-            <DataTemplate DataType="{x:Type model:datas}">
-                <TextBlock Text="{Binding texts.name}"></TextBlock>
-            </DataTemplate>
             <cvt:Datas2SourceConverter x:Key="id2source"></cvt:Datas2SourceConverter>
             <cvt:Datas2StringConverter x:Key="d2str"></cvt:Datas2StringConverter>
+            <Style TargetType="ListBoxItem">
+                <Setter Property="ToolTip">
+                    <Setter.Value>
+                        <ToolTip>
+                            <StackPanel Orientation="Vertical" Width="200">
+                                <Image Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='Pic'}"></Image>
+                                <TextBlock Text="{Binding texts.desc}" TextWrapping="Wrap"></TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <DataTemplate x:Key="MonItem">
+                <Grid Height="70" Width="200" MinWidth="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="26*"/>
+                        <RowDefinition Height="26*"/>
+                        <RowDefinition Height="27*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="56*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="64*"/>
+                        <ColumnDefinition Width="29*"/>
+                        <ColumnDefinition Width="74*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="Pic" HorizontalAlignment="Stretch" Width="Auto" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='Pic'}" Margin="1,0,0,0" Grid.RowSpan="3" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+                    <Image x:Name="AttributeIcon" Grid.Column="1" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='Attribute'}"/>
+                    <Label x:Name="Name" FontWeight="Bold" Content="{Binding texts.name}" Grid.Column="2" Grid.ColumnSpan="3"/>
+                    <Image x:Name="RaceIcon" Grid.Column="1" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='Race'}" Grid.Row="1"/>
+                    <Label x:Name="Race" Content="{Binding .,Converter={StaticResource d2str},ConverterParameter='Race'}" Grid.Column="2" Grid.Row="1" d:LayoutOverrides="Width"/>
+                    <Image x:Name="LevelIcon" Grid.Column="3" Source="/YGOProDevelop;component/Resources/等级/levelStar.png" Grid.Row="1"/>
+                    <Label x:Name="Level" Content="{Binding level}" Grid.Column="4" Grid.Row="1" d:LayoutOverrides="Width"/>
+                    <Label x:Name="AtkDef" Content="{Binding .,Converter={StaticResource d2str},ConverterParameter='AtkDef'}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="SpellItem">
+                <Grid Height="70" Width="200" MinWidth="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="26*"/>
+                        <RowDefinition Height="26*"/>
+                        <RowDefinition Height="27*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="56*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="64*"/>
+                        <ColumnDefinition Width="29*"/>
+                        <ColumnDefinition Width="74*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="Pic" HorizontalAlignment="Stretch" Width="Auto" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='Pic'}" Margin="1,0,0,0" Grid.RowSpan="3" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
+                    <Image x:Name="TypeIcon" Grid.Column="1" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='Type'}"/>
+                    <Label x:Name="Name" FontWeight="Bold" Content="{Binding texts.name}" Grid.Column="2" Grid.ColumnSpan="3"/>
+                    <Image x:Name="SubTypeIcon" Grid.Column="1" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='SubType'}" Grid.Row="1"/>
+                    <Label x:Name="SubType" Content="{Binding .,Converter={StaticResource d2str},ConverterParameter='SubType'}" Grid.Column="2" Grid.Row="1" d:LayoutOverrides="Width"/>
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel>
@@ -26,66 +80,31 @@
                 <Button Command="{Binding OpenCDBCmd, Mode=OneWay}">打开</Button>
             </ToolBar>
         </ToolBarTray>
-        <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding KeyWord,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" DockPanel.Dock="Bottom" Height="24">
-            <i:Interaction.Triggers >
-                <i:EventTrigger EventName="KeyDown">
-                    <cmd:EventToCommand Command="{Binding SearchCmd}" PassEventArgsToCommand="True"></cmd:EventToCommand>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </TextBox>
-        <ListBox x:Name="listBox" SelectedItem="{Binding SelectedCard}" DockPanel.Dock="Top" ItemsSource="{Binding CdbService.QueryResult}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+        <Grid DockPanel.Dock="Bottom" Margin="0,2,0,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210*"/>
+                <ColumnDefinition Width="41"/>
+                <ColumnDefinition Width="13"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding KeyWord,UpdateSourceTrigger=PropertyChanged}">
+                <!--<i:Interaction.Triggers >
+                    <i:EventTrigger EventName="KeyDown">
+                        <cmd:EventToCommand Command="{Binding SearchCmd}" PassEventArgsToCommand="True"></cmd:EventToCommand>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>-->
+            </TextBox>
+            <Button Content="搜索" Command="{Binding SearchCmd}" Grid.Column="1" IsDefault="True" />
+            <Button x:Name="btnMore" Content="." Grid.Column="2" Click="btnMore_Click">
+            </Button>
+            <Popup x:Name="popMore" PlacementTarget="{Binding ElementName=btnMore, Mode=OneWay}" Placement="Left" StaysOpen="False" VerticalOffset="-202" >
+                <Grid Width="200" Height="200">
+                    <Button >临时面板</Button>
+                </Grid>
+            </Popup>
+        </Grid>
+        <ListBox x:Name="listBox" SelectedItem="{Binding SelectedCard}" DockPanel.Dock="Top" ItemsSource="{Binding CdbService.QueryResult}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ToolTip="{DynamicResource tip}" >
             <ListBox.ItemTemplateSelector>
-                <selector:CardItemTemplateSelector>
-                    <selector:CardItemTemplateSelector.MonDataTemplate>
-                        <DataTemplate>
-                            <Grid Height="70" Width="200" MinWidth="200">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="26*"/>
-                                    <RowDefinition Height="26*"/>
-                                    <RowDefinition Height="27*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="56*"/>
-                                    <ColumnDefinition Width="30*"/>
-                                    <ColumnDefinition Width="64*"/>
-                                    <ColumnDefinition Width="29*"/>
-                                    <ColumnDefinition Width="74*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image x:Name="Pic" HorizontalAlignment="Stretch" Width="Auto" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='Pic'}" Margin="1,0,0,0" Grid.RowSpan="3" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
-                                <Image x:Name="AttributeIcon" Grid.Column="1" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='Attribute'}"/>
-                                <Label x:Name="Name" FontWeight="Bold" Content="{Binding texts.name}" Grid.Column="2" Grid.ColumnSpan="3"/>
-                                <Image x:Name="RaceIcon" Grid.Column="1" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='Race'}" Grid.Row="1"/>
-                                <Label x:Name="Race" Content="{Binding .,Converter={StaticResource d2str},ConverterParameter='Race'}" Grid.Column="2" Grid.Row="1" d:LayoutOverrides="Width"/>
-                                <Image x:Name="LevelIcon" Grid.Column="3" Source="/YGOProDevelop;component/Resources/等级/levelStar.png" Grid.Row="1"/>
-                                <Label x:Name="Level" Content="{Binding level}" Grid.Column="4" Grid.Row="1" d:LayoutOverrides="Width"/>
-                                <Label x:Name="AtkDef" Content="{Binding .,Converter={StaticResource d2str},ConverterParameter='AtkDef'}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4"/>
-                            </Grid>
-                        </DataTemplate>
-                    </selector:CardItemTemplateSelector.MonDataTemplate>
-                    <selector:CardItemTemplateSelector.SpellDataTemplate>
-                        <DataTemplate >
-                            <Grid Height="70" Width="200" MinWidth="200">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="26*"/>
-                                    <RowDefinition Height="26*"/>
-                                    <RowDefinition Height="27*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="56*"/>
-                                    <ColumnDefinition Width="30*"/>
-                                    <ColumnDefinition Width="64*"/>
-                                    <ColumnDefinition Width="29*"/>
-                                    <ColumnDefinition Width="74*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image x:Name="Pic" HorizontalAlignment="Stretch" Width="Auto" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='Pic'}" Margin="1,0,0,0" Grid.RowSpan="3" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
-                                <Image x:Name="TypeIcon" Grid.Column="1" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='Type'}"/>
-                                <Label x:Name="Name" FontWeight="Bold" Content="{Binding texts.name}" Grid.Column="2" Grid.ColumnSpan="3"/>
-                                <Image x:Name="SubTypeIcon" Grid.Column="1" Source="{Binding .,Converter={StaticResource id2source},ConverterParameter='SubType'}" Grid.Row="1"/>
-                                <Label x:Name="SubType" Content="{Binding .,Converter={StaticResource d2str},ConverterParameter='SubType'}" Grid.Column="2" Grid.Row="1" d:LayoutOverrides="Width"/>
-                            </Grid>
-                        </DataTemplate>
-                    </selector:CardItemTemplateSelector.SpellDataTemplate>
-                </selector:CardItemTemplateSelector>
+                <selector:CardItemTemplateSelector MonDataTemplate="{StaticResource MonItem}" SpellDataTemplate="{StaticResource SpellItem}"></selector:CardItemTemplateSelector>
             </ListBox.ItemTemplateSelector>
             <ListBox.ContextMenu>
                 <ContextMenu>

@@ -94,9 +94,6 @@
                     <Button Command="{Binding NewCmd}">
                         <Image Source="/YGOProDevelop;component/Resources/Icon/File_New32.png" Height="34" Width="32"/>
                     </Button>
-                    <Button Command="{Binding ShowCardListCmd}" ToolTip="CDBEditor">
-                        <Image Source="/YGOProDevelop;component/Resources/类型/cardFrame_0.png"  Height="34" Width="32" />
-                    </Button>
                 </ToolBar>
             </ToolBarTray>
         </Grid>
