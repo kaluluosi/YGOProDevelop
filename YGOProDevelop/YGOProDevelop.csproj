@@ -77,6 +77,8 @@
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.registration" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -134,86 +136,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="Builder\AttributeField.cs" />
-    <Compile Include="Builder\CardBuilder.cs" />
-    <Compile Include="Builder\CategoryField.cs" />
-    <Compile Include="Builder\Field.cs" />
-    <Compile Include="Builder\OtField.cs" />
-    <Compile Include="Builder\RaceField.cs" />
-    <Compile Include="Builder\SetCodeField.cs" />
-    <Compile Include="Builder\TypeField.cs" />
-    <Compile Include="Model\CompletionItem.cs" />
-    <Compile Include="Model\DefaultCompletionData.cs" />
-    <Compile Include="Service\CDBService.cs" />
-    <Compile Include="Cfg\ConfigManager.cs" />
-    <Compile Include="Cfg\SettingConfig.cs" />
-    <Compile Include="Cfg\VarItem.cs" />
-    <Compile Include="Model\datas.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Service\CustomDialogRigister.cs" />
-    <Compile Include="Service\DefaultIntelisenceService.cs" />
-    <Compile Include="Service\ICDBService.cs" />
-    <Compile Include="Service\IIntelisenceService.cs" />
-    <Compile Include="Service\DefaultHighlightSettingService.cs" />
-    <Compile Include="Service\ICustomDialogService.cs" />
-    <Compile Include="Service\IHighlightSettingService.cs" />
-    <Compile Include="Service\CustomDialogService.cs" />
-    <Compile Include="Model\texts.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Service\SmartIntelisenceService.cs" />
-    <Compile Include="ViewModel\CardListViewModel.cs" />
-    <Compile Include="ViewModel\DialogViewModelBase.cs" />
-    <Compile Include="ViewModel\DockableViewModelBase.cs" />
-    <Compile Include="ViewModel\DocumentViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="View\CardListView.xaml.cs">
-      <DependentUpon>CardListView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DocumentView.xaml.cs">
-      <DependentUpon>DocumentView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="View\CardListView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="App.xaml.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\DocumentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -229,133 +155,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="Data\Attribute.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Category.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Intelisence\Lua\YGOProApi.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Ot.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Race.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\SetCode.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\StarLevel.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Type.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Resource Include="Resources\种族\不死.png" />
-    <Resource Include="Resources\种族\兽.png" />
-    <Resource Include="Resources\种族\兽战士.png" />
-    <Resource Include="Resources\种族\天使.png" />
-    <Resource Include="Resources\种族\岩石.png" />
-    <Resource Include="Resources\种族\幻神兽.png" />
-    <Resource Include="Resources\种族\念动力.png" />
-    <Resource Include="Resources\种族\恐龙.png" />
-    <Resource Include="Resources\种族\恶魔.png" />
-    <Resource Include="Resources\种族\战士.png" />
-    <Resource Include="Resources\种族\昆虫.png" />
-    <Resource Include="Resources\种族\机械.png" />
-    <Resource Include="Resources\种族\植物.png" />
-    <Resource Include="Resources\种族\水.png" />
-    <Resource Include="Resources\种族\海龙.png" />
-    <Resource Include="Resources\种族\炎.png" />
-    <Resource Include="Resources\种族\爬虫.png" />
-    <Resource Include="Resources\种族\雷.png" />
-    <Resource Include="Resources\种族\魔法师.png" />
-    <Resource Include="Resources\种族\鱼.png" />
-    <Resource Include="Resources\种族\鸟兽.png" />
-    <Resource Include="Resources\种族\龙.png" />
-    <Resource Include="Resources\属性\光.png" />
-    <Resource Include="Resources\属性\地.png" />
-    <Resource Include="Resources\属性\暗.png" />
-    <Resource Include="Resources\属性\水.png" />
-    <Resource Include="Resources\属性\炎.png" />
-    <Resource Include="Resources\属性\神.png" />
-    <Resource Include="Resources\属性\陷.png" />
-    <Resource Include="Resources\属性\风.png" />
-    <Resource Include="Resources\属性\魔.png" />
-    <Resource Include="Resources\魔陷卡类型\仪式.png" />
-    <Resource Include="Resources\魔陷卡类型\反击.png" />
-    <Resource Include="Resources\魔陷卡类型\场地.png" />
-    <Resource Include="Resources\魔陷卡类型\普通.png" />
-    <Resource Include="Resources\魔陷卡类型\永续.png" />
-    <Resource Include="Resources\魔陷卡类型\装备.png" />
-    <Resource Include="Resources\魔陷卡类型\速攻.png" />
-    <Resource Include="Resources\类型\cardFrame_0.png" />
-    <Resource Include="Resources\类型\cardFrame_1.png" />
-    <Resource Include="Resources\类型\cardFrame_2.png" />
-    <Resource Include="Resources\类型\cardFrame_3.png" />
-    <Resource Include="Resources\类型\cardFrame_4.png" />
-    <Resource Include="Resources\类型\cardFrame_5.png" />
-    <Resource Include="Resources\类型\cardFrame_6.png" />
-    <Resource Include="Resources\类型\cardFrame_7.png" />
-    <Resource Include="Resources\类型\cardFrame_8.png" />
-    <Resource Include="Resources\等级\levelStar.png" />
-    <Resource Include="Resources\等级\level_1-4.png" />
-    <Resource Include="Resources\等级\level_1.png" />
-    <Resource Include="Resources\等级\level_10.png" />
-    <Resource Include="Resources\等级\level_11.png" />
-    <Resource Include="Resources\等级\level_12.png" />
-    <Resource Include="Resources\等级\level_2.png" />
-    <Resource Include="Resources\等级\level_3.png" />
-    <Resource Include="Resources\等级\level_4.png" />
-    <Resource Include="Resources\等级\level_5-6.png" />
-    <Resource Include="Resources\等级\level_5.png" />
-    <Resource Include="Resources\等级\level_6.png" />
-    <Resource Include="Resources\等级\level_7.png" />
-    <Resource Include="Resources\等级\level_7up.png" />
-    <Resource Include="Resources\等级\level_8.png" />
-    <Resource Include="Resources\等级\level_9.png" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="cards.cdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <EntityDeploy Include="Model\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Data\Intelisence\Lua\Lua.ecp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="Model\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <Resource Include="Resources\0000.png" />
-    <Resource Include="Resources\boss_BlueEyedWhiteDragon.png" />
-    <Resource Include="Data\_functions.txt_sort.txt" />
-    <Resource Include="Data\_functions.txt" />
-    <Content Include="Model\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Data\Highlight\Lua-Mode.xshd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -363,11 +172,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\Interfaces\" />
-    <Folder Include="View\Converter\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icon\File_New32.png" />
+    <Folder Include="Model\" />
+    <Folder Include="Plugin\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
@@ -383,6 +190,16 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets')" />
