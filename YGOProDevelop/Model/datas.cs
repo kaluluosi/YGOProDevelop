@@ -25,7 +25,7 @@ namespace YGOProDevelop.Model
         public Nullable<long> race { get; set; }
         public Nullable<long> attribute { get; set; }
         public Nullable<long> category { get; set; }
-    
+
         public virtual texts texts { get; set; }
     }
 }

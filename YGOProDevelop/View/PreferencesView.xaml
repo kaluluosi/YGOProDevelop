@@ -11,8 +11,12 @@
         <vm:PreferencesViewModel></vm:PreferencesViewModel>
     </Window.DataContext>
     <Grid>
-        <TextBox x:Name="cdbPath" HorizontalAlignment="Left" Height="23" Margin="82,11,0,0" TextWrapping="Wrap" Text="{Binding LastCDB}" VerticalAlignment="Top" Width="260"/>
+        <TextBox x:Name="cdbPath" HorizontalAlignment="Left" Height="23" Margin="82,11,0,0" TextWrapping="Wrap" Text="{Binding ScriptFolderPath}" VerticalAlignment="Top" Width="260"/>
         <Label Content="script路径：" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="···" Margin="355,13,10,0" VerticalAlignment="Top"/>
+        <Button Content="···" Command="{Binding ScriptFolderSelectCmd}"  Margin="355,13,10,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="cdbPath_Copy" HorizontalAlignment="Left" Height="23" Margin="82,52,0,0" TextWrapping="Wrap" Text="{Binding PicFolderPath}" VerticalAlignment="Top" Width="260"/>
+        <Label Content="pics路径：" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top"/>
+        <Button Content="···" Command="{Binding PicFolderSelectCmd}" Margin="355,54,10,0" VerticalAlignment="Top" />
+
     </Grid>
 </Window>

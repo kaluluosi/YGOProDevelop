@@ -9,6 +9,7 @@
   DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
 */
 
+using System.Configuration;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
@@ -34,12 +35,12 @@ namespace YGOProDevelop.ViewModel {
             SimpleIoc.Default.Register<IHighlightSettingService, DefaultHighlightSettingService>();
             SimpleIoc.Default.Register<IIntelisenceService, SmartIntelisenceService>();
             SimpleIoc.Default.Register<ICDBService, CDBService>();
+            SimpleIoc.Default.Register<SettingsBase>(()=>Properties.Settings.Default);
 
             //注册ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<DocumentViewModel>();
-            SimpleIoc.Default.Register<CardListViewModel>();
-            SimpleIoc.Default.Register<CardEditorViewModel>();
+            SimpleIoc.Default.Register<ToolsViewModelBase,CardListViewModel>();
         }
 
         public static MainViewModel Main {
@@ -48,18 +49,6 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
-
-        public CardListViewModel CardList {
-            get {
-                return ServiceLocator.Current.GetInstance<CardListViewModel>();
-            }
-        }
-
-        public CardEditorViewModel CardEditor {
-            get {
-                return ServiceLocator.Current.GetInstance<CardEditorViewModel>();
-            }
-        }
 
         /// <summary>
         /// Cleans up all the resources.

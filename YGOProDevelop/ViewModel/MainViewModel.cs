@@ -1,19 +1,16 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
-using ICSharpCode.AvalonEdit.Document;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using YGOProDevelop.Service;
 using ICSharpCode.AvalonEdit.Highlighting;
-using Microsoft.Win32;
 using System.IO;
-using GalaSoft.MvvmLight.Views;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
-using Xceed.Wpf.AvalonDock;
-using System.ComponentModel;
+using System.Windows.Forms;
+using System.Configuration;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -24,24 +21,32 @@ namespace YGOProDevelop.ViewModel {
     /// </summary>
     public class MainViewModel : ViewModelBase {
 
-        public static MainViewModel Main;
+        public static MainViewModel This {
+            get {
+                return SimpleIoc.Default.GetInstance<MainViewModel>();
+            }
+        }
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IHighlightSettingService hlSettingService,ICustomDialogService dialogService) {
+        public MainViewModel(IHighlightSettingService hlSettingService, ICustomDialogService dialogService) {
             _hlSettingService = hlSettingService;
             _dialogService = dialogService;
-            Main = this;
+            AnchorableViewModels = new ObservableCollection<ToolsViewModelBase>(SimpleIoc.Default.GetAllInstances<ToolsViewModelBase>());
             ReOpenDocument();
         }
 
+        private SettingsBase _settings;
+
         private ICustomDialogService _dialogService;
 
-        private CardListViewModel _cardListViewModel;
+        private IHighlightSettingService _hlSettingService;
+
         /// <summary>
         /// 文档viewmodel集合
         /// </summary>
-        private ObservableCollection<ViewModelBase> _documentViewModels = new ObservableCollection<ViewModelBase>();
+        private ObservableCollection<DocumentViewModel> _documentViewModels = new ObservableCollection<DocumentViewModel>();
         /// <summary>
         /// 当前激活的viewmodel
         /// </summary>
@@ -50,15 +55,14 @@ namespace YGOProDevelop.ViewModel {
         /// <summary>
         /// 可停靠边缘的viewmodel
         /// </summary>
-        private ObservableCollection<ViewModelBase> _anchorableViewModels = new ObservableCollection<ViewModelBase>();
-        private IHighlightSettingService _hlSettingService;
+        private ObservableCollection<ToolsViewModelBase> _anchorableViewModels = new ObservableCollection<ToolsViewModelBase>();
 
-        public ObservableCollection<ViewModelBase> AnchorableViewModels {
+        public ObservableCollection<ToolsViewModelBase> AnchorableViewModels {
             get { return _anchorableViewModels; }
             set { _anchorableViewModels = value; RaisePropertyChanged(() => AnchorableViewModels); }
         }
 
-        public ObservableCollection<ViewModelBase> DocumentViewModels {
+        public ObservableCollection<DocumentViewModel> DocumentViewModels {
             get { return _documentViewModels; }
             set { _documentViewModels = value; RaisePropertyChanged(() => DocumentViewModels); }
         }
@@ -71,15 +75,6 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
-        public CardListViewModel CardListViewModel {
-            get {
-                if(_cardListViewModel == null) {
-                    _cardListViewModel = SimpleIoc.Default.GetInstance<CardListViewModel>();
-                    _anchorableViewModels.Add(_cardListViewModel);
-                }
-                return _cardListViewModel;
-            }
-        }
         public IReadOnlyCollection<IHighlightingDefinition> HightLightingDefs {
             get {
                 return _hlSettingService.HighlightingDefs;
@@ -125,19 +120,7 @@ namespace YGOProDevelop.ViewModel {
             get {
                 return _saveAsCmd ?? (_saveAsCmd = new RelayCommand(
                     () => {
-//                         MessengerInstance.Send(new NotificationMessageAction<string>("SaveFile", (fileName) => {
-//                             ActiveDocumentViewModel.SaveFile(fileName);
-//                         }), "MainWindow");
-                        SaveFileDialog saveDlg = new SaveFileDialog();
-                        saveDlg.AddExtension = true;
-                        saveDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
-                        saveDlg.FilterIndex = 1;
-                        if(saveDlg.ShowDialog()==true) {
-                            ActiveDocumentViewModel.SaveFile(saveDlg.FileName);
-                        }
-                    },
-                    () => {
-                        return ActiveViewModel is DocumentViewModel;
+                        SaveDocument(ActiveDocumentViewModel, true);
                     }
                 ));
             }
@@ -153,7 +136,7 @@ namespace YGOProDevelop.ViewModel {
                 return _saveCmd
                     ?? (_saveCmd = new RelayCommand(
                     () => {
-                        SaveActiveDocument();
+                        SaveDocument(ActiveDocumentViewModel);
                     },
                     () => {
                         return ActiveViewModel is DocumentViewModel;
@@ -161,26 +144,16 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
-        private void SaveActiveDocument() {
-            if(File.Exists(ActiveDocumentViewModel.FileName))
-                ActiveDocumentViewModel.SaveFile();
-            else
-                SaveAsCmd.Execute(null);
-        }
-
         private ICommand _openCmd;
         public ICommand OpenCmd {
             get {
                 return _openCmd ?? (_openCmd = new RelayCommand(
                     () => {
-//                         MessengerInstance.Send(new NotificationMessageAction<string>("OpenFile", (fileName) => {
-//                             OpenDocument(fileName);
-//                         }), "MainWindow");
                         OpenFileDialog openDlg = new OpenFileDialog();
                         openDlg.AddExtension = true;
                         openDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
                         openDlg.FilterIndex = 1;
-                        if(openDlg.ShowDialog()==true) {
+                        if (openDlg.ShowDialog() == DialogResult.OK) {
                             OpenDocument(openDlg.FileName);
                         }
                     }
@@ -199,6 +172,9 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
+        /// <summary>
+        /// 编辑器关闭时保存最后打开的文件
+        /// </summary>
         private ICommand _closingCmd;
         public ICommand ClosingCmd {
             get {
@@ -211,20 +187,6 @@ namespace YGOProDevelop.ViewModel {
                         }
                         Properties.Settings.Default.lastFiles = files;
                         Properties.Settings.Default.Save();
-                    }));
-            }
-        }
-
-        private ICommand _showCardListCmd;
-        /// <summary>
-        /// Gets the MyCommand.
-        /// </summary>
-        public ICommand ShowCardListCmd {
-            get {
-                return _showCardListCmd
-                    ?? (_showCardListCmd = new RelayCommand(
-                    () => {
-                        CardListViewModel.IsVisible = true;
                     }));
             }
         }
@@ -243,9 +205,31 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
+
         #endregion
         #region method
 
+        public void SaveDocument(DocumentViewModel doc, bool saveAs = false) {
+            //如果doc的文件名是空的则证明这个文件是未命名文件或者saveAs是true，使用另存为，否则直接覆盖保存。
+            if (doc.FileName == null || saveAs) {
+                SaveFileDialog saveDlg = new SaveFileDialog();
+                saveDlg.AddExtension = true;
+                saveDlg.Filter = "Lua脚本文件|*.lua|C#文件|*.cs|文本文件|*.txt|所有文件|*.*";
+                saveDlg.FilterIndex = 1;
+                if (saveDlg.ShowDialog() == DialogResult.OK) {
+                    doc.SaveFile(saveDlg.FileName);
+                }
+            }
+            else {
+                doc.SaveFile();
+            }
+            //取消修改标记
+            doc.IsDirty = false;
+        }
+
+        /// <summary>
+        /// 重新打开上次没关闭的文档
+        /// </summary>
         public void ReOpenDocument() {
             var files = Properties.Settings.Default.lastFiles;
             if (files != null && files.Count != 0) {
@@ -262,9 +246,8 @@ namespace YGOProDevelop.ViewModel {
             ActiveViewModel = docVM;
         }
 
-
         public void OpenDocument(string fileName) {
-            foreach(var doc in DocumentViewModels) {
+            foreach (var doc in DocumentViewModels) {
                 if (doc is DocumentViewModel && (doc as DocumentViewModel).FileName == fileName) {
                     ActiveViewModel = doc;
                     return;
@@ -280,6 +263,33 @@ namespace YGOProDevelop.ViewModel {
             DocumentViewModel docVM = SimpleIoc.Default.GetInstance<DocumentViewModel>(Guid.NewGuid().ToString());
             docVM.IsShowLineNumbers = IsShowLineNumbers;
             return docVM;
+        }
+
+        public void CloseDocument(DocumentViewModel doc) {
+            //如果文档修改过则询问是否保存，cancel则取消关闭文档。
+            if (doc.IsDirty) {
+                DialogResult result =MessageBox.Show("是否保存" + doc.Title + "?", "保存", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes) {
+                    SaveDocument(doc);
+                }
+                else if (result == DialogResult.Cancel) {
+                    return;
+                }
+            }
+            //如果文档没被改过则直接关闭
+            if (DocumentViewModels.Contains(doc))
+                DocumentViewModels.Remove(doc);
+        }
+
+        public void CloseAllBut(DocumentViewModel doc) {
+            var doc2close = new List<DocumentViewModel>();
+            foreach(var docVM in DocumentViewModels) {
+                if (docVM != null && docVM != doc)
+                    doc2close.Add(docVM);
+            }
+            foreach(var docVM in doc2close) {
+                CloseDocument(docVM);
+            }
         }
 
         #endregion

@@ -10,7 +10,7 @@ namespace YGOProDevelop.View.Converter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value == null) return null;
 
-            string imgPath = Path.Combine(Properties.Settings.Default.picsFolder,value + ".jpg"); ;
+            string imgPath = Path.Combine(Properties.Settings.Default.picFolder,value + ".jpg"); ;
             string fullPath = Path.GetFullPath(imgPath);
             if (File.Exists(fullPath)) {
                 return fullPath;

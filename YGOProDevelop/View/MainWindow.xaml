@@ -67,7 +67,16 @@
             </MenuItem>
             <MenuItem Header="视图" >
                 <MenuItem Header="显示行号" IsCheckable="True"  IsChecked="{Binding IsShowLineNumbers}" />
-                <MenuItem Header="卡片列表" IsCheckable="True" IsChecked="{Binding CardListViewModel.IsVisible}"></MenuItem>
+                <!--<MenuItem Header="卡片列表" IsCheckable="True" IsChecked="{Binding CardListViewModel.IsVisible}"></MenuItem>-->
+            </MenuItem>
+            <MenuItem Header="工具" ItemsSource="{Binding AnchorableViewModels}">
+                <MenuItem.ItemContainerStyle>
+                    <Style >
+                        <Setter Property="MenuItem.Header" Value="{Binding Title}"></Setter>
+                        <Setter Property="MenuItem.IsCheckable" Value="True"></Setter>
+                        <Setter Property="MenuItem.IsChecked" Value="{Binding IsVisible}"></Setter>
+                    </Style>
+                </MenuItem.ItemContainerStyle>
             </MenuItem>
             <MenuItem Header="语言" ItemsSource="{Binding HightLightingDefs}" >
                 <MenuItem.ItemContainerStyle>
@@ -101,12 +110,13 @@
         <avalon:DockingManager x:Name="dock" Grid.Row="2" 
 			DocumentsSource="{Binding DocumentViewModels}" 
 			AnchorablesSource="{Binding AnchorableViewModels}"
-			ActiveContent="{Binding ActiveViewModel, Mode=TwoWay}" >
+			ActiveContent="{Binding ActiveViewModel, Mode=TwoWay}">
             <avalon:DockingManager.LayoutItemContainerStyle>
                 <Style TargetType="{x:Type avalon:LayoutItem}">
                     <Setter Property="Title" Value="{Binding Model.Title}" />
                     <Setter Property="ContentId" Value="{Binding Model.ContentId}"/>
                     <Setter Property="CloseCommand" Value="{Binding Model.CloseCmd}"></Setter>
+                    <Setter Property="CloseAllButThisCommand" Value="{Binding Model.CloesAllButThisCmd}"></Setter>
                     <Setter Property="Visibility" Value="{Binding Model.IsVisible,Converter={StaticResource bool2Visibility},ConverterParameter={x:Static Visibility.Hidden},Mode=TwoWay}" ></Setter>
                 </Style>
             </avalon:DockingManager.LayoutItemContainerStyle>

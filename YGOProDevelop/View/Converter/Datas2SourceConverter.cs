@@ -15,7 +15,7 @@ namespace YGOProDevelop.View.Converter {
             switch (parameter.ToString()) {
 
                 case "Pic":
-                    string imgPath = Path.Combine(Properties.Settings.Default.picsFolder, card.ID + ".jpg"); ;
+                    string imgPath = Path.Combine(Properties.Settings.Default.picFolder, card.ID + ".jpg"); ;
                     string fullPath = Path.GetFullPath(imgPath);
                     if (File.Exists(fullPath)) {
                         return fullPath;

@@ -1,15 +1,14 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Ioc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace YGOProDevelop.ViewModel {
-    public class DockableViewModelBase:ViewModelBase {
+    public abstract class DockableViewModelBase:ViewModelBase {
+        public MainViewModel Main {
+            get {
+                return MainViewModel.This;
+            }
+        }
 
         private string _title;
         private bool _isVisible = true;
@@ -46,11 +45,6 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
-        public MainViewModel Main {
-            get {
-                return MainViewModel.Main;
-            }
-        }
 
         private ICommand _closeCmd;
 
@@ -68,7 +62,7 @@ namespace YGOProDevelop.ViewModel {
         }
 
         protected virtual void OnClose() {
-             IsVisible = false;
+             
         }
     }
 }

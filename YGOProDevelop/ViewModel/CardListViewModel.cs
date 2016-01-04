@@ -17,7 +17,7 @@ namespace YGOProDevelop.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class CardListViewModel : DockableViewModelBase
+    public class CardListViewModel : ToolsViewModelBase
     {
         private ICDBService _cdbService;
 

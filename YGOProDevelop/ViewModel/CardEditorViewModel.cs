@@ -19,7 +19,7 @@ namespace YGOProDevelop.ViewModel {
         /// Initializes a new instance of the CardEditorViewModel class.
         /// </summary>
         public CardEditorViewModel() {
-            Categories = new SelectionCollection<VarItem>(SettingConfig.Categorys);
+
         }
 
         private CardBuilder _card;
@@ -31,33 +31,23 @@ namespace YGOProDevelop.ViewModel {
 
             set {
                 _card = value;RaisePropertyChanged();
-                UpdateViewModel();
+                Categories.SelectedItems = Card.Category.CategoryItems;
             }
         }
 
-        private void UpdateViewModel() {
-            foreach(var item in Card.Category.CategoryItems) {
-                foreach(var selectionItem in Categories) {
-                    if(selectionItem.Content == item) {
-                        selectionItem.IsSelected = true;
-                    }
-                }
+        public SelectionCollection<VarItem> SubTypes {
+            get {
+                return null;
             }
         }
 
+
+        private SelectionCollection<VarItem> _categories = new SelectionCollection<VarItem>(SettingConfig.Categorys);
         public SelectionCollection<VarItem> Categories {
             get {
-                return categories;
-            }
-
-            set {
-                categories = value;
-                RaisePropertyChanged();
+                return _categories;
             }
         }
-
-        private SelectionCollection<VarItem> categories;
-
 
     }
 
@@ -99,7 +89,21 @@ namespace YGOProDevelop.ViewModel {
                             select s.Content;
                 return items.ToList();
             }
+            set {
+                foreach(var item in value) {
+                    Select(item);
+                }
+            }
         }
 
+        public void Select(T item) {
+            Selection<T> selection = Items.FirstOrDefault(i => i.Content.Equals(item));
+            if (selection != null) selection.IsSelected = true;
+        }
+
+        public void UnSelect(T item) {
+            Selection<T> selection = Items.FirstOrDefault(i => i.Content.Equals(item));
+            if (selection != null) selection.IsSelected = false;
+        }
     }
 }

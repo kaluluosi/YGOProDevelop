@@ -29,7 +29,6 @@ namespace YGOProDevelop.View {
 
             editor.MouseHover += Editor_MouseHover;
             editor.MouseHoverStopped += Editor_MouseHoverStopped;
-
         }
 
 
@@ -40,11 +39,9 @@ namespace YGOProDevelop.View {
         ToolTip toolTip = new ToolTip();
         private void Editor_MouseHover(object sender, MouseEventArgs e) {
             var pos = editor.GetPositionFromPoint(e.GetPosition(editor));
-
-            if (pos != null && CompletionDataSource != null) {
-                string text = GetWordOverMouse(e);
-
-                var data = CompletionDataSource.FirstOrDefault(d => d.Text.ToString().Contains(text));
+            string text = GetWordOverMouse(e);
+            if (pos != null && CompletionDataSource != null&&text!=null) {
+                var data = CompletionDataSource.FirstOrDefault(d =>  d.Text.ToString().Contains(text));
                 if (data != null) {
                     toolTip.Content = new TextBlock {
                         Text = data.Description.ToString(),
@@ -58,12 +55,19 @@ namespace YGOProDevelop.View {
         }
 
         public string GetWordOverMouse(MouseEventArgs e) {
-            var pos = editor.GetPositionFromPoint(e.GetPosition(editor));
-            int offset = editor.Document.GetOffset(pos.Value.Location);
-            int start = ICSharpCode.AvalonEdit.Document.TextUtilities.GetNextCaretPosition(editor.Document, offset, LogicalDirection.Backward, ICSharpCode.AvalonEdit.Document.CaretPositioningMode.WordBorder);
-            int end = ICSharpCode.AvalonEdit.Document.TextUtilities.GetNextCaretPosition(editor.Document, offset, LogicalDirection.Forward, ICSharpCode.AvalonEdit.Document.CaretPositioningMode.WordBorder);
-            if (end - start < 0) return null;
-            return editor.Document.GetText(start, end - start);
+            try
+            {
+	            var pos = editor.GetPositionFromPoint(e.GetPosition(editor));
+	            int offset = editor.Document.GetOffset(pos.Value.Location);
+	            int start = ICSharpCode.AvalonEdit.Document.TextUtilities.GetNextCaretPosition(editor.Document, offset, LogicalDirection.Backward, ICSharpCode.AvalonEdit.Document.CaretPositioningMode.WordBorder);
+	            int end = ICSharpCode.AvalonEdit.Document.TextUtilities.GetNextCaretPosition(editor.Document, offset, LogicalDirection.Forward, ICSharpCode.AvalonEdit.Document.CaretPositioningMode.WordBorder);
+                if (end - start < 0) return null;
+                return editor.Document.GetText(start, end - start);
+            }
+            catch (System.Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         public CompletionWindow CompletionWin {

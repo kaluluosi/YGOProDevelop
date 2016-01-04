@@ -95,12 +95,12 @@ namespace YGOProDevelop.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("pics")]
-        public string picsFolder {
+        public string picFolder {
             get {
-                return ((string)(this["picsFolder"]));
+                return ((string)(this["picFolder"]));
             }
             set {
-                this["picsFolder"] = value;
+                this["picFolder"] = value;
             }
         }
     }

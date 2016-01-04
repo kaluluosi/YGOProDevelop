@@ -8,7 +8,10 @@
         xmlns:cvt="clr-namespace:YGOProDevelop.View.Converter"
         xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
         mc:Ignorable="d"
-        Title="CardEditView" Height="704.846" Width="678.143"  WindowStartupLocation="CenterOwner" Topmost="True" DataContext="{Binding Source={StaticResource Locator},Path=CardEditor}" ResizeMode="NoResize">
+        Title="CardEditView" Height="704.846" Width="678.143"  WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize">
+    <Window.DataContext>
+        <vm:CardEditorViewModel ></vm:CardEditorViewModel>
+    </Window.DataContext>
     <Window.Resources>
         <ResourceDictionary>
             <cvt:ID2SourceConverter x:Key="id2source"></cvt:ID2SourceConverter>
@@ -91,9 +94,13 @@
         <TextBox HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" Text="限制苏生" Width="266" FontSize="29.333"/>
         <TextBox Margin="0,29,16,0" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Right" Width="120"/>
         <Label Content="卡密：" Margin="0,29,136,0" VerticalAlignment="Top" Height="25" Grid.RowSpan="2" HorizontalAlignment="Right" Width="46"/>
-        <UniformGrid Margin="10,10,16,10" Columns="2" Rows="4" Grid.Row="1"/>
+        <UniformGrid Margin="10,10,16,10" Columns="2" Rows="4" Grid.Row="1">
+            <ComboBox x:Name="comboBox" ItemsSource="{Binding Types, Source={StaticResource cfg}}" SelectedValue="{Binding Card.Type.TypeItem}"/>
+        </UniformGrid>
         <GroupBox Header="类型" Margin="10,10,16,0" Grid.Row="2" VerticalAlignment="Top" Height="180">
-            <ListBox ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionMode="Multiple"/>
+            <ListBox ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionMode="Multiple" ItemsSource="{Binding SubTypes}">
+                
+            </ListBox>
         </GroupBox>
         <GroupBox Header="效果分类" Margin="10,196,16,6" Grid.Row="2">
             <ListBox ItemsSource="{Binding Categories}" ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" SelectionMode="Multiple" DisplayMemberPath="Content"/>

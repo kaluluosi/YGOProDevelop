@@ -98,6 +98,24 @@ namespace YGOProDevelop.ViewModel
             }
         }
 
+
+        private RelayCommand _closeAllButThisCmd;
+
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public RelayCommand CloesAllButThisCmd {
+            get {
+                return _closeAllButThisCmd
+                    ?? (_closeAllButThisCmd = new RelayCommand(
+                    () => {
+                        Main.CloseAllBut(this);
+                    }));
+            }
+        }
+
+
+
         private int initTextLength = 0;
         void Document_TextChanged(object sender, System.EventArgs e) {
             //文档改动flag
@@ -135,26 +153,8 @@ namespace YGOProDevelop.ViewModel
         }
 
         protected override void OnClose() {
-            //To do
-            if (IsDirty) {
-                MessageBoxResult result = MessageBox.Show("是否保存" + Title+"?", "保存", MessageBoxButton.YesNoCancel);
-                if (result == MessageBoxResult.Yes) {
-                    if (File.Exists(FileName)) {
-                        SaveFile();
-                    }
-                    else {
-                        MessengerInstance.Send(new NotificationMessageAction<string>("SaveFile", (fileName) => {
-                            SaveFile(fileName);
-                        }), "MainWindow");
-                    }
-                }
-                else if (result == MessageBoxResult.Cancel) {
-                    return;
-                }
-            }
-
-            if (Main.DocumentViewModels.Contains(this))
-                Main.DocumentViewModels.Remove(this);
+            //让Main关闭这个文档
+            Main.CloseDocument(this);
         }
 
     }
