@@ -19,7 +19,7 @@
         Title="YGOProDevelop" WindowStartupLocation="CenterScreen"
         Icon="/YGOProDevelop;component/Resources/icon.ico" 
         Closing="window_Closing"
-        Loaded="window_Loaded" ResizeMode="CanResizeWithGrip">
+        Loaded="window_Loaded" ResizeMode="CanResizeWithGrip" >
     <Window.Resources>
         <ResourceDictionary>
             <DataTemplate DataType="{x:Type vm:CardListViewModel}">

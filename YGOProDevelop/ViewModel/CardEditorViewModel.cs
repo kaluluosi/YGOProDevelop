@@ -35,9 +35,10 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
+        private SelectionCollection<VarItem> _subTypes = new SelectionCollection<VarItem>(SettingConfig.Types);
         public SelectionCollection<VarItem> SubTypes {
             get {
-                return null;
+                return _subTypes;
             }
         }
 

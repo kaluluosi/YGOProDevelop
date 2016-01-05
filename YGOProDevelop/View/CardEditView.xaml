@@ -98,7 +98,7 @@
             <ComboBox x:Name="comboBox" ItemsSource="{Binding Types, Source={StaticResource cfg}}" SelectedValue="{Binding Card.Type.TypeItem}"/>
         </UniformGrid>
         <GroupBox Header="类型" Margin="10,10,16,0" Grid.Row="2" VerticalAlignment="Top" Height="180">
-            <ListBox ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionMode="Multiple" ItemsSource="{Binding SubTypes}">
+            <ListBox ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionMode="Multiple" ItemsSource="{Binding Card.Type.TypeItem.SubItems}">
                 
             </ListBox>
         </GroupBox>

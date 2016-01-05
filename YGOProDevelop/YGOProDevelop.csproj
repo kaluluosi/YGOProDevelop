@@ -152,8 +152,11 @@
     <Compile Include="CardEditor\Builder\RaceField.cs" />
     <Compile Include="CardEditor\Builder\SetCodeField.cs" />
     <Compile Include="CardEditor\Builder\TypeField.cs" />
+    <Compile Include="Model\Card.cs" />
     <Compile Include="Model\CompletionItem.cs" />
     <Compile Include="Model\DefaultCompletionData.cs" />
+    <Compile Include="Model\Selection.cs" />
+    <Compile Include="Model\SelectionCollection.cs" />
     <Compile Include="Service\CDBService.cs" />
     <Compile Include="CardEditor\Config\ConfigManager.cs" />
     <Compile Include="CardEditor\Config\SettingConfig.cs" />

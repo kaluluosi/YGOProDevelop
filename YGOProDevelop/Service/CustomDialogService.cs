@@ -63,8 +63,9 @@ namespace YGOProDevelop.Service {
             }
         }
 
-        public CustomDialogService() {
-            foreach(var typeInfo in Assembly.GetExecutingAssembly().DefinedTypes) {
+        static CustomDialogService() {
+            //这个服务创建的时候搜索当前程序集里所有带CustomDialogAttribute的类自动注册View-ViewModel
+            foreach (var typeInfo in Assembly.GetExecutingAssembly().DefinedTypes) {
                 typeInfo.GetCustomAttribute<CustomDialogAttribute>();
             }
         }

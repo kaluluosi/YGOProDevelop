@@ -1,25 +1,13 @@
-﻿using GalaSoft.MvvmLight;
-using ICSharpCode.AvalonEdit.Document;
+﻿using ICSharpCode.AvalonEdit.Document;
 using System.IO;
-using System.Xml;
-using Xceed.Wpf.AvalonDock;
-using YGOProDevelop.Properties;
 using ICSharpCode.AvalonEdit.Highlighting;
-using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using ICSharpCode.AvalonEdit.Utils;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
 using ICSharpCode.AvalonEdit.CodeCompletion;
 using System.Collections.Generic;
-using YGOProDevelop.Model;
 using YGOProDevelop.Service;
-using System.Windows.Input;
-using System.Windows;
 
-namespace YGOProDevelop.ViewModel
-{
+namespace YGOProDevelop.ViewModel {
     /// <summary>
     /// This class contains properties that a View can data bind to.
     /// <para>

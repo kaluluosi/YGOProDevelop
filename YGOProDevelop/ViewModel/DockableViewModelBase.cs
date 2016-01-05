@@ -10,10 +10,10 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
-        private string _title;
-        private bool _isVisible = true;
+        protected string _title;
+        protected bool _isVisible = true;
 
-        private string _contentId;
+        protected string _contentId;
 
         public virtual string Title {
             get {

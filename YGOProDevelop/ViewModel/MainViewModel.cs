@@ -121,7 +121,8 @@ namespace YGOProDevelop.ViewModel {
                 return _saveAsCmd ?? (_saveAsCmd = new RelayCommand(
                     () => {
                         SaveDocument(ActiveDocumentViewModel, true);
-                    }
+                    },
+                    () => ActiveViewModel is DocumentViewModel
                 ));
             }
         }
