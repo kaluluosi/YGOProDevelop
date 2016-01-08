@@ -1,6 +1,6 @@
 using System;
 
-namespace YGOProDevelop.CardEditor.Builder {
+namespace YGOProDevelop.Model {
     public enum CardType {
         Monster,
         Spell,

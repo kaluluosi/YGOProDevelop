@@ -9,7 +9,7 @@ namespace YGOProDevelop.View.TemplateSelector {
 
         public override System.Windows.DataTemplate SelectTemplate(object item, System.Windows.DependencyObject container) {
             if(item is datas) {
-                var card = new CardBuilder(item as datas);
+                var card = item as datas;
                 switch (card.CardType) {
                     case CardType.Monster:
                         return MonDataTemplate;

@@ -15,6 +15,7 @@ namespace YGOProDevelop.CardEditor.Builder {
 		public static VarItem[] GetSetCodeItems(Int64 value){
 			List<VarItem> cfg = ConfigManager.Load("SetCode");
 			List<VarItem> result = new List<VarItem>();
+
 			VarItem setCode1 = cfg.Find(item=>item.Value==value);
 			value = value >>16;                    
 			VarItem setCode2 = cfg.Find(item=>item.Value==value);

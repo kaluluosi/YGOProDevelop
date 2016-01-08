@@ -10,12 +10,12 @@ namespace YGOProDevelop.View.Converter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value == null) return null;
 
-            CardBuilder card = new CardBuilder(value as datas);
+            datas card = value as datas;
 
             switch (parameter.ToString()) {
 
                 case "Pic":
-                    string imgPath = Path.Combine(Properties.Settings.Default.picFolder, card.ID + ".jpg"); ;
+                    string imgPath = Path.Combine(Properties.Settings.Default.picFolder, card.id + ".jpg"); ;
                     string fullPath = Path.GetFullPath(imgPath);
                     if (File.Exists(fullPath)) {
                         return fullPath;
@@ -24,19 +24,20 @@ namespace YGOProDevelop.View.Converter {
                         return @"/YGOProDevelop;component/Resources/cover.jpg";
                     }
                 case "Attribute":
-                    return @"/YGOProDevelop;component/Resources/属性/" + card.Attribute.AttributeItem.Description + ".png";
+                    return @"/YGOProDevelop;component/Resources/属性/" + card.Attribute.Description + ".png";
                 case "Type":
-                    string type = card.Type.TypeItem.Description== "魔法卡"?"魔":"陷";
-                    return @"/YGOProDevelop;component/Resources/属性/" +type+ ".png";
+                    if(card.CardType==CardType.Monster)
+                        return @"/YGOProDevelop;component/Resources/属性/" +card.Attribute.Description+ ".png";
+                    else
+                        return @"/YGOProDevelop;component/Resources/属性/" + (card.CardType==CardType.Spell?"魔":"陷") + ".png";
                 case "SubType":
-                    return @"/YGOProDevelop;component/Resources/魔陷卡类型/" + card.Type.SubTypeItems[0].Description + ".png";
+                    return @"/YGOProDevelop;component/Resources/魔陷卡类型/" + card.SubType.Description + ".png";
                 case "Race":
-                    return @"/YGOProDevelop;component/Resources/种族/" + card.Race.RaceItem.Description + ".png";
+                    return @"/YGOProDevelop;component/Resources/种族/" + card.Race.Description + ".png";
                 default:
                     return null;
             }
 
-            
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {

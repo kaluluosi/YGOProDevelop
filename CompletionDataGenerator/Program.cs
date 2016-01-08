@@ -12,8 +12,20 @@ namespace CompletionDataGenerator {
     class Program {
         static void Main(string[] args) {
 
-            var items = MakeCompletionItem();
-            Save(items, @".\YGOProApi.xml");
+//             var items = MakeCompletionItem();
+//             Save(items, @".\YGOProApi.xml");
+            int n = 7667828;
+
+            Console.WriteLine(Get(3, n));
+            Console.Read();
+        }
+
+        public static int Get(int index,int value) {
+            int mask16 = 0xff;
+            int left = 8;
+
+            value = value >> left * index;
+            return value & mask16;
         }
 
         static List<CompletionItem> MakeCompletionItem() {

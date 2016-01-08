@@ -9,10 +9,13 @@
 
 namespace YGOProDevelop.Model
 {
+    using GalaSoft.MvvmLight;
     using System;
     using System.Collections.Generic;
-    
-    public partial class datas
+    using YGOProDevelop.CardEditor.Config;
+    using System.Linq;
+
+    public partial class datas : ObservableObject
     {
         public long id { get; set; }
         public Nullable<long> ot { get; set; }
@@ -27,5 +30,117 @@ namespace YGOProDevelop.Model
         public Nullable<long> category { get; set; }
 
         public virtual texts texts { get; set; }
+
+
+        //为了支持灵摆，要重写atk和def
+
+
+        public List<VarItem> SetCodes {
+            get {
+                VarItem setcode1 = SettingConfig.SetCodes.FirstOrDefault(v => v.Value == GetBitValue(0, setcode));
+                VarItem setcode2 = SettingConfig.SetCodes.FirstOrDefault(v => v.Value == GetBitValue(1, setcode));
+                VarItem setcode3 = SettingConfig.SetCodes.FirstOrDefault(v => v.Value == GetBitValue(2, setcode));
+                VarItem setcode4 = SettingConfig.SetCodes.FirstOrDefault(v => v.Value == GetBitValue(3, setcode));
+
+                return new List<VarItem> { setcode1, setcode2, setcode3, setcode4 };
+            }
+            set {
+                setcode = VarItem.MergeValue(value);
+            }
+        }
+
+
+        public VarItem Ot {
+            get {
+                var item = SettingConfig.Ots.FirstOrDefault(v => v.Value == (ot ?? 0));
+                return item;
+            }
+            set {
+                ot = value.Value;
+            }
+        }
+
+
+
+        public VarItem Attribute {
+            get {
+                return SettingConfig.Attributes.FirstOrDefault(v => v.Value == (attribute ?? 0));
+            }
+            set {
+                attribute = value.Value;
+            }
+        }
+
+
+        public List<VarItem> Type {
+            get {
+                return SettingConfig.Types.FindAll(v => v.BeContainedIn(type ?? 0));
+            }
+
+            set {
+                type = VarItem.MergeValue(value);
+            }
+        }
+
+        public VarItem SubType {
+            get {
+                //                   <VarItem Description="速攻" Value="65536" MultiSelect="false" Tips=""/>
+                //   <VarItem Description="永续" Value="131072" MultiSelect="false" Tips=""/>
+                //   <VarItem Description="装备" Value="262144" MultiSelect="false" Tips=""/>
+                //   <VarItem Description="场地" Value="524288" MultiSelect="false" Tips=""/>
+                //   <VarItem Description="陷阱" Value="4" MultiSelect="false" />
+                //   <VarItem Description="永续" Value="131072" MultiSelect="false" Tips=""/>
+                //   <VarItem Description="反击" Value="1048576" MultiSelect="false" Tips=""/>
+                List<VarItem> types = new List<VarItem>(Type);
+                types.RemoveAll(v => v.BeContainedIn(7));
+                return types.Count!=0?types[0]:VarItem.Default;
+            }
+        }
+
+        public List<VarItem> Category {
+            get {
+                return SettingConfig.Categorys.FindAll(v => v.BeContainedIn(category ?? 0));
+            }
+            set {
+                category = VarItem.MergeValue(value);
+            }
+        }
+
+        public VarItem Race {
+            get {
+                return SettingConfig.Races.FirstOrDefault(v => v.Value == (race ?? 0))??VarItem.Default;
+            }
+            set {
+                race = value.Value;
+            }
+        }
+
+        public CardType CardType {
+            get {
+                if(type != null) {
+                    if(((int)type & 1) == 1)
+                        return CardType.Monster;
+                    else
+                        return CardType.Spell;
+                }
+                return CardType.Monster;
+            }
+        }
+
+        public long? GetBitValue(int index, long? value) {
+            int mask = 0xff;
+            int bit = 8;
+            value = value >> (bit * index);
+            return value & mask;
+        }
+
+        public long? GetBitValue(int index, long? value, int mask, int bit) {
+            value = value ?? 0 >> bit * index;
+            return value & mask;
+        }
+
+        public datas Copy() {
+            return MemberwiseClone() as datas;
+        }
     }
 }

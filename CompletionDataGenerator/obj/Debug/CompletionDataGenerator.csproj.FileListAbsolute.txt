@@ -5,3 +5,10 @@ D:\GitHub\YGOProDevelop\CompletionDataGenerator\obj\Debug\CompletionDataGenerato
 D:\GitHub\YGOProDevelop\CompletionDataGenerator\obj\Debug\CompletionDataGenerator.pdb
 D:\GitHub\YGOProDevelop\CompletionDataGenerator\obj\Debug\CompletionDataGenerator.csprojResolveAssemblyReference.cache
 D:\GitHub\YGOProDevelop\CompletionDataGenerator\bin\Debug\_functions.txt_sort.txt
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\CompletionDataGenerator\bin\Debug\CompletionDataGenerator.exe.config
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\CompletionDataGenerator\obj\Debug\CompletionDataGenerator.exe
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\CompletionDataGenerator\obj\Debug\CompletionDataGenerator.pdb
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\CompletionDataGenerator\bin\Debug\_functions.txt_sort.txt
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\CompletionDataGenerator\bin\Debug\CompletionDataGenerator.exe
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\CompletionDataGenerator\bin\Debug\CompletionDataGenerator.pdb
+C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\CompletionDataGenerator\obj\Debug\CompletionDataGenerator.csprojResolveAssemblyReference.cache

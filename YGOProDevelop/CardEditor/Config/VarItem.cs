@@ -55,5 +55,13 @@ namespace YGOProDevelop.CardEditor.Config {
         public override string ToString() {
             return Description;
         }
+
+        public static long MergeValue(IEnumerable<VarItem> items) {
+            long value = 0;
+            foreach(var item in items) {
+                value ^= item.Value;
+            }
+            return value;
+        }
     }
 }

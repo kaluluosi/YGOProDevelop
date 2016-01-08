@@ -6,6 +6,7 @@ using System.Linq;
 using GalaSoft.MvvmLight;
 using YGOProDevelop.CardEditor.Builder;
 using YGOProDevelop.CardEditor.Config;
+using YGOProDevelop.Model;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -19,19 +20,19 @@ namespace YGOProDevelop.ViewModel {
         /// Initializes a new instance of the CardEditorViewModel class.
         /// </summary>
         public CardEditorViewModel() {
-
+            
         }
 
-        private CardBuilder _card;
+        private datas _card;
 
-        public CardBuilder Card {
+        public datas Card {
             get {
                 return _card;
             }
 
             set {
                 _card = value;RaisePropertyChanged();
-                Categories.SelectedItems = Card.Category.CategoryItems;
+                Categories.SelectedItems = Card.Category;
             }
         }
 

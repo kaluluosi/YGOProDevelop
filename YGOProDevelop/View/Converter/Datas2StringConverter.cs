@@ -10,18 +10,19 @@ namespace YGOProDevelop.View.Converter {
 
             if (value == null) return null;
 
-            CardBuilder card = new CardBuilder(value as datas);
+            datas card = value as datas;
 
             switch (parameter.ToString()) {
                 case "Race":
-                    return card.Race.RaceItem.Description;
+                    return card.Race.Description;
                 case "SubType":
-                    return card.Type.SubTypeItems[0].Description;
+                    return card.SubType.Description;
                 case "AtkDef":
-                    return string.Format("ATK:{0} DEF:{1}", card.Atk, card.Def);
+                    return string.Format(" ATK:{0} DEF:{1} ", card.atk,card.def);
                 default:
                     return null;
             }
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {

@@ -112,7 +112,7 @@ namespace YGOProDevelop.ViewModel
                             CdbService.Search(_keyword);
                         else
                             CdbService.ResetSearch();
-
+                        RaisePropertyChanged(() => QueryResult);
                     }));
             }
         }
@@ -150,7 +150,7 @@ namespace YGOProDevelop.ViewModel
                     ?? (_editCmd = new RelayCommand(
                     () => {
                         CardEditorViewModel ce = new CardEditorViewModel();
-                        ce.Card = new CardEditor.Builder.CardBuilder(SelectedCard);
+
                         _dialogService.ShowDialog(ce);
                     }));
             }
