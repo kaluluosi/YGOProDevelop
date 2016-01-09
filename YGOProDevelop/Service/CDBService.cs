@@ -128,5 +128,10 @@ namespace YGOProDevelop.Service {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public void DiscardChange() {
+            var entries = ce.ChangeTracker.Entries();
+            
+        }
     }
 }

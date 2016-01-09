@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Command;
 
 namespace YGOProDevelop.ViewModel {
     public abstract class DialogViewModelBase:ViewModelBase
@@ -23,5 +24,43 @@ namespace YGOProDevelop.ViewModel {
         }
 
         public Action CloseWindow = () => { };
+
+        private RelayCommand _submit;
+
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public RelayCommand Submit {
+            get {
+                return _submit
+                    ?? (_submit = new RelayCommand(
+                    () => {
+                        OnSubmit();
+                    }));
+            }
+        }
+
+        protected virtual void OnSubmit() {
+            DialogResult = true;
+        }
+
+        private RelayCommand _cancel;
+
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public RelayCommand Cancel {
+            get {
+                return _cancel
+                    ?? (_cancel = new RelayCommand(
+                    () => {
+                        OnCancel();
+                    }));
+            }
+        }
+
+        protected virtual void OnCancel() {
+            DialogResult = false;
+        }
     }
 }

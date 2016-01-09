@@ -12,12 +12,27 @@ namespace CompletionDataGenerator {
     class Program {
         static void Main(string[] args) {
 
-//             var items = MakeCompletionItem();
-//             Save(items, @".\YGOProApi.xml");
-            int n = 7667828;
+            var items = MakeCompletionItem();
+            Save(items, @".\YGOProApi.xml");
+            int level = 117899274;
+//             Int64 level = 10;
+            //level=10 l=7 r=7
 
-            Console.WriteLine(Get(3, n));
-            Console.Read();
+            byte[] bytes = BitConverter.GetBytes(level);
+            int lv = BitConverter.ToInt16(bytes,0);
+            int l = bytes[2];
+            int r = bytes[3];
+            r = 10;
+            Console.WriteLine("LV:{0} L:{1} R:{2}",lv,l,r);
+
+//             List<int> setcodes = new List<int> { 1, 2, 3, 4 };
+//             long var = 0;
+//             for(int i = 0; i < 4; i++) {
+//                 var ^= setcodes[i] << (i * 8);
+//             }
+//             var setcode = var;
+//             byte[] bs = BitConverter.GetBytes(setcode);
+//             Console.Read();
         }
 
         public static int Get(int index,int value) {

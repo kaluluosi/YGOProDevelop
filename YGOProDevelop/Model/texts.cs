@@ -35,5 +35,9 @@ namespace YGOProDevelop.Model
         public string str16 { get; set; }
     
         public virtual datas datas { get; set; }
+
+        public texts Copy() {
+            return MemberwiseClone() as texts;
+        }
     }
 }

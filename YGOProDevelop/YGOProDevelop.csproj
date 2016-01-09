@@ -322,7 +322,7 @@
     <Resource Include="Resources\魔陷卡类型\仪式.png" />
     <Resource Include="Resources\魔陷卡类型\反击.png" />
     <Resource Include="Resources\魔陷卡类型\场地.png" />
-    <Resource Include="Resources\魔陷卡类型\普通.png" />
+    <Resource Include="Resources\魔陷卡类型\无.png" />
     <Resource Include="Resources\魔陷卡类型\永续.png" />
     <Resource Include="Resources\魔陷卡类型\装备.png" />
     <Resource Include="Resources\魔陷卡类型\速攻.png" />

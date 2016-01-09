@@ -159,4 +159,5 @@
 	<VarItem Description="同调士相关同调怪兽" Value="256" MultiSelect="false"/>
 	<VarItem Description="奇迹同调融合相关怪兽" Value="257" MultiSelect="false"/>
 	<VarItem Description="暗黑融合限定怪兽" Value="258" MultiSelect="false"/>
+  <VarItem Description="DDD" Value="175" MultiSelect="false"/>
 </ArrayOfVarItem>

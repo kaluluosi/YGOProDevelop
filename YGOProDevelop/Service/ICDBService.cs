@@ -17,6 +17,8 @@ namespace YGOProDevelop.Service
         int Save();
         int Search(int id);
         int Search(string keyword);
+
+        void DiscardChange();
         cardsEntities CE { get; set; }
     }
 }

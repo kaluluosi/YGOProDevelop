@@ -150,8 +150,26 @@ namespace YGOProDevelop.ViewModel
                     ?? (_editCmd = new RelayCommand(
                     () => {
                         CardEditorViewModel ce = new CardEditorViewModel();
+                        ce.Card = SelectedCard;
+                        if(_dialogService.ShowDialog(ce)==false) {
+                            _cdbService.CE.Entry(SelectedCard);
+                        }
+                    }));
+            }
+        }
 
-                        _dialogService.ShowDialog(ce);
+        private RelayCommand _saveCDBCmd;
+
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public RelayCommand SaveCDBCmd {
+            get {
+                return _saveCDBCmd
+                    ?? (_saveCDBCmd = new RelayCommand(
+                    () => {
+                        int count = _cdbService.Save();
+                        MessageBox.Show("保存"+count+"条更改!", "提示");
                     }));
             }
         }

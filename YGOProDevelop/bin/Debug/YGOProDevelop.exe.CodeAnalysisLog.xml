@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#DialogResultChanged" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2016-01-08 07:41:54Z" FixCategory="Breaking">
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2016-01-09 08:53:05Z" FixCategory="Breaking">
              <Issue Name="Second" Certainty="95" Level="Error">将 'EventHandler&lt;bool?&gt;' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
             </Message>
            </Messages>
@@ -23,8 +23,8 @@
          <Members>
           <Member Name="#.ctor(YGOProDevelop.Service.IHighlightSettingService,YGOProDevelop.Service.ICustomDialogService)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-08 07:41:54Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\ViewModel" File="MainViewModel.cs" Line="49">'MainViewModel.MainViewModel(IHighlightSettingService, ICustomDialogService)' 包含调用链，该调用链导致调用此类所定义的虚方法。请检查以下调用堆栈，看是否有意外结果: &#xD;&#xA;&#xD;&#xA;MainViewModel..ctor(IHighlightSettingService, ICustomDialogService)&#xD;&#xA;MainViewModel.set_AnchorableViewModels(ObservableCollection&lt;ToolsViewModelBase&gt;):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged&lt;T&gt;(Expression&lt;Func&lt;T&gt;&gt;):Void。</Issue>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-09 08:53:05Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\ViewModel" File="MainViewModel.cs" Line="48">'MainViewModel.MainViewModel(IHighlightSettingService, ICustomDialogService)' 包含调用链，该调用链导致调用此类所定义的虚方法。请检查以下调用堆栈，看是否有意外结果: &#xD;&#xA;&#xD;&#xA;MainViewModel..ctor(IHighlightSettingService, ICustomDialogService)&#xD;&#xA;MainViewModel.set_AnchorableViewModels(ObservableCollection&lt;ToolsViewModelBase&gt;):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged&lt;T&gt;(Expression&lt;Func&lt;T&gt;&gt;):Void。</Issue>
             </Message>
            </Messages>
           </Member>

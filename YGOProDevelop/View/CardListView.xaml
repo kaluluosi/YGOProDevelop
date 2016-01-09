@@ -78,6 +78,7 @@
         <ToolBarTray DockPanel.Dock="Top" >
             <ToolBar Height="24" ToolBarTray.IsLocked="True">
                 <Button Command="{Binding OpenCDBCmd, Mode=OneWay}">打开</Button>
+                <Button Command="{Binding SaveCDBCmd}" Content="保存数据库"/>
             </ToolBar>
         </ToolBarTray>
         <Grid DockPanel.Dock="Bottom" Margin="0,2,0,0" >

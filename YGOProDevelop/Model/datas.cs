@@ -14,6 +14,7 @@ namespace YGOProDevelop.Model
     using System.Collections.Generic;
     using YGOProDevelop.CardEditor.Config;
     using System.Linq;
+    using System.Collections;
 
     public partial class datas : ObservableObject
     {
@@ -32,20 +33,114 @@ namespace YGOProDevelop.Model
         public virtual texts texts { get; set; }
 
 
-        //为了支持灵摆，要重写atk和def
-
-
-        public List<VarItem> SetCodes {
+        //为了支持灵摆，要重写level
+        public short Left {
             get {
-                VarItem setcode1 = SettingConfig.SetCodes.FirstOrDefault(v => v.Value == GetBitValue(0, setcode));
-                VarItem setcode2 = SettingConfig.SetCodes.FirstOrDefault(v => v.Value == GetBitValue(1, setcode));
-                VarItem setcode3 = SettingConfig.SetCodes.FirstOrDefault(v => v.Value == GetBitValue(2, setcode));
-                VarItem setcode4 = SettingConfig.SetCodes.FirstOrDefault(v => v.Value == GetBitValue(3, setcode));
-
-                return new List<VarItem> { setcode1, setcode2, setcode3, setcode4 };
+                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                short l = bytes[2];
+                return l;
             }
             set {
-                setcode = VarItem.MergeValue(value);
+                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                bytes[2] = (byte)value;
+                level = BitConverter.ToInt32(bytes, 0);
+            }
+        }
+
+        public short Right {
+            get {
+                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                short r = bytes[3];
+                return r;
+            }
+            set {
+                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                bytes[3] = (byte)value;
+                level = BitConverter.ToInt32(bytes, 0);
+            }
+        }
+
+        public short Level {
+            get {
+                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                short lv = BitConverter.ToInt16(bytes, 0);
+                return lv;
+            }
+            set {
+                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                byte[] vbs = BitConverter.GetBytes(value);
+                bytes[0] = vbs[0];
+                bytes[1] = vbs[1];
+                level = BitConverter.ToInt32(bytes, 0);
+            }
+        }
+
+        public VarItem SetCode1 {
+            get {
+                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                var setcode1 = BitConverter.ToInt16(bytes, 0);
+                return SettingConfig.SetCodes.FirstOrDefault(v=>v.Value==setcode1);
+            }
+            set {
+                var setcode1 = (short)value.Value;
+                byte[] sbs = BitConverter.GetBytes(setcode1);
+                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                bytes[0] = sbs[0];
+                bytes[1] = sbs[1];
+                setcode = BitConverter.ToInt64(bytes.ToArray(),0);
+            }
+
+        }
+
+        public VarItem SetCode2 {
+            get {
+                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                var setcode2 = BitConverter.ToInt16(bytes, 2);
+                return SettingConfig.SetCodes.FirstOrDefault(v => v.Value == setcode2);
+            }
+            set {
+                var setcode2 = (short)value.Value;
+                byte[] sbs = BitConverter.GetBytes(setcode2);
+                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                bytes[2] = sbs[0];
+                bytes[3] = sbs[1];
+                setcode = BitConverter.ToInt64(bytes.ToArray(), 0);
+            }
+        }
+
+
+
+        public VarItem SetCode3 {
+            get {
+                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                var setcode3 = BitConverter.ToInt16(bytes, 4);
+                return SettingConfig.SetCodes.FirstOrDefault(v => v.Value == setcode3);
+            }
+            set {
+                var setcode3 = (short)value.Value;
+                byte[] sbs = BitConverter.GetBytes(setcode3);
+                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                bytes[4] = sbs[0];
+                bytes[5] = sbs[1];
+                setcode = BitConverter.ToInt64(bytes.ToArray(), 0);
+            }
+
+        }
+
+
+        public VarItem SetCode4 {
+            get {
+                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                var setcode4 = BitConverter.ToInt16(bytes, 6);
+                return SettingConfig.SetCodes.FirstOrDefault(v => v.Value == setcode4);
+            }
+            set {
+                var setcode4 = (short)value.Value;
+                byte[] sbs = BitConverter.GetBytes(setcode4);
+                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                bytes[6] = sbs[0];
+                bytes[7] = sbs[1];
+                setcode = BitConverter.ToInt64(bytes.ToArray(), 0);
             }
         }
 
@@ -84,16 +179,9 @@ namespace YGOProDevelop.Model
 
         public VarItem SubType {
             get {
-                //                   <VarItem Description="速攻" Value="65536" MultiSelect="false" Tips=""/>
-                //   <VarItem Description="永续" Value="131072" MultiSelect="false" Tips=""/>
-                //   <VarItem Description="装备" Value="262144" MultiSelect="false" Tips=""/>
-                //   <VarItem Description="场地" Value="524288" MultiSelect="false" Tips=""/>
-                //   <VarItem Description="陷阱" Value="4" MultiSelect="false" />
-                //   <VarItem Description="永续" Value="131072" MultiSelect="false" Tips=""/>
-                //   <VarItem Description="反击" Value="1048576" MultiSelect="false" Tips=""/>
                 List<VarItem> types = new List<VarItem>(Type);
                 types.RemoveAll(v => v.BeContainedIn(7));
-                return types.Count!=0?types[0]:VarItem.Default;
+                return types.Count != 0 ? types[0] : VarItem.Default;
             }
         }
 
@@ -108,7 +196,7 @@ namespace YGOProDevelop.Model
 
         public VarItem Race {
             get {
-                return SettingConfig.Races.FirstOrDefault(v => v.Value == (race ?? 0))??VarItem.Default;
+                return SettingConfig.Races.FirstOrDefault(v => v.Value == (race ?? 0)) ?? VarItem.Default;
             }
             set {
                 race = value.Value;
@@ -127,20 +215,10 @@ namespace YGOProDevelop.Model
             }
         }
 
-        public long? GetBitValue(int index, long? value) {
-            int mask = 0xff;
-            int bit = 8;
-            value = value >> (bit * index);
-            return value & mask;
-        }
-
-        public long? GetBitValue(int index, long? value, int mask, int bit) {
-            value = value ?? 0 >> bit * index;
-            return value & mask;
-        }
-
         public datas Copy() {
-            return MemberwiseClone() as datas;
+            var copy = MemberwiseClone() as datas;
+            copy.texts = texts.Copy();
+            return copy;
         }
     }
 }

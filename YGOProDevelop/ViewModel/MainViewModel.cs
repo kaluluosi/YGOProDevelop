@@ -37,7 +37,6 @@ namespace YGOProDevelop.ViewModel {
             ReOpenDocument();
         }
 
-        private SettingsBase _settings;
 
         private ICustomDialogService _dialogService;
 

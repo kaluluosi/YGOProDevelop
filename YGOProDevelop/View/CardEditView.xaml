@@ -8,7 +8,7 @@
         xmlns:cvt="clr-namespace:YGOProDevelop.View.Converter"
         xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
         mc:Ignorable="d"
-        Title="CardEditView" Height="704.846" Width="678.143"  WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize">
+        Title="CardEditView" Height="704.846" Width="682.643"  WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize">
     <Window.DataContext>
         <vm:CardEditorViewModel ></vm:CardEditorViewModel>
     </Window.DataContext>
@@ -78,34 +78,59 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="182.143"/>
+            <ColumnDefinition Width="185"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="1" Source="{Binding Card.ID,Converter={StaticResource id2source}}" Grid.RowSpan="2"/>
-        <TabControl Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
+        <Image Grid.Column="1" Source="{Binding Card.id,Converter={StaticResource id2source}}" Grid.RowSpan="2" Margin="0,8,10,0"/>
+        <TabControl Grid.Column="1" Grid.Row="2" Margin="0,0,10,6">
             <TabItem Header="效果描述">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding Card.Description}"/>
+                    <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding Card.texts.desc}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="脚本文本">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <TextBox HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" Text="限制苏生" Width="266" FontSize="29.333"/>
-        <TextBox Margin="0,29,16,0" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Right" Width="120"/>
-        <Label Content="卡密：" Margin="0,29,136,0" VerticalAlignment="Top" Height="25" Grid.RowSpan="2" HorizontalAlignment="Right" Width="46"/>
-        <UniformGrid Margin="10,10,16,10" Columns="2" Rows="4" Grid.Row="1">
-            <ComboBox x:Name="comboBox" ItemsSource="{Binding Types, Source={StaticResource cfg}}" SelectedValue="{Binding Card.Type.TypeItem}"/>
+        <TextBox HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" Text="{Binding Card.texts.name}" Width="266" FontSize="29.333"/>
+        <UniformGrid Margin="10,10,16,10" Columns="4" Rows="7" Grid.Row="1">
+            <Label Content="卡密：" Padding="0,5,5,5" Margin="2"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding Card.id}" Margin="2" VerticalContentAlignment="Center"/>
+            <Label Content="同名卡：" Padding="0,5,5,5" Margin="2"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding Card.alias}" Margin="2" VerticalContentAlignment="Center"/>
+            <Label Content="系列1" Padding="0,5,5,5" Margin="2"/>
+            <ComboBox Margin="2" ItemsSource="{Binding SetCodes, Source={StaticResource cfg}}" SelectedValue="{Binding Card.SetCode1,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" ToolTip="{Binding Card.SetCode1.Value}"/>
+            <Label Content="系列2" Padding="0,5,5,5" Margin="2"/>
+            <ComboBox Margin="2" ItemsSource="{Binding SetCodes, Source={StaticResource cfg}}" SelectedValue="{Binding Card.SetCode2}" VerticalContentAlignment="Center"/>
+            <Label Content="系列3" Padding="0,5,5,5" Margin="2"/>
+            <ComboBox Margin="2" ItemsSource="{Binding SetCodes, Source={StaticResource cfg}}" SelectedValue="{Binding Card.SetCode3}" VerticalContentAlignment="Center"/>
+            <Label Content="系列4" Padding="0,5,5,5" Margin="2"/>
+            <ComboBox Margin="2" ItemsSource="{Binding SetCodes, Source={StaticResource cfg}}" SelectedValue="{Binding Card.SetCode4}" VerticalContentAlignment="Center"/>
+            <Label Content="规则：" Padding="0,5,5,5" Margin="2"/>
+            <ComboBox Margin="2" ItemsSource="{Binding Ots, Source={StaticResource cfg}}" SelectedValue="{Binding Card.Ot}" VerticalContentAlignment="Center"/>
+            <Label Content="属性：" Padding="0,5,5,5" Margin="2"/>
+            <ComboBox Margin="2" ItemsSource="{Binding Attributes, Source={StaticResource cfg}}" SelectedValue="{Binding Card.Attribute}" VerticalContentAlignment="Center"/>
+            <Label Content="种族：" Padding="0,5,5,5" Margin="2"/>
+            <ComboBox Margin="2" ItemsSource="{Binding Races, Source={StaticResource cfg}}" SelectedValue="{Binding Card.Race}" VerticalContentAlignment="Center"/>
+            <Label Content="等级：" Padding="0,5,5,5" Margin="2"/>
+            <ComboBox Margin="2" ItemsSource="{Binding StarLevel, Source={StaticResource cfg}}" SelectedValuePath="Value" SelectedValue="{Binding Card.Level, Mode=OneWay}" VerticalContentAlignment="Center"/>
+            <Label Content="ATK：" Padding="0,5,5,5" Margin="2"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding Card.atk}" Margin="2" VerticalContentAlignment="Center"/>
+            <Label Content="DEF：" Padding="0,5,5,5" Margin="2"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding Card.def}" Margin="2" VerticalContentAlignment="Center"/>
+            <Label Content="左摆：" Padding="0,5,5,5" Margin="2"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding Card.Left, Mode=OneWay}" Margin="2" VerticalContentAlignment="Center"/>
+            <Label Content="右摆：" Padding="0,5,5,5" Margin="2"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding Card.Right, Mode=OneWay}" Margin="2" VerticalContentAlignment="Center"/>
         </UniformGrid>
         <GroupBox Header="类型" Margin="10,10,16,0" Grid.Row="2" VerticalAlignment="Top" Height="180">
-            <ListBox ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionMode="Multiple" ItemsSource="{Binding Card.Type.TypeItem.SubItems}">
-                
+            <ListBox ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionMode="Multiple" ItemsSource="{Binding Types}" DisplayMemberPath="Content">
+
             </ListBox>
         </GroupBox>
         <GroupBox Header="效果分类" Margin="10,196,16,6" Grid.Row="2">
             <ListBox ItemsSource="{Binding Categories}" ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" SelectionMode="Multiple" DisplayMemberPath="Content"/>
         </GroupBox>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="287,3.333,0,5" Grid.Row="3" Width="75"/>
-        <Button Content="Button" Margin="0,3,24,5" Grid.Row="3" HorizontalAlignment="Right" Width="75"/>
+        <Button Content="提交修改" Margin="278,3,138,5" Grid.Row="3" Command="{Binding Submit, Mode=OneWay}"/>
+        <Button Content="撤销修改" Margin="0,3,21,0" Grid.Row="3" HorizontalAlignment="Right" Width="74" Height="21" VerticalAlignment="Top" Command="{Binding Cancel, Mode=OneWay}"/>
     </Grid>
 </Window>

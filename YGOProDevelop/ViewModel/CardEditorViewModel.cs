@@ -7,6 +7,9 @@ using GalaSoft.MvvmLight;
 using YGOProDevelop.CardEditor.Builder;
 using YGOProDevelop.CardEditor.Config;
 using YGOProDevelop.Model;
+using GalaSoft.MvvmLight.Command;
+using System.Data.Entity.Infrastructure;
+
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -31,15 +34,17 @@ namespace YGOProDevelop.ViewModel {
             }
 
             set {
-                _card = value;RaisePropertyChanged();
-                Categories.SelectedItems = Card.Category;
+                _card = value;
+                RaisePropertyChanged();
+                Categories.SelectedItems = _card.Category;
+                Types.SelectedItems = _card.Type;
             }
         }
 
-        private SelectionCollection<VarItem> _subTypes = new SelectionCollection<VarItem>(SettingConfig.Types);
-        public SelectionCollection<VarItem> SubTypes {
+        private SelectionCollection<VarItem> _types = new SelectionCollection<VarItem>(SettingConfig.Types);
+        public SelectionCollection<VarItem> Types {
             get {
-                return _subTypes;
+                return _types;
             }
         }
 
@@ -49,6 +54,12 @@ namespace YGOProDevelop.ViewModel {
             get {
                 return _categories;
             }
+        }
+
+        protected override void OnSubmit() {
+            Card.Category = Categories.SelectedItems;
+            Card.Type = Types.SelectedItems;
+            base.OnSubmit();
         }
 
     }
@@ -88,6 +99,7 @@ namespace YGOProDevelop.ViewModel {
         public List<T> SelectedItems {
             get {
                 var items = from s in this
+                            where s.IsSelected
                             select s.Content;
                 return items.ToList();
             }
