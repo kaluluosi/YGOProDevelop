@@ -179,13 +179,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Service\CustomDialogAttribute.cs" />
+    <Compile Include="Service\CustomDialogService.cs" />
     <Compile Include="Service\DefaultIntelisenceService.cs" />
     <Compile Include="Service\ICDBService.cs" />
     <Compile Include="Service\IIntelisenceService.cs" />
     <Compile Include="Service\DefaultHighlightSettingService.cs" />
     <Compile Include="Service\ICustomDialogService.cs" />
     <Compile Include="Service\IHighlightSettingService.cs" />
-    <Compile Include="Service\CustomDialogService.cs" />
     <Compile Include="Model\texts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
