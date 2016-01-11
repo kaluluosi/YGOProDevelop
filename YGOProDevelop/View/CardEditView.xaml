@@ -97,13 +97,13 @@
             <TextBox TextWrapping="Wrap" Text="{Binding Card.id}" Margin="2" VerticalContentAlignment="Center"/>
             <Label Content="同名卡：" Padding="0,5,5,5" Margin="2"/>
             <TextBox TextWrapping="Wrap" Text="{Binding Card.alias}" Margin="2" VerticalContentAlignment="Center"/>
-            <Label Content="系列1" Padding="0,5,5,5" Margin="2"/>
+            <Label Content="系列1：" Padding="0,5,5,5" Margin="2"/>
             <ComboBox Margin="2" ItemsSource="{Binding SetCodes, Source={StaticResource cfg}}" SelectedValue="{Binding Card.SetCode1,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" ToolTip="{Binding Card.SetCode1.Value}"/>
-            <Label Content="系列2" Padding="0,5,5,5" Margin="2"/>
+            <Label Content="系列2：" Padding="0,5,5,5" Margin="2"/>
             <ComboBox Margin="2" ItemsSource="{Binding SetCodes, Source={StaticResource cfg}}" SelectedValue="{Binding Card.SetCode2}" VerticalContentAlignment="Center"/>
-            <Label Content="系列3" Padding="0,5,5,5" Margin="2"/>
+            <Label Content="系列3：" Padding="0,5,5,5" Margin="2"/>
             <ComboBox Margin="2" ItemsSource="{Binding SetCodes, Source={StaticResource cfg}}" SelectedValue="{Binding Card.SetCode3}" VerticalContentAlignment="Center"/>
-            <Label Content="系列4" Padding="0,5,5,5" Margin="2"/>
+            <Label Content="系列4：" Padding="0,5,5,5" Margin="2"/>
             <ComboBox Margin="2" ItemsSource="{Binding SetCodes, Source={StaticResource cfg}}" SelectedValue="{Binding Card.SetCode4}" VerticalContentAlignment="Center"/>
             <Label Content="规则：" Padding="0,5,5,5" Margin="2"/>
             <ComboBox Margin="2" ItemsSource="{Binding Ots, Source={StaticResource cfg}}" SelectedValue="{Binding Card.Ot}" VerticalContentAlignment="Center"/>

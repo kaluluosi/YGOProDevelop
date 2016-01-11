@@ -18,7 +18,7 @@ namespace YGOProDevelop.ViewModel {
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class CardEditorViewModel : DialogViewModelBase {
+    public class CardEditorViewModel : ExDialogService.DialogViewModel {
         /// <summary>
         /// Initializes a new instance of the CardEditorViewModel class.
         /// </summary>

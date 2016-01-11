@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using YGOProDevelop.Service;
 using YGOProDevelop.ViewModel;
+using ExDialogService;
 
 namespace YGOProDevelop.View {
     /// <summary>

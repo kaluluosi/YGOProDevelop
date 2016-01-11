@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using ExDialogService;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Win32;
@@ -24,7 +25,7 @@ namespace YGOProDevelop.ViewModel
         /// <summary>
         /// Initializes a new instance of the CardListViewModel class.
         /// </summary>
-        public CardListViewModel(ICDBService cdbService, ICustomDialogService dialogService) {
+        public CardListViewModel(ICDBService cdbService, IExDialogService dialogService) {
             CdbService = cdbService;
             try {
                 cdbService.Open(Properties.Settings.Default.lastCDB);
@@ -65,7 +66,7 @@ namespace YGOProDevelop.ViewModel
         }
 
 
-        private ICustomDialogService _dialogService;
+        private IExDialogService _dialogService;
 
         private ICommand _openScriptCmd;
         /// <summary>

@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Configuration;
+using ExDialogService;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -30,7 +31,7 @@ namespace YGOProDevelop.ViewModel {
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IHighlightSettingService hlSettingService, ICustomDialogService dialogService) {
+        public MainViewModel(IHighlightSettingService hlSettingService,IExDialogService  dialogService) {
             _hlSettingService = hlSettingService;
             _dialogService = dialogService;
             AnchorableViewModels = new ObservableCollection<ToolsViewModelBase>(SimpleIoc.Default.GetAllInstances<ToolsViewModelBase>());
@@ -38,7 +39,7 @@ namespace YGOProDevelop.ViewModel {
         }
 
 
-        private ICustomDialogService _dialogService;
+        private IExDialogService _dialogService;
 
         private IHighlightSettingService _hlSettingService;
 
@@ -200,7 +201,7 @@ namespace YGOProDevelop.ViewModel {
                 return _openPreferencesCmd
                     ?? (_openPreferencesCmd = new RelayCommand(
                     () => {
-                        _dialogService.ShowDialog<PreferencesViewModel>();
+                        _dialogService.ShowDialog<PreferencesViewModel>(this );
                     }));
             }
         }

@@ -1,34 +1,48 @@
 ﻿using GalaSoft.MvvmLight;
-using System;
 using GalaSoft.MvvmLight.Command;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ExDialogService {
-    public abstract class DialogViewModelBase : ViewModelBase {
+namespace ExDialogService
+{
+    /// <summary>
+    /// 对话框ViewModel基类
+    /// </summary>
+    public abstract class DialogViewModel : ViewModelBase, ExDialogService.IDialogViewModel
+    {
 
         private bool? dialogResult;
         public bool? DialogResult {
             get { return dialogResult; }
-            set { dialogResult = value; RaisePropertyChanged("DialogResult");OnDialogResultChanged(value); }
+            set { dialogResult = value; RaisePropertyChanged(); OnDialogResultChanged(value); }
         }
 
         public event EventHandler<bool?> DialogResultChanged;
         private void OnDialogResultChanged(bool? result) {
-            if (DialogResultChanged != null) {
+            if(DialogResultChanged != null) {
                 DialogResultChanged(this, result);
             }
         }
 
-        public Action CloseWindow = () => { };
+        private Action closeWindow = () => { };
 
-        private RelayCommand _submit;
+        public Action CloseWindow {
+            get { return closeWindow; }
+            set { closeWindow = value; }
+        }
+
+        private RelayCommand submitCmd;
 
         /// <summary>
         /// Gets the MyCommand.
         /// </summary>
-        public RelayCommand Submit {
+        public RelayCommand SubmitCmd {
             get {
-                return _submit
-                    ?? (_submit = new RelayCommand(
+                return submitCmd
+                    ?? (submitCmd = new RelayCommand(
                     () => {
                         OnSubmit();
                     }));
@@ -39,15 +53,15 @@ namespace ExDialogService {
             DialogResult = true;
         }
 
-        private RelayCommand _cancel;
+        private RelayCommand cancelCmd;
 
         /// <summary>
         /// Gets the MyCommand.
         /// </summary>
-        public RelayCommand Cancel {
+        public RelayCommand CancelCmd {
             get {
-                return _cancel
-                    ?? (_cancel = new RelayCommand(
+                return cancelCmd
+                    ?? (cancelCmd = new RelayCommand(
                     () => {
                         OnCancel();
                     }));
@@ -59,3 +73,4 @@ namespace ExDialogService {
         }
     }
 }
+

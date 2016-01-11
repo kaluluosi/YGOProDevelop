@@ -11,7 +11,7 @@ namespace YGOProDevelop.ViewModel {
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class PreferencesViewModel : DialogViewModelBase {
+    public class PreferencesViewModel : ExDialogService.DialogViewModel {
         /// <summary>
         /// Initializes a new instance of the PreferencesViewModel class.
         /// </summary>

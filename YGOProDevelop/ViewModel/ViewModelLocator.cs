@@ -31,7 +31,7 @@ namespace YGOProDevelop.ViewModel {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             //注册服务
-            SimpleIoc.Default.Register<ICustomDialogService, CustomDialogService>();
+            SimpleIoc.Default.Register<ExDialogService.IExDialogService,ExDialogService.DefaultDialogService>();
             SimpleIoc.Default.Register<IHighlightSettingService, DefaultHighlightSettingService>();
             SimpleIoc.Default.Register<IIntelisenceService, SmartIntelisenceService>();
             SimpleIoc.Default.Register<ICDBService, CDBService>();

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace ExDialogService
 {
-
     /// <summary>
     /// 自定义对话框属性，标记到对话框窗口类上来自动注册到ViewLocator。
     /// </summary>
@@ -16,6 +15,5 @@ namespace ExDialogService
         public CustomDialogAttribute(Type viewModel, Type view) {
             ViewLocator.RegistDialog(viewModel, view);
         }
-
     }
 }

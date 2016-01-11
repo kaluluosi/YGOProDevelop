@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="d:\program files (x86)\microsoft visual studio 12.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="12.0">
+ <Targets>
+  <Target Name="C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\ExDialogService\bin\Debug\ExDialogService.dll">
+   <Modules>
+    <Module Name="exdialogservice.dll">
+     <Namespaces>
+      <Namespace Name="ExDialogService">
+       <Types>
+        <Type Name="IDialogViewModel" Kind="Interface" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DialogResultChanged" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2016-01-11 07:52:25Z" FixCategory="Breaking">
+             <Issue Name="Second" Certainty="95" Level="Error">将 'EventHandler&lt;bool?&gt;' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ViewNotFoundException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-01-11 07:52:25Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">将 [Serializable] 添加到 'ViewNotFoundException'，原因是此类型实现了 ISerializable。</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009">
+   <Name>正确声明事件处理程序</Name>
+   <Description>按照约定，.NET 事件有两个参数，分别用于指定事件发送方和事件数据。事件处理程序签名应遵循以下形式:  void MyEventHandler(object sender, EventArgs e)。“sender”参数的类型始终是 System.Object，即使该参数可能使用更具体的类型。“e”参数的类型始终是 System.EventArgs。不提供事件数据的事件应使用 System.EventHandler 委托类型。事件处理程序返回 void 以便将每个事件发送给多个目标方法。目标返回的任何值在第一次调用之后将会丢失。</Description>
+   <Resolution Name="Second">将 {0} 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182133.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237">
+   <Name>用 SerializableAttribute 标记 ISerializable 类型</Name>
+   <Description>System.Runtime.Serialization.ISerializable 接口允许该类型自定义自身的序列化，而 Serializable 特性使运行时能够将该类型识别为可序列化的类型。</Description>
+   <Resolution Name="Default">将 [Serializable] 添加到 {0}，原因是此类型实现了 ISerializable。</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182350.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="12.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">类别</String>
+  <String Key="Certainty">确定性</String>
+  <String Key="CollapseAll">全部折叠</String>
+  <String Key="CheckId">检查 ID</String>
+  <String Key="Error">错误</String>
+  <String Key="Errors">错误</String>
+  <String Key="ExpandAll">全部展开</String>
+  <String Key="Help">帮助</String>
+  <String Key="Line">行</String>
+  <String Key="Messages">消息</String>
+  <String Key="LocationNotStoredInPdb">[位置未存储在 Pdb 中]</String>
+  <String Key="Project">项目</String>
+  <String Key="Resolution">解析</String>
+  <String Key="Rule">规则</String>
+  <String Key="RuleFile">规则文件</String>
+  <String Key="RuleDescription">规则说明</String>
+  <String Key="Source">源</String>
+  <String Key="Status">状态</String>
+  <String Key="Target">目标</String>
+  <String Key="Warning">警告</String>
+  <String Key="Warnings">警告</String>
+  <String Key="ReportTitle">代码分析报告</String>
+ </Localized>
+</FxCopReport>
