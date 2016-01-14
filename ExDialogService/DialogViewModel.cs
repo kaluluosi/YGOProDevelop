@@ -45,13 +45,14 @@ namespace ExDialogService
                     ?? (submitCmd = new RelayCommand(
                     () => {
                         OnSubmit();
-                    }));
+                    },
+                    () => {
+                        return CanSubmit();
+                    }
+                    ));
             }
         }
 
-        protected virtual void OnSubmit() {
-            DialogResult = true;
-        }
 
         private RelayCommand cancelCmd;
 
@@ -64,8 +65,24 @@ namespace ExDialogService
                     ?? (cancelCmd = new RelayCommand(
                     () => {
                         OnCancel();
-                    }));
+                    },
+                    () => {
+                        return CanCancel();
+                    }
+                    ));
             }
+        }
+
+        protected virtual bool CanCancel() {
+            return true;
+        }
+
+        protected virtual bool CanSubmit() {
+            return true;
+        }
+
+        protected virtual void OnSubmit() {
+            DialogResult = true;
         }
 
         protected virtual void OnCancel() {

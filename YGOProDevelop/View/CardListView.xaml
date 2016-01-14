@@ -104,6 +104,11 @@
             </Popup>
         </Grid>
         <ListBox x:Name="listBox" SelectedItem="{Binding SelectedCard}" DockPanel.Dock="Top" ItemsSource="{Binding QueryResult}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <cmd:EventToCommand Command="{Binding EditCmd}"></cmd:EventToCommand>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <ListBox.ItemTemplateSelector>
                 <selector:CardItemTemplateSelector MonDataTemplate="{StaticResource MonItem}" SpellDataTemplate="{StaticResource SpellItem}"></selector:CardItemTemplateSelector>
             </ListBox.ItemTemplateSelector>

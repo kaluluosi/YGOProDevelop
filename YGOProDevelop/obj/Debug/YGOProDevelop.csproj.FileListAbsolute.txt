@@ -170,3 +170,5 @@ D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\pics\27551.jpg
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\pics\27551.jpg
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ExDialogService.dll
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ExDialogService.pdb
+D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ExDialogService.dll
+D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ExDialogService.pdb

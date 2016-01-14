@@ -7,3 +7,12 @@ C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\ExDialogService\obj\Debug\ExDia
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\ExDialogService\obj\Debug\ExDialogService.csproj.GenerateResource.Cache
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\ExDialogService\obj\Debug\ExDialogService.dll
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\ExDialogService\obj\Debug\ExDialogService.pdb
+D:\GitHub\YGOProDevelop\ExDialogService\bin\Debug\ExDialogService.dll
+D:\GitHub\YGOProDevelop\ExDialogService\bin\Debug\ExDialogService.pdb
+D:\GitHub\YGOProDevelop\ExDialogService\bin\Debug\ExDialogService.dll.CodeAnalysisLog.xml
+D:\GitHub\YGOProDevelop\ExDialogService\bin\Debug\ExDialogService.dll.lastcodeanalysissucceeded
+D:\GitHub\YGOProDevelop\ExDialogService\obj\Debug\ExDialogService.csprojResolveAssemblyReference.cache
+D:\GitHub\YGOProDevelop\ExDialogService\obj\Debug\ExDialogService.Properties.Resources.resources
+D:\GitHub\YGOProDevelop\ExDialogService\obj\Debug\ExDialogService.csproj.GenerateResource.Cache
+D:\GitHub\YGOProDevelop\ExDialogService\obj\Debug\ExDialogService.dll
+D:\GitHub\YGOProDevelop\ExDialogService\obj\Debug\ExDialogService.pdb

@@ -9,7 +9,7 @@ using YGOProDevelop.CardEditor.Config;
 using YGOProDevelop.Model;
 using GalaSoft.MvvmLight.Command;
 using System.Data.Entity.Infrastructure;
-
+using YGOProDevelop.Service;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -23,8 +23,10 @@ namespace YGOProDevelop.ViewModel {
         /// Initializes a new instance of the CardEditorViewModel class.
         /// </summary>
         public CardEditorViewModel() {
-            
+           
         }
+
+        private ICDBService _cdbService;
 
         private datas _card;
 
@@ -41,6 +43,8 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
+        public DbEntityEntry CardEntity { get; set; }
+
         private SelectionCollection<VarItem> _types = new SelectionCollection<VarItem>(SettingConfig.Types);
         public SelectionCollection<VarItem> Types {
             get {
@@ -56,11 +60,28 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
+
+        private RelayCommand _resetCmd;
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public RelayCommand ResetCmd {
+            get {
+                return _resetCmd
+                    ?? (_resetCmd = new RelayCommand(
+                    () => {
+                        if (CardEntity != null) CardEntity.Reload();
+                        RaisePropertyChanged(() => Card);
+                    }));
+            }
+        }
+
         protected override void OnSubmit() {
             Card.Category = Categories.SelectedItems;
             Card.Type = Types.SelectedItems;
             base.OnSubmit();
         }
+
 
     }
 

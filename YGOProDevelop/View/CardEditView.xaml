@@ -7,8 +7,12 @@
         xmlns:cfg="clr-namespace:YGOProDevelop.CardEditor.Config"
         xmlns:cvt="clr-namespace:YGOProDevelop.View.Converter"
         xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="CardEditView" Height="704.846" Width="682.643"  WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize">
+        Title="CardEditView" Height="704.846" Width="682.643"  WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize"
+        KeyDown="Window_KeyDown"
+        >
     <Window.DataContext>
         <vm:CardEditorViewModel ></vm:CardEditorViewModel>
     </Window.DataContext>
@@ -130,7 +134,7 @@
         <GroupBox Header="效果分类" Margin="10,196,16,6" Grid.Row="2">
             <ListBox ItemsSource="{Binding Categories}" ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" SelectionMode="Multiple" DisplayMemberPath="Content"/>
         </GroupBox>
-        <Button Content="提交修改" Margin="278,3,138,5" Grid.Row="3" Command="{Binding Submit, Mode=OneWay}"/>
-        <Button Content="撤销修改" Margin="0,3,21,0" Grid.Row="3" HorizontalAlignment="Right" Width="74" Height="21" VerticalAlignment="Top" Command="{Binding Cancel, Mode=OneWay}"/>
+        <Button Content="提交修改" Margin="278,3,0,5" Grid.Row="3" Command="{Binding SubmitCmd, Mode=OneWay}" HorizontalAlignment="Left" Width="76"/>
+        <Button Content="撤销修改" Margin="0,3,21,0" Grid.Row="3" Height="21" VerticalAlignment="Top" Command="{Binding ResetCmd, Mode=OneWay}" HorizontalAlignment="Right" Width="74"/>
     </Grid>
 </Window>
