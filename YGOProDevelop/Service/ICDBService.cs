@@ -6,7 +6,7 @@ namespace YGOProDevelop.Service
     public interface ICDBService
     {
         void Add(YGOProDevelop.Model.datas card);
-        bool IsIDExisted(int id);
+        bool IsIDExisted(long id);
         void Open(string filePath);
         void Remove(YGOProDevelop.Model.datas card);
         void Replace(YGOProDevelop.Model.datas from, YGOProDevelop.Model.datas to);

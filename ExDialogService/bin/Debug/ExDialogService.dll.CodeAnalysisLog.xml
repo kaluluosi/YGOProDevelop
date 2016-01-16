@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
-<FxCopReport Version="14.0">
+<?xml-stylesheet type="text/xsl" href="g:\program files (x86)\microsoft visual studio 12.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="12.0">
  <Targets>
   <Target Name="D:\GitHub\YGOProDevelop\ExDialogService\bin\Debug\ExDialogService.dll">
    <Modules>
@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#DialogResultChanged" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2016-01-14 12:48:18Z" FixCategory="Breaking">
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2016-01-16 15:24:28Z" FixCategory="Breaking">
              <Issue Name="Second" Certainty="95" Level="Error">将 'EventHandler&lt;bool?&gt;' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
             </Message>
            </Messages>
@@ -21,7 +21,7 @@
         </Type>
         <Type Name="ViewNotFoundException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-01-14 12:48:18Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-01-16 15:24:28Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">将 [Serializable] 添加到 'ViewNotFoundException'，原因是此类型实现了 ISerializable。</Issue>
           </Message>
          </Messages>
@@ -36,13 +36,13 @@
  <Rules>
   <Rule TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009">
    <Name>正确声明事件处理程序</Name>
-   <Description>按照约定，.NET 事件有两个参数，分别用于指定事件发送方和事件数据。事件处理程序签名应遵循以下形式: void MyEventHandler(object sender, EventArgs e)。“sender”参数的类型始终是 System.Object，即使该参数可能使用更具体的类型。“e”参数的类型始终是 System.EventArgs。不提供事件数据的事件应使用 System.EventHandler 委托类型。事件处理程序返回 void 以便将每个事件发送给多个目标方法。目标返回的任何值在第一次调用之后将会丢失。</Description>
+   <Description>按照约定，.NET 事件有两个参数，分别用于指定事件发送方和事件数据。事件处理程序签名应遵循以下形式:  void MyEventHandler(object sender, EventArgs e)。“sender”参数的类型始终是 System.Object，即使该参数可能使用更具体的类型。“e”参数的类型始终是 System.EventArgs。不提供事件数据的事件应使用 System.EventHandler 委托类型。事件处理程序返回 void 以便将每个事件发送给多个目标方法。目标返回的任何值在第一次调用之后将会丢失。</Description>
    <Resolution Name="Second">将 {0} 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Resolution>
    <Owner />
    <Url>http://msdn.microsoft.com/library/ms182133.aspx</Url>
    <Email>[none]</Email>
    <MessageLevel Certainty="95">Error</MessageLevel>
-   <File Name="designrules.dll" Version="14.0.0.0" />
+   <File Name="designrules.dll" Version="12.0.0.0" />
   </Rule>
   <Rule TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237">
    <Name>用 SerializableAttribute 标记 ISerializable 类型</Name>
@@ -52,7 +52,7 @@
    <Url>http://msdn.microsoft.com/library/ms182350.aspx</Url>
    <Email>[none]</Email>
    <MessageLevel Certainty="75">Warning</MessageLevel>
-   <File Name="usagerules.dll" Version="14.0.0.0" />
+   <File Name="usagerules.dll" Version="12.0.0.0" />
   </Rule>
  </Rules>
  <Localized>

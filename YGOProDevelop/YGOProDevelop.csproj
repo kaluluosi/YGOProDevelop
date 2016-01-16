@@ -209,6 +209,7 @@
       <DependentUpon>PreferencesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TemplateSelector\CardItemTemplateSelector.cs" />
+    <Compile Include="View\Validation\IDValidationRule.cs" />
     <Page Include="View\CardEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

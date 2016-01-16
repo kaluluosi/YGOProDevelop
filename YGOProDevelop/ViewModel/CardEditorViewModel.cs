@@ -10,6 +10,7 @@ using YGOProDevelop.Model;
 using GalaSoft.MvvmLight.Command;
 using System.Data.Entity.Infrastructure;
 using YGOProDevelop.Service;
+using Microsoft.Practices.ServiceLocation;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -25,8 +26,6 @@ namespace YGOProDevelop.ViewModel {
         public CardEditorViewModel() {
            
         }
-
-        private ICDBService _cdbService;
 
         private datas _card;
 
@@ -76,12 +75,12 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
+
         protected override void OnSubmit() {
             Card.Category = Categories.SelectedItems;
             Card.Type = Types.SelectedItems;
             base.OnSubmit();
         }
-
 
     }
 

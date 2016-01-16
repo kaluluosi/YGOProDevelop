@@ -178,9 +178,6 @@ namespace YGOProDevelop.ViewModel {
                         ce.Card = SelectedCard;
                         ce.CardEntity = _cdbService.Datas.Entry(SelectedCard);
                         _dialogService.ShowDialog(ce);
-//                         if (_dialogService.ShowDialog(ce) == false) {
-//                             _cdbService.Datas.Entry(SelectedCard).Reload();
-//                         }
                     }));
             }
         }
