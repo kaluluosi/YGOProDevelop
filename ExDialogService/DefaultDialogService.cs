@@ -37,28 +37,32 @@ namespace ExDialogService {
         }
 
 
-        public void Show<T>() where T : IDialogViewModel {
+        public IDialogViewModel Show<T>() where T : IDialogViewModel {
             Window win = ViewLocator.CreateDialogView<T>();
             win.Show();
+            return win.DataContext as IDialogViewModel;
         }
 
-        public void Show<T>(object parent) where T : IDialogViewModel {
+        public IDialogViewModel Show<T>(object parent) where T : IDialogViewModel {
             Window win = ViewLocator.CreateDialogView<T>();
             win.Owner = ViewLocator.GetOwnerWindow(parent) ?? ViewLocator.Main;
             win.Show();
+            return win.DataContext as IDialogViewModel;
         }
 
-        public bool? ShowDialog<T>() where T : IDialogViewModel {
+        public IDialogViewModel ShowDialog<T>() where T : IDialogViewModel {
             Window win = ViewLocator.CreateDialogView<T>();
-            return win.ShowDialog();
+            win.ShowDialog();
+            return win.DataContext as IDialogViewModel;
         }
 
 
 
-        public bool? ShowDialog<T>(object parent) where T : IDialogViewModel {
+        public IDialogViewModel ShowDialog<T>(object parent) where T : IDialogViewModel {
             Window win = ViewLocator.CreateDialogView<T>();
             win.Owner = ViewLocator.GetOwnerWindow(parent) ?? ViewLocator.Main;
-            return win.ShowDialog();
+            win.ShowDialog();
+            return win.DataContext as IDialogViewModel;
         }
     }
 }

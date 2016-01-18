@@ -38,9 +38,9 @@ namespace YGOProDevelop.ViewModel {
 //             SimpleIoc.Default.Register<SettingsBase>(() => Properties.Settings.Default);
 
             //注册ViewModel
-            SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<DocumentViewModel>();
             SimpleIoc.Default.Register<ToolsViewModelBase,CardListViewModel>();
+            SimpleIoc.Default.Register<MainViewModel>(true);
         }
 
         public static MainViewModel Main {

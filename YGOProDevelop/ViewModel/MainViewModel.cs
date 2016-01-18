@@ -6,12 +6,12 @@ using YGOProDevelop.Service;
 using ICSharpCode.AvalonEdit.Highlighting;
 using System.IO;
 using GalaSoft.MvvmLight.Messaging;
-using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Configuration;
 using ExDialogService;
+using Microsoft.Practices.ServiceLocation;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -22,19 +22,12 @@ namespace YGOProDevelop.ViewModel {
     /// </summary>
     public class MainViewModel : ViewModelBase {
 
-        public static MainViewModel This {
-            get {
-                return SimpleIoc.Default.GetInstance<MainViewModel>();
-            }
-        }
-
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel(IHighlightSettingService hlSettingService,IExDialogService  dialogService) {
             _hlSettingService = hlSettingService;
             _dialogService = dialogService;
-            AnchorableViewModels = new ObservableCollection<ToolsViewModelBase>(SimpleIoc.Default.GetAllInstances<ToolsViewModelBase>());
             ReOpenDocument();
         }
 
@@ -55,10 +48,10 @@ namespace YGOProDevelop.ViewModel {
         /// <summary>
         /// 可停靠边缘的viewmodel
         /// </summary>
-        private ObservableCollection<ToolsViewModelBase> _anchorableViewModels = new ObservableCollection<ToolsViewModelBase>();
+        private ObservableCollection<ToolsViewModelBase> _anchorableViewModels;
 
         public ObservableCollection<ToolsViewModelBase> AnchorableViewModels {
-            get { return _anchorableViewModels; }
+            get { return _anchorableViewModels??(_anchorableViewModels= new ObservableCollection<ToolsViewModelBase>(ServiceLocator.Current.GetAllInstances<ToolsViewModelBase>())); }
             set { _anchorableViewModels = value; RaisePropertyChanged(() => AnchorableViewModels); }
         }
 
@@ -261,7 +254,7 @@ namespace YGOProDevelop.ViewModel {
         }
 
         public DocumentViewModel CreateDocumentVM() {
-            DocumentViewModel docVM = SimpleIoc.Default.GetInstance<DocumentViewModel>(Guid.NewGuid().ToString());
+            DocumentViewModel docVM = ServiceLocator.Current.GetInstance<DocumentViewModel>(Guid.NewGuid().ToString());
             docVM.IsShowLineNumbers = IsShowLineNumbers;
             return docVM;
         }

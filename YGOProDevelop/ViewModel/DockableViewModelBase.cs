@@ -1,12 +1,16 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
+using Microsoft.Practices.ServiceLocation;
 
 namespace YGOProDevelop.ViewModel {
     public abstract class DockableViewModelBase:ViewModelBase {
+        /// <summary>
+        /// 主工作区的引用
+        /// </summary>
         public MainViewModel Main {
             get {
-                return MainViewModel.This;
+                return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
 

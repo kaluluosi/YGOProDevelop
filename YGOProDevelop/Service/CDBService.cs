@@ -60,7 +60,7 @@ namespace YGOProDevelop.Service {
             return  ce.SaveChanges();
         }
 
-        public bool IsIDExisted(int id) {
+        public bool IsIDExisted(long id) {
             datas result = ce.datas.FirstOrDefault(d => d.id == id);
             return result == null ? false : true;
         }

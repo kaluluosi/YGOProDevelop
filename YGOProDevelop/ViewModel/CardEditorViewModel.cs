@@ -9,6 +9,7 @@ using YGOProDevelop.Model;
 using GalaSoft.MvvmLight.Command;
 using System.Data.Entity.Infrastructure;
 using YGOProDevelop.Service;
+using Microsoft.Practices.ServiceLocation;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -25,7 +26,10 @@ namespace YGOProDevelop.ViewModel {
            
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
         private datas _card;
 
         public datas Card {
@@ -73,6 +77,7 @@ namespace YGOProDevelop.ViewModel {
                     }));
             }
         }
+
 
         protected override void OnSubmit() {
             Card.Category = Categories.SelectedItems;

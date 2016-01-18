@@ -8,6 +8,7 @@
         xmlns:cvt="clr-namespace:YGOProDevelop.View.Converter"
         xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
         xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+        xmlns:rule="clr-namespace:YGOProDevelop.View.Validation"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="CardEditView" Height="704.846" Width="682.643"  WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize"
@@ -106,7 +107,7 @@
         <TextBox HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" Text="{Binding Card.texts.name}" Width="266" FontSize="29.333"/>
         <UniformGrid Margin="10,10,16,10" Columns="4" Rows="7" Grid.Row="1">
             <Label Content="卡密：" Padding="0,5,5,5" Margin="2"/>
-            <TextBox TextWrapping="Wrap" Text="{Binding Card.id}" Margin="2" VerticalContentAlignment="Center"/>
+            <TextBox TextWrapping="Wrap"  Margin="2" VerticalContentAlignment="Center" Text="{Binding Card.id}" IsReadOnly="True" ToolTip="卡密是数据库中的主键值，必须是唯一的。随意修改可能会导致卡密重复游戏崩溃。因此本编辑器为安全起见，卡片创建时确定卡密，创建之后就不允许修改卡密。"/>
             <Label Content="同名卡：" Padding="0,5,5,5" Margin="2"/>
             <TextBox TextWrapping="Wrap" Text="{Binding Card.alias}" Margin="2" VerticalContentAlignment="Center"/>
             <Label Content="系列1：" Padding="0,5,5,5" Margin="2"/>
