@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using YGOProDevelop.CardEditor.Builder;
 using YGOProDevelop.Model;
 
 namespace YGOProDevelop.View.TemplateSelector {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using YGOProDevelop.CardEditor.Builder;
 using YGOProDevelop.Model;
 
 namespace YGOProDevelop.View.Converter {

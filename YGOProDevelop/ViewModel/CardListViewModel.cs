@@ -11,29 +11,30 @@ using YGOProDevelop.Model;
 using YGOProDevelop.Service;
 using System.Linq;
 
-namespace YGOProDevelop.ViewModel {
+namespace YGOProDevelop.ViewModel
+{
     /// <summary>
     /// This class contains properties that a View can data bind to.
     /// <para>
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class CardListViewModel : ToolsViewModelBase {
+    public class CardListViewModel : ToolsViewModelBase
+    {
         /// <summary>
         /// Initializes a new instance of the CardListViewModel class.
         /// </summary>
         public CardListViewModel(ICDBService cdbService, IExDialogService dialogService) {
             _cdbService = cdbService;
+            ContentId = "CardList";
+            _dialogService = dialogService;
             try {
                 cdbService.Open(Properties.Settings.Default.lastCDB);
                 ResetSearch();
             }
-            catch (System.Exception ex) {
+            catch(System.Exception ex) {
                 //                 MessageBox.Show(ex.Message);
             }
-            ContentId = "CardList";
-
-            _dialogService = dialogService;
         }
 
 
@@ -103,21 +104,21 @@ namespace YGOProDevelop.ViewModel {
                     () => {
                         try {
                             string script = string.Format(@"{0}\c{1}.lua", Properties.Settings.Default.scriptFolder, _selectedCard.id);
-                            if (File.Exists(script)) {
+                            if(File.Exists(script)) {
                                 Main.OpenDocument(script);
                             }
                             else {
                                 MessageBoxResult result = MessageBox.Show("脚本不存在是否新建？", "提示", MessageBoxButton.YesNo);
-                                if (result == MessageBoxResult.Yes) {
+                                if(result == MessageBoxResult.Yes) {
                                     string path = Path.GetDirectoryName(script);
-                                    if (Directory.Exists(path) == false)
+                                    if(Directory.Exists(path) == false)
                                         Directory.CreateDirectory(path);
                                     File.CreateText(script).Close();
                                     Main.OpenDocument(script);
                                 }
                             }
                         }
-                        catch (System.Exception ex) {
+                        catch(System.Exception ex) {
                             MessageBox.Show(ex.Message);
                         }
                     }));
@@ -133,7 +134,7 @@ namespace YGOProDevelop.ViewModel {
                 return _searchCmd
                     ?? (_searchCmd = new RelayCommand(
                     () => {
-                        if (string.IsNullOrEmpty(_keyword) == false)
+                        if(string.IsNullOrEmpty(_keyword) == false)
                             Search(_keyword);
                         else
                             ResetSearch();
@@ -155,7 +156,7 @@ namespace YGOProDevelop.ViewModel {
                         OpenFileDialog openFile = new OpenFileDialog();
                         openFile.Filter = "CDB文件|*.cdb";
                         bool? result = openFile.ShowDialog();
-                        if (result == true) {
+                        if(result == true) {
                             _cdbService.Open(openFile.FileName);
                             ResetSearch();
                             Properties.Settings.Default.lastCDB = openFile.FileName;
@@ -177,10 +178,9 @@ namespace YGOProDevelop.ViewModel {
                         CardEditorViewModel ce = new CardEditorViewModel();
                         ce.Card = SelectedCard;
                         ce.CardEntity = _cdbService.Datas.Entry(SelectedCard);
-                        _dialogService.ShowDialog(ce);
-//                         if (_dialogService.ShowDialog(ce) == false) {
-//                             _cdbService.Datas.Entry(SelectedCard).Reload();
-//                         }
+                        if(_dialogService.ShowDialog(ce) != true) {
+                            _cdbService.Datas.Entry(SelectedCard).Reload();
+                        }
                     }));
             }
         }

@@ -92,7 +92,15 @@
                 </Grid>
             </TabItem>
             <TabItem Header="脚本文本">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid x:Name="grid" Background="#FFE5E5E5">
+                    <ListBox ItemsSource="{Binding Card.texts.Strs}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Mode=OneWay}" Width="130"  HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" TextWrapping="Wrap" ></TextBox>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
             </TabItem>
         </TabControl>
         <TextBox HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" Text="{Binding Card.texts.name}" Width="266" FontSize="29.333"/>
@@ -134,7 +142,7 @@
         <GroupBox Header="效果分类" Margin="10,196,16,6" Grid.Row="2">
             <ListBox ItemsSource="{Binding Categories}" ItemsPanel="{DynamicResource WrapItemsPanelTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" SelectionMode="Multiple" DisplayMemberPath="Content"/>
         </GroupBox>
-        <Button Content="提交修改" Margin="278,3,0,5" Grid.Row="3" Command="{Binding SubmitCmd, Mode=OneWay}" HorizontalAlignment="Left" Width="76"/>
+        <Button Content="提交修改" Margin="278,3,0,5" Grid.Row="3" Command="{Binding SubmitCmd, Mode=OneWay}" HorizontalAlignment="Left" Width="76" IsDefault="True"/>
         <Button Content="撤销修改" Margin="0,3,21,0" Grid.Row="3" Height="21" VerticalAlignment="Top" Command="{Binding ResetCmd, Mode=OneWay}" HorizontalAlignment="Right" Width="74"/>
     </Grid>
 </Window>

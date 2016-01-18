@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using GalaSoft.MvvmLight;
-using YGOProDevelop.CardEditor.Builder;
 using YGOProDevelop.CardEditor.Config;
 using YGOProDevelop.Model;
 using GalaSoft.MvvmLight.Command;
@@ -26,7 +25,6 @@ namespace YGOProDevelop.ViewModel {
            
         }
 
-        private ICDBService _cdbService;
 
         private datas _card;
 
@@ -81,7 +79,6 @@ namespace YGOProDevelop.ViewModel {
             Card.Type = Types.SelectedItems;
             base.OnSubmit();
         }
-
 
     }
 
