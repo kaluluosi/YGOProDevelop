@@ -60,14 +60,14 @@ namespace YGOProDevelop.Model
             }
         }
 
-        public short Level {
+        public long Level {
             get {
                 byte[] bytes = BitConverter.GetBytes(level ?? 0);
                 short lv = BitConverter.ToInt16(bytes, 0);
                 return lv;
             }
             set {
-                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                byte[] bytes = BitConverter.GetBytes(level??0);
                 byte[] vbs = BitConverter.GetBytes(value);
                 bytes[0] = vbs[0];
                 bytes[1] = vbs[1];

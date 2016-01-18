@@ -11,6 +11,13 @@
     >
     <DockPanel >
         <avalonedit:TextEditor x:Name="editor" Document="{Binding Document, UpdateSourceTrigger=PropertyChanged}" ShowLineNumbers="{Binding IsShowLineNumbers}" SyntaxHighlighting="{Binding Language}" FontSize="16" IsModified="{Binding IsDirty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+            <avalonedit:TextEditor.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Command="Cut"></MenuItem>
+                    <MenuItem Command="Copy"></MenuItem>
+                    <MenuItem Command="Paste"></MenuItem>
+                </ContextMenu>
+            </avalonedit:TextEditor.ContextMenu>
         </avalonedit:TextEditor>
     </DockPanel>
 </UserControl>

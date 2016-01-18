@@ -10,6 +10,7 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/attribute.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/category.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/intelisence/lua/contants.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/intelisence/lua/ygoproapi.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/ot.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/race.xml")]

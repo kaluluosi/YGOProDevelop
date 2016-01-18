@@ -83,24 +83,48 @@ namespace YGOProDevelop.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("script")]
-        public string scriptFolder {
+        public string ScriptFolder {
             get {
-                return ((string)(this["scriptFolder"]));
+                return ((string)(this["ScriptFolder"]));
             }
             set {
-                this["scriptFolder"] = value;
+                this["ScriptFolder"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("pics")]
-        public string picFolder {
+        [global::System.Configuration.DefaultSettingValueAttribute(".\\")]
+        public string YGOProPath {
             get {
-                return ((string)(this["picFolder"]));
+                return ((string)(this["YGOProPath"]));
             }
             set {
-                this["picFolder"] = value;
+                this["YGOProPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseDefaultPath {
+            get {
+                return ((bool)(this["UseDefaultPath"]));
+            }
+            set {
+                this["UseDefaultPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PicFolder {
+            get {
+                return ((string)(this["PicFolder"]));
+            }
+            set {
+                this["PicFolder"] = value;
             }
         }
     }

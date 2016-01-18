@@ -77,8 +77,9 @@
     <DockPanel>
         <ToolBarTray DockPanel.Dock="Top" >
             <ToolBar Height="24" ToolBarTray.IsLocked="True">
-                <Button Command="{Binding OpenCDBCmd, Mode=OneWay}">打开</Button>
-                <Button Command="{Binding SaveCDBCmd}" Content="保存数据库"/>
+                <Button Command="{Binding OpenCDBCmd, Mode=OneWay}">打开CDB</Button>
+                <Button Command="{Binding AddNewCmd}">新建卡片</Button>
+                <Button Command="{Binding SaveCDBCmd}" >保存数据</Button>
             </ToolBar>
         </ToolBarTray>
         <Grid DockPanel.Dock="Bottom" Margin="0,2,0,0" >
@@ -106,7 +107,7 @@
         <ListBox x:Name="listBox" SelectedItem="{Binding SelectedCard}" DockPanel.Dock="Top" ItemsSource="{Binding QueryResult}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
-                    <cmd:EventToCommand Command="{Binding EditCmd}"></cmd:EventToCommand>
+                    <cmd:EventToCommand Command="{Binding OpenScriptCmd}"></cmd:EventToCommand>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <ListBox.ItemTemplateSelector>
@@ -114,8 +115,10 @@
             </ListBox.ItemTemplateSelector>
             <ListBox.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="编辑" Command="{Binding EditCmd}"></MenuItem>
                     <MenuItem Header="打开脚本" Command="{Binding OpenScriptCmd}"></MenuItem>
+                    <MenuItem Header="新建" Command="{Binding AddNewCmd}"></MenuItem>
+                    <MenuItem Header="编辑" Command="{Binding EditCmd}"></MenuItem>
+                    <MenuItem Header="删除" Command="{Binding DeleteCmd}"></MenuItem>
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>

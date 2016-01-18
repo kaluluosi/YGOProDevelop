@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using GalaSoft.MvvmLight;
@@ -8,8 +6,6 @@ using YGOProDevelop.CardEditor.Config;
 using YGOProDevelop.Model;
 using GalaSoft.MvvmLight.Command;
 using System.Data.Entity.Infrastructure;
-using YGOProDevelop.Service;
-using Microsoft.Practices.ServiceLocation;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -26,10 +22,6 @@ namespace YGOProDevelop.ViewModel {
            
         }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
         private datas _card;
 
         public datas Card {

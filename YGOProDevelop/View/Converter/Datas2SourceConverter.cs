@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Data;
 using YGOProDevelop.Model;
+using setting = YGOProDevelop.Properties.Settings;
 
 namespace YGOProDevelop.View.Converter {
     public class Datas2SourceConverter : IValueConverter {
@@ -14,7 +15,7 @@ namespace YGOProDevelop.View.Converter {
             switch (parameter.ToString()) {
 
                 case "Pic":
-                    string imgPath = Path.Combine(Properties.Settings.Default.picFolder, card.id + ".jpg"); ;
+                    string imgPath = Path.Combine(setting.Default.YGOProPath,"Pics", card.id + ".jpg") ;
                     string fullPath = Path.GetFullPath(imgPath);
                     if (File.Exists(fullPath)) {
                         return fullPath;

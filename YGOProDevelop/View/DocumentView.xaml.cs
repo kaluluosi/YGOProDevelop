@@ -41,7 +41,7 @@ namespace YGOProDevelop.View {
             var pos = editor.GetPositionFromPoint(e.GetPosition(editor));
             string text = GetWordOverMouse(e);
             if (pos != null && CompletionDataSource != null&&text!=null) {
-                var data = CompletionDataSource.FirstOrDefault(d =>  d.Text.ToString().Contains(text));
+                var data = CompletionDataSource.FirstOrDefault(d => d.Text==null? false :d.Text==text);
                 if (data != null) {
                     toolTip.Content = new TextBlock {
                         Text = data.Description.ToString(),

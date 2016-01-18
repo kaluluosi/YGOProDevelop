@@ -10,7 +10,7 @@ using System.Windows.Media;
 namespace YGOProDevelop.Model {
         public class DefaultCompletionData : ICompletionData {
             public DefaultCompletionData() {
-
+                Text = "";
             }
 
             public void Complete(TextArea textArea, ICSharpCode.AvalonEdit.Document.ISegment completionSegment, EventArgs insertionRequestEventArgs) {

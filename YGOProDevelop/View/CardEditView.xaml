@@ -19,7 +19,7 @@
     </Window.DataContext>
     <Window.Resources>
         <ResourceDictionary>
-            <cvt:ID2SourceConverter x:Key="id2source"></cvt:ID2SourceConverter>
+            <cvt:Datas2SourceConverter x:Key="id2source"></cvt:Datas2SourceConverter>
             <cfg:SettingConfig x:Key="cfg"></cfg:SettingConfig>
             <ItemsPanelTemplate x:Key="WrapItemsPanelTemplate">
                 <WrapPanel IsItemsHost="True" Orientation="Vertical"/>
@@ -85,7 +85,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="185"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="1" Source="{Binding Card.id,Converter={StaticResource id2source}}" Grid.RowSpan="2" Margin="0,8,10,0"/>
+        <Image Grid.Column="1" Source="{Binding Card,Converter={StaticResource id2source},ConverterParameter=Pic}" Grid.RowSpan="2" Margin="0,8,10,0"/>
         <TabControl Grid.Column="1" Grid.Row="2" Margin="0,0,10,6">
             <TabItem Header="效果描述">
                 <Grid Background="#FFE5E5E5">
@@ -104,7 +104,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <TextBox HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" Text="{Binding Card.texts.name}" Width="266" FontSize="29.333"/>
+        <TextBox HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" Text="{Binding Card.texts.name,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" Width="266" FontSize="29.333"/>
         <UniformGrid Margin="10,10,16,10" Columns="4" Rows="7" Grid.Row="1">
             <Label Content="卡密：" Padding="0,5,5,5" Margin="2"/>
             <TextBox TextWrapping="Wrap"  Margin="2" VerticalContentAlignment="Center" Text="{Binding Card.id}" IsReadOnly="True" ToolTip="卡密是数据库中的主键值，必须是唯一的。随意修改可能会导致卡密重复游戏崩溃。因此本编辑器为安全起见，卡片创建时确定卡密，创建之后就不允许修改卡密。"/>
@@ -125,7 +125,7 @@
             <Label Content="种族：" Padding="0,5,5,5" Margin="2"/>
             <ComboBox Margin="2" ItemsSource="{Binding Races, Source={StaticResource cfg}}" SelectedValue="{Binding Card.Race}" VerticalContentAlignment="Center"/>
             <Label Content="等级：" Padding="0,5,5,5" Margin="2"/>
-            <ComboBox Margin="2" ItemsSource="{Binding StarLevel, Source={StaticResource cfg}}" SelectedValuePath="Value" SelectedValue="{Binding Card.Level, Mode=OneWay}" VerticalContentAlignment="Center"/>
+            <ComboBox Margin="2" ItemsSource="{Binding StarLevel, Source={StaticResource cfg}}"  SelectedValue="{Binding Card.Level,Mode=TwoWay}" VerticalContentAlignment="Center" DisplayMemberPath="Description" SelectedValuePath="Value"/>
             <Label Content="ATK：" Padding="0,5,5,5" Margin="2"/>
             <TextBox TextWrapping="Wrap" Text="{Binding Card.atk}" Margin="2" VerticalContentAlignment="Center"/>
             <Label Content="DEF：" Padding="0,5,5,5" Margin="2"/>

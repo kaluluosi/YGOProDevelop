@@ -172,3 +172,4 @@ C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ExDialo
 C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ExDialogService.pdb
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ExDialogService.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ExDialogService.pdb
+D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Intelisence\Lua\Contants.xml

@@ -23,56 +23,29 @@ namespace YGOProDevelop.ViewModel {
 
         private Settings setting = Settings.Default;
 
-        public string ScriptFolderPath {
+        public string YGOProPath {
             get {
-                return setting.scriptFolder;
+                return setting.YGOProPath;
             }
             set {
-                setting.scriptFolder = value;
-            }
-        }
-
-        public string PicFolderPath {
-            get {
-                return setting.picFolder;
-            }
-            set {
-                setting.picFolder = value;
+                setting.YGOProPath = value;RaisePropertyChanged();
             }
         }
 
 
-        private ICommand _picFolderSelectCmd;
+        private ICommand _ygoProPathSelectCmd;
 
         /// <summary>
         /// Gets the MyCommand.
         /// </summary>
-        public ICommand PicFolderSelectCmd {
+        public ICommand YGOProPathSelectCmd {
             get {
-                return _picFolderSelectCmd
-                    ?? (_picFolderSelectCmd = new RelayCommand(
+                return _ygoProPathSelectCmd
+                    ?? (_ygoProPathSelectCmd = new RelayCommand(
                     () => {
                         FolderBrowserDialog fbDlg = new FolderBrowserDialog();
                         if (fbDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                            PicFolderPath = fbDlg.SelectedPath;
-                        }
-                    }));
-            }
-        }
-
-        private ICommand _scriptFolderSelectCmd;
-
-        /// <summary>
-        /// Gets the MyCommand.
-        /// </summary>
-        public ICommand ScriptFolderSelectCmd {
-            get {
-                return _scriptFolderSelectCmd
-                    ?? (_scriptFolderSelectCmd = new RelayCommand(
-                    () => {
-                        FolderBrowserDialog fbDlg = new FolderBrowserDialog();
-                        if (fbDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                            ScriptFolderPath = fbDlg.SelectedPath;
+                            YGOProPath = fbDlg.SelectedPath;
                         }
                     }));
             }

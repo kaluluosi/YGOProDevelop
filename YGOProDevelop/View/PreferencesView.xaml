@@ -6,17 +6,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YGOProDevelop.View"
         mc:Ignorable="d"
-        Title="PreferencesView" Height="316" Width="448" Topmost="True" WindowStartupLocation="CenterOwner">
+        Title="设置" Height="316" Width="448" Topmost="True" WindowStartupLocation="CenterOwner">
     <Window.DataContext>
         <vm:PreferencesViewModel></vm:PreferencesViewModel>
     </Window.DataContext>
     <Grid>
-        <TextBox x:Name="cdbPath" HorizontalAlignment="Left" Height="23" Margin="82,11,0,0" TextWrapping="Wrap" Text="{Binding ScriptFolderPath}" VerticalAlignment="Top" Width="260"/>
-        <Label Content="script路径：" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="···" Command="{Binding ScriptFolderSelectCmd}"  Margin="355,13,10,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="cdbPath_Copy" HorizontalAlignment="Left" Height="23" Margin="82,52,0,0" TextWrapping="Wrap" Text="{Binding PicFolderPath}" VerticalAlignment="Top" Width="260"/>
-        <Label Content="pics路径：" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top"/>
-        <Button Content="···" Command="{Binding PicFolderSelectCmd}" Margin="355,54,10,0" VerticalAlignment="Top" />
+        <TextBox x:Name="cdbPath" HorizontalAlignment="Left" Height="20" Margin="95,14,0,0" TextWrapping="Wrap" Text="{Binding YGOProPath}" VerticalAlignment="Top" Width="247"/>
+        <Label Content="YGOPro目录：" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Button Content="···" Command="{Binding YGOProPathSelectCmd}"  Margin="347,14,18,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
