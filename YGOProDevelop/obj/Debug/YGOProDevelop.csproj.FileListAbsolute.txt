@@ -173,3 +173,5 @@ C:\Users\dengxuan\Documents\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ExDialo
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ExDialogService.dll
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\ExDialogService.pdb
 D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\Data\Intelisence\Lua\Contants.xml
+D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\IDInputView.g.cs
+D:\GitHub\YGOProDevelop\YGOProDevelop\obj\Debug\View\IDInputView.baml

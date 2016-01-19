@@ -154,7 +154,8 @@ namespace ExDialogService {
             //如果是模式对话框则将vm和view的dialogResult关联起来。
             if(isModal) {
                 vm.DialogResultChanged += (sender, result) => {
-                    view.DialogResult = result;
+                    if(view.IsVisible)
+                        view.DialogResult = result;
                 };
             }
             

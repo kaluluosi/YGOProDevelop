@@ -92,7 +92,7 @@ namespace YGOProDevelop.ViewModel {
         /// <summary>
         /// Gets the MyCommand.
         /// </summary>
-        public RelayCommand CloesAllButThisCmd {
+        public override RelayCommand CloesAllButThisCmd {
             get {
                 return _closeAllButThisCmd
                     ?? (_closeAllButThisCmd = new RelayCommand(

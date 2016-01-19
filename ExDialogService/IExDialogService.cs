@@ -19,8 +19,8 @@ namespace ExDialogService
         /// <param name="vm"></param>
         void Show(object parentVM, IDialogViewModel vm);
 
-        IDialogViewModel Show<T>() where T : IDialogViewModel;
-        IDialogViewModel Show<T>(object parentVM) where T : IDialogViewModel;
+        T Show<T>() where T : IDialogViewModel;
+        T Show<T>(object parentVM) where T : IDialogViewModel;
 
         /// <summary>
         /// 显示模态对话框。
@@ -36,8 +36,8 @@ namespace ExDialogService
         /// <returns></returns>
         bool? ShowDialog(object parentVM, IDialogViewModel vm);
 
-        IDialogViewModel ShowDialog<T>() where T : IDialogViewModel;
-        IDialogViewModel ShowDialog<T>(object parentVM) where T : IDialogViewModel;
+        T ShowDialog<T>() where T : IDialogViewModel;
+        T ShowDialog<T>(object parentVM) where T : IDialogViewModel;
 
 //         /// <summary>
 //         /// 显示独立非模态对话框。异步的。

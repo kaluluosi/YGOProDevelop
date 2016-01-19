@@ -9,6 +9,7 @@ using System.Windows.Input;
 using YGOProDevelop.Model;
 using YGOProDevelop.Service;
 using System.Linq;
+using YGOProDevelop.Message;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -186,23 +187,6 @@ namespace YGOProDevelop.ViewModel {
         }
 
 
-        private RelayCommand _saveCDBCmd;
-
-        /// <summary>
-        /// Gets the MyCommand.
-        /// </summary>
-        public RelayCommand SaveCDBCmd {
-            get {
-                return _saveCDBCmd
-                    ?? (_saveCDBCmd = new RelayCommand(
-                    () => {
-                        int count = _cdbService.Save();
-                        MessageBox.Show("保存" + count + "条更改!", "提示");
-                    }));
-            }
-        }
-
-
         private RelayCommand _addNewCmd;
 
         /// <summary>
@@ -214,7 +198,9 @@ namespace YGOProDevelop.ViewModel {
                     ?? (_addNewCmd = new RelayCommand(
                     () => {
                         //打开卡密设置对话框
-                        long id = 99999999; //临时代码，测试用
+                        IDInputViewModel idInput = _dialogService.ShowDialog<IDInputViewModel>();
+                        if (idInput.DialogResult !=true) return;
+                        long id = idInput.Id;
                         if (_cdbService.IsIDExisted(id) == false) {
                             datas d = CreateCard(id);
                             CardEditorViewModel ce = new CardEditorViewModel();
@@ -225,6 +211,7 @@ namespace YGOProDevelop.ViewModel {
                                 _cdbService.Save();
                             }
                             ResetSearch();
+                            ScrollIntoView(d);
                         }
                     }));
             }
@@ -304,6 +291,9 @@ namespace YGOProDevelop.ViewModel {
             return null;
         }
 
+        public void ScrollIntoView(datas d) {
+            MessengerInstance.Send<object>(d,CardList.ScrollTo);
+        }
     }
 
 }

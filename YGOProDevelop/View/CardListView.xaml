@@ -79,7 +79,6 @@
             <ToolBar Height="24" ToolBarTray.IsLocked="True">
                 <Button Command="{Binding OpenCDBCmd, Mode=OneWay}">打开CDB</Button>
                 <Button Command="{Binding AddNewCmd}">新建卡片</Button>
-                <Button Command="{Binding SaveCDBCmd}" >保存数据</Button>
             </ToolBar>
         </ToolBarTray>
         <Grid DockPanel.Dock="Bottom" Margin="0,2,0,0" >
@@ -96,8 +95,7 @@
                 </i:Interaction.Triggers>-->
             </TextBox>
             <Button Content="搜索" Command="{Binding SearchCmd}" Grid.Column="1" IsDefault="True" />
-            <Button x:Name="btnMore" Content="." Grid.Column="2" Click="btnMore_Click">
-            </Button>
+            <Button x:Name="btnMore" Content="." Grid.Column="2" Click="btnMore_Click"/>
             <Popup x:Name="popMore" PlacementTarget="{Binding ElementName=btnMore, Mode=OneWay}" Placement="Left" StaysOpen="False" VerticalOffset="-202" >
                 <Grid Width="200" Height="200">
                     <Button >临时面板</Button>
@@ -116,7 +114,6 @@
             <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="打开脚本" Command="{Binding OpenScriptCmd}"></MenuItem>
-                    <MenuItem Header="新建" Command="{Binding AddNewCmd}"></MenuItem>
                     <MenuItem Header="编辑" Command="{Binding EditCmd}"></MenuItem>
                     <MenuItem Header="删除" Command="{Binding DeleteCmd}"></MenuItem>
                 </ContextMenu>

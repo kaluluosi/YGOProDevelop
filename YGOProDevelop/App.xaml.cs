@@ -4,34 +4,33 @@ using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace YGOProDevelop
-{
+namespace YGOProDevelop {
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
-    {
+    public partial class App : Application {
         static App() {
             DispatcherHelper.Initialize();
 
         }
 
         private void Application_Startup(object sender, StartupEventArgs e) {
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-            Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
-            Debug.Listeners.Add(new TextWriterTraceListener("log.txt"));
-            Debug.WriteLine(DateTime.Now);
+            #if (!DEBUG)
+               AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+               Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
+               Debug.Listeners.Add(new TextWriterTraceListener("log.txt"));
+               Debug.WriteLine(DateTime.Now);
+            #endif
         }
 
         void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e) {
-            MessageBox.Show(e.Exception.Message);
             Debug.Write(e.Exception, "Error");
             e.Handled = true;
         }
 
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
-            MessageBox.Show(e.ExceptionObject.ToString());
-            if(e.ExceptionObject is Exception)
+            if (e.ExceptionObject is Exception)
                 Debug.Write((e.ExceptionObject as Exception).StackTrace);
         }
     }

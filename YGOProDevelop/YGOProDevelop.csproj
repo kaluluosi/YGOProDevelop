@@ -145,6 +145,7 @@
     </ApplicationDefinition>
     <Compile Include="CardEditor\Builder\AttributeField.cs" />
     <Compile Include="CardEditor\Builder\CardBuilder.cs" />
+    <Compile Include="Message\CardList.cs" />
     <Compile Include="Model\CardType.cs" />
     <Compile Include="CardEditor\Builder\CategoryField.cs" />
     <Compile Include="CardEditor\Builder\Field.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="ViewModel\CardListViewModel.cs" />
     <Compile Include="ViewModel\DockableViewModelBase.cs" />
     <Compile Include="ViewModel\DocumentViewModel.cs" />
+    <Compile Include="ViewModel\IDInputViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PreferencesViewModel.cs" />
     <Compile Include="ViewModel\ToolsViewModelBase.cs" />
@@ -204,6 +206,9 @@
     <Compile Include="View\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\IDInputView.xaml.cs">
+      <DependentUpon>IDInputView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PreferencesView.xaml.cs">
       <DependentUpon>PreferencesView.xaml</DependentUpon>
     </Compile>
@@ -214,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CardListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IDInputView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -393,9 +402,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\" />
     <Folder Include="Model\Interfaces\" />
-    <Folder Include="View\Util\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icon\File_New32.png" />

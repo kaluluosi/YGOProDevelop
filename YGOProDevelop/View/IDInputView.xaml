@@ -1,0 +1,25 @@
+﻿<Window x:Class="YGOProDevelop.View.IDInputView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YGOProDevelop.View"
+        xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
+        mc:Ignorable="d"
+        Title="输入卡密" Height="165.451" Width="285.837" ResizeMode="NoResize" Icon="/YGOProDevelop;component/Resources/等级/level_12.png"
+        DataContext="{Binding Source={StaticResource Locator},Path=IDInput}" WindowStartupLocation="CenterOwner"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="31*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Content="卡密:" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" Height="23" Margin="52,9,73,0" TextWrapping="Wrap"  VerticalAlignment="Top" Text="{Binding Id,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock x:Name="textBlock" Margin="10,2,10,1" TextWrapping="Wrap" Text="提示：卡密如果已经存在的话，确定按钮将不能点击。" Grid.Row="1"/>
+        <Button x:Name="button" Content="确定" HorizontalAlignment="Left" Margin="52,4,0,6" Width="75" Grid.Row="2" Command="{Binding SubmitCmd}"/>
+        <Button x:Name="button_Copy" Content="取消" Margin="152,4,51,6" Grid.Row="2" Command="{Binding CancelCmd}"/>
+        <Button x:Name="button1" Content="随一个" Command="{Binding RandomIDCmd}" Margin="0,9,10,0" HorizontalAlignment="Right" Width="58" Height="23" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

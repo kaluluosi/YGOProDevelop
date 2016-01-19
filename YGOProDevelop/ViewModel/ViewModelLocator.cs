@@ -35,12 +35,14 @@ namespace YGOProDevelop.ViewModel {
             SimpleIoc.Default.Register<IHighlightSettingService, DefaultHighlightSettingService>();
             SimpleIoc.Default.Register<IIntelisenceService, SmartIntelisenceService>();
             SimpleIoc.Default.Register<ICDBService, CDBService>();
-//             SimpleIoc.Default.Register<SettingsBase>(() => Properties.Settings.Default);
+            //             SimpleIoc.Default.Register<SettingsBase>(() => Properties.Settings.Default);
 
             //注册ViewModel
+            SimpleIoc.Default.Register<IDInputViewModel>();
             SimpleIoc.Default.Register<DocumentViewModel>();
             SimpleIoc.Default.Register<ToolsViewModelBase,CardListViewModel>();
             SimpleIoc.Default.Register<MainViewModel>(true);
+
         }
 
         public static MainViewModel Main {
@@ -49,6 +51,11 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
+        public IDInputViewModel IDInput {
+            get {
+                return ServiceLocator.Current.GetInstance<IDInputViewModel>();
+            }
+        }
 
         /// <summary>
         /// Cleans up all the resources.
