@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using GalaSoft.MvvmLight.Threading;
 
 namespace TestApplication
@@ -10,6 +11,16 @@ namespace TestApplication
     {
         static App() {
             DispatcherHelper.Initialize();
+
+
+            string test = "1";
+
+            string[] tests = new[] { test };
+
+            tests[0] = "shit";
+
+            MessageBox.Show(test+" "+tests[0]);
+
         }
     }
 }

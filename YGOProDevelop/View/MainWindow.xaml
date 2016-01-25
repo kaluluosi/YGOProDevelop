@@ -95,7 +95,7 @@
                 <MenuItem Header="Metro"/>
                 <MenuItem Header="Generic"/>
             </MenuItem>
-            <MenuItem Header="关于"></MenuItem>
+            <MenuItem Header="关于" Click="MenuItem_Click"></MenuItem>
         </Menu>
 
         <Grid Grid.Row="1" >

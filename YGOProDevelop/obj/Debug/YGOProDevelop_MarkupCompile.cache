@@ -10,11 +10,11 @@ none
 false
 CODE_ANALYSIS;DEBUG;TRACE
 D:\GitHub\YGOProDevelop\YGOProDevelop\App.xaml
-6284046410
+71382459206
 14781354176
-50862780607
+51-33763900
 87-686005799
-View\CardEditView.xaml;View\CardListView.xaml;View\IDInputView.xaml;View\MainWindow.xaml;View\DocumentView.xaml;View\PreferencesView.xaml;
+View\AboutWindow.xaml;View\CardEditView.xaml;View\CardListView.xaml;View\IDInputView.xaml;View\MainWindow.xaml;View\DocumentView.xaml;View\PreferencesView.xaml;
 resources\splash.jpg
 False
 

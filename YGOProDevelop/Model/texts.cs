@@ -36,15 +36,15 @@ namespace YGOProDevelop.Model
     
         public virtual datas datas { get; set; }
 
-        private List<string> strs;
-        public List<string> Strs {
-            get {
-                if(strs == null) {
-                    strs = new List<string>() {str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11,str12,str13,str14,str15,str16};
-                }
-                return strs;
-            }
-        }
+//         private List<string> strs;
+//         public List<string> Strs {
+//             get {
+//                 if(strs == null) {
+//                     strs = new List<string>() {str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,str11,str12,str13,str14,str15,str16};
+//                 }
+//                 return strs;
+//             }
+//         }
 
         public texts Copy() {
             return MemberwiseClone() as texts;

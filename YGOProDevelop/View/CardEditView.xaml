@@ -94,12 +94,30 @@
             </TabItem>
             <TabItem Header="脚本文本">
                 <Grid x:Name="grid" Background="#FFE5E5E5">
-                    <ListBox ItemsSource="{Binding Card.texts.Strs}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <ListBox.ItemTemplate>
+                    <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.Items>
+                            <TextBox Text="{Binding Card.texts.str1, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str2, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str3, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str4, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str5, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str6, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str7, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str8, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str9, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str10, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str11, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str12, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str13, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str14, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str15, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                            <TextBox Text="{Binding Card.texts.str16, Mode=TwoWay}"  Width="130" TextWrapping="Wrap"></TextBox>
+                        </ListBox.Items>
+                        <!--<ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBox Text="{Binding Mode=OneWay}" Width="130"  HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" TextWrapping="Wrap" ></TextBox>
+                                <TextBox Text="{Binding .,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="130"  HorizontalContentAlignment="Left" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" TextWrapping="Wrap" ></TextBox>
                             </DataTemplate>
-                        </ListBox.ItemTemplate>
+                        </ListBox.ItemTemplate>-->
                     </ListBox>
                 </Grid>
             </TabItem>

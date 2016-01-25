@@ -1,0 +1,19 @@
+﻿<Window x:Class="YGOProDevelop.View.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YGOProDevelop.View"
+        mc:Ignorable="d"
+        Title="关于" Height="247.854" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock x:Name="textBlock" Margin="10,10,10,0" TextWrapping="Wrap" Height="159" VerticalAlignment="Top">
+            本编辑器可能不如sublime、notepad++、evernote等魔改后的ygopro编辑器好用，但是自己开发的编辑器有一个自主优势，我可以根据用户
+            需求开发一些内置的ygopro脚本专用工具来方便大家写脚本。这也是为什么我最后又把这个坑挖出来继续开发的原因。但是没有需求的话，
+            工具就无法继续改进下去，因此希望使用这个工具的用户，如果你有什么好的建议请给我发邮件反馈给我，我会尽快答复你。，如果我能力
+            范围内可实现，我就会在下个版本中加入你建议的新功能。
+        </TextBlock>
+        <Label x:Name="label" Content="邮箱：" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" Margin="56,0,21,21" TextWrapping="Wrap" Text="kaluluosi11@qq.com" Height="23" IsReadOnly="True" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>

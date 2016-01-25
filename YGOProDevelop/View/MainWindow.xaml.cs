@@ -3,6 +3,7 @@ using YGOProDevelop.ViewModel;
 using Xceed.Wpf.AvalonDock.Themes;
 using System.Windows.Controls;
 using Xceed.Wpf.AvalonDock.Layout.Serialization;
+using YGOProDevelop.View;
 
 namespace YGOProDevelop {
     /// <summary>
@@ -67,6 +68,10 @@ namespace YGOProDevelop {
             catch (System.Exception ex) {
                 throw;
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e) {
+            (new AboutWindow()).ShowDialog();
         }
     }
 }
