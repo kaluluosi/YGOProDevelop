@@ -102,7 +102,19 @@
             <ToolBarTray>
                 <ToolBar>
                     <Button Command="{Binding NewCmd}">
-                        <Image Source="/YGOProDevelop;component/Resources/Icon/File_New32.png" Height="34" Width="32"/>
+                        <Image Source="/YGOProDevelop;component/Resources/Icon/file-48.png" Height="27" Width="25" ToolTip="新建脚本"/>
+                    </Button>
+                    <Button Command="{Binding OpenCmd}">
+                        <Image Source="/YGOProDevelop;component/Resources/Icon/opened_folder_filled-50.png" Height="27" Width="25" ToolTip="打开脚本"/>
+                    </Button>
+                    <Button Command="{Binding SaveCmd}" Background="Transparent">
+                        <Image Source="/YGOProDevelop;component/Resources/Icon/save-48.png" Height="27" Width="25" OpacityMask="Black" ToolTip="保存脚本"/>
+                    </Button>
+                    <Button Command="{Binding SaveAsCmd}">
+                        <Image Source="/YGOProDevelop;component/Resources/Icon/save_as-48.png" Height="27" Width="25" ToolTip="脚本另存为"/>
+                    </Button>
+                    <Button Command="{Binding SaveAllCmd}">
+                        <Image Source="/YGOProDevelop;component/Resources/Icon/save_all-48.png" Height="27" Width="25" ToolTip="保存所有"/>
                     </Button>
                 </ToolBar>
             </ToolBarTray>
@@ -122,7 +134,7 @@
                 </Style>
             </avalon:DockingManager.LayoutItemContainerStyle>
             <avalon:LayoutRoot >
-
+                
             </avalon:LayoutRoot>
         </avalon:DockingManager>
         <StatusBar Grid.Row="3" Background="#FF007ACC"/>

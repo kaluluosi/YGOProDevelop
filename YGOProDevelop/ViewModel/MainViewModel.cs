@@ -166,6 +166,23 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
+        private RelayCommand _saveAllCmd;
+
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public RelayCommand SaveAllCmd {
+            get {
+                return _saveAllCmd
+                    ?? (_saveAllCmd = new RelayCommand(
+                    () => {
+                        foreach(DocumentViewModel doc in DocumentViewModels) {
+                            doc.SaveFile();
+                        }
+                    }));
+            }
+        }
+
         /// <summary>
         /// 编辑器关闭时保存最后打开的文件
         /// </summary>

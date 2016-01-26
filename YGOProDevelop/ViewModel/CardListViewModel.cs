@@ -10,6 +10,7 @@ using YGOProDevelop.Model;
 using YGOProDevelop.Service;
 using System.Linq;
 using YGOProDevelop.Message;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -292,7 +293,7 @@ namespace YGOProDevelop.ViewModel {
         }
 
         public void ScrollIntoView(datas d) {
-            MessengerInstance.Send<object>(d,CardList.ScrollTo);
+            MessengerInstance.Send(new NotificationMessage<datas>(this,d,CardListNotificaions.ScrollTo));
         }
     }
 
