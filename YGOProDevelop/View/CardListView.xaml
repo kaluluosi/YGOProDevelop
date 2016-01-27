@@ -77,7 +77,7 @@
     <DockPanel>
         <ToolBarTray DockPanel.Dock="Top" >
             <ToolBar Height="24" ToolBarTray.IsLocked="True">
-                <Button Command="{Binding OpenCDBCmd, Mode=OneWay}">打开CDB</Button>
+                <Button Command="{Binding OpenCDBCmd}">打开CDB</Button>
                 <Button Command="{Binding AddNewCmd}">新建卡片</Button>
             </ToolBar>
         </ToolBarTray>

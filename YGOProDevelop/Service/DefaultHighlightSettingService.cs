@@ -16,7 +16,7 @@ namespace YGOProDevelop.Service
     public class DefaultHighlightSettingService : YGOProDevelop.Service.IHighlightSettingService
     {
         private HighlightingManager _highlightingMgr = HighlightingManager.Instance;
-        private string _highlighDefFolderPath = @"Data\HighLight";
+        private string _highlighDefFolderPath = @"Data\Highlight";
 
         public DefaultHighlightSettingService() {
             CustomSettingInit();

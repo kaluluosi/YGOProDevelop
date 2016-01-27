@@ -65,7 +65,6 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
-        private RelayCommand _closeAllButThisCmd;
 
         public virtual RelayCommand CloesAllButThisCmd {
             get; set;

@@ -49,8 +49,8 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto" MinHeight="45"/>
-            <RowDefinition Height="643*"/>
+            <RowDefinition Height="Auto" MinHeight="38"/>
+            <RowDefinition Height="650*"/>
             <RowDefinition Height="21*"/>
         </Grid.RowDefinitions>
 
@@ -99,7 +99,7 @@
         </Menu>
 
         <Grid Grid.Row="1" >
-            <ToolBarTray>
+            <ToolBarTray x:Name="toolbarTray">
                 <ToolBar>
                     <Button Command="{Binding NewCmd}">
                         <Image Source="/YGOProDevelop;component/Resources/Icon/file-48.png" Height="27" Width="25" ToolTip="新建脚本"/>
@@ -123,7 +123,8 @@
         <avalon:DockingManager x:Name="dock" Grid.Row="2" 
 			DocumentsSource="{Binding DocumentViewModels}" 
 			AnchorablesSource="{Binding AnchorableViewModels}"
-			ActiveContent="{Binding ActiveViewModel, Mode=TwoWay}">
+			ActiveContent="{Binding ActiveViewModel, Mode=TwoWay}" >
+
             <avalon:DockingManager.LayoutItemContainerStyle>
                 <Style TargetType="{x:Type avalon:LayoutItem}">
                     <Setter Property="Title" Value="{Binding Model.Title}" />
@@ -134,7 +135,7 @@
                 </Style>
             </avalon:DockingManager.LayoutItemContainerStyle>
             <avalon:LayoutRoot >
-                
+
             </avalon:LayoutRoot>
         </avalon:DockingManager>
         <StatusBar Grid.Row="3" Background="#FF007ACC"/>

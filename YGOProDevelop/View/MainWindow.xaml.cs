@@ -21,8 +21,6 @@ namespace YGOProDevelop {
             Closing += (s, e) => { ViewModelLocator.Cleanup(); Properties.Settings.Default.Save(); };
 
             ChangeTheme(Properties.Settings.Default.Theme);
-
-            
         }
 
         private XmlLayoutSerializer layoutSerilizer;

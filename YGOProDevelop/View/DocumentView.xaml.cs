@@ -108,9 +108,10 @@ namespace YGOProDevelop.View {
                 ShowCompletionWindow();
             }
             else if (e.Text.Length > 0 && completionWin != null) {
-                if(!char.IsLetterOrDigit(e.Text[0]) && !".:".Contains(e.Text)) {
-                    completionWin.CompletionList.RequestInsertion(e);
-                }
+//                 if(!char.IsLetterOrDigit(e.Text[0]) && !".:".Contains(e.Text)) {
+//                     completionWin.CompletionList.RequestInsertion(e);
+//                 }
+               if(completionWin!=null) completionWin.Hide();
             }
         }
 
@@ -123,6 +124,7 @@ namespace YGOProDevelop.View {
                 CompletionWin.Show();
                 completionWin.CompletionList.ScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
                 completionWin.SizeToContent = SizeToContent.Width;
+                completionWin.CloseWhenCaretAtBeginning = true;
                 CompletionWin.Closed += delegate {
                     CompletionWin = null;
                 };

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\GitHub\YGOProDevelop\TestApplication\obj\Debug\
+D:\Projects\YGOProDevelop\TestApplication\obj\Debug\
 TestApplication
 none
 false
 CODE_ANALYSIS;DEBUG;TRACE
-D:\GitHub\YGOProDevelop\TestApplication\App.xaml
+D:\Projects\YGOProDevelop\TestApplication\App.xaml
 3-2045036872
 
-17290342724
-69-1945482383
+17-1392902181
+18-1886973492
 MainWindow.xaml;Skins\MainSkin.xaml;Window1.xaml;
 
 False
