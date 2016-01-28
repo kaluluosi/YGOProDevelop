@@ -234,8 +234,6 @@ namespace YGOProDevelop.ViewModel {
             else {
                 doc.SaveFile();
             }
-            //取消修改标记
-            doc.IsDirty = false;
         }
 
         /// <summary>

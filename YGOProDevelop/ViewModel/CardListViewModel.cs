@@ -135,10 +135,9 @@ namespace YGOProDevelop.ViewModel {
                     ?? (_searchCmd = new RelayCommand(
                     () => {
                         if(string.IsNullOrEmpty(_keyword) == false)
-                            Search(_keyword);
+                            QueryResult = new ObservableCollection<datas>(_cdbService.Search(KeyWord));
                         else
                             ResetSearch();
-                        RaisePropertyChanged(() => QueryResult);
                     }));
             }
         }
@@ -203,7 +202,7 @@ namespace YGOProDevelop.ViewModel {
                         if (idInput.DialogResult !=true) return;
                         long id = idInput.Id;
                         if (_cdbService.IsIDExisted(id) == false) {
-                            datas d = CreateCard(id);
+                            datas d = _cdbService.Create(id);
                             CardEditorViewModel ce = new CardEditorViewModel();
                             ce.Card = d;
                             ce.CardEntity = _cdbService.Datas.Entry(d);
@@ -216,15 +215,6 @@ namespace YGOProDevelop.ViewModel {
                         }
                     }));
             }
-        }
-
-        private datas CreateCard(long id) {
-            datas d = _cdbService.Datas.datas.Create();
-            d.texts = _cdbService.Datas.texts.Create();
-            d.id = d.texts.id = id;
-            d.texts.desc = "";
-            d.texts.name = "未命名";
-            return d;
         }
 
         private RelayCommand _deleteCmd;
@@ -249,47 +239,7 @@ namespace YGOProDevelop.ViewModel {
         /// 重置搜索，相当于将所有的卡片查找出来
         /// </summary>
         public void ResetSearch() {
-            var result = from c in _cdbService.Datas.datas
-                         select c;
-            QueryResult = new ObservableCollection<datas>(result);
-        }
-
-        /// <summary>
-        /// 根据id来查找
-        /// </summary>
-        /// <returns>返回查找到的数量</returns>
-        public int Search(int id) {
-            //不通知界面刷新的resetsearch
-            queryResult = new ObservableCollection<datas>(_cdbService.Datas.datas);
-            var result = from c in queryResult
-                         where c.id == id
-                         select c;
-            //必须为QueryResult赋值才会通知界面
-            QueryResult = new ObservableCollection<datas>(result);
-            return QueryResult.Count;
-        }
-
-        /// <summary>
-        /// 通过卡片名称和描述来查找，这是默认的查找方式
-        /// </summary>
-        public int Search(string keyword) {
-            //不通知界面刷新的resetsearch
-            queryResult = new ObservableCollection<datas>(_cdbService.Datas.datas);
-            var result = from c in queryResult
-                         join t in _cdbService.Datas.texts on c.id equals t.id
-                         where string.Join(t.desc,t.name,t.id).Contains(keyword)
-                         select c;
-            QueryResult = new ObservableCollection<datas>(result);
-            return QueryResult.Count;
-        }
-
-        public datas CreateNewCard(long id) {
-            if (_cdbService.IsIDExisted(id) == false) {
-                datas d = _cdbService.Datas.datas.Create();
-                d.id = id;
-                return d;
-            }
-            return null;
+            QueryResult = new ObservableCollection<datas>(_cdbService.GetData());
         }
 
         public void ScrollIntoView(datas d) {

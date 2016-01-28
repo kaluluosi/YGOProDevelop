@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using YGOProDevelop.Model;
+using System.Collections.Generic;
 
 namespace YGOProDevelop.Service {
     public class CDBService : ICDBService {
@@ -65,6 +66,9 @@ namespace YGOProDevelop.Service {
             return result == null ? false : true;
         }
 
+        /// <summary>
+        /// 丢弃所有修改
+        /// </summary>
         public void DiscardAllChanged() {
             var entries = ce.ChangeTracker.Entries();
             foreach(var e in entries) {
@@ -72,8 +76,44 @@ namespace YGOProDevelop.Service {
             }
         }
 
+        /// <summary>
+        /// 重新加载某个项
+        /// </summary>
+        /// <param name="data"></param>
         public void Reload(datas data) {
             ce.Entry(data).Reload();
+        }
+
+
+        public List<datas> Search(string keyword) {
+            var result = from c in GetData()
+                         join t in Datas.texts on c.id equals t.id
+                         where string.Join(t.desc, t.name, t.id).Contains(keyword)
+                         select c;
+            return result.ToList();
+        }
+
+
+        public List<datas> Search(long id) {
+            var result = from c in Datas.datas
+                         where c.id == id
+                         select c;
+            return result.ToList();
+        }
+
+        public datas Create(long id) {
+            datas d = Datas.datas.Create();
+            d.texts = Datas.texts.Create();
+            d.id = d.texts.id = id;
+            d.texts.desc = "";
+            d.texts.name = "未命名";
+            return d;
+        }
+
+        public List<datas> GetData() {
+            var result = from c in Datas.datas
+                         select c;
+            return result.ToList();
         }
     }
 }
