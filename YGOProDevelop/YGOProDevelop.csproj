@@ -208,7 +208,6 @@
       <DependentUpon>PreferencesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TemplateSelector\CardItemTemplateSelector.cs" />
-    <Compile Include="View\Validation\IDValidationRule.cs" />
     <Page Include="View\AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -407,6 +406,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\Interfaces\" />
+    <Folder Include="View\Validation\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icon\File_New32.png" />

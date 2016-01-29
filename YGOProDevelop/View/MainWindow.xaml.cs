@@ -71,5 +71,9 @@ namespace YGOProDevelop {
         private void MenuItem_Click(object sender, RoutedEventArgs e) {
             (new AboutWindow()).ShowDialog();
         }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e) {
+            System.Diagnostics.Process.Start("https://github.com/kaluluosi/YGOProDevelop/releases");
+        }
     }
 }

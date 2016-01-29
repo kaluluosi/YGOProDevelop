@@ -29,7 +29,6 @@ namespace YGOProDevelop.View {
 
             editor.MouseHover += Editor_MouseHover;
             editor.MouseHoverStopped += Editor_MouseHoverStopped;
-
         }
 
 
