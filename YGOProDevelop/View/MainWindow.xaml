@@ -63,12 +63,17 @@
                 <MenuItem Header="保存" Command="{Binding SaveCmd}"/>
                 <MenuItem Header="另存为" Command="{Binding SaveAsCmd}"/>
             </MenuItem>
-            <MenuItem Header="编辑">
-                <MenuItem Header="查找" Command="{x:Static ApplicationCommands.Find}"/>
+            <MenuItem Header="编辑" >
+                <MenuItem Command="{x:Static ApplicationCommands.Undo}"></MenuItem>
+                <MenuItem Command="{x:Static ApplicationCommands.Redo}"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Command="{x:Static ApplicationCommands.Find}"/>
+                <MenuItem Command="{x:Static ApplicationCommands.Cut}"></MenuItem>
+                <MenuItem Command="{x:Static ApplicationCommands.Copy}"></MenuItem>
+                <MenuItem Command="{x:Static ApplicationCommands.Paste}"></MenuItem>
             </MenuItem>
             <MenuItem Header="视图" >
                 <MenuItem Header="显示行号" IsCheckable="True"  IsChecked="{Binding IsShowLineNumbers}" />
-                <!--<MenuItem Header="卡片列表" IsCheckable="True" IsChecked="{Binding CardListViewModel.IsVisible}"></MenuItem>-->
             </MenuItem>
             <MenuItem Header="工具" ItemsSource="{Binding AnchorableViewModels}">
                 <MenuItem.ItemContainerStyle>
@@ -97,7 +102,7 @@
                 <MenuItem Header="Generic"/>
             </MenuItem>
             <MenuItem Header="帮助" >
-                <MenuItem Header="关于" Click="MenuItem_Click"></MenuItem>
+                <MenuItem Header="关于1.0 Alpha" Click="MenuItem_Click"></MenuItem>
                 <MenuItem Header="新版本" Click="MenuItem_Click_1"></MenuItem>
             </MenuItem>
         </Menu>
@@ -138,8 +143,7 @@
                     <Setter Property="Visibility" Value="{Binding Model.IsVisible,Converter={StaticResource bool2Visibility},ConverterParameter={x:Static Visibility.Hidden},Mode=TwoWay}" ></Setter>
                 </Style>
             </avalon:DockingManager.LayoutItemContainerStyle>
-            <avalon:LayoutRoot >
-
+            <avalon:LayoutRoot>
             </avalon:LayoutRoot>
         </avalon:DockingManager>
         <StatusBar Grid.Row="3" Background="#FF007ACC"/>

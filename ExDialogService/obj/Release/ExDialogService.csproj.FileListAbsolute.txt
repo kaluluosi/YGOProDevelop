@@ -1,0 +1,7 @@
+D:\Projects\YGOProDevelop\ExDialogService\bin\Release\ExDialogService.dll
+D:\Projects\YGOProDevelop\ExDialogService\bin\Release\ExDialogService.pdb
+D:\Projects\YGOProDevelop\ExDialogService\obj\Release\ExDialogService.csprojResolveAssemblyReference.cache
+D:\Projects\YGOProDevelop\ExDialogService\obj\Release\ExDialogService.Properties.Resources.resources
+D:\Projects\YGOProDevelop\ExDialogService\obj\Release\ExDialogService.csproj.GenerateResource.Cache
+D:\Projects\YGOProDevelop\ExDialogService\obj\Release\ExDialogService.dll
+D:\Projects\YGOProDevelop\ExDialogService\obj\Release\ExDialogService.pdb

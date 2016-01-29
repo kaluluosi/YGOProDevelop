@@ -1,0 +1,851 @@
+assert(v [, message])
+collectgarbage([limit])
+coroutine.create(f)
+coroutine.resume(co, val1, ...)
+coroutine.status(co)
+coroutine.wrap(f)
+coroutine.yield(val1, ...)
+debug.debug()
+debug.gethook()
+debug.getinfo(function [, what])
+debug.getlocal(level, local)
+debug.getupvalue(func, up)
+debug.sethook(hook, mask [, count])
+debug.setlocal(level, local, value)
+debug.setupvalue(func, up, value)
+debug.traceback([message])
+dofile(filename)
+error(message [, level])
+getfenv(f)
+getmetatable(object)
+io.close([file])
+io.flush()
+io.input([file])
+io.lines([filename])
+io.open(filename [, mode])
+io.output([file])
+io.read(format1, ...)
+io.tmpfile()
+io.type(obj)
+io.write(value1, ...)
+ipairs(t)
+loadfile(filename)
+loadlib(libname, funcname)
+loadstring(string [, chunkname])
+math.abs(v)
+math.acos(v)
+math.asin(v)
+math.atan(v)
+math.atan2(v1, v2)
+math.ceil(v)
+math.cos(rad)
+math.deg(rad)
+math.exp(v)
+math.floor(v)
+math.frexp(v)
+math.ldexp(v1, v2)
+math.log(v)
+math.log10(v)
+math.max(v1, ...)
+math.min(v1, ...)
+math.mod(v1, v2)
+math.pow(v1, v2)
+math.rad(deg)
+math.random([n [, u]])
+math.randomseed(seed)
+math.sin(rad)
+math.sqrt(v)
+math.tan(rad)
+next(table [, index])
+os.clock()
+os.date([format [, time]])
+os.difftime(t2, t1)
+os.execute(command)
+os.exit([code])
+os.getenv(varname)
+os.remove(filename)
+os.rename(oldname, newname)
+os.setlocale(locale [, category])
+os.time([table])
+os.tmpname()
+pairs(t)
+pcall(f, arg1, arg2, ...)
+print(e1, e2, ...)
+rawequal(v1, v2)
+rawget(table, index)
+rawset(table, index, value)
+require(packagename)
+setfenv(f, table)
+setmetatable(table, metatable)
+string.byte(s [, i])
+string.char(i1, i2, ...)
+string.dump(function)
+string.find(s, pattern [, init [, plain]])
+string.format(formatstring, e1, e2, ...)
+string.gfind(s, pat)
+string.gsub(s, pat, repl [, n])
+string.len(s)
+string.lower(s)
+string.rep(s, n)
+string.sub(s, i [, j])
+string.upper(s)
+table.concat(table [, sep [, i [, j]]])
+table.foreach(table, f)
+table.foreachi(table, f)
+table.getn(table)
+table.insert(table, [pos,] value)
+table.remove(table [, pos])
+table.setn(table, n)
+table.sort(table [, comp])
+tonumber(e [, base])
+tostring(e)
+type(v)
+unpack(list)
+xpcall(f, err)
+bit.band(integer a, integer b)|a与b的位与
+bit.bor(integer a, integer b)|a与b的位或
+bit.bxor(integer a, integer b)|a与b的位异或
+bit.bls(integer a, integer b)|a左移b
+bit.brs(integer a, integer b)|a右移b
+Card.GetCode(Card c)|返回c的当前代号（可能因为效果改变）
+Card.GetOriginalCode(Card c)|返回c的卡片记载的代号
+Card.IsSetCard(Card c, integer setname)|检查c是否是名字含有setname的卡
+Card.GetType(Card c)|返回c的当前类型。
+Card.GetOriginalType(Card c)|返回c的卡片记载的类型。
+Card.GetLevel(Card c)|返回c的当前等级
+Card.GetSynchroLevel(Card c)|返回c的同调用等级。此函数除了某些特定卡如调节支援士，返回值与Card.GetLevel(c)相同
+Card.GetRitualLevel(Card c)|返回c的仪式解放等级。此函数除了某些特定卡如仪式供物，返回值与Card.GetLevel(c)相同
+Card.GetOriginalLevel(Card c)|返回c的卡片记载的等级
+Card.GetAttribute(Card c)|返回c的当前属性。注：对某些多属性怪物如光与暗之龙，此函数的返回值可能是几个属性的组合值。
+Card.GetOriginalAttribute(Card c)|返回c的卡片记载的属性
+Card.GetRace(Card c)|返回c的当前种族。注：对某些多种族怪物如动画效果的魔术猿，此函数的返回值可能是几个种族的组合值。
+Card.GetOriginalRace(Card c)|返回c的卡片记载的种族
+Card.GetAttack(Card c)|返回c的当前攻击力，返回值是负数表示是"?"
+Card.GetBaseAttack(Card c)|返回c的原本攻击力
+Card.GetTextAttack(Card c)|返回c的卡片记载的攻击力
+Card.GetDefence(Card c)|返回c的当前守备力，返回值是负数表示是"?"
+Card.GetBaseDefence(Card c)|返回c的原本守备力
+Card.GetTextDefence(Card c)|返回c的卡片记载的守备力
+Card.GetOwner(Card c)|返回c的持有者
+Card.GetControler(Card c)|返回c的当前控制者
+Card.GetPreviousControler(Card c)|返回c的位置变化之前的控制者
+Card.GetReason(Card c)|返回c的位置变化原因
+Card.GetReasonCard(Card c)|返回导致c的位置变化的卡。此函数仅在某卡被战斗破坏时，因为上级召唤被解放，或者成为特殊召唤使用的素材时有效。
+Card.GetReasonEffect(Card c)|返回导致c的位置变化的效果。
+Card.GetPosition(Card c)|返回c当前的表示形式
+Card.GetPreviousPosition(Card c)|返回c位置变化前的表示形式
+Card.GetBattlePosition(Card c)|返回c在本次战斗发生之前的表示形式
+Card.GetLocation(Card c)|返回c当前的所在位置
+Card.GetPreviousLocation(Card c)|返回c位置变化前的所在的位置
+Card.GetSequence(Card c)|返回c在当前位置的序号。在场上时，序号代表所在的格子，从左往右分别是0-4，场地魔法格的序号为5在其它地方时，序号表示的是第几张卡。最底下的卡的序号为0
+Card.GetPreviousSequence(Card c)|返回c位置变化前的序号
+Card.GetSummonType(Card c)|返回c上场的方式。
+Card.GetSummonPlayer(Card c)|返回召唤，特殊召唤c上场的玩家
+Card.GetDestination(Card c)|返回c位置变化的目的地。此函数仅在处理位置转移代替效果时有效。
+Card.GetTurnID(Card c)|返回c转移到当前位置的回合
+Card.GetFieldID(Card c)|返回c转移到当前位置的时间标识。此数值唯一，越小表示c是越早出现在那个位置。
+Card.IsCode(Card c, integer code)|检查c的代号是否是code。
+Card.IsType(Card c, integer type)|检查c是否属于类型type。
+Card.IsRace(Card c, integer race)|检查c是否属于种族race。
+Card.IsAttribute(Card c, integer attribute)|检查c是否属于属性attribute。
+Card.IsReason(Card c, integer reason)|检查c是否包含原因reason。
+Card.IsStatus(Card c, integer status)|检查c是否包含某个状态码。
+Card.IsNotTuner(Card c)|检查c是否可以当成非调整来使用。
+Card.SetStatus(Card c, integer state, boolean enable)|给c设置或者取消状态码。除非妳清楚的了解每个状态码的含意，否则不要轻易使用此函数。
+Card.IsDualState(Card c)|检查c属否处于再召唤状态。
+Card.EnableDualState(Card c)|把c设置成再召唤状态。
+Card.SetTurnCounter(Card c, integer counter)|设置c的回合计数器(光之护封剑等)
+Card.GetTurnCounter(Card c)|返回c的回合计数器
+Card.SetCustomValue(Card c, string tag, any object)|以tag作为标签为c设置一个自定义值object
+Card.GetCustomValue(Card c, string tag)|返回c的以tag作为标签的自定义值
+Card.SetMaterial(Card c, Group g)|把g中的所有卡作为c的素材（上级召唤，特殊召唤）
+Card.GetMaterial(Card c)|返回c出场使用的素材
+Card.GetMaterialCount(Card c)|返回c出场使用的素材数量
+Card.GetEquipGroup(Card c)|返回c当前装备着的卡片组
+Card.GetEquipCount(Card c)|返回c当前装备着的卡片数量
+Card.GetEquipTarget(Card c)|返回c当前的装备对象
+Card.CheckEquipTarget(Card c1, Card c2)|检查c2是否是c1的正确的装备对象
+Card.GetUnionCount(Card c)|返回c当前装备的同盟卡数量
+Card.GetOverlayGroup(Card c)|返回c当前叠放着的卡片组
+Card.GetOverlayCount(Card c)|返回c当前叠放着的卡片数量
+Card.RemoveOverlayCard(Card c,integer player, integer min, integer max, integer reason)|以reason为原因，让玩家player移除c叠放的min-max张卡
+Card.GetAttackGroup(Card c)|返回c本回合攻击过的卡片组
+Card.GetAttackedGroupCount(Card c)|返回c本回合攻击过的卡片数量
+Card.GetAttackedCount(Card c)|返回c本回合攻击过的次数
+Card.GetBattledGroup(Card c)|返回与c本回合发生过伤害计算的卡片组
+Card.GetBattledGroupCount(Card c)|返回与c本回合进行过战斗的的卡片数量
+Card.GetAttackAnnouncedCount(Card c)|返回c本回合攻击宣言的次数。攻击被无效不会被计入攻击过的次数，但是会计入攻击宣言的次数。
+Card.SetCardTarget(Card c1, Card c2)|把c2作为c1的永续对象。c1和c2的联系会在c1活c2任意一卡离场或变成里侧表示时reset。
+Card.GetCardTarget(Card c)|返回c当前所有的永续对象
+Card.GetCardTargetCount(Card c)|返回c当前的永续对象的数量
+Card.IsHasCardTarget(Card c1, Card c2)|检查c1是否取c2为永续对象
+Card.GetOwnerTarget(Card c)|返回取c作为永续对象的所有卡
+Card.GetOwnerTargetCount(Card c)|返回取c作为永续对象的卡的数量
+Card.GetActivateEffect(Card c)|返回c的“卡片发动”的效果。仅对魔法和陷阱有效。
+Card.RegisterEffect(Card c, Effect e, [boolean forced=false])|把效果e注册给c，返回效果的全局id。默认情况下注册时如果c带有免疫e的效果那么注册会失败。如果forced为true则不会检查c对e的免疫效果。
+Card.IsHasEffect(Card c, integer code)|检查c是否受到效果种类是code的效果的影响
+Card.GetEffectCount(Card c, integer code)|返回c受到影响的种类是code的效果的数量
+Card.RegisterFlagEffect(Card c, integer code, integer reset_flag, integer property, integer reset_count)|为c注册一个标识用效果。
+Card.GetFlagEffect(Card c, integer code)|返回c的种类是code的标识效果的数量。
+Card.ResetFlagEffect(Card c, integer code)|手动清除c的种类是code的标识效果。
+Card.CreateRelation(Card c1, Card c2, integer reset_flag)|为c1建立于c2的联系。此联系仅会由于RESET_EVENT的事件reset。
+Card.ReleaseRelation(Card c1, Card c2)|手动释放c1对于c2的联系
+Card.IsRelateToEffect(Card c, Effect e)|检查c是否和效果e有联系。
+Card.IsRelateToCard(Card c1, Card c2)|检查c1是否和c2有联系。
+Card.IsRelateToBattle(Card c)|检查c是否和本次战斗关联。
+Card.CopyEffect(Card c, integer code, integer reset_flag, integer reset_count)|为c添加代号是code的卡的可复制的效果，并且添加额外的reset条件。返回值是表示复制效果的代号id。
+Card.EnableReviveLimit(Card c)|为c添加苏生限制。此函数也可通过Card.SetStatus实现。
+Card.CompleteProcedure(Card c)|使c完成正规的召唤手续。此函数也可通过Card.SetStatus实现。
+Card.IsDisabled(Card c)|检查c是否处于无效状态
+Card.IsDestructable(Card c)|检查c是否是可破坏的。
+Card.IsSummonableCard(Card c)|检查c是否是可通常召唤的卡。
+Card.IsSpecialSummonable(Card c)|检查是否可以对c进行特殊召唤手续。
+Card.IsSynchroSummonable(Card c, [Card tuner=nil])|检查是否可以以tuner作为调整对c进行同调召唤手续。如果tuner是nil，此函数与上一个函数作用相同。
+Card.IsSummonable(Card c)|检查c是否可进行通常召唤（不包含通常召唤的set)
+Card.IsMSetable(Card c)|检查c是否可进行通常召唤的set
+Card.IsSSetable(Card c)|检查c是否可以set到魔法陷阱区
+Card.IsCanBeSpecialSummoned(Card c, Effect e, integer sumtype, integer sumplayer, boolean nocheck, boolean nolimit, [integer sumpos=POS_FACEUP, integer target_player=sumplayer])|检查c是否可以被玩家sumplayer用效果e以sumtype方式和sumpos表示形式特殊召唤到target_player场上。如果nocheck是true则不检查c的召唤条件，如果nolimit是true则不检查c的苏生限制。
+Card.IsAbleToHand(Card c)|检查c是否可以送去手牌。
+Card.IsAbleToDeck(Card c)|检查c是否可以送去卡组。
+Card.IsAbleToExtra(Card c)|检查c是否可以送去额外卡组。对于非融合，同调，超量卡此函数均返回false。
+Card.IsAbleToGrave(Card c)|检查c是否可以送去墓地。
+Card.IsAbleToRemove(Card c)|检查c是否可以除外。
+Card.IsAbleToHandAsCost(Card c)|检查c是否可以作为cost送去手牌。
+Card.IsAbleToDeckAsCost(Card c)|检查c是否可以作为cost送去卡组。
+Card.IsAbleToExtraAsCost(Card c)|检查c是否可以作为cost送去额外卡组。
+Card.IsAbleToGraveAsCost(Card c)|检查c是否可以作为cost送去墓地。
+Card.IsAbleToRemoveAsCost(Card c)|检查c是否可以作为cost除外。
+Card.IsReleaseable(Card c)|检查c是否可以解放（非上级召唤用）
+Card.IsDiscardable(Card c)|检查c是否可以丢弃
+Card.IsAttackable(Card c)|检查c是否可以攻击
+Card.IsChainAttackable(Card c)|检查c是否可以连续攻击
+Card.IsFaceup(Card c)|检查c是否是表侧表示
+Card.IsFacedown(Card c)|检查c是否是里侧测表示
+Card.IsAttack(Card c)|检查c是否是攻击表示
+Card.IsDefence(Card c)|检查c是否是守备表示
+Card.IsControler(Card c, integer con)|检查c的当前控制着是否是con
+Card.IsOnField(Card c)|检查c是否在场。
+Card.IsLocation(Card c, integer loc)|检查c当前位置是否是loc。
+Card.IsPublic(Card c)|检查c是否处于公开状态
+Card.IsForbidden(Card c)|检查c是否处于被宣言禁止状态
+Card.IsAbleToChangeControler(Card c)|检查c是否可以改变控制权
+Card.IsControlerCanBeChanged(Card c)|检查c的控制权是否可以改变
+Card.AddCounter(Card c, integer countertype, integer count)|为c放置count个countertype类型的指示物
+Card.RemoveCounter(Card c, integer player, integer countertype, integer count, integer reason)|让玩家player以原因reason移除c上的count个countertype类型的指示物
+Card.GetCounter(Card c, integer countertype)|返回c上的countertype类型的指示物的数量
+Card.EnableCounterPermit(Card c, integer countertype)|允许c放置那个需要“可以放置”才能放置的指示物countertype
+Card.SetCounterLimit(Card c, integer countertype, integer count)|设定c放置countertype类型指示物的上限
+Card.IsCanTurnSet(Card c)|检查c是否可以转成里侧表示。
+Card.IsCanAddCounter(Card c, integer countertype, integer count)|检查c是否可以放置count个countertype类型的指示物
+Card.IsCanRemoveCounter(Card c, integer player, integer countertype, integer count, integer reason)|检查玩家player是否可以以原因reason移除c上的count个countertype类型的指示物
+Card.IsCanBeFusionMaterial(Card c)|检查c是否可以成为融合素材
+Card.IsCanBeSynchroMaterial(Card c)|检查c是否可以成为同调素材
+Card.IsCanBeExceedMaterial(Card c)|检查c是否可以成为超量素材
+Card.CheckFusionMaterial(Card c, Group g)|检查g是否包含了c需要的一组融合素材
+Card.IsImmuneToEffect(Card c, Effect e)|检查c是否免疫效果e（即不受效果e的影响）
+Card.IsCanBeEffectTarget(Card c, Effect e)|检查c是否可以成为效果e的对象
+Card.IsCanBeBattleTarget(Card c1, Card c2)|检查c1是否可以成为c2的攻击目标
+Card.AddTrapMonsterAttribute(Card c, boolean is_effect)|为c添加陷阱怪物属性。is_effect=true表示视作效果怪物，否则视为通常怪物
+Card.CancelToGrave(Card c)|取消送墓确定状态。
+Card.GetTributeRequirement(Card c)|返回通常召唤c所需要的祭品的最小和最大数量
+Effect.CreateEffect(Card c)|新建一个空效果,并且效果的拥有者为c
+Effect.Clone(Effect e)|新建一个效果e的副本
+Effect.Reset(Effect e)|把效果e重置。重置之后不可以再使用此效果
+Effect.SetDescription(Effect e, integer desc)|为效果e设置效果描述
+Effect.SetCode(Effect e, integer code)|为效果e设置Code属性
+Effect.SetRange(Effect e, integer range)|为效果e设置Range属性
+Effect.SetTargetRange(Effect e, integer s_range, integer o_range)|为效果e设置Target Range属性
+Effect.SetAbsoluteRange(Effect e, integer s_range, integer o_range)|设置target range属性并设置EFFECT_FLAG_ABSOLUTE_RANGE标志
+Effect.SetCountLimit(Effect e, integer count)|设置一回合可以发动的次数（仅触发型效果有效）
+Effect.SetReset(Effect e, integer reset_flag, [integer reset_count=1])|设置reset参数
+Effect.SetReset(Effect e, integer type)|设置Type属性
+Effect.SetProperty(Effect e, integer prop)|设置Property属性
+Effect.SetLabel(Effect e, integer label)|设置Label属性
+Effect.SetCategory(Effect e, integer cate)|设置Category属性
+Effect.SetCategory(Effect e, integer cate)|设置Category属性
+Effect.SetCondition(Effect e, function con_func)|设置Condition属性
+Effect.SetCost(Effect e, function cost_func)|设置Cost属性
+Effect.SetTarget(Effect e, function targ_func)|设置Target属性
+Effect.SetOperation(Effect e, function op_func)|设置Operation属性
+Effect.SetValue(Effect e, integer|function val)|设置Value属性
+Effect.SetOwnerPlayer(Effect e, integer player)|设置Owner player属性
+Effect.GetDescription(Effect e)|返回效果描述
+Effect.GetCode(Effect e)|返回code属性
+Effect.GetType(Effect e)|返回Type属性
+Effect.GetProperty(Effect e)|返回Property属性
+Effect.GetLabel(Effect e)|返回Label属性
+Effect.GetCategory(Effect e)|返回Category属性
+Effect.GetOwner(Effect e)|返回效果拥有者
+Effect.GetHandler(Effect e)|返回效果在哪一张卡上生效(通常是注册该效果的卡)
+Effect.GetCondition(Effect e)|返回condition属性
+Effect.GetCost(Effect e)|返回cost属性
+Effect.GetTarget(Effect e)|返回target属性
+Effect.GetOperation(Effect e)|返回operation属性
+function|integer Effect.GetValue(Effect e)|返回value属性
+Effect.IsHasProperty(Effect e, integer prop)|检查效果是否含有标志prop
+Effect.IsHasCategory(Effect e, integer cate)|检查效果是否含有效果分类cate
+Effect.IsHasType(Effect e, integer type)|检查效果是否属于类型type
+Group.CreateGroup()|新建一个空的卡片组
+Group.CreateGroup(Group g)|删除卡片组g
+Group.Clone(Group g)|新建卡片组g的副本
+Group.FromCards(Card c, ...)|不定参数，把传入的所有卡组合成一个卡片组并返回
+Group.Clear(Group g)|清空卡片组
+Group.AddCard(Group g, Card c)|往g中增加c
+Group.RemoveCard(Group g, Card c)|把c从g中移除
+Group.GetFirst(Group g)|返回g中第一张卡，并重置当前指针到g中第一张卡。如果g中不存在卡则返回nil
+Group.GetNext(Group g)|返回并使指针指向下一张卡。如果g中不存在卡则返回nil
+Group.GetCount(Group g)|返回g中卡的数量
+Group.ForEach(Group g, function f)|以g中的每一张卡作为参数调用一次f
+Group.Filter(Group g, function f, Card ex, ...)|过滤函数。从g中筛选满足筛选条件f并且不等于ex的卡。从第4个参数开始为额外参数。
+Group.FilterCount(Group g, function f, Card ex, ...)|过滤函数。和上一个函数基本相同。不同指出在于此函数只返回满足条件的卡的数量。
+Group.FilterSelect(Group g, integer player, function f,integer min, integer max, Card ex, ...)|过滤函数。让玩家player从g中选择min-max张满足筛选条件f并且不等于ex的卡。从第7个参数开始为额外参数。
+Group.Select(Group g, integer player, integer min, integer max, Card ex)|让玩家player从g中选择min-max张不等于ex的卡。
+Group.RandomSelect(Group g, integer player, integer count)|让玩家player从g中随机选择count张卡。因为是随机算则，所以参数player基本无用，由系统随机选取。
+Group.IsExists(Group g, function f, integer count, Card ex, ...)|过滤函数。检查g中是否存在至少count张满足筛选条件f并且不等于ex的卡。从第5个参数开始为额外参数。
+Group.CheckWithSumEqual(Group g, function f, integer sum, integer min)|子集求和判定函数。f为返回一个interger值的函数（通常用于同调判定）。检查g中是否存在一个数量至少为min的子集满足以f对子集的每一个元素求值的和等于sum。
+Group.SelectWithSumEqual(Group g, integer player, function f, integer sum, integer min)|让玩家player从g中选取一个数量至少是min的子集使子集的特定函数的和等于sum
+Group.CheckWithSumGreater(Group g, function f, integer sum)|子集求和判定函数之二。f为返回一个interger值的函数（通常用于仪式判定）。检查g中是否存在一个子集满足以f对子集的每一个元素求值的和刚好大于或者等于sum。注：判定必须是“刚好”大于或者等于。以等级为例，要使等级合计大于等于8，可以选择LV1+LV7而不可以选择LV1+LV4+LV4
+Group.SelectWithSumGreater(Group g, integer player, function f, integer sum)|让玩家player从g中选取一个子集使子集的特定函数的和大于等于sum
+Group.GetMinGroup(Group g, function f)|f为返回一个interger值的函数。从g中筛选出具有最小的f的值的卡。用于地裂等卡。
+Group.GetMaxGroup(Group g, function f)|f为返回一个interger值的函数。从g中筛选出具有最大的f的值的卡。用于地碎等卡。
+Group.GetSum(Group g, function f)|计算g中所有卡的取值的总和。f为为每张卡的取值函数。
+Group.GetSortCount(Group g, function f)|计算g中所有卡的种类数量。f为分类的依据，返回相同的值视为同一种类。
+Group.Remove(Group g, function f, ...)|过滤函数。从g中移除满足筛选条件f的所有卡。第三个参数开始是额外参数。
+Group.Merge(Group g1, Group g2)|把g2中的所有卡合并到g1。
+Group.IsContains(Group g, Card c)|检查g中是否存在卡片c
+Group.SearchCard(Group g, function f, ...)|过滤函数。返回g中满足筛选条件f的第一张卡。第三个参数为额外参数。
+Duel.GetLP(integer player)|返回玩家player的当前LP
+Duel.SetLP(integer player, integer lp)|设置玩家player的当前LP为lp
+Duel.GetTurnPlayer()|返回当前的回合玩家
+Duel.GetTurnCount()|返回当前的回合数
+Duel.GetDrawCount(integer player)|返回玩家player每回合的规则抽卡数量
+Duel.DebugMessage(any msg)|Debug用函数，用于显示信息
+Duel.RegisterEffect(Effect e, integer player)|把效果作为玩家player的效果注册给全局环境。
+Duel.RegisterFlagEffect(integer player, integer code, integer reset_flag, integer property, integer reset_count)|此函数为玩家player注册全局环境下的标识效果。此效果总是影响玩家的(EFFECT_FLAG_PLAYER_TARGET)并且不会被无效化。其余部分与Card.RegisterFlagEffect相同
+Duel.GetFlagEffect(integer player, integer code)|返回玩家player的特定的标识效果的数量
+Duel.ResetFlagEffect(integer player, integer code)|手动reset玩家player的特定的标识效果
+Duel.Destroy(Card|Group targets, integer reason)|以reason原因破坏targets。返回值是实际被破坏的数量。如果reason包含REASON_RULE，则破坏事件将不会检查卡片是否免疫效果，不会触发代破效果并且无视“不能破坏”。
+Duel.Remove(Card|Group targets, integer pos, integer reason)|以reason原因，pos表示形式除外targets。返回值是实际被操作的数量。如果reason包含REASON_TEMPORARY，那么视为是暂时除外，可以通过Duel.ReturnToField返回到场上
+Duel.SendtoGrave(Card|Group targets, integer reason)|以reason原因把targets送去墓地。返回值是实际被操作的数量。
+Duel.SendtoHand(Card|Group targets, integer player | nil, integer reason)|以reason原因把targets送去玩家player的手牌。返回值是实际被操作的数量。如果player是nil则返回卡的持有者的手牌。
+Duel.SendtoDeck(Card|Group targets, integer player | nil, integer seq, integer reason)|以reason原因把targets送去玩家player的卡组。返回值是实际被操作的数量。如果player是nil则返回卡的持有者的卡组。如果seq=0，则是返回卡组最顶端；seq=1则是返回卡组最低端；其余情况则是返回最顶端并且标记需要洗卡组。
+Duel.GetOperatedGroup()|此函数返回之前一次卡片操作实际操作的卡片组。包括Duel.Destroy, Duel.Remove, Duel.SendtoGrave, Duel.SendtoHand, Duel.SendtoDeck, Duel.Release, Duel.ChangePosition, Duel.SpecialSummon
+Duel.Summon(integer player, Card c, boolean ignore_count, Effect e)|让玩家以效果e对c进行通常召唤（非set)。如果e=nil,那么就按照一般的通常召唤规则进行通常召唤。如果ignore_count=true，则忽略每回合的通常召唤次数限制。
+Duel.SpecialSummonRule(integer player, Card c)|让玩家player对c进行特殊召唤手续。
+Duel.SynchroSummon(integer player, Card c, Card tuner)|让玩家player以tuner作为调整对c进行特殊召唤手续。
+Duel.MSet(integer player, Card c, boolean ignore_count, Effect e)|让玩家以效果e对c进行通常召唤的Set。如果e=nil,那么就按照一般的通常召唤规则进行通常召唤。如果ignore_count=true，则忽略每回合的通常召唤次数限制。
+Duel.SSet(integer player, Card c)|让玩家player把c放置到魔法陷阱区
+Duel.CreateToken(integer player, integer code, integer setcode, integer attack, integer defence, integer level, integer race, integer attribute)|以传入的参数数值新建一个Token
+Duel.SpecialSummon(Card|Group targets, integer sumtype, integer sumplayer, integer target_player, boolean nocheck, boolean nolimit, integer pos)|让玩家player以sumtype方式，pos表示形式把targets特殊召唤到target_player场上。如果nocheck为true则无视卡的召唤条件。如果nolimit为true则无视卡的苏生限制。返回值是特殊召唤成功的卡的数量。
+Duel.SpecialSummonStep(Card c, integer sumtype, integer sumplayer, integer target_player, boolean nocheck, boolean nolimit, integer pos)|此函数是上一个函数的分解过程，只特殊召唤一张卡c。此函数用于一个效果需要双方同时特殊召唤时。此函数必须和下面的函数一起使用。返回值表示是否特殊召唤成功。
+Duel.SpecialSummonComplete()|此函数在确定复数个上一个函数调用完毕之后调用。用于触发事件。
+Duel.RemoveCounter(integer player, integer s, integer o, integer countertype, integer count, integer reason)|让玩家player移除场上存在的countertype类型的count个指示物。s表示对player来说的己方的可移除指示物的位置，o表示对player来说的对方的可移除指示物的位置
+Duel.IsCanRemoveCounter(integer player, integer s, integer o, integer countertype, integer count, integer reason)|检查玩家player是否能移除场上的countertype类型的count个指示物。s和o参数作用同上。
+Duel.GetCounter(integer player, integer s, integer o, integer countertype)|返回场上存在的countertype类型的指示物的数量。s和o参数作用同上。
+Duel.ChangePosition(Card|Group targets,integer au, [integer ad=au, integer du=au, integer dd=au, boolean noflip=false])|改变targets的表示形式。表侧攻击表示的变成au，里侧攻击表示的变成ad, 表侧守备表示变成du,里侧守备表示变成dd如果noflip=true则不触发翻转效果（但会触发翻转时的诱发效果）
+Duel.Release(Card|Group targets, integer reason)|以reason原因解放targets。返回值是实际解放的数量。如果reason含有REASON_COST，则不会检查卡片是否不受效果影响
+Duel.MoveToField(Card c, integer move_player, integer target_player,integer dest, integer pos, boolean enabled)|让玩家move_player把c移动的target_player的场上。dest只能是LOCATION_MZONE或者LOCATION_SZONE。pos表示可选表示形式。enable表示是否立刻适用c的效果。
+Duel.ReturnToField(Card c)|把c返回到场上。c必须是以REASON_TEMPORARY原因离场，并且离场后没有离开过那个位置。
+Duel.MoveSequence(Card c, integer seq)|移动c的序号。通常用于在场上换格子或者在卡组中移动到最上方或者最下方。
+Duel.SetChainLimit(function f)|设定连锁条件。f是接受一个Effect类型作为参数并且返回boolean值的函数。在cost或者target处理中调用此函数可以限制可以连锁的效果的种类（如超融合）。如果f返回false表示不能连锁。一旦设置连锁条件后发生了新的连锁那么连锁条件将会解除。
+Duel.SetChainLimitTillChainEnd(function f)|功能同上，但是此函数设定的连锁条件直到连锁结束才会解除。
+Duel.GetChainMaterial(integer player)|返回玩家player受到的连锁素材的效果。此函数仅用于融合类卡的效果。
+Duel.ConfirmDeckTop(integer player, integer count)|确认玩家player卡组最上方的count张卡。双方均可确认。
+Duel.ConfirmCards(integer player, Card|Group targets)|给玩家player确认targets
+Duel.SortDecktop(integer sort_player, integer target_player, integer count)|让玩家sort_player对玩家target_player的卡组最上方count张卡进行排序
+Duel.CheckEvent(integer event)|检查当前是否是event时点
+Duel.RaiseEvent(Group eg,integer code, Effect reason_effect, integer reason, integer reason_player,integer event_player, integer event param)|触发一个事件。
+Duel.RaiseSingleEvent(Card ec,integer code, Effect reason_effect, integer reason, integer reason_player,integer event_player, integer event param)|触发一个单体事件。
+Duel.GetEnvironment()|返回两个值，表示当前场地代号，以及当前场地效果的来源玩家。场地代号指当前生效的场地卡的代号，或者海神的巫女把场地变化效果的值。来源玩家指当前生效的场地卡的控制者，或者海神的巫女等卡的控制者。
+Duel.Win(function f, Effect e, integer player)|在当前效果处理完之后调用f进行胜负检测。e和player作为f的两个参数传递给f。f返回值的低16位表示胜负判定玩家，0表示玩家1胜利，1表示玩家2胜利，2表示平局，此外是无胜负兵继续进行。高16位表示胜负的原因。
+Duel.Draw(integer player, integer count, integer reason)|让玩家player以原因reason抽count张卡。返回实际抽的卡的数量。如果reason含有REASON_RULE则此次抽卡不受“不能抽卡”的效果的影响。
+Duel.Damage(integer player, integer value, integer reason)|以reason原因给与玩家player造成value的伤害。返回实际收到的伤害值。如果受到伤害变成回复等效果的影响时，返回值为0.
+Duel.Recover(integer player, integer value, integer reason)|以reason原因使玩家player回复value的LP。返回实际的回复值。如果受到回复变成伤害等效果的影响时，返回值为0.
+Duel.Equip(integer player, Card c1, Card c2)|把c1作为玩家player的装备卡装备给c2。返回值表示是否成功。
+Duel.GetControl(integer player, Card c)|让玩家player得到c的控制权。返回值表示是否成功。
+Duel.SwapControler(Card c1, Card c2)|交换c1和c2的控制权。返回值表示是否成功。
+Duel.CheckLPCost(integer player, integer cost)|检查玩家player是否能支付cost点lp
+Duel.PayLPCost(integer player, integer cost)|让玩家player支付cost点lp
+Duel.DiscardDeck(integer player, integer count, integer reason)|以原因reason把玩家player的卡组最上端count张卡送去墓地.返回实际转移的数量。
+Duel.DiscardHand(integer player, function f, integer min, integer max, integer reason, Card ex, ...)|过滤函数。让玩家player选择并丢弃满足筛选条件f兵不等于ex的min-max张手卡。第7个参数开始为额外参数。
+Duel.DisableShuffleCheck()|使下一个操作不检查是否需要洗卡组或者洗手卡。
+Duel.ShuffleDeck(integer player)|手动洗玩家player的卡组
+Duel.ShuffleHand(integer player)|手动洗玩家player的手卡
+Duel.ChaingeAttacker(Card c)|把当前的攻击卡替换成c进行攻击
+Duel.ReplaceAttacker(Card c)|用c代替当前攻击的卡进行伤害阶段
+Duel.ChaingeAttackTarget(Card c)|把当前的攻击目标替换成c。如果c=nil则变成直接攻击。
+Duel.ReplaceAttackTarget(Card c)|(预留）
+Duel.GetBattleDamage(integer player)|返回玩家player在本次战斗中收到的伤害
+Duel.ChangeBattleDamage(integer player, integer value)|把玩家player在本次战斗中收到的伤害变成value
+Duel.ChangeTarget(integer chainc, Group g)|把连锁chainc的对象换成g
+Duel.ChangeTargetPlayer(integer chainc, integer player)|把连锁chainc的对象玩家换成player
+Duel.ChangeTargetParam(integer chainc, integer param)|把连锁chainc的对象参数换成param
+Duel.BreakEffect()|中断当前效果，使之后的效果处理视为不同时处理。此函数会造成错时点。
+Duel.ChangeChainOperation(integer chainc, function f)|把连锁chainc的效果的处理函数换成f。用于实现“把效果变成”等的效果
+Duel.NegateActivation(integer chainc)|使连锁chainc的发动无效
+Duel.NegateEffect(integer chainc)|使连锁chainc的效果无效
+Duel.NegateSummon(Card c)|使正在召唤，反转召唤，特殊召唤的c的召唤无效
+Duel.IncreaseSummonCount()|本回合的通常召唤限制计数+1
+Duel.CheckSummonCount()|检查回合玩家本回合的通常召唤限制计数。
+Duel.GetLocationCount(integer player, integer location)|返回玩家player的指定场地location剩余的空格数。location只能是LOCATION_MZONE或者LOCATION_SZONE。
+Duel.GetFieldCard(integer controler, integer location, integer sequence)|返回指定玩家指定地点指定序号的卡
+Duel.GetCurrentChain()|返回当前正在处理的连锁序号
+Duel.GetChainInfo(integer chainc, ...)|返回连锁chainc的信息。如果chainc=0，则返回当前正在处理的连锁的信息。
+Duel.GetCurrentPhase()|返回当前的阶段
+Duel.SkipPhase(integer player, integer phase, integer reset_flag, integer reset_count)|跳过玩家player的phase阶段，并在特定的阶段后reset。reset参数和效果相同。
+Duel.IsDamageCalculated()|用于在伤害阶段检查是否已经计算了战斗伤害。
+Duel.GetAttacker()|返回此次战斗攻击的卡
+Duel.GetAttackTarget()|返回此次战斗被攻击的卡。如果返回nil表示是直接攻击。
+Duel.DisableAttack()|使本次攻击无效
+Duel.ChainAttack()|使攻击卡再进行一次连续攻击（开辟，破灭的女王）
+Duel.Readjust()|刷新场上的卡的信息。非特定情况或者不清楚原理请勿使用此函数以免形成死循环。
+Duel.GetFieldGroup(integer player, integer s, integer o)|返回指定位置的卡。s指对玩家player来说的己方的位置，o指对玩家player来说的对方的位置。
+Duel.GetFieldGroupCount(integer player, integer s, integer o)|同上，返回值变成卡的数量
+Duel.GetDecktopGroup(integer player, integer count)|返回玩家player的卡组最上方的count张卡
+Duel.GetMatchingGroup(function f, integer player, integer s, integer o, Card ex, ...)|过滤函数，返回指定位置满足过滤条件f并且不等于ex的卡。第6个参数开始为额外参数。
+Duel.GetMatchingGroupCount(function f, integer player, integer s, integer o, Card ex, ...)|同上，返回值变成符合的卡的数量。
+Duel.GetFirstMatchingCard(function f, integer player, integer s, integer o, Card ex, ...)|过滤函数，返回指定位置满足过滤条件f并且不等于ex的第一张卡。第6个参数开始为额外参数。
+Duel.IsExistingMatchingCard(function f, integer player, integer s, integer o, integer count, Card ex, ...)|过滤函数，检查指定位置是否存在至少count张满足过滤条件f并且不等于ex的卡。第7个参数开始为额外参数。
+Duel.SelectMatchingCard(integer sel_player, function f, integer player, integer s, integer o, integer min, integer max, Card ex, ...)|过滤函数，让玩家sel_player选择指定位置满足过滤条件f并且不等于ex的min-max张卡。第9个参数开始为额外参数。
+Duel.GetReleaseGroup(integer player)|返回玩家player可解放（非上级召唤用)的卡片组
+Duel.GetReleaseGroupCount(integer player)|返回玩家player可解放（非上级召唤用)的卡片数量
+Duel.ChecktReleaseGroup(integer player, function f, integer count, Card ex, ...)|过滤函数，检查玩家player是否存在至少count张不等于ex的满足条件f的可解放的卡
+Duel.SelectReleaseGroup(integer player, function f, integer min, integer max, Card ex, ...)|过滤函数，让玩家player选择min-max张不等于ex的满足条件f的可解放的卡并返回
+Duel.GetTributeGroup(Card c)|返回用于通常召唤c可解放（上级召唤用)的卡片组
+Duel.GetTributeCount(Card c)|返回用于通常召唤c的祭品数量。此数量不一定等于上一个函数的返回值中的卡片数量。因为某些卡可以作为两个祭品来使用。
+Duel.SelectTribute(integer player, Card c, integer min, integer max)|让玩家player选择用于通常召唤c的min-max个祭品。
+Duel.GetTargetCount(function f, integer player, integer s, integer o, Card ex, ...)|基本同Duel.GetMatchingGroupCount，不同之处在于需要追加判定卡片是否能成为当前正在处理的效果的对象。
+Duel.IsExistingTarget(function f, integer player, integer s, integer o, integer count, Card ex, ...)|过滤函数，检查指定位置是否存在至少count张满足过滤条件f并且不等于ex并且可以成为当前正在处理的效果的对象的卡。第7个参数开始为额外参数。
+Duel.SelectTarget(integer sel_player, function f, integer player, integer s, integer o, integer min, integer max, Card ex, ...)|过滤函数，让玩家sel_player选择指定位置满足过滤条件f并且不等于ex并且可以成为当前正在处理的效果的对象的min-max张卡。第9个参数开始为额外参数。此函数会同时酱当前正在处理的连锁的对象设置成选择的卡
+Duel.SelectFusionMaterial(integer player, Card c, Group g)|让玩家player从g中选择一组满足c的融合素材的卡
+Duel.SetFusionMaterial(Group g)|设置g为需要使用的融合素材
+Duel.SetSynchroMaterial(Group g)|设置g为需要使用的同调素材
+Duel.SelectSynchroMaterial(integer player, Card c, function f1, function f2, integer min)|让玩家选择用于同调c需要的满足条件的数量至少是min的一组素材。f1是调整需要满足的过滤条件。f2是调整以外的部分需要满足的过滤条件。
+Duel.CheckSynchroMaterial(Card c, function f1, function f2, integer min)|检查是否存在一组满足条件的卡作为同调召唤c的素材。f1,f2,min同上。
+Duel.SelectTunerMaterial(integer player, Card c, Card tuner, function f1, function f2, integer min)|让玩家选择用于同调c需要的满足条件的以tuner作为调整的数量至少是min的一组素材。f1是调整需要满足的过滤条件。f2是调整以外的部分需要满足的过滤条件。
+Duel.CheckTunerMaterial(Card c, Card tuner, function f1, function f2, integer min)|检查以tuner作为调整是否存在一组满足条件的卡作为同调召唤c的素材。f1,f2,min同上。
+Duel.GetRitualMaterial(integer player)|返回玩家player可用的用于仪式召唤素材的卡片组。包含手上，场上可解放的以及墓地的仪式魔人等卡。
+Duel.ReleaseRitualMaterial(Group g)|解放仪式用的素材g。如果是墓地的仪式魔人等卡则除外。
+Duel.SetTargetCard(Group g)|把当前正在处理的连锁的对象设置成g。
+Duel.SetTargetPlayer(integer player)|把当前正在处理的连锁的对象玩家设置成player。
+Duel.SetTargetParam(integer param)|把当前正在处理的连锁的对象参数设置成param。
+Duel.SetOperationInfo(integer chainc, integer category, Card|Group targets, integer count, integer target_player, integer target_param)|设置当前处理的连锁的操作信息。此操作信息包含了效果处理中确定要处理的效果分类。比如潜行狙击手需要设置CATEGORY_DICE，但是不能设置CATEGORY_DESTROY，因为不确定。对于破坏效果，targets需要设置成发动时可能成为连锁的影响对象的卡，并设置count为发动时确定的要处理的卡的数量。比如黑洞发动时，targets需要设定为场上的所有怪物，count设置成场上的怪的数量。对于CATEGORY_SPECIAL_SUMMON,CATEGORY_TOHAND,CATEGORY_TODECK等分类，如果取对象则设置targets为对象，count为对象的数量；如果不取对象则设置targets为nil,count为预计要处理的卡的数量，并设置target_param为预计要处理的卡的位置。例如增援：SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,LOCATION_DECK)。操作信息用于很多效果的发动的检测，例如星尘龙，王家沉眠之谷等。
+Duel.GetOperationInfo(integer chainc, integer category)|返回连锁chainc的category分类的操作信息。返回值为5个，第一个返回值是false的话表示不存在该分类。后4个返回值对应上一个函数的后4个参数。
+Duel.GetOperationCount(integer chainc)|返回连锁chainc包含的操作分类的数量
+Duel.GetExceedMaterial(Card c)|返回c的超量素材
+Duel.Overlay(Card c, Card|Group ocard)|把ocard作为c的叠放卡叠放
+Duel.GetOverlayGroup(integer player, integer s, integer o)|返回指定位置的所有叠放的卡
+Duel.GetOverlayCount(integer player, integer s, integer o)|返回指定位置的所有叠放的卡的数量
+Duel.RemoveOverlayCard(integer player, integer s, integer o, integer min, integer max, integer reason)|以reason原因移除指定位置的min-max张叠放卡
+Duel.Hint(integer player, integer desc)|给玩家发送内置消息提示
+Duel.SelectEffectYesNo(integer player, integer code)|让玩家选择是否发动卡的效果
+Duel.SelectYesNo(integer player, integer desc)|让玩家选择是或否
+Duel.SelectOption(integer player, ...)|让玩家选择选项。从第二个参数开始，每一个参数代表一条选项。返回选择的选项的序号。
+Duel.SelectDisableField(integer player, integer count, integer s, integer o, integer filter)|让玩家player选择指定位置的count个位置不能使用。
+Duel.AnnounceRace(integer player, integer count, integer available)|让玩家player从可选的种族中宣言count个种族。available是所有可选种族的组合值。
+Duel.AnnounceAttribute(integer player, integer count, integer available)|让玩家player从可选的属性中宣言count个属性。available是所有可选属性的组合值。
+Duel.AnnounceCard(integer player)|让玩家player宣言一个卡片代号。
+Duel.AnnounceType(integer player)|让玩家player宣言一个卡片类型。
+Duel.AnnounceNumber(integer player, ...)|让玩家player宣言一个数字。从第二个参数开始，每一个参数代表一个可宣言的数字。返回选择的选项的序号。
+Duel.AnnounceCoin(integer player)|让玩家player宣言硬币的正反面。
+Duel.TossCoin(integer player, integer count)|让玩家player投count次硬币。返回值为count个结果。结果是0或者1.
+Duel.TossDice(integer player, integer count)|让玩家player投count次骰子。返回值为count个结果。结果是1-6.
+Duel.SetCoinResult( ... )|强行修改投硬币的结果。此函数用于永续的EVENT_TOSS_COIN事件中
+Duel.SetDiceResult( ... )|强行修改投骰子的结果。此函数用于永续的EVENT_TOSS_DICE事件中
+Duel.IsPlayerAffectByEffect(integer player, integer code)|检查玩家player是否受特性效果的影响
+Duel.IsPlayerCanDraw(integer player)|检查玩家player是否可以效果抽卡
+Duel.IsPlayerCanDiscardDeck(integer player)|检查玩家player是否可以把卡组顶端的卡送去墓地
+Duel.IsPlayerCanDiscardDeckAdCost(integer player, int count)|检查玩家player是否可以把卡组顶端的卡送去墓地作为cost。当卡组没有足够数量的卡，或者当卡组中的卡受到送墓转移效果的影响时（如大宇宙，次元裂缝，即使不是全部）此函数会返回false
+Duel.IsPlayerCanSummon(integer player, integer sumtype, Card c)|检查玩家player是否可以以sumtype方式通常召唤c。仅当玩家收到“不能上级召唤”等效果的影响时返回false。
+Duel.IsPlayerCanFlipSummon(integer player, Card c)|检查玩家player是否可以反转召唤c。
+Duel.IsPlayerCanSpecialSummonMonster(integer player, integet code, integer setcode, integer attack, integer defence integer level, integer race, integer attribute, [integer pos=POS_FACEUP, integer target_player=player])|检查玩家player是否可以以pos的表示形式特殊召唤特定属性值的怪物到target_player场上。此函数通常用于判定是否可以特招token和陷阱怪物。
+Duel.IsPlayerCanRelease(integer player, Card c)|检查玩家是否能解放c
+Duel.IsPlayerCanRemove(integer player, Card c)|检查玩家是否能除外c
+Duel.IsPlayerCanSendtoHand(integer player, Card c)|检查玩家是否能把c送去手牌
+Duel.IsPlayerCanSendtoGrave(integer player, Card c)|检查玩家是否能把c送去墓地
+Duel.IsPlayerCanSendtoDeck(integer player, Card c)|检查玩家是否能把c送去卡组
+Duel.IsChainInactivatable(integer chainc)|检查连锁chainc的发动是否可以被无效化
+Duel.IsChainDisablable(integer chainc)|检查连锁chainc的效果是否可以被无效化
+Duel.CheckChainTarget(integer chainc, Card c)|检查c是否是连锁chainc的正确的对象
+Duel.CheckChainUniqueness()|检查当前连锁中是否存在同名卡的发动。true表示无同名卡。
+Duel.SwapDeckAndGrave(integer player)|现世与冥界的逆转专用。把玩家player的卡组和墓地交换
+Duel.CheckSummonActivity(integer player)|检查玩家player本回合有没有进行过召唤的行为。召唤被无效视作进行过召唤行为。
+Duel.CheckNormalSummonActivity(integer player)|检查玩家player本回合有没有进行过通常召唤的行为。包括召唤和set
+Duel.CheckFlipSummonActivity(integer player)|检查玩家player本回合有没有进行过反转召唤的行为。
+Duel.CheckFlipSummonActivity(integer player)|检查玩家player本回合有没有进行过特殊召唤的行为。特殊召唤的行为包括：进行了入连锁和不入连锁的特殊召唤；发动了确定要特殊召唤的效果但是效果被无效。不包括：发动了确定要特殊召唤的效果但是发动被无效
+Duel.CheckAttackActivity(integer player)|检查玩家player本回合有没有进行过攻击。
+bit.band(integer a, integer b)|a与b的位与
+bor(integer a, integer b)|a与b的位或
+bxor(integer a, integer b)|a与b的位异或
+bls(integer a, integer b)|a左移b
+brs(integer a, integer b)|a右移b
+GetCode(Card c)|返回c的当前代号（可能因为效果改变）
+GetOriginalCode(Card c)|返回c的卡片记载的代号
+IsSetCard(Card c, integer setname)|检查c是否是名字含有setname的卡
+GetType(Card c)|返回c的当前类型。
+GetOriginalType(Card c)|返回c的卡片记载的类型。
+GetLevel(Card c)|返回c的当前等级
+GetSynchroLevel(Card c)|返回c的同调用等级。此函数除了某些特定卡如调节支援士，返回值与Card.GetLevel(c)相同
+GetRitualLevel(Card c)|返回c的仪式解放等级。此函数除了某些特定卡如仪式供物，返回值与Card.GetLevel(c)相同
+GetOriginalLevel(Card c)|返回c的卡片记载的等级
+GetAttribute(Card c)|返回c的当前属性。注：对某些多属性怪物如光与暗之龙，此函数的返回值可能是几个属性的组合值。
+GetOriginalAttribute(Card c)|返回c的卡片记载的属性
+GetRace(Card c)|返回c的当前种族。注：对某些多种族怪物如动画效果的魔术猿，此函数的返回值可能是几个种族的组合值。
+GetOriginalRace(Card c)|返回c的卡片记载的种族
+GetAttack(Card c)|返回c的当前攻击力，返回值是负数表示是"?"
+GetBaseAttack(Card c)|返回c的原本攻击力
+GetTextAttack(Card c)|返回c的卡片记载的攻击力
+GetDefence(Card c)|返回c的当前守备力，返回值是负数表示是"?"
+GetBaseDefence(Card c)|返回c的原本守备力
+GetTextDefence(Card c)|返回c的卡片记载的守备力
+GetOwner(Card c)|返回c的持有者
+GetControler(Card c)|返回c的当前控制者
+GetPreviousControler(Card c)|返回c的位置变化之前的控制者
+GetReason(Card c)|返回c的位置变化原因
+GetReasonCard(Card c)|返回导致c的位置变化的卡。此函数仅在某卡被战斗破坏时，因为上级召唤被解放，或者成为特殊召唤使用的素材时有效。
+GetReasonEffect(Card c)|返回导致c的位置变化的效果。
+GetPosition(Card c)|返回c当前的表示形式
+GetPreviousPosition(Card c)|返回c位置变化前的表示形式
+GetBattlePosition(Card c)|返回c在本次战斗发生之前的表示形式
+GetLocation(Card c)|返回c当前的所在位置
+GetPreviousLocation(Card c)|返回c位置变化前的所在的位置
+GetSequence(Card c)|返回c在当前位置的序号。在场上时，序号代表所在的格子，从左往右分别是0-4，场地魔法格的序号为5.在其它地方时，序号表示的是第几张卡。最底下的卡的序号为0
+GetPreviousSequence(Card c)|返回c位置变化前的序号
+GetSummonType(Card c)|返回c上场的方式。
+GetSummonPlayer(Card c)|返回召唤，特殊召唤c上场的玩家
+GetDestination(Card c)|返回c位置变化的目的地。此函数仅在处理位置转移代替效果时有效。
+GetTurnID(Card c)|返回c转移到当前位置的回合
+GetFieldID(Card c)|返回c转移到当前位置的时间标识。此数值唯一，越小表示c是越早出现在那个位置。
+IsCode(Card c, integer code)|检查c的代号是否是code。
+IsType(Card c, integer type)|检查c是否属于类型type。
+IsRace(Card c, integer race)|检查c是否属于种族race。
+IsAttribute(Card c, integer attribute)|检查c是否属于属性attribute。
+IsReason(Card c, integer reason)|检查c是否包含原因reason。
+IsStatus(Card c, integer status)|检查c是否包含某个状态码。
+IsNotTuner(Card c)|检查c是否可以当成非调整来使用。
+SetStatus(Card c, integer state, boolean enable)|给c设置或者取消状态码。除非妳清楚的了解每个状态码的含意，否则不要轻易使用此函数。
+IsDualState(Card c)|检查c属否处于再召唤状态。
+EnableDualState(Card c)|把c设置成再召唤状态。
+SetTurnCounter(Card c, integer counter)|设置c的回合计数器(光之护封剑等)
+GetTurnCounter(Card c)|返回c的回合计数器
+SetCustomValue(Card c, string tag, any object)|以tag作为标签为c设置一个自定义值object
+GetCustomValue(Card c, string tag)|返回c的以tag作为标签的自定义值
+SetMaterial(Card c, Group g)|把g中的所有卡作为c的素材（上级召唤，特殊召唤）
+GetMaterial(Card c)|返回c出场使用的素材
+GetMaterialCount(Card c)|返回c出场使用的素材数量
+GetEquipGroup(Card c)|返回c当前装备着的卡片组
+GetEquipCount(Card c)|返回c当前装备着的卡片数量
+GetEquipTarget(Card c)|返回c当前的装备对象
+CheckEquipTarget(Card c1, Card c2)|检查c2是否是c1的正确的装备对象
+GetUnionCount(Card c)|返回c当前装备的同盟卡数量
+GetOverlayGroup(Card c)|返回c当前叠放着的卡片组
+GetOverlayCount(Card c)|返回c当前叠放着的卡片数量
+RemoveOverlayCard(Card c,integer player, integer min, integer max, integer reason)|以reason为原因，让玩家player移除c叠放的min-max张卡
+GetAttackGroup(Card c)|返回c本回合攻击过的卡片组
+GetAttackedGroupCount(Card c)|返回c本回合攻击过的卡片数量
+GetAttackedCount(Card c)|返回c本回合攻击过的次数
+GetBattledGroup(Card c)|返回与c本回合发生过伤害计算的卡片组
+GetBattledGroupCount(Card c)|返回与c本回合进行过战斗的的卡片数量
+GetAttackAnnouncedCount(Card c)|返回c本回合攻击宣言的次数。攻击被无效不会被计入攻击过的次数，但是会计入攻击宣言的次数。
+SetCardTarget(Card c1, Card c2)|把c2作为c1的永续对象。c1和c2的联系会在c1活c2任意一卡离场或变成里侧表示时reset。
+GetCardTarget(Card c)|返回c当前所有的永续对象
+GetCardTargetCount(Card c)|返回c当前的永续对象的数量
+IsHasCardTarget(Card c1, Card c2)|检查c1是否取c2为永续对象
+GetOwnerTarget(Card c)|返回取c作为永续对象的所有卡
+GetOwnerTargetCount(Card c)|返回取c作为永续对象的卡的数量
+GetActivateEffect(Card c)|返回c的“卡片发动”的效果。仅对魔法和陷阱有效。
+RegisterEffect(Card c, Effect e, [boolean forced=false])|把效果e注册给c，返回效果的全局id。默认情况下注册时如果c带有免疫e的效果那么注册会失败。如果forced为true则不会检查c对e的免疫效果。
+IsHasEffect(Card c, integer code)|检查c是否受到效果种类是code的效果的影响
+GetEffectCount(Card c, integer code)|返回c受到影响的种类是code的效果的数量
+RegisterFlagEffect(Card c, integer code, integer reset_flag, integer property, integer reset_count)|为c注册一个标识用效果。
+GetFlagEffect(Card c, integer code)|返回c的种类是code的标识效果的数量。
+ResetFlagEffect(Card c, integer code)|手动清除c的种类是code的标识效果。
+CreateRelation(Card c1, Card c2, integer reset_flag)|为c1建立于c2的联系。此联系仅会由于RESET_EVENT的事件reset。
+ReleaseRelation(Card c1, Card c2)|手动释放c1对于c2的联系
+IsRelateToEffect(Card c, Effect e)|检查c是否和效果e有联系。
+IsRelateToCard(Card c1, Card c2)|检查c1是否和c2有联系。
+IsRelateToBattle(Card c)|检查c是否和本次战斗关联。
+CopyEffect(Card c, integer code, integer reset_flag, integer reset_count)|为c添加代号是code的卡的可复制的效果，并且添加额外的reset条件。返回值是表示复制效果的代号id。
+EnableReviveLimit(Card c)|为c添加苏生限制。此函数也可通过Card.SetStatus实现。
+CompleteProcedure(Card c)|使c完成正规的召唤手续。此函数也可通过Card.SetStatus实现。
+IsDisabled(Card c)|检查c是否处于无效状态
+IsDestructable(Card c)|检查c是否是可破坏的。
+IsSummonableCard(Card c)|检查c是否是可通常召唤的卡。
+IsSpecialSummonable(Card c)|检查是否可以对c进行特殊召唤手续。
+IsSynchroSummonable(Card c, [Card tuner=nil])|检查是否可以以tuner作为调整对c进行同调召唤手续。如果tuner是nil，此函数与上一个函数作用相同。
+IsSummonable(Card c)|检查c是否可进行通常召唤（不包含通常召唤的set)
+IsMSetable(Card c)|检查c是否可进行通常召唤的set
+IsSSetable(Card c)|检查c是否可以set到魔法陷阱区
+IsCanBeSpecialSummoned(Card c, Effect e, integer sumtype, integer sumplayer, boolean nocheck, boolean nolimit, [integer sumpos=POS_FACEUP, integer target_player=sumplayer])|检查c是否可以被玩家sumplayer用效果e以sumtype方式和sumpos表示形式特殊召唤到target_player场上。如果nocheck是true则不检查c的召唤条件，如果nolimit是true则不检查c的苏生限制。
+IsAbleToHand(Card c)|检查c是否可以送去手牌。
+IsAbleToDeck(Card c)|检查c是否可以送去卡组。
+IsAbleToExtra(Card c)|检查c是否可以送去额外卡组。对于非融合，同调，超量卡此函数均返回false。
+IsAbleToGrave(Card c)|检查c是否可以送去墓地。
+IsAbleToRemove(Card c)|检查c是否可以除外。
+IsAbleToHandAsCost(Card c)|检查c是否可以作为cost送去手牌。
+IsAbleToDeckAsCost(Card c)|检查c是否可以作为cost送去卡组。
+IsAbleToExtraAsCost(Card c)|检查c是否可以作为cost送去额外卡组。
+IsAbleToGraveAsCost(Card c)|检查c是否可以作为cost送去墓地。
+IsAbleToRemoveAsCost(Card c)|检查c是否可以作为cost除外。
+IsReleaseable(Card c)|检查c是否可以解放（非上级召唤用）
+IsDiscardable(Card c)|检查c是否可以丢弃
+IsAttackable(Card c)|检查c是否可以攻击
+IsChainAttackable(Card c)|检查c是否可以连续攻击
+IsFaceup(Card c)|检查c是否是表侧表示
+IsFacedown(Card c)|检查c是否是里侧测表示
+IsAttack(Card c)|检查c是否是攻击表示
+IsDefence(Card c)|检查c是否是守备表示
+IsControler(Card c, integer con)|检查c的当前控制着是否是con
+IsOnField(Card c)|检查c是否在场。
+IsLocation(Card c, integer loc)|检查c当前位置是否是loc。
+IsPublic(Card c)|检查c是否处于公开状态
+IsForbidden(Card c)|检查c是否处于被宣言禁止状态
+IsAbleToChangeControler(Card c)|检查c是否可以改变控制权
+IsControlerCanBeChanged(Card c)|检查c的控制权是否可以改变
+AddCounter(Card c, integer countertype, integer count)|为c放置count个countertype类型的指示物
+RemoveCounter(Card c, integer player, integer countertype, integer count, integer reason)|让玩家player以原因reason移除c上的count个countertype类型的指示物
+GetCounter(Card c, integer countertype)|返回c上的countertype类型的指示物的数量
+EnableCounterPermit(Card c, integer countertype)|允许c放置那个需要“可以放置”才能放置的指示物countertype
+SetCounterLimit(Card c, integer countertype, integer count)|设定c放置countertype类型指示物的上限
+IsCanTurnSet(Card c)|检查c是否可以转成里侧表示。
+IsCanAddCounter(Card c, integer countertype, integer count)|检查c是否可以放置count个countertype类型的指示物
+IsCanRemoveCounter(Card c, integer player, integer countertype, integer count, integer reason)|检查玩家player是否可以以原因reason移除c上的count个countertype类型的指示物
+IsCanBeFusionMaterial(Card c)|检查c是否可以成为融合素材
+IsCanBeSynchroMaterial(Card c)|检查c是否可以成为同调素材
+IsCanBeExceedMaterial(Card c)|检查c是否可以成为超量素材
+CheckFusionMaterial(Card c, Group g)|检查g是否包含了c需要的一组融合素材
+IsImmuneToEffect(Card c, Effect e)|检查c是否免疫效果e（即不受效果e的影响）
+IsCanBeEffectTarget(Card c, Effect e)|检查c是否可以成为效果e的对象
+IsCanBeBattleTarget(Card c1, Card c2)|检查c1是否可以成为c2的攻击目标
+AddTrapMonsterAttribute(Card c, boolean is_effect)|为c添加陷阱怪物属性。is_effect=true表示视作效果怪物，否则视为通常怪物
+CancelToGrave(Card c)|取消送墓确定状态。
+integer,integer Card.GetTributeRequirement(Card c)|返回通常召唤c所需要的祭品的最小和最大数量
+CreateEffect(Card c)|新建一个空效果,并且效果的拥有者为c
+Clone(Effect e)|新建一个效果e的副本
+Reset(Effect e)|把效果e重置。重置之后不可以再使用此效果
+SetDescription(Effect e, integer desc)|为效果e设置效果描述
+SetCode(Effect e, integer code)|为效果e设置Code属性
+SetRange(Effect e, integer range)|为效果e设置Range属性
+SetTargetRange(Effect e, integer s_range, integer o_range)|为效果e设置Target Range属性
+SetAbsoluteRange(Effect e, integer s_range, integer o_range)|设置target range属性并设置EFFECT_FLAG_ABSOLUTE_RANGE标志
+SetCountLimit(Effect e, integer count)|设置一回合可以发动的次数（仅触发型效果有效）
+SetReset(Effect e, integer reset_flag, [integer reset_count=1])|设置reset参数
+SetReset(Effect e, integer type)|设置Type属性
+SetProperty(Effect e, integer prop)|设置Property属性
+SetLabel(Effect e, integer label)|设置Label属性
+SetCategory(Effect e, integer cate)|设置Category属性
+SetCategory(Effect e, integer cate)|设置Category属性
+SetCondition(Effect e, function con_func)|设置Condition属性
+SetCost(Effect e, function cost_func)|设置Cost属性
+SetTarget(Effect e, function targ_func)|设置Target属性
+SetOperation(Effect e, function op_func)|设置Operation属性
+SetValue(Effect e, integer|function val)|设置Value属性
+SetOwnerPlayer(Effect e, integer player)|设置Owner player属性
+GetDescription(Effect e)|返回效果描述
+GetCode(Effect e)|返回code属性
+GetType(Effect e)|返回Type属性
+GetProperty(Effect e)|返回Property属性
+GetLabel(Effect e)|返回Label属性
+GetCategory(Effect e)|返回Category属性
+GetOwner(Effect e)|返回效果拥有者
+GetHandler(Effect e)|返回效果在哪一张卡上生效(通常是注册该效果的卡)
+GetCondition(Effect e)|返回condition属性
+GetCost(Effect e)|返回cost属性
+GetTarget(Effect e)|返回target属性
+GetOperation(Effect e)|返回operation属性
+function|integer Effect.GetValue(Effect e)|返回value属性
+IsHasProperty(Effect e, integer prop)|检查效果是否含有标志prop
+IsHasCategory(Effect e, integer cate)|检查效果是否含有效果分类cate
+IsHasType(Effect e, integer type)|检查效果是否属于类型type
+CreateGroup()|新建一个空的卡片组
+CreateGroup(Group g)|删除卡片组g
+Clone(Group g)|新建卡片组g的副本
+FromCards(Card c, ...)|不定参数，把传入的所有卡组合成一个卡片组并返回
+Clear(Group g)|清空卡片组
+AddCard(Group g, Card c)|往g中增加c
+RemoveCard(Group g, Card c)|把c从g中移除
+GetFirst(Group g)|返回g中第一张卡，并重置当前指针到g中第一张卡。如果g中不存在卡则返回nil
+GetNext(Group g)|返回并使指针指向下一张卡。如果g中不存在卡则返回nil
+GetCount(Group g)|返回g中卡的数量
+ForEach(Group g, function f)|以g中的每一张卡作为参数调用一次f
+Filter(Group g, function f, Card ex, ...)|过滤函数。从g中筛选满足筛选条件f并且不等于ex的卡。从第4个参数开始为额外参数。
+FilterCount(Group g, function f, Card ex, ...)|过滤函数。和上一个函数基本相同。不同指出在于此函数只返回满足条件的卡的数量。
+FilterSelect(Group g, integer player, function f,integer min, integer max, Card ex, ...)|过滤函数。让玩家player从g中选择min-max张满足筛选条件f并且不等于ex的卡。从第7个参数开始为额外参数。
+Select(Group g, integer player, integer min, integer max, Card ex)|让玩家player从g中选择min-max张不等于ex的卡。
+RandomSelect(Group g, integer player, integer count)|让玩家player从g中随机选择count张卡。因为是随机算则，所以参数player基本无用，由系统随机选取。
+IsExists(Group g, function f, integer count, Card ex, ...)|过滤函数。检查g中是否存在至少count张满足筛选条件f并且不等于ex的卡。从第5个参数开始为额外参数。
+CheckWithSumEqual(Group g, function f, integer sum, integer min)|子集求和判定函数。f为返回一个interger值的函数（通常用于同调判定）。检查g中是否存在一个数量至少为min的子集满足以f对子集的每一个元素求值的和等于sum。
+SelectWithSumEqual(Group g, integer player, function f, integer sum, integer min)|让玩家player从g中选取一个数量至少是min的子集使子集的特定函数的和等于sum
+CheckWithSumGreater(Group g, function f, integer sum)|子集求和判定函数之二。f为返回一个interger值的函数（通常用于仪式判定）。检查g中是否存在一个子集满足以f对子集的每一个元素求值的和刚好大于或者等于sum。注：判定必须是“刚好”大于或者等于。以等级为例，要使等级合计大于等于8，可以选择LV1+LV7而不可以选择LV1+LV4+LV4
+SelectWithSumGreater(Group g, integer player, function f, integer sum)|让玩家player从g中选取一个子集使子集的特定函数的和大于等于sum
+GetMinGroup(Group g, function f)|f为返回一个interger值的函数。从g中筛选出具有最小的f的值的卡。用于地裂等卡。
+GetMaxGroup(Group g, function f)|f为返回一个interger值的函数。从g中筛选出具有最大的f的值的卡。用于地碎等卡。
+GetSum(Group g, function f)|计算g中所有卡的取值的总和。f为为每张卡的取值函数。
+GetSortCount(Group g, function f)|计算g中所有卡的种类数量。f为分类的依据，返回相同的值视为同一种类。
+Remove(Group g, function f, ...)|过滤函数。从g中移除满足筛选条件f的所有卡。第三个参数开始是额外参数。
+Merge(Group g1, Group g2)|把g2中的所有卡合并到g1。
+IsContains(Group g, Card c)|检查g中是否存在卡片c
+SearchCard(Group g, function f, ...)|过滤函数。返回g中满足筛选条件f的第一张卡。第三个参数为额外参数。
+GetLP(integer player)|返回玩家player的当前LP
+SetLP(integer player, integer lp)|设置玩家player的当前LP为lp
+GetTurnPlayer()|返回当前的回合玩家
+GetTurnCount()|返回当前的回合数
+GetDrawCount(integer player)|返回玩家player每回合的规则抽卡数量
+DebugMessage(any msg)|Debug用函数，用于显示信息
+RegisterEffect(Effect e, integer player)|把效果作为玩家player的效果注册给全局环境。
+RegisterFlagEffect(integer player, integer code, integer reset_flag, integer property, integer reset_count)|此函数为玩家player注册全局环境下的标识效果。此效果总是影响玩家的(EFFECT_FLAG_PLAYER_TARGET)并且不会被无效化。其余部分与Card.RegisterFlagEffect相同
+GetFlagEffect(integer player, integer code)|返回玩家player的特定的标识效果的数量
+ResetFlagEffect(integer player, integer code)|手动reset玩家player的特定的标识效果
+Destroy(Card|Group targets, integer reason)|以reason原因破坏targets。返回值是实际被破坏的数量。如果reason包含REASON_RULE，则破坏事件将不会检查卡片是否免疫效果，不会触发代破效果并且无视“不能破坏”。
+Remove(Card|Group targets, integer pos, integer reason)|以reason原因，pos表示形式除外targets。返回值是实际被操作的数量。如果reason包含REASON_TEMPORARY，那么视为是暂时除外，可以通过Duel.ReturnToField返回到场上
+SendtoGrave(Card|Group targets, integer reason)|以reason原因把targets送去墓地。返回值是实际被操作的数量。
+SendtoHand(Card|Group targets, integer player | nil, integer reason)|以reason原因把targets送去玩家player的手牌。返回值是实际被操作的数量。如果player是nil则返回卡的持有者的手牌。
+SendtoDeck(Card|Group targets, integer player | nil, integer seq, integer reason)|以reason原因把targets送去玩家player的卡组。返回值是实际被操作的数量。如果player是nil则返回卡的持有者的卡组。
+如果seq=0，则是返回卡组最顶端；seq=1则是返回卡组最低端；其余情况则是返回最顶端并且标记需要洗卡组。
+GetOperatedGroup()|此函数返回之前一次卡片操作实际操作的卡片组。包括Duel.Destroy, Duel.Remove, Duel.SendtoGrave, Duel.SendtoHand, Duel.SendtoDeck, Duel.Release, Duel.ChangePosition, Duel.SpecialSummon
+Summon(integer player, Card c, boolean ignore_count, Effect e)|让玩家以效果e对c进行通常召唤（非set)。如果e=nil,那么就按照一般的通常召唤规则进行通常召唤。如果ignore_count=true，则忽略每回合的通常召唤次数限制。
+SpecialSummonRule(integer player, Card c)|让玩家player对c进行特殊召唤手续。
+SynchroSummon(integer player, Card c, Card tuner)|让玩家player以tuner作为调整对c进行特殊召唤手续。
+MSet(integer player, Card c, boolean ignore_count, Effect e)|让玩家以效果e对c进行通常召唤的Set。如果e=nil,那么就按照一般的通常召唤规则进行通常召唤。如果ignore_count=true，则忽略每回合的通常召唤次数限制。
+SSet(integer player, Card c)|让玩家player把c放置到魔法陷阱区
+CreateToken(integer player, integer code, integer setcode, integer attack, integer defence, integer level, integer race, integer attribute)|以传入的参数数值新建一个Token
+SpecialSummon(Card|Group targets, integer sumtype, integer sumplayer, integer target_player, boolean nocheck, boolean nolimit, integer pos)|让玩家player以sumtype方式，pos表示形式把targets特殊召唤到target_player场上。如果nocheck为true则无视卡的召唤条件。如果nolimit为true则无视卡的苏生限制。返回值是特殊召唤成功的卡的数量。
+SpecialSummonStep(Card c, integer sumtype, integer sumplayer, integer target_player, boolean nocheck, boolean nolimit, integer pos)|此函数是上一个函数的分解过程，只特殊召唤一张卡c。此函数用于一个效果需要双方同时特殊召唤时。此函数必须和下面的函数一起使用。返回值表示是否特殊召唤成功。
+SpecialSummonComplete()|此函数在确定复数个上一个函数调用完毕之后调用。用于触发事件。
+RemoveCounter(integer player, integer s, integer o, integer countertype, integer count, integer reason)|让玩家player移除场上存在的countertype类型的count个指示物。s表示对player来说的己方的可移除指示物的位置，o表示对player来说的对方的可移除指示物的位置
+IsCanRemoveCounter(integer player, integer s, integer o, integer countertype, integer count, integer reason)|检查玩家player是否能移除场上的countertype类型的count个指示物。s和o参数作用同上。
+GetCounter(integer player, integer s, integer o, integer countertype)|返回场上存在的countertype类型的指示物的数量。s和o参数作用同上。
+ChangePosition(Card|Group targets,integer au, [integer ad=au, integer du=au, integer dd=au, boolean noflip=false])|改变targets的表示形式。表侧攻击表示的变成au，里侧攻击表示的变成ad, 表侧守备表示变成du,里侧守备表示变成dd如果noflip=true则不触发翻转效果（但会触发翻转时的诱发效果）
+Release(Card|Group targets, integer reason)|以reason原因解放targets。返回值是实际解放的数量。如果reason含有REASON_COST，则不会检查卡片是否不受效果影响
+MoveToField(Card c, integer move_player, integer target_player,integer dest, integer pos, boolean enabled)|让玩家move_player把c移动的target_player的场上。dest只能是LOCATION_MZONE或者LOCATION_SZONE。pos表示可选表示形式。enable表示是否立刻适用c的效果。
+ReturnToField(Card c)|把c返回到场上。c必须是以REASON_TEMPORARY原因离场，并且离场后没有离开过那个位置。
+MoveSequence(Card c, integer seq)|移动c的序号。通常用于在场上换格子或者在卡组中移动到最上方或者最下方。
+SetChainLimit(function f)|设定连锁条件。f是接受一个Effect类型作为参数并且返回boolean值的函数。在cost或者target处理中调用此函数可以限制可以连锁的效果的种类（如超融合）。如果f返回false表示不能连锁。一旦设置连锁条件后发生了新的连锁那么连锁条件将会解除。
+SetChainLimitTillChainEnd(function f)|功能同上，但是此函数设定的连锁条件直到连锁结束才会解除。
+GetChainMaterial(integer player)|返回玩家player受到的连锁素材的效果。此函数仅用于融合类卡的效果。
+ConfirmDeckTop(integer player, integer count)|确认玩家player卡组最上方的count张卡。双方均可确认。
+ConfirmCards(integer player, Card|Group targets)|给玩家player确认targets
+SortDecktop(integer sort_player, integer target_player, integer count)|让玩家sort_player对玩家target_player的卡组最上方count张卡进行排序
+CheckEvent(integer event)|检查当前是否是event时点
+RaiseEvent(Group eg,integer code, Effect reason_effect, integer reason, integer reason_player,integer event_player, integer event param)|触发一个事件。
+RaiseSingleEvent(Card ec,integer code, Effect reason_effect, integer reason, integer reason_player,integer event_player, integer event param)|触发一个单体事件。
+integer, integer Duel.GetEnvironment()|返回两个值，表示当前场地代号，以及当前场地效果的来源玩家。场地代号指当前生效的场地卡的代号，或者海神的巫女把场地变化效果的值。来源玩家指当前生效的场地卡的控制者，或者海神的巫女等卡的控制者。
+Win(function f, Effect e, integer player)|在当前效果处理完之后调用f进行胜负检测。e和player作为f的两个参数传递给f。f返回值的低16位表示胜负判定玩家，0表示玩家1胜利，1表示玩家2胜利，2表示平局，此外是无胜负兵继续进行。高16位表示胜负的原因。
+Draw(integer player, integer count, integer reason)|让玩家player以原因reason抽count张卡。返回实际抽的卡的数量。如果reason含有REASON_RULE则此次抽卡不受“不能抽卡”的效果的影响。
+Damage(integer player, integer value, integer reason)|以reason原因给与玩家player造成value的伤害。返回实际收到的伤害值。如果受到伤害变成回复等效果的影响时，返回值为0.
+Recover(integer player, integer value, integer reason)|以reason原因使玩家player回复value的LP。返回实际的回复值。如果受到回复变成伤害等效果的影响时，返回值为0.
+Equip(integer player, Card c1, Card c2)|把c1作为玩家player的装备卡装备给c2。返回值表示是否成功。
+GetControl(integer player, Card c)|让玩家player得到c的控制权。返回值表示是否成功。
+SwapControler(Card c1, Card c2)|交换c1和c2的控制权。返回值表示是否成功。
+CheckLPCost(integer player, integer cost)|检查玩家player是否能支付cost点lp
+PayLPCost(integer player, integer cost)|让玩家player支付cost点lp
+DiscardDeck(integer player, integer count, integer reason)|以原因reason把玩家player的卡组最上端count张卡送去墓地.返回实际转移的数量。
+DiscardHand(integer player, function f, integer min, integer max, integer reason, Card ex, ...)|过滤函数。让玩家player选择并丢弃满足筛选条件f兵不等于ex的min-max张手卡。第7个参数开始为额外参数。
+DisableShuffleCheck()|使下一个操作不检查是否需要洗卡组或者洗手卡。
+ShuffleDeck(integer player)|手动洗玩家player的卡组
+ShuffleHand(integer player)|手动洗玩家player的手卡
+ChaingeAttacker(Card c)|把当前的攻击卡替换成c进行攻击
+ReplaceAttacker(Card c)|用c代替当前攻击的卡进行伤害阶段
+ChaingeAttackTarget(Card c)|把当前的攻击目标替换成c。如果c=nil则变成直接攻击。
+ReplaceAttackTarget(Card c)|(预留）
+GetBattleDamage(integer player)|返回玩家player在本次战斗中收到的伤害
+ChangeBattleDamage(integer player, integer value)|把玩家player在本次战斗中收到的伤害变成value
+ChangeTarget(integer chainc, Group g)|把连锁chainc的对象换成g
+ChangeTargetPlayer(integer chainc, integer player)|把连锁chainc的对象玩家换成player
+ChangeTargetParam(integer chainc, integer param)|把连锁chainc的对象参数换成param
+BreakEffect()|中断当前效果，使之后的效果处理视为不同时处理。此函数会造成错时点。
+ChangeChainOperation(integer chainc, function f)|把连锁chainc的效果的处理函数换成f。用于实现“把效果变成”等的效果
+NegateActivation(integer chainc)|使连锁chainc的发动无效
+NegateEffect(integer chainc)|使连锁chainc的效果无效
+NegateSummon(Card c)|使正在召唤，反转召唤，特殊召唤的c的召唤无效
+IncreaseSummonCount()|本回合的通常召唤限制计数+1
+CheckSummonCount()|检查回合玩家本回合的通常召唤限制计数。
+GetLocationCount(integer player, integer location)|返回玩家player的指定场地location剩余的空格数。location只能是LOCATION_MZONE或者LOCATION_SZONE。
+GetFieldCard(integer controler, integer location, integer sequence)|返回指定玩家指定地点指定序号的卡
+GetCurrentChain()|返回当前正在处理的连锁序号
+Duel.GetChainInfo(integer chainc, ...)|返回连锁chainc的信息。如果chainc=0，则返回当前正在处理的连锁的信息。
+GetCurrentPhase()|返回当前的阶段
+SkipPhase(integer player, integer phase, integer reset_flag, integer reset_count)|跳过玩家player的phase阶段，并在特定的阶段后reset。reset参数和效果相同。
+IsDamageCalculated()|用于在伤害阶段检查是否已经计算了战斗伤害。
+GetAttacker()|返回此次战斗攻击的卡
+GetAttackTarget()|返回此次战斗被攻击的卡。如果返回nil表示是直接攻击。
+DisableAttack()|使本次攻击无效
+ChainAttack()|使攻击卡再进行一次连续攻击（开辟，破灭的女王）
+Readjust()|刷新场上的卡的信息。非特定情况或者不清楚原理请勿使用此函数以免形成死循环。
+GetFieldGroup(integer player, integer s, integer o)|返回指定位置的卡。s指对玩家player来说的己方的位置，o指对玩家player来说的对方的位置。
+GetFieldGroupCount(integer player, integer s, integer o)|同上，返回值变成卡的数量
+GetDecktopGroup(integer player, integer count)|返回玩家player的卡组最上方的count张卡
+GetMatchingGroup(function f, integer player, integer s, integer o, Card ex, ...)|过滤函数，返回指定位置满足过滤条件f并且不等于ex的卡。第6个参数开始为额外参数。
+GetMatchingGroupCount(function f, integer player, integer s, integer o, Card ex, ...)|同上，返回值变成符合的卡的数量。
+GetFirstMatchingCard(function f, integer player, integer s, integer o, Card ex, ...)|过滤函数，返回指定位置满足过滤条件f并且不等于ex的第一张卡。第6个参数开始为额外参数。
+IsExistingMatchingCard(function f, integer player, integer s, integer o, integer count, Card ex, ...)|过滤函数，检查指定位置是否存在至少count张满足过滤条件f并且不等于ex的卡。第7个参数开始为额外参数。
+SelectMatchingCard(integer sel_player, function f, integer player, integer s, integer o, integer min, integer max, Card ex, ...)|过滤函数，让玩家sel_player选择指定位置满足过滤条件f并且不等于ex的min-max张卡。第9个参数开始为额外参数。
+GetReleaseGroup(integer player)|返回玩家player可解放（非上级召唤用)的卡片组
+GetReleaseGroupCount(integer player)|返回玩家player可解放（非上级召唤用)的卡片数量
+ChecktReleaseGroup(integer player, function f, integer count, Card ex, ...)|过滤函数，检查玩家player是否存在至少count张不等于ex的满足条件f的可解放的卡
+SelectReleaseGroup(integer player, function f, integer min, integer max, Card ex, ...)|过滤函数，让玩家player选择min-max张不等于ex的满足条件f的可解放的卡并返回
+GetTributeGroup(Card c)|返回用于通常召唤c可解放（上级召唤用)的卡片组
+GetTributeCount(Card c)|返回用于通常召唤c的祭品数量。此数量不一定等于上一个函数的返回值中的卡片数量。因为某些卡可以作为两个祭品来使用。
+SelectTribute(integer player, Card c, integer min, integer max)|让玩家player选择用于通常召唤c的min-max个祭品。
+GetTargetCount(function f, integer player, integer s, integer o, Card ex, ...)|基本同Duel.GetMatchingGroupCount，不同之处在于需要追加判定卡片是否能成为当前正在处理的效果的对象。
+IsExistingTarget(function f, integer player, integer s, integer o, integer count, Card ex, ...)|过滤函数，检查指定位置是否存在至少count张满足过滤条件f并且不等于ex并且可以成为当前正在处理的效果的对象的卡。第7个参数开始为额外参数。
+SelectTarget(integer sel_player, function f, integer player, integer s, integer o, integer min, integer max, Card ex, ...)|过滤函数，让玩家sel_player选择指定位置满足过滤条件f并且不等于ex并且可以成为当前正在处理的效果的对象的min-max张卡。第9个参数开始为额外参数。此函数会同时酱当前正在处理的连锁的对象设置成选择的卡
+SelectFusionMaterial(integer player, Card c, Group g)|让玩家player从g中选择一组满足c的融合素材的卡
+SetFusionMaterial(Group g)|设置g为需要使用的融合素材
+SetSynchroMaterial(Group g)|设置g为需要使用的同调素材
+SelectSynchroMaterial(integer player, Card c, function f1, function f2, integer min)|让玩家选择用于同调c需要的满足条件的数量至少是min的一组素材。f1是调整需要满足的过滤条件。f2是调整以外的部分需要满足的过滤条件。
+CheckSynchroMaterial(Card c, function f1, function f2, integer min)|检查是否存在一组满足条件的卡作为同调召唤c的素材。f1,f2,min同上。
+SelectTunerMaterial(integer player, Card c, Card tuner, function f1, function f2, integer min)|让玩家选择用于同调c需要的满足条件的以tuner作为调整的数量至少是min的一组素材。f1是调整需要满足的过滤条件。f2是调整以外的部分需要满足的过滤条件。
+CheckTunerMaterial(Card c, Card tuner, function f1, function f2, integer min)|检查以tuner作为调整是否存在一组满足条件的卡作为同调召唤c的素材。f1,f2,min同上。
+GetRitualMaterial(integer player)|返回玩家player可用的用于仪式召唤素材的卡片组。包含手上，场上可解放的以及墓地的仪式魔人等卡。
+ReleaseRitualMaterial(Group g)|解放仪式用的素材g。如果是墓地的仪式魔人等卡则除外。
+SetTargetCard(Group g)|把当前正在处理的连锁的对象设置成g。
+SetTargetPlayer(integer player)|把当前正在处理的连锁的对象玩家设置成player。
+SetTargetParam(integer param)|把当前正在处理的连锁的对象参数设置成param。
+SetOperationInfo(integer chainc, integer category, Card|Group targets, integer count, integer target_player, integer target_param)|设置当前处理的连锁的操作信息。此操作信息包含了效果处理中确定要处理的效果分类。比如潜行狙击手需要设置CATEGORY_DICE，但是不能设置CATEGORY_DESTROY，因为不确定。对于破坏效果，targets需要设置成发动时可能成为连锁的影响对象的卡，并设置count为发动时确定的要处理的卡的数量。比如黑洞发动时，targets需要设定为场上的所有怪物，count设置成场上的怪的数量。对于CATEGORY_SPECIAL_SUMMON,CATEGORY_TOHAND,CATEGORY_TODECK等分类，如果取对象则设置targets为对象，count为对象的数量；如果不取对象则设置targets为nil,count为预计要处理的卡的数量，并设置target_param为预计要处理的卡的位置。例如增援：SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,LOCATION_DECK)。操作信息用于很多效果的发动的检测，例如星尘龙，王家沉眠之谷等。
+Duel.GetOperationInfo(integer chainc, integer category)|返回连锁chainc的category分类的操作信息。返回值为5个，第一个返回值是false的话表示不存在该分类。后4个返回值对应上一个函数的后4个参数。
+GetOperationCount(integer chainc)|返回连锁chainc包含的操作分类的数量
+GetExceedMaterial(Card c)|返回c的超量素材
+Overlay(Card c, Card|Group ocard)|把ocard作为c的叠放卡叠放
+GetOverlayGroup(integer player, integer s, integer o)|返回指定位置的所有叠放的卡
+GetOverlayCount(integer player, integer s, integer o)|返回指定位置的所有叠放的卡的数量
+RemoveOverlayCard(integer player, integer s, integer o, integer min, integer max, integer reason)|以reason原因移除指定位置的min-max张叠放卡
+Hint(integer player, integer desc)|给玩家发送内置消息提示
+SelectEffectYesNo(integer player, integer code)|让玩家选择是否发动卡的效果
+SelectYesNo(integer player, integer desc)|让玩家选择是或否
+SelectOption(integer player, ...)|让玩家选择选项。从第二个参数开始，每一个参数代表一条选项。返回选择的选项的序号。
+SelectDisableField(integer player, integer count, integer s, integer o, integer filter)|让玩家player选择指定位置的count个位置不能使用。
+AnnounceRace(integer player, integer count, integer available)|让玩家player从可选的种族中宣言count个种族。available是所有可选种族的组合值。
+AnnounceAttribute(integer player, integer count, integer available)|让玩家player从可选的属性中宣言count个属性。available是所有可选属性的组合值。
+AnnounceCard(integer player)|让玩家player宣言一个卡片代号。
+AnnounceType(integer player)|让玩家player宣言一个卡片类型。
+AnnounceNumber(integer player, ...)|让玩家player宣言一个数字。从第二个参数开始，每一个参数代表一个可宣言的数字。返回选择的选项的序号。
+AnnounceCoin(integer player)|让玩家player宣言硬币的正反面。
+Duel.TossCoin(integer player, integer count)|让玩家player投count次硬币。返回值为count个结果。结果是0或者1.
+Duel.TossDice(integer player, integer count)|让玩家player投count次骰子。返回值为count个结果。结果是1-6.
+SetCoinResult( ... )|强行修改投硬币的结果。此函数用于永续的EVENT_TOSS_COIN事件中
+SetDiceResult( ... )|强行修改投骰子的结果。此函数用于永续的EVENT_TOSS_DICE事件中
+IsPlayerAffectByEffect(integer player, integer code)|检查玩家player是否受特性效果的影响
+IsPlayerCanDraw(integer player)|检查玩家player是否可以效果抽卡
+IsPlayerCanDiscardDeck(integer player)|检查玩家player是否可以把卡组顶端的卡送去墓地
+IsPlayerCanDiscardDeckAdCost(integer player, int count)|检查玩家player是否可以把卡组顶端的卡送去墓地作为cost。当卡组没有足够数量的卡，或者当卡组中的卡受到送墓转移效果的影响时（如大宇宙，次元裂缝，即使不是全部）此函数会返回false
+IsPlayerCanSummon(integer player, integer sumtype, Card c)|检查玩家player是否可以以sumtype方式通常召唤c。仅当玩家收到“不能上级召唤”等效果的影响时返回false。
+IsPlayerCanFlipSummon(integer player, Card c)|检查玩家player是否可以反转召唤c。
+IsPlayerCanSpecialSummonMonster(integer player, integet code, integer setcode, integer attack, integer defence integer level, integer race, integer attribute, [integer pos=POS_FACEUP, integer target_player=player])|检查玩家player是否可以以pos的表示形式特殊召唤特定属性值的怪物到target_player场上。此函数通常用于判定是否可以特招token和陷阱怪物。
+IsPlayerCanRelease(integer player, Card c)|检查玩家是否能解放c
+IsPlayerCanRemove(integer player, Card c)|检查玩家是否能除外c
+IsPlayerCanSendtoHand(integer player, Card c)|检查玩家是否能把c送去手牌
+IsPlayerCanSendtoGrave(integer player, Card c)|检查玩家是否能把c送去墓地
+IsPlayerCanSendtoDeck(integer player, Card c)|检查玩家是否能把c送去卡组
+IsChainInactivatable(integer chainc)|检查连锁chainc的发动是否可以被无效化
+IsChainDisablable(integer chainc)|检查连锁chainc的效果是否可以被无效化
+CheckChainTarget(integer chainc, Card c)|检查c是否是连锁chainc的正确的对象
+CheckChainUniqueness()|检查当前连锁中是否存在同名卡的发动。true表示无同名卡。
+SwapDeckAndGrave(integer player)|现世与冥界的逆转专用。把玩家player的卡组和墓地交换
+CheckSummonActivity(integer player)|检查玩家player本回合有没有进行过召唤的行为。召唤被无效视作进行过召唤行为。
+CheckNormalSummonActivity(integer player)|检查玩家player本回合有没有进行过通常召唤的行为。包括召唤和set
+CheckFlipSummonActivity(integer player)|检查玩家player本回合有没有进行过反转召唤的行为。
+CheckFlipSummonActivity(integer player)|检查玩家player本回合有没有进行过特殊召唤的行为。特殊召唤的行为包括：进行了入连锁和不入连锁的特殊召唤；发动了确定要特殊召唤的效果但是效果被无效。不包括：发动了确定要特殊召唤的效果但是发动被无效
+CheckAttackActivity(integer player)|检查玩家player本回合有没有进行过攻击。
+Effect.SetHintTiming(integer time)|设置效果发动额外提示时点。
+SetHintTiming(integer time)|设置效果发动额外提示时点。
