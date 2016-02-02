@@ -79,6 +79,7 @@
             <ToolBar Height="24" ToolBarTray.IsLocked="True">
                 <Button Command="{Binding OpenCDBCmd}">打开CDB</Button>
                 <Button Command="{Binding AddNewCmd}">新建卡片</Button>
+                <Button Command="{Binding CreateNewCDBCmd}">新建CDB</Button>
             </ToolBar>
         </ToolBarTray>
         <Grid DockPanel.Dock="Bottom" Margin="0,2,0,0" >

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="d:\program files (x86)\microsoft visual studio 12.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
-<FxCopReport Version="12.0">
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
  <Targets>
-  <Target Name="D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe">
+  <Target Name="D:\GitHub\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe">
    <Modules>
     <Module Name="ygoprodevelop.exe">
      <Namespaces>
@@ -12,8 +12,8 @@
          <Members>
           <Member Name="#.ctor(YGOProDevelop.Service.ICDBService,ExDialogService.IExDialogService)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-29 02:09:34Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalWarning" Path="d:\Projects\YGOProDevelop\YGOProDevelop\ViewModel" File="CardListViewModel.cs" Line="27">'CardListViewModel.CardListViewModel(ICDBService, IExDialogService)' 包含调用链，该调用链导致调用此类所定义的虚方法。请检查以下调用堆栈，看是否有意外结果: &#xD;&#xA;&#xD;&#xA;CardListViewModel..ctor(ICDBService, IExDialogService)&#xD;&#xA;DockableViewModelBase.set_ContentId(String):Void&#xD;&#xA;CardListViewModel.ResetSearch():Void&#xD;&#xA;CardListViewModel.set_QueryResult(ObservableCollection&lt;datas&gt;):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged(String):Void。</Issue>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-02-02 14:45:34Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="D:\GitHub\YGOProDevelop\YGOProDevelop\ViewModel" File="CardListViewModel.cs" Line="27">'CardListViewModel.CardListViewModel(ICDBService, IExDialogService)' 包含调用链，该调用链导致调用此类所定义的虚方法。请检查以下调用堆栈，看是否有意外结果: &#xD;&#xA;&#xD;&#xA;CardListViewModel..ctor(ICDBService, IExDialogService)&#xD;&#xA;DockableViewModelBase.set_ContentId(String):Void&#xD;&#xA;CardListViewModel.ResetSearch():Void&#xD;&#xA;CardListViewModel.set_QueryResult(ObservableCollection&lt;datas&gt;):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged(String):Void。</Issue>
             </Message>
            </Messages>
           </Member>
@@ -23,8 +23,8 @@
          <Members>
           <Member Name="#.ctor(YGOProDevelop.Service.IHighlightSettingService,ExDialogService.IExDialogService)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-29 02:09:34Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalWarning" Path="d:\Projects\YGOProDevelop\YGOProDevelop\ViewModel" File="MainViewModel.cs" Line="42">'MainViewModel.MainViewModel(IHighlightSettingService, IExDialogService)' 包含调用链，该调用链导致调用此类所定义的虚方法。请检查以下调用堆栈，看是否有意外结果: &#xD;&#xA;&#xD;&#xA;MainViewModel..ctor(IHighlightSettingService, IExDialogService)&#xD;&#xA;MainViewModel.ReOpenDocument():Void&#xD;&#xA;MainViewModel.OpenDocument(String):Void&#xD;&#xA;MainViewModel.set_ActiveViewModel(ViewModelBase):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged&lt;T&gt;(Expression&lt;Func&lt;T&gt;&gt;):Void。</Issue>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-02-02 14:45:34Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="D:\GitHub\YGOProDevelop\YGOProDevelop\ViewModel" File="MainViewModel.cs" Line="42">'MainViewModel.MainViewModel(IHighlightSettingService, IExDialogService)' 包含调用链，该调用链导致调用此类所定义的虚方法。请检查以下调用堆栈，看是否有意外结果: &#xD;&#xA;&#xD;&#xA;MainViewModel..ctor(IHighlightSettingService, IExDialogService)&#xD;&#xA;MainViewModel.ReOpenDocument():Void&#xD;&#xA;MainViewModel.OpenDocument(String):Void&#xD;&#xA;MainViewModel.set_ActiveViewModel(ViewModelBase):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged&lt;T&gt;(Expression&lt;Func&lt;T&gt;&gt;):Void。</Issue>
             </Message>
            </Messages>
           </Member>
@@ -46,7 +46,7 @@
    <Url>http://msdn.microsoft.com/library/ms182331.aspx</Url>
    <Email>[none]</Email>
    <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
-   <File Name="usagerules.dll" Version="12.0.0.0" />
+   <File Name="usagerules.dll" Version="14.0.0.0" />
   </Rule>
  </Rules>
  <Localized>

@@ -14,8 +14,8 @@ namespace YGOProDevelop.Service {
         public static cardsEntities ce = new cardsEntities();
 
         public void Open(string filePath) {
-            if(File.Exists(filePath) == false)
-                throw new FileNotFoundException(filePath +"找不到了！");
+            if (File.Exists(filePath) == false)
+                throw new FileNotFoundException(filePath + "找不到了！");
             ce.Database.Connection.ConnectionString = "data source=" + filePath;
         }
 
@@ -25,7 +25,7 @@ namespace YGOProDevelop.Service {
                 return ce;
             }
             set {
-                
+
             }
         }
 
@@ -58,7 +58,7 @@ namespace YGOProDevelop.Service {
         /// </summary>
         public int Save() {
             //保存cdb数据
-            return  ce.SaveChanges();
+            return ce.SaveChanges();
         }
 
         public bool IsIDExisted(long id) {
@@ -71,7 +71,7 @@ namespace YGOProDevelop.Service {
         /// </summary>
         public void DiscardAllChanged() {
             var entries = ce.ChangeTracker.Entries();
-            foreach(var e in entries) {
+            foreach (var e in entries) {
                 e.ReloadAsync();
             }
         }
@@ -114,6 +114,48 @@ namespace YGOProDevelop.Service {
             var result = from c in Datas.datas
                          select c;
             return result.ToList();
+        }
+
+        public void CreateNewCDB(string fileName) {
+            cardsEntities ce1 = new cardsEntities();
+            ce1.Database.Connection.ConnectionString = "data source=" + fileName;
+            ce1.Database.Connection.Open();
+            ce1.Database.Initialize(true);
+            ce1.Database.ExecuteSqlCommand(@"CREATE TABLE [datas] (
+                                              [id] integer PRIMARY KEY, 
+                                              [ot] integer, 
+                                              [alias] integer, 
+                                              [setcode] integer, 
+                                              [type] integer, 
+                                              [atk] integer, 
+                                              [def] integer, 
+                                              [level] integer, 
+                                              [race] integer, 
+                                              [attribute] integer, 
+                                              [category] integer);
+                                            
+                                            
+                                            CREATE TABLE [texts] (
+                                              [id] integer PRIMARY KEY CONSTRAINT [datas_id] REFERENCES [datas]([id]) MATCH FULL, 
+                                              [name] varchar(128), 
+                                              [desc] varchar(1024), 
+                                              [str1] varchar(256), 
+                                              [str2] varchar(256), 
+                                              [str3] varchar(256), 
+                                              [str4] varchar(256), 
+                                              [str5] varchar(256), 
+                                              [str6] varchar(256), 
+                                              [str7] varchar(256), 
+                                              [str8] varchar(256), 
+                                              [str9] varchar(256), 
+                                              [str10] varchar(256), 
+                                              [str11] varchar(256), 
+                                              [str12] varchar(256), 
+                                              [str13] varchar(256), 
+                                              [str14] varchar(256), 
+                                              [str15] varchar(256), 
+                                              [str16] varchar(256));");
+            ce1.SaveChanges();
         }
     }
 }

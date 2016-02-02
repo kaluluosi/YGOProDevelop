@@ -233,6 +233,26 @@ namespace YGOProDevelop.ViewModel {
                     }));
             }
         }
+
+
+        private RelayCommand _createNewCDBCmd;
+
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public RelayCommand CreateNewCDBCmd {
+            get {
+                return _createNewCDBCmd
+                    ?? (_createNewCDBCmd = new RelayCommand(
+                    () => {
+                        SaveFileDialog saveDlg = new SaveFileDialog();
+                        saveDlg.Filter = "CDB文件|*.cdb";
+                        if(saveDlg.ShowDialog() == true) {
+                            _cdbService.CreateNewCDB(saveDlg.FileName);
+                        }
+                    }));
+            }
+        }
         #endregion
 
         /// <summary>

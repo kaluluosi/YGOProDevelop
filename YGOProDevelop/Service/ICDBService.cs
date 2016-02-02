@@ -20,5 +20,7 @@ namespace YGOProDevelop.Service
         List<datas> Search(string keyword);
         List<datas> Search(long id);
         cardsEntities Datas { get; set; }
+
+        void CreateNewCDB(string fileName);
     }
 }
