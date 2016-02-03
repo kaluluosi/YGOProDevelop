@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ArrayOfVarItem>
+	<VarItem Description="无" Value="0" MultiSelect="false"/>
+	<VarItem Description="战士" Value="1" MultiSelect="false" Tips="无"/>
+	<VarItem Description="魔法师" Value="2" MultiSelect="false"/>
+	<VarItem Description="天使" Value="4" MultiSelect="false"/>
+	<VarItem Description="恶魔" Value="8" MultiSelect="false"/>
+	<VarItem Description="不死" Value="16" MultiSelect="false"/>
+	<VarItem Description="机械" Value="32" MultiSelect="false"/>
+	<VarItem Description="水" Value="64" MultiSelect="false"/>
+	<VarItem Description="炎" Value="128" MultiSelect="false"/>
+	<VarItem Description="岩石" Value="256" MultiSelect="false"/>
+	<VarItem Description="鸟兽" Value="512" MultiSelect="false"/>
+	<VarItem Description="植物" Value="1024" MultiSelect="false"/>
+	<VarItem Description="昆虫" Value="2048" MultiSelect="false"/>
+	<VarItem Description="雷" Value="4096" MultiSelect="false"/>
+	<VarItem Description="龙" Value="8192" MultiSelect="false"/>
+	<VarItem Description="兽" Value="16384" MultiSelect="false"/>
+	<VarItem Description="兽战士" Value="32768" MultiSelect="false"/>
+	<VarItem Description="恐龙" Value="65536" MultiSelect="false"/>
+	<VarItem Description="鱼" Value="131072" MultiSelect="false"/>
+	<VarItem Description="海龙" Value="262144" MultiSelect="false"/>
+	<VarItem Description="爬虫" Value="524288" MultiSelect="false"/>
+	<VarItem Description="念动力" Value="1048576" MultiSelect="false"/>
+	<VarItem Description="幻神兽" Value="2097152" MultiSelect="false"/>
+	<VarItem Description="创造神" Value="4194304" MultiSelect="false"/>
+</ArrayOfVarItem>
