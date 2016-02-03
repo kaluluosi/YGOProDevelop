@@ -30,7 +30,7 @@
     <InstallUrl>https://github.com/kaluluosi/YGOProDevelop/blob/master/Publish/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -305,7 +305,6 @@
     <Content Include="pics\27551.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="YGOProDevelop_TemporaryKey.pfx" />
     <Resource Include="Resources\Icon\save_all-48.png" />
     <Resource Include="Resources\Icon\file-48.png" />
     <Resource Include="Resources\Icon\opened_folder_filled-50.png" />
