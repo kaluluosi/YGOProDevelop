@@ -88,3 +88,7 @@ D:\Projects\YGOProDevelop\YGOProDevelop\obj\Release\YGOProDevelop.Properties.Res
 D:\Projects\YGOProDevelop\YGOProDevelop\obj\Release\YGOProDevelop.csproj.GenerateResource.Cache
 D:\Projects\YGOProDevelop\YGOProDevelop\obj\Release\YGOProDevelop.exe
 D:\Projects\YGOProDevelop\YGOProDevelop\obj\Release\YGOProDevelop.pdb
+D:\Projects\YGOProDevelop\YGOProDevelop\bin\Release\YGOProDevelop.exe.manifest
+D:\Projects\YGOProDevelop\YGOProDevelop\bin\Release\YGOProDevelop.application
+D:\Projects\YGOProDevelop\YGOProDevelop\obj\Release\YGOProDevelop.exe.manifest
+D:\Projects\YGOProDevelop\YGOProDevelop\obj\Release\YGOProDevelop.application
