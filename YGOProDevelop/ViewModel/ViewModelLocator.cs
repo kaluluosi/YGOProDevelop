@@ -32,10 +32,9 @@ namespace YGOProDevelop.ViewModel {
 
             //注册服务
             SimpleIoc.Default.Register<ExDialogService.IExDialogService,ExDialogService.DefaultDialogService>();
-            SimpleIoc.Default.Register<IHighlightSettingService, DefaultHighlightSettingService>();
-            SimpleIoc.Default.Register<IIntelisenceService, SmartIntelisenceService>();
+            SimpleIoc.Default.Register<IHighlightSettingService>(()=>new DefaultHighlightSettingService(@"Data\Highlight"));
+            SimpleIoc.Default.Register<IIntelisenceService>(() =>new SmartIntelisenceService(@"data\Intelisence"));
             SimpleIoc.Default.Register<ICDBService, CDBService>();
-            //             SimpleIoc.Default.Register<SettingsBase>(() => Properties.Settings.Default);
 
             //注册ViewModel
             SimpleIoc.Default.Register<IDInputViewModel>();

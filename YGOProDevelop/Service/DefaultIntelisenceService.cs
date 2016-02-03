@@ -10,7 +10,13 @@ using ICSharpCode.AvalonEdit.Highlighting;
 
 namespace YGOProDevelop.Service {
     public class DefaultIntelisenceService : IIntelisenceService {
+
+        public DefaultIntelisenceService(string cfgPath) {
+            _cfgPath = cfgPath;
+        }
+
         private IList<ICompletionData> datas;
+        private  string _cfgPath;
 
         public IList<ICompletionData> GetCompletionDatas(IHighlightingDefinition language) {
             if (language == null) return null;
@@ -18,7 +24,7 @@ namespace YGOProDevelop.Service {
 
             datas = new List<ICompletionData>();
             //以后ecp格式改用自己定义的xml格式
-            string path = @"data\Intelisence\{0}\{1}.ecp";
+            string path = _cfgPath;
             using (StreamReader sr = new StreamReader(string.Format(path, language.Name, language.Name))) {
                 while (sr.EndOfStream == false) {
                     string line = sr.ReadLine();

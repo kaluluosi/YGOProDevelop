@@ -415,14 +415,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="YGOProDevelop.exe" size="4648960">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="YGOProDevelop.exe" size="4649472">
       <assemblyIdentity name="YGOProDevelop" version="0.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ss0zu/yKtNA6k8vfr7j5GON5u7Ud9TJV8JQEyQOCy1E=</dsig:DigestValue>
+        <dsig:DigestValue>Ww16eSIew3jzSZg4VxAuztDO396azMfdo4Fl3QNwDek=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

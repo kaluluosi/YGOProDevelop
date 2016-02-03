@@ -13,6 +13,11 @@ using System.Windows.Media.Imaging;
 namespace YGOProDevelop.Service {
     public class SmartIntelisenceService:IIntelisenceService {
         private Dictionary<IHighlightingDefinition, IList<ICompletionData>> dataDict = new Dictionary<IHighlightingDefinition, IList<ICompletionData>>();
+        private string _cfgPath;
+
+        public SmartIntelisenceService(string cfgPath) {
+            _cfgPath = cfgPath;
+        }
 
         public IList<ICompletionData> GetCompletionDatas(IHighlightingDefinition language) {
             if (language == null) return null;
@@ -20,7 +25,7 @@ namespace YGOProDevelop.Service {
             dataDict.Add(language, new List<ICompletionData>());
             var datas = dataDict[language];
             //以后ecp格式改用自己定义的xml格式
-            string path = @"data\Intelisence\"+language.Name;
+            string path = Path.Combine( _cfgPath,language.Name);
 
             if (Directory.Exists(path) == false) return datas;
 
