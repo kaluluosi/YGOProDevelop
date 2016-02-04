@@ -8,10 +8,10 @@ D:\Projects\YGOProDevelop\YGOProDevelop\obj\Release\
 YGOProDevelop
 none
 false
-TRACE
+DEBUG;TRACE
 D:\Projects\YGOProDevelop\YGOProDevelop\App.xaml
 71382459206
-14781354176
+15655080105
 421066639645
 87-1156201121
 View\AboutWindow.xaml;View\CardEditView.xaml;View\CardListView.xaml;View\IDInputView.xaml;View\MainWindow.xaml;View\DocumentView.xaml;View\PreferencesView.xaml;

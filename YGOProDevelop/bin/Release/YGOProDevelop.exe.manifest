@@ -415,14 +415,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="YGOProDevelop.exe" size="4649472">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="YGOProDevelop.exe" size="4648960">
       <assemblyIdentity name="YGOProDevelop" version="0.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Ww16eSIew3jzSZg4VxAuztDO396azMfdo4Fl3QNwDek=</dsig:DigestValue>
+        <dsig:DigestValue>6JD9u0L3TVzQeAhYfX1lmfU3bqYYxoUJb64sta7uGOs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -561,13 +561,13 @@
       <dsig:DigestValue>IbbrY439ecP2xKhVrhvwmnA7XkU+nzjJxZlPTifSfmE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="YGOProDevelop.exe.config" size="4118">
+  <file name="YGOProDevelop.exe.config" size="4117">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>/zqJgVZT/qWo+L/R7uzLLHEHjxj3a0Wfy0yVTSSDlsE=</dsig:DigestValue>
+      <dsig:DigestValue>1a8VP8Gp2q0oW4bNS9YBAQsFtSa72V4JIpA+BjVPzS0=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

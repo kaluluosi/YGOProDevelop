@@ -105,8 +105,27 @@ namespace YGOProDevelop.Service {
             datas d = Datas.datas.Create();
             d.texts = Datas.texts.Create();
             d.id = d.texts.id = id;
-            d.texts.desc = "";
+
+            //DataEditor对文本为空的字段没做兼容，会报错，所以要为字符字段初始化为空字符串。
+            d.texts.desc = string.Empty;
             d.texts.name = "未命名";
+            d.texts.str1 =  string.Empty;
+            d.texts.str2 =  string.Empty;
+            d.texts.str3 =  string.Empty;
+            d.texts.str4 =  string.Empty;
+            d.texts.str5 =  string.Empty;
+            d.texts.str6 =  string.Empty;
+            d.texts.str7 =  string.Empty;
+            d.texts.str8 =  string.Empty;
+            d.texts.str9 =  string.Empty;
+            d.texts.str10 = string.Empty;
+            d.texts.str11 = string.Empty;
+            d.texts.str12 = string.Empty;
+            d.texts.str13 = string.Empty;
+            d.texts.str14 = string.Empty;
+            d.texts.str15 = string.Empty;
+            d.texts.str16 = string.Empty;
+
             return d;
         }
 

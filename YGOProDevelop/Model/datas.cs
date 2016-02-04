@@ -19,16 +19,16 @@ namespace YGOProDevelop.Model
     public partial class datas : ObservableObject
     {
         public long id { get; set; }
-        public Nullable<long> ot { get; set; }
-        public Nullable<long> alias { get; set; }
-        public Nullable<long> setcode { get; set; }
-        public Nullable<long> type { get; set; }
-        public Nullable<long> atk { get; set; }
-        public Nullable<long> def { get; set; }
-        public Nullable<long> level { get; set; }
-        public Nullable<long> race { get; set; }
-        public Nullable<long> attribute { get; set; }
-        public Nullable<long> category { get; set; }
+        public Int64 ot { get; set; }
+        public Int64 alias { get; set; }
+        public Int64 setcode { get; set; }
+        public Int64 type { get; set; }
+        public Int64 atk { get; set; }
+        public Int64 def { get; set; }
+        public Int64 level { get; set; }
+        public Int64 race { get; set; }
+        public Int64 attribute { get; set; }
+        public Int64 category { get; set; }
 
         public virtual texts texts { get; set; }
 
@@ -36,12 +36,12 @@ namespace YGOProDevelop.Model
         //为了支持灵摆，要重写level
         public short Left {
             get {
-                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                byte[] bytes = BitConverter.GetBytes(level);
                 short l = bytes[2];
                 return l;
             }
             set {
-                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                byte[] bytes = BitConverter.GetBytes(level);
                 bytes[2] = (byte)value;
                 level = BitConverter.ToInt32(bytes, 0);
             }
@@ -49,12 +49,12 @@ namespace YGOProDevelop.Model
 
         public short Right {
             get {
-                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                byte[] bytes = BitConverter.GetBytes(level);
                 short r = bytes[3];
                 return r;
             }
             set {
-                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                byte[] bytes = BitConverter.GetBytes(level);
                 bytes[3] = (byte)value;
                 level = BitConverter.ToInt32(bytes, 0);
             }
@@ -62,12 +62,12 @@ namespace YGOProDevelop.Model
 
         public long Level {
             get {
-                byte[] bytes = BitConverter.GetBytes(level ?? 0);
+                byte[] bytes = BitConverter.GetBytes(level);
                 short lv = BitConverter.ToInt16(bytes, 0);
                 return lv;
             }
             set {
-                byte[] bytes = BitConverter.GetBytes(level??0);
+                byte[] bytes = BitConverter.GetBytes(level);
                 byte[] vbs = BitConverter.GetBytes(value);
                 bytes[0] = vbs[0];
                 bytes[1] = vbs[1];
@@ -77,31 +77,31 @@ namespace YGOProDevelop.Model
 
         public VarItem SetCode1 {
             get {
-                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                byte[] bytes = BitConverter.GetBytes(setcode);
                 var setcode1 = BitConverter.ToInt16(bytes, 0);
-                return SettingConfig.SetCodes.FirstOrDefault(v=>v.Value==setcode1);
+                return SettingConfig.SetCodes.FirstOrDefault(v => v.Value == setcode1);
             }
             set {
                 var setcode1 = (short)value.Value;
                 byte[] sbs = BitConverter.GetBytes(setcode1);
-                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                byte[] bytes = BitConverter.GetBytes(setcode);
                 bytes[0] = sbs[0];
                 bytes[1] = sbs[1];
-                setcode = BitConverter.ToInt64(bytes.ToArray(),0);
+                setcode = BitConverter.ToInt64(bytes.ToArray(), 0);
             }
 
         }
 
         public VarItem SetCode2 {
             get {
-                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                byte[] bytes = BitConverter.GetBytes(setcode);
                 var setcode2 = BitConverter.ToInt16(bytes, 2);
                 return SettingConfig.SetCodes.FirstOrDefault(v => v.Value == setcode2);
             }
             set {
                 var setcode2 = (short)value.Value;
                 byte[] sbs = BitConverter.GetBytes(setcode2);
-                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                byte[] bytes = BitConverter.GetBytes(setcode);
                 bytes[2] = sbs[0];
                 bytes[3] = sbs[1];
                 setcode = BitConverter.ToInt64(bytes.ToArray(), 0);
@@ -112,14 +112,14 @@ namespace YGOProDevelop.Model
 
         public VarItem SetCode3 {
             get {
-                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                byte[] bytes = BitConverter.GetBytes(setcode);
                 var setcode3 = BitConverter.ToInt16(bytes, 4);
                 return SettingConfig.SetCodes.FirstOrDefault(v => v.Value == setcode3);
             }
             set {
                 var setcode3 = (short)value.Value;
                 byte[] sbs = BitConverter.GetBytes(setcode3);
-                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                byte[] bytes = BitConverter.GetBytes(setcode);
                 bytes[4] = sbs[0];
                 bytes[5] = sbs[1];
                 setcode = BitConverter.ToInt64(bytes.ToArray(), 0);
@@ -130,14 +130,14 @@ namespace YGOProDevelop.Model
 
         public VarItem SetCode4 {
             get {
-                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                byte[] bytes = BitConverter.GetBytes(setcode);
                 var setcode4 = BitConverter.ToInt16(bytes, 6);
                 return SettingConfig.SetCodes.FirstOrDefault(v => v.Value == setcode4);
             }
             set {
                 var setcode4 = (short)value.Value;
                 byte[] sbs = BitConverter.GetBytes(setcode4);
-                byte[] bytes = BitConverter.GetBytes(setcode ?? 0);
+                byte[] bytes = BitConverter.GetBytes(setcode);
                 bytes[6] = sbs[0];
                 bytes[7] = sbs[1];
                 setcode = BitConverter.ToInt64(bytes.ToArray(), 0);
@@ -147,7 +147,7 @@ namespace YGOProDevelop.Model
 
         public VarItem Ot {
             get {
-                var item = SettingConfig.Ots.FirstOrDefault(v => v.Value == (ot ?? 0));
+                var item = SettingConfig.Ots.FirstOrDefault(v => v.Value == ot);
                 return item;
             }
             set {
@@ -159,7 +159,7 @@ namespace YGOProDevelop.Model
 
         public VarItem Attribute {
             get {
-                return SettingConfig.Attributes.FirstOrDefault(v => v.Value == (attribute ?? 0));
+                return SettingConfig.Attributes.FirstOrDefault(v => v.Value == attribute);
             }
             set {
                 attribute = value.Value;
@@ -169,7 +169,7 @@ namespace YGOProDevelop.Model
 
         public List<VarItem> Type {
             get {
-                return SettingConfig.Types.FindAll(v => v.BeContainedIn(type ?? 0));
+                return SettingConfig.Types.FindAll(v => v.BeContainedIn(type));
             }
 
             set {
@@ -187,7 +187,7 @@ namespace YGOProDevelop.Model
 
         public List<VarItem> Category {
             get {
-                return SettingConfig.Categorys.FindAll(v => v.BeContainedIn(category ?? 0));
+                return SettingConfig.Categorys.FindAll(v => v.BeContainedIn(category));
             }
             set {
                 category = VarItem.MergeValue(value);
@@ -196,7 +196,7 @@ namespace YGOProDevelop.Model
 
         public VarItem Race {
             get {
-                return SettingConfig.Races.FirstOrDefault(v => v.Value == (race ?? 0)) ?? VarItem.Default;
+                return SettingConfig.Races.FirstOrDefault(v => v.Value == race) ?? VarItem.Default;
             }
             set {
                 race = value.Value;
@@ -205,13 +205,10 @@ namespace YGOProDevelop.Model
 
         public CardType CardType {
             get {
-                if(type != null) {
-                    if(((int)type & 1) == 1)
-                        return CardType.Monster;
-                    else
-                        return CardType.Spell;
-                }
-                return CardType.Monster;
+                if(((int)type & 1) == 1)
+                    return CardType.Monster;
+                else
+                    return CardType.Spell;
             }
         }
 

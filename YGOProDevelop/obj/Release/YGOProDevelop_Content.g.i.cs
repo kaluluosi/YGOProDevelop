@@ -19,6 +19,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/type.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pics/27551.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/intelisence/lua/lua.ecp")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("layout.cfg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/highlight/lua-mode.xshd")]

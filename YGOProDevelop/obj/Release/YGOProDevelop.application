@@ -8,20 +8,20 @@
         <beforeApplicationStartup />
       </update>
     </subscription>
-    <deploymentProvider codebase="https://github.com/kaluluosi/YGOProDevelop/blob/master/Publish/YGOProDevelop.application" />
+    <deploymentProvider codebase="file:///D:/Projects/YGOProDevelop/Publish/YGOProDevelop.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.5.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="YGOProDevelop.exe.manifest" size="31675">
+    <dependentAssembly dependencyType="install" codebase="YGOProDevelop.exe.manifest" size="32063">
       <assemblyIdentity name="YGOProDevelop.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Gq4qIJZqkA12STQfQavwd21ORcB3jUtemfs1bYju6Xw=</dsig:DigestValue>
+        <dsig:DigestValue>56DAxCBXgVAFXbFbVX4gJbhZGZwEAjl/pmrFZUx66qM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
