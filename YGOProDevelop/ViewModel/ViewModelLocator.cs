@@ -9,6 +9,7 @@
   DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
 */
 
+using System;
 using System.Configuration;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
@@ -39,7 +40,7 @@ namespace YGOProDevelop.ViewModel {
             //注册ViewModel
             SimpleIoc.Default.Register<IDInputViewModel>();
             SimpleIoc.Default.Register<DocumentViewModel>();
-            SimpleIoc.Default.Register<ToolsViewModelBase,CardListViewModel>();
+            SimpleIoc.Default.Register<CardListViewModel>();
             SimpleIoc.Default.Register<MainViewModel>(true);
 
         }
@@ -54,6 +55,16 @@ namespace YGOProDevelop.ViewModel {
             get {
                 return ServiceLocator.Current.GetInstance<IDInputViewModel>();
             }
+        }
+
+        public static DocumentViewModel Document
+        {
+            get { return ServiceLocator.Current.GetInstance<DocumentViewModel>(Guid.NewGuid().ToString()); }
+        }
+
+        public static CardListViewModel CardList
+        {
+            get { return ServiceLocator.Current.GetInstance<CardListViewModel>(Guid.NewGuid().ToString()); }
         }
 
         /// <summary>

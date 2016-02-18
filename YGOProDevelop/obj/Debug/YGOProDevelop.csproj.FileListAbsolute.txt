@@ -211,7 +211,6 @@ D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\System.Data.SQLite.Linq.dll
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\System.Windows.Interactivity.dll
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.dll
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
-D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Expression.dll
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.DataGrid.dll
@@ -232,7 +231,6 @@ D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\System.Data.SQLite.xml
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\System.Windows.Interactivity.xml
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.pdb
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.xml
-D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Expression.pdb
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\zh-Hans\EntityFramework.resources.dll
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
@@ -269,3 +267,8 @@ D:\Projects\YGOProDevelop\YGOProDevelop\obj\Debug\View\PreferencesView.baml
 D:\Projects\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.g.resources
 D:\Projects\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.Properties.Resources.resources
 D:\Projects\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.csproj.GenerateResource.Cache
+D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\layout.cfg
+D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.exe.manifest
+D:\Projects\YGOProDevelop\YGOProDevelop\bin\Debug\YGOProDevelop.application
+D:\Projects\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.exe.manifest
+D:\Projects\YGOProDevelop\YGOProDevelop\obj\Debug\YGOProDevelop.application

@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:avalon="http://schemas.xceed.com/wpf/xaml/avalondock"
+        xmlns:avalonctr="clr-namespace:Xceed.Wpf.AvalonDock.Controls;assembly=Xceed.Wpf.AvalonDock"
         xmlns:cmd="http://www.galasoft.ch/mvvmlight"
         xmlns:ignore="http://www.ignore.com"
         xmlns:vm="clr-namespace:YGOProDevelop.ViewModel"
@@ -30,6 +31,7 @@
                 <v:DocumentView/>
             </DataTemplate>
             <avalon:BoolToVisibilityConverter x:Key="bool2Visibility"/>
+            
         </ResourceDictionary>
     </Window.Resources>
     <Window.DataContext>
@@ -74,15 +76,18 @@
             </MenuItem>
             <MenuItem Header="视图" >
                 <MenuItem Header="显示行号" IsCheckable="True"  IsChecked="{Binding IsShowLineNumbers}" />
+                <MenuItem Header="工具" ItemsSource="{Binding AnchorableViewModels}">
+                    <MenuItem.ItemContainerStyle>
+                        <Style >
+                            <Setter Property="MenuItem.Header" Value="{Binding Title}"></Setter>
+                            <Setter Property="MenuItem.IsCheckable" Value="True"></Setter>
+                            <Setter Property="MenuItem.IsChecked" Value="{Binding IsVisible}"></Setter>
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
             </MenuItem>
-            <MenuItem Header="工具" ItemsSource="{Binding AnchorableViewModels}">
-                <MenuItem.ItemContainerStyle>
-                    <Style >
-                        <Setter Property="MenuItem.Header" Value="{Binding Title}"></Setter>
-                        <Setter Property="MenuItem.IsCheckable" Value="True"></Setter>
-                        <Setter Property="MenuItem.IsChecked" Value="{Binding IsVisible}"></Setter>
-                    </Style>
-                </MenuItem.ItemContainerStyle>
+            <MenuItem Header="数据库">
+                <MenuItem Header="打开新CDB视图" Command="{Binding OpenCDBCmd}"></MenuItem>
             </MenuItem>
             <MenuItem Header="语言" ItemsSource="{Binding HightLightingDefs}" >
                 <MenuItem.ItemContainerStyle>
@@ -132,10 +137,10 @@
         <avalon:DockingManager x:Name="dock" Grid.Row="2" 
 			DocumentsSource="{Binding DocumentViewModels}" 
 			AnchorablesSource="{Binding AnchorableViewModels}"
-			ActiveContent="{Binding ActiveViewModel, Mode=TwoWay}" >
-
+			ActiveContent="{Binding ActiveViewModel, Mode=TwoWay}"
+            >
             <avalon:DockingManager.LayoutItemContainerStyle>
-                <Style TargetType="{x:Type avalon:LayoutItem}">
+                <Style TargetType="{x:Type avalonctr:LayoutItem}">
                     <Setter Property="Title" Value="{Binding Model.Title}" />
                     <Setter Property="ContentId" Value="{Binding Model.ContentId}"/>
                     <Setter Property="CloseCommand" Value="{Binding Model.CloseCmd}"></Setter>
@@ -144,6 +149,7 @@
                 </Style>
             </avalon:DockingManager.LayoutItemContainerStyle>
             <avalon:LayoutRoot>
+               
             </avalon:LayoutRoot>
         </avalon:DockingManager>
         <StatusBar Grid.Row="3" Background="#FF007ACC"/>

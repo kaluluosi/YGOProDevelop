@@ -216,6 +216,23 @@ namespace YGOProDevelop.ViewModel {
             }
         }
 
+        private RelayCommand _openCDBCmd;
+
+        /// <summary>
+        /// Gets the MyCommand.
+        /// </summary>
+        public RelayCommand OpenCDBCmd
+        {
+            get
+            {
+                return _openCDBCmd
+                    ?? (_openCDBCmd = new RelayCommand(
+                    () => {
+                        CardListViewModel clvm = ViewModelLocator.CardList;
+                        AnchorableViewModels.Add(clvm);
+                    }));
+            }
+        }
 
         #endregion
         #region method
@@ -269,7 +286,7 @@ namespace YGOProDevelop.ViewModel {
         }
 
         public DocumentViewModel CreateDocumentVM() {
-            DocumentViewModel docVM = ServiceLocator.Current.GetInstance<DocumentViewModel>(Guid.NewGuid().ToString());
+            DocumentViewModel docVM = ViewModelLocator.Document;
             docVM.IsShowLineNumbers = IsShowLineNumbers;
             return docVM;
         }

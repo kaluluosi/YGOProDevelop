@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -44,7 +45,7 @@ namespace YGOProDevelop.CardEditor.Config {
                     items = xmlSerializer.Deserialize(fs) as List<VarItem>;
                 }
                 catch (InvalidOperationException ex) {
-                    throw ;
+                    Debug.WriteLine(ex.StackTrace);
                 }
             }
 
@@ -68,7 +69,7 @@ namespace YGOProDevelop.CardEditor.Config {
                     xmlSerializer.Serialize(fs, items);
                 }
                 catch (InvalidOperationException ex) {
-                    throw;
+                    Debug.WriteLine(ex.StackTrace);
                 }
             }
         }

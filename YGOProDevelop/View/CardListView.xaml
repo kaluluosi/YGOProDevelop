@@ -16,6 +16,7 @@
             <cvt:Datas2SourceConverter x:Key="id2source"></cvt:Datas2SourceConverter>
             <cvt:Datas2StringConverter x:Key="d2str"></cvt:Datas2StringConverter>
             <Style TargetType="ListBoxItem">
+
                 <Setter Property="ToolTip">
                     <Setter.Value>
                         <ToolTip>
@@ -89,11 +90,7 @@
                 <ColumnDefinition Width="13"/>
             </Grid.ColumnDefinitions>
             <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding KeyWord,UpdateSourceTrigger=PropertyChanged}">
-                <!--<i:Interaction.Triggers >
-                    <i:EventTrigger EventName="KeyDown">
-                        <cmd:EventToCommand Command="{Binding SearchCmd}" PassEventArgsToCommand="True"></cmd:EventToCommand>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>-->
+               
             </TextBox>
             <Button Content="搜索" Command="{Binding SearchCmd}" Grid.Column="1" IsDefault="True" />
             <Button x:Name="btnMore" Content="." Grid.Column="2" Click="btnMore_Click"/>

@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using Microsoft.Practices.ServiceLocation;
+using System;
 
 namespace YGOProDevelop.ViewModel {
     public abstract class DockableViewModelBase:ViewModelBase {
@@ -34,10 +35,15 @@ namespace YGOProDevelop.ViewModel {
             }
 
             set {
-                _isVisible = value; RaisePropertyChanged();
+                _isVisible = value;
+                OnVisibleChanged(_isVisible);
+                RaisePropertyChanged();
             }
         }
 
+        protected virtual void OnVisibleChanged(bool isVisible) {
+            
+        }
 
         public string ContentId {
             get {

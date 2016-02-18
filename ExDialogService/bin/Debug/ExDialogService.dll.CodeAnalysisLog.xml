@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<?xml-stylesheet type="text/xsl" href="d:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="14.0">
  <Targets>
-  <Target Name="D:\GitHub\YGOProDevelop\ExDialogService\bin\Debug\ExDialogService.dll">
+  <Target Name="D:\Projects\YGOProDevelop\ExDialogService\bin\Debug\ExDialogService.dll">
    <Modules>
     <Module Name="exdialogservice.dll">
      <Namespaces>
@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#DialogResultChanged" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2016-01-19 14:28:14Z" FixCategory="Breaking">
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2016-02-15 08:07:06Z" FixCategory="Breaking">
              <Issue Name="Second" Certainty="95" Level="Error">将 'EventHandler&lt;bool?&gt;' 的第二个参数声明为 EventArgs，或者声明为扩展 EventArgs 的类型的名为“e”的实例。</Issue>
             </Message>
            </Messages>
@@ -21,7 +21,7 @@
         </Type>
         <Type Name="ViewNotFoundException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-01-19 14:28:14Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-02-15 08:07:06Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">将 [Serializable] 添加到 'ViewNotFoundException'，原因是此类型实现了 ISerializable。</Issue>
           </Message>
          </Messages>

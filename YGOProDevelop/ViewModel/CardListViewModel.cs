@@ -11,6 +11,7 @@ using YGOProDevelop.Service;
 using System.Linq;
 using YGOProDevelop.Message;
 using GalaSoft.MvvmLight.Messaging;
+using System.Diagnostics;
 
 namespace YGOProDevelop.ViewModel {
     /// <summary>
@@ -28,13 +29,13 @@ namespace YGOProDevelop.ViewModel {
             _cdbService = cdbService;
             ContentId = "CardList";
             _dialogService = dialogService;
-            try {
-                cdbService.Open(Properties.Settings.Default.lastCDB);
-                ResetSearch();
-            }
-            catch(System.Exception ex) {
-                //                 MessageBox.Show(ex.Message);
-            }
+            //try {
+            //    cdbService.Open(Properties.Settings.Default.lastCDB);
+            //    ResetSearch();
+            //}
+            //catch(System.Exception ex) {
+            //    Debug.WriteLine(ex.StackTrace);
+            //}
         }
 
 
@@ -156,12 +157,16 @@ namespace YGOProDevelop.ViewModel {
                         openFile.Filter = "CDB文件|*.cdb";
                         bool? result = openFile.ShowDialog();
                         if(result == true) {
-                            _cdbService.Open(openFile.FileName);
-                            ResetSearch();
-                            Properties.Settings.Default.lastCDB = openFile.FileName;
+                            Open(openFile.FileName);
                         }
                     }));
             }
+        }
+
+        public void Open(string fileName) {
+            _cdbService.Open(fileName);
+            ResetSearch();
+            Properties.Settings.Default.lastCDB = fileName;
         }
 
         private ICommand _editCmd;
@@ -264,6 +269,12 @@ namespace YGOProDevelop.ViewModel {
 
         public void ScrollIntoView(datas d) {
             MessengerInstance.Send(new NotificationMessage<datas>(this,d,CardListNotificaions.ScrollTo));
+        }
+
+        protected override void OnVisibleChanged(bool isVisible) {
+            if (isVisible == false) {
+                Main.AnchorableViewModels.Remove(this);
+            }
         }
     }
 

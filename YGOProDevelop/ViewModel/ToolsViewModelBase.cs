@@ -6,5 +6,6 @@ namespace YGOProDevelop.ViewModel {
         protected override void OnClose() {
             IsVisible = false;
         }
+
     }
 }

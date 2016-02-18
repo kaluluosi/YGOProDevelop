@@ -4,6 +4,7 @@ using Xceed.Wpf.AvalonDock.Themes;
 using System.Windows.Controls;
 using Xceed.Wpf.AvalonDock.Layout.Serialization;
 using YGOProDevelop.View;
+using System.Diagnostics;
 
 namespace YGOProDevelop {
     /// <summary>
@@ -32,14 +33,8 @@ namespace YGOProDevelop {
 
         public void ChangeTheme(string themeName) {
             switch (themeName) {
-                case "VS2010":
-                    dock.Theme = new VS2010Theme();
-                    break;
                 case "Aero":
                     dock.Theme = new AeroTheme();
-                    break;
-                case "ExpressLight":
-                    dock.Theme = new ExpressionLightTheme();
                     break;
                 case "Generic":
                     dock.Theme = new GenericTheme();
@@ -47,9 +42,9 @@ namespace YGOProDevelop {
                 case "Metro":
                     dock.Theme = new MetroTheme();
                     break;
+                case "VS2010":
                 default:
-                case "ExpressDark":
-                    dock.Theme = new ExpressionDarkTheme();
+                    dock.Theme = new VS2010Theme();
                     break;
             }
             Properties.Settings.Default.Theme = themeName;
@@ -64,7 +59,7 @@ namespace YGOProDevelop {
                 layoutSerilizer.Deserialize(@".\layout.cfg");
             }
             catch (System.Exception ex) {
-                throw;
+                Debug.WriteLine(ex.StackTrace);
             }
         }
 
